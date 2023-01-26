@@ -1,29 +1,29 @@
-import React from "react";
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import Modal from "@mui/material/Modal";
-import { TextField } from "@mui/material";
+import React, { useState } from 'react';
+import { TextField, Typography, Modal, Button, Box } from '@mui/material';
+import Login from './Auth';
 
 const style = {
-  position: "absolute" as "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
+  position: 'absolute' as 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
   width: 400,
-  bgcolor: "background.paper",
-  border: "2px solid #1525d8",
+  bgcolor: 'background.paper',
+  border: '2px solid #1525d8',
   boxShadow: 24,
   p: 4,
 };
 
-function Registration() {
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
+type Props = {
+  open: boolean;
+  setOpen: (open: boolean) => void;
+};
+
+function Registration({ open, setOpen }: Props) {
   const handleClose = () => setOpen(false);
 
   return (
     <div>
-      <Button onClick={handleOpen}>Зарегистрироваться</Button>
       <Modal
         open={open}
         onClose={handleClose}
@@ -34,7 +34,7 @@ function Registration() {
           <TextField
             id="outlined-basic"
             label="Ваше имя"
-            type='text'
+            type="text"
             variant="outlined"
             required
             sx={{ ml: 4, mt: 2, width: 350 }}
@@ -43,7 +43,7 @@ function Registration() {
           <TextField
             id="outlined-basic"
             label="Email"
-            type='email'
+            type="email"
             variant="outlined"
             required
             sx={{ ml: 4, mt: 2, width: 350 }}
@@ -52,13 +52,19 @@ function Registration() {
           <TextField
             id="outlined-basic"
             label="Пароль"
-            type='password'
+            type="password"
             variant="outlined"
             required
             sx={{ ml: 4, mt: 2, width: 350 }}
           />
 
-          <Button variant="contained" sx={{ mt: 2, ml: 12}}>Зарегистрироваться</Button>
+          <Button variant="contained" sx={{ mt: 2, ml: 12 }}>
+            Зарегистрироваться
+          </Button>
+
+          <Typography>
+            Уже есть аккаунт? <span>Войти</span>
+          </Typography>
         </Box>
       </Modal>
     </div>

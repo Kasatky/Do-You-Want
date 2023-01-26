@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Container,
   Button,
@@ -10,8 +10,11 @@ import {
   CardContent,
   Grid,
 } from '@mui/material';
+import Auth from '../Auth/Auth';
 
 function Main(): JSX.Element {
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
   return (
     <div style={{ height: '100%' }}>
       <Box sx={{ flexGrow: 1 }}>
@@ -23,6 +26,7 @@ function Main(): JSX.Element {
               </Typography>
 
               <Button
+                onClick={handleOpen}
                 variant="contained"
                 sx={{ width: '80px', height: '80px', borderRadius: '50%' }}
               >
@@ -32,6 +36,8 @@ function Main(): JSX.Element {
           </Container>
         </AppBar>
       </Box>
+
+      <Auth open={open} setOpen={setOpen} />
 
       <Container sx={{ marginTop: '40px', marginBottom: '40px' }}>
         <Grid

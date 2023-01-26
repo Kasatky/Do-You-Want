@@ -12,9 +12,9 @@ root.render(
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<Main />} />
-      <Route path="/auth/login" element={<div>LOGIN</div>} />
+      {/* <Route path="/auth/login" element={<div>LOGIN</div>} />
       <Route path="/auth/register" element={<div>REGISTER</div>} />
-      <Route path="/auth/logout" element={<div>LOGOUT</div>} />
+      <Route path="/auth/logout" element={<div>LOGOUT</div>} /> */}
     </Routes>
   </BrowserRouter>,
   // </React.StrictMode>
