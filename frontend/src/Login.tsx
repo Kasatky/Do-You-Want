@@ -21,8 +21,8 @@ function Login() {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const [userEmail, setUserEmail] = useState('');
-  const [userPassword, setUserPassword] = useState('');
+  const [userEmail, setUserEmail] = useState("");
+  const [userPassword, setUserPassword] = useState("");
 
   const handleSubmit = async (event: any): Promise<any> => {
     event.preventDefault();
@@ -30,24 +30,30 @@ function Login() {
       email: userEmail,
       password: userPassword,
     });
-     const response = await fetch('/api/auth/login', { 
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        }, 
-        body: data });
-     if (response.status === 200) console.log('Успешно');
-     
+    const response = await fetch("/api/auth/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: data,
+    });
+
+    console.log(response);
+
+    if (response.status === 200) console.log("Успешно");
   };
 
-  const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
-    setUserEmail(event.target.value)
+  const handleEmailChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ): void => {
+    setUserEmail(event.target.value);
   };
 
-  const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
-    setUserPassword(event.target.value)
+  const handlePasswordChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ): void => {
+    setUserPassword(event.target.value);
   };
-
 
   return (
     <div>
@@ -81,7 +87,7 @@ function Login() {
             sx={{ ml: 4, mt: 2, width: 350 }}
           />
 
-          <Button type='submit' variant="contained" sx={{ mt: 2, ml: 20 }}>
+          <Button type="submit" variant="contained" sx={{ mt: 2, ml: 20 }}>
             Войти
           </Button>
         </Box>

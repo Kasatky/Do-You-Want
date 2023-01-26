@@ -24,7 +24,8 @@ app.use(logger('dev'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(session(sessionConfig));
-app.use('/api', authRouter);
+
+app.use('/api/auth', authRouter);
 
 app
   .listen(PORT)
