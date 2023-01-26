@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
-import Login from './Login';
-import Registration from './Registration';
+import Login from '../Auth/Login';
+import Registration from '../Auth/Registration';
 
 
 function App() {
