@@ -1,8 +1,36 @@
 require('dotenv').config();
 const express = require('express');
-
-const { PORT } = process.env;
+const logger = require('morgan');
+const session = require('express-session');
+const FileStore = require('session-file-store')(session);
+const authRouter = require('./routes/authRouter');
 
 const app = express();
+const { PORT } = process.env ?? 3000;
 
-app.listen(PORT, () => console.log('Server listen ', PORT));
+const sessionConfig = {
+  store: new FileStore(),
+  name: 'user_sid',
+  secret: process.env.SESSION_SECRET ?? 'test',
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    maxAge: 1000 * 60 * 60 * 12,
+    httpOnly: true,
+  },
+};
+
+app.use(logger('dev'));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(session(sessionConfig));
+app.use('/api', authRouter);
+
+app
+  .listen(PORT)
+  .on('listening', () => {
+    console.log(`Server's listening port ${PORT}`);
+  })
+  .on('error', (error) => {
+    console.log(`Connecting error: ${error.message}`);
+  });
