@@ -1,3 +1,0 @@
-SESSIONS_SECRET = random_string
-DATABASE_URL = postgres://login:password@localhost:5432/baseName
-PORT = 3000
