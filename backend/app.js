@@ -1,32 +1,26 @@
 /* eslint-disable no-console */
 require('dotenv').config();
-const path = require('path');
 const express = require('express');
-const logger = require('morgan');
-const session = require('express-session');
-const sessionConfig = require('./config/sessionConfig');
+const config = require('./config/config');
 const authRouter = require('./routes/authRouter');
+const cabinetAdminRouter = require('./routes/cabinetAdminRouter');
 
 const app = express();
 const { PORT } = process.env ?? 3000;
 
-app.use(logger('dev'));
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-app.use(session(sessionConfig));
+config(app);
 
-app.use('/api/auth', authRouter);
+app.use('/auth', authRouter);
+app.use('/api', cabinetAdminRouter);
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../frontend/build/index.html'));
-});
-
-app.use(express.static(path.join(__dirname, '../../frontend/build')));
+// app.get('*', (req, res) => {
+//   res.sendFile(path.join(__dirname, '../frontend/build/index.html'));
+// });
 
 app
   .listen(PORT)
   .on('listening', () => {
-    console.log(`Server's listening port ${PORT}`);
+    console.log(`Сервер слушает порт:${PORT}`);
   })
   .on('error', (error) => {
     console.log(`Connecting error: ${error.message}`);

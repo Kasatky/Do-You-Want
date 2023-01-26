@@ -1,6 +1,6 @@
 const authRouter = require('express').Router();
 // const bcrypt = require('bcrypt');
-const db = require('../db');
+const db = require('../db/models');
 
 authRouter.post('/login', (req, res) => {
   const { email, password } = req.body;
@@ -9,14 +9,14 @@ authRouter.post('/login', (req, res) => {
     req.session.userId = user.id;
     return res.json({ name: user.name });
   }
-  return res.status(401).json({error: 'Ошибка логина'});
+  return res.status(401).json({ error: 'Ошибка логина' });
 });
 
-authRouter.use((req, res, next) => {
-  if (req.session.user) {
-    return next();
-  }
-});
+// authRouter.use((req, res, next) => {
+//   if (req.session.user) {
+//     return next();
+//   }
+// });
 
 authRouter.get((req, res) => {
   res.json({
