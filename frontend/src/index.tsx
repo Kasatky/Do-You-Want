@@ -2,21 +2,21 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './index.css';
-import App from './App';
+import Main from './Main';
 
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+  document.getElementById('root') as HTMLElement,
 );
 root.render(
   // <React.StrictMode>
   <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<App />} />
-          <Route path="/auth/login" element={<div>LOGIN</div>} />
-          <Route path="/auth/register" element={<div>REGISTER</div>} />
-          <Route path="/auth/logout" element={<div>LOGOUT</div>} />
-        </Routes>
-      </BrowserRouter>
+    <Routes>
+      <Route path="/" element={<Main />} />
+      <Route path="/auth/login" element={<div>LOGIN</div>} />
+      <Route path="/auth/register" element={<div>REGISTER</div>} />
+      <Route path="/auth/logout" element={<div>LOGOUT</div>} />
+    </Routes>
+  </BrowserRouter>,
   // </React.StrictMode>
 );
 
