@@ -1,18 +1,20 @@
-import { User, UserId } from './usersTypes';
+import { User } from './usersTypes';
 
-export const requestRegister = async (newUser: User): Promise<{}> => {
-  // я так понимаю, что newUser это будет объект с ключами email, userName, password
+export const requestRegister = async (newUser: User): Promise<Response> => {
+  // newUser - объект с ключами email, userName, password
   const response = await fetch('/auth/register', {
     method: 'POST',
-    body: JSON.stringify(newUser),
+    body: JSON.stringify({ newUser }),
   });
-  return { status: response.ok, data: newUser };
+
+  return response;
 };
 
-export const requestLogin = async (id: UserId) => {
+export const requestLogin = async (user: User) => {
+  // user - объект с ключами email, password
   const response = await fetch('/auth/login', {
     method: 'POST',
-    body: JSON.stringify({ id }),
+    body: JSON.stringify({ user }),
   });
-  return response.ok;
+  return response;
 };

@@ -8,6 +8,6 @@ export type User = {
 };
 
 export type UserState = {
-  list: User[];
+  profile: User | undefined;
   error: string | undefined;
 };
