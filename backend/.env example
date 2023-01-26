@@ -1,0 +1,8 @@
+SESSIONS_SECRET = random_string
+DATABASE_URL = postgres://login:password@localhost:5432/baseName
+PORT = 4000
+SALT_ROUNDS=12
+DEMO_USER=userName
+DEMO_PASSWORD=userPassword
+DEMO_EMAIL=userEmail
+

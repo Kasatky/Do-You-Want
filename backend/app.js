@@ -1,21 +1,34 @@
 /* eslint-disable no-console */
 require('dotenv').config();
+const path = require('path');
 const express = require('express');
-const db = require('./db/models');
-
-const { PORT } = process.env;
+const logger = require('morgan');
+const session = require('express-session');
+const sessionConfig = require('./config/sessionConfig');
+const authRouter = require('./routes/authRouter');
 
 const app = express();
+const { PORT } = process.env ?? 3000;
 
-const start = async () => {
-  try {
-    await db.sequelize.authenticate();
-    app.listen(PORT, () => {
-      console.log(`Cервер слушает ${PORT} порт`);
-    });
-  } catch (error) {
-    console.log(error.message);
-  }
-};
+app.use(logger('dev'));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(session(sessionConfig));
 
-start();
+
+app.use(express.static(path.join(__dirname, '../../frontend/build')));
+app.get('/', (req, res) => res.json({ message: 'ok' }));
+app.use('/api/auth', authRouter);
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/build/index.html'));
+});
+
+app
+  .listen(PORT)
+  .on('listening', () => {
+    console.log(`Server's listening port ${PORT}`);
+  })
+  .on('error', (error) => {
+    console.log(`Connecting error: ${error.message}`);
+  });
