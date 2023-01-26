@@ -1,0 +1,21 @@
+{
+  "name": "Do-You-Want-",
+  "version": "1.0.0",
+  "description": "Приложение по выявлению желаний. Реализовано на React+TypeScript+Express Js с базой PostgreSQL.",
+  "main": "index.js",
+  "scripts": {
+    "postinstall": "cd backend && npm i && node db/reset.js && npx sequelize db:seed:all && cd ../frontend && npm i && DISABLE_ESLINT_PLUGIN=true npm run build",
+    "start": "cd backend && npm start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kasatky/Do-You-Want-.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kasatky/Do-You-Want-/issues"
+  },
+  "homepage": "https://github.com/Kasatky/Do-You-Want-#readme"
+}
