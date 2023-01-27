@@ -7,15 +7,21 @@ import {
 
 export const requestRegister = async (
   newUser: UserRegister,
-): Promise<Response> => {
+): Promise<UserProfile> => {
   // newUser - объект с ключами email, userName, password
   const response = await fetch('/api/auth/register', {
     method: 'POST',
-    body: JSON.stringify({ newUser }),
+    body: JSON.stringify(newUser),
     headers: { 'Content-Type': 'application/json' },
   });
 
-  return response;
+  const data = await response.json();
+
+  if (!response.ok) {
+    throw new Error((data as AuthApiError).error);
+  }
+
+  return data as UserProfile;
 };
 
 export const requestLogin = async (user: UserLogin): Promise<UserProfile> => {
