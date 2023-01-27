@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { TextField, Typography, Modal, Button, Box } from '@mui/material';
-import Registration from './Registration';
+import { useAppDispatch } from '../store';
+import { login } from './userSlice';
+import { UserLogin } from './usersTypes';
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -24,9 +26,11 @@ type Props = {
 
 function Auth({ open, setOpen }: Props) {
   const [authType, setAuthType] = useState('login');
-  const [openRegister, setOpenRegister] = useState(false);
+  const [userName, setUserName] = useState('');
   const [userEmail, setUserEmail] = useState('');
   const [userPassword, setUserPassword] = useState('');
+
+  const dispatch = useAppDispatch();
 
   const handleClose = () => setOpen(false);
 
@@ -34,23 +38,28 @@ function Auth({ open, setOpen }: Props) {
     setAuthType((prev) => (prev === 'login' ? 'register' : 'login'));
   };
 
-  const handleSubmit = async (event: any): Promise<any> => {
-    event.preventDefault();
-    const data = JSON.stringify({
-      email: userEmail,
-      password: userPassword,
-    });
-    const response = await fetch('/api/auth/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: data,
-    });
+  const handleLogin = async (): Promise<any> => {
+    const user: UserLogin = { email: userEmail, password: userPassword };
+    console.log(user);
+    dispatch(login(user));
+    // event.preventDefault();
+    // const data = JSON.stringify({
+    //   email: userEmail,
+    //   password: userPassword,
+    // });
+    // const response = await fetch('/api/auth/login', {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //   },
+    //   body: data,
+    // });
+    // console.log(response);
+    // if (response.status === 200) console.log('Успешно');
+  };
 
-    console.log(response);
-
-    if (response.status === 200) console.log('Успешно');
+  const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setUserName(event.target.value);
   };
 
   const handleEmailChange = (
@@ -73,7 +82,7 @@ function Auth({ open, setOpen }: Props) {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style} component="form" onSubmit={handleSubmit}>
+        <Box sx={style} component="form">
           {authType === 'register' && (
             <TextField
               id="outlined-basic"
@@ -81,6 +90,8 @@ function Auth({ open, setOpen }: Props) {
               type="text"
               variant="outlined"
               required
+              onChange={handleNameChange}
+              value={userName}
               sx={{ mt: 2, width: '100%' }}
             />
           )}
@@ -107,9 +118,18 @@ function Auth({ open, setOpen }: Props) {
             sx={{ mt: 2, width: '100%' }}
           />
 
-          <Button type="submit" variant="contained" sx={{ mt: 2 }}>
+          {authType === 'login' ? (
+            <Button onClick={handleLogin} variant="contained" sx={{ mt: 2 }}>
+              Войти
+            </Button>
+          ) : (
+            <Button variant="contained" sx={{ mt: 2 }}>
+              Зарегистрироваться
+            </Button>
+          )}
+          {/* <Button onClick={handleLogin} variant="contained" sx={{ mt: 2 }}>
             {authType === 'login' ? 'Войти' : 'Зарегистрироваться'}
-          </Button>
+          </Button> */}
           <Typography sx={{ mt: 2, display: 'flex', alignItems: 'center' }}>
             {authType === 'login' ? (
               <>
@@ -129,8 +149,6 @@ function Auth({ open, setOpen }: Props) {
           </Typography>
         </Box>
       </Modal>
-
-      <Registration open={openRegister} setOpen={setOpenRegister} />
     </div>
   );
 }

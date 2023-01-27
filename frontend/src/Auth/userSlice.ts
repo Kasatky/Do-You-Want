@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { User, UserState } from './usersTypes';
+import { UserLogin, UserRegister, UserState } from './usersTypes';
 import * as authApi from './authApi';
 
 const initialState: UserState = {
@@ -9,7 +9,7 @@ const initialState: UserState = {
 
 export const register = createAsyncThunk(
   'users/authRegister',
-  async (newUser: User) => {
+  async (newUser: UserRegister) => {
     const response = await authApi.requestRegister(newUser);
 
     // на бэке сделать обработку на эту ошибку и отсылать этот статус
@@ -22,11 +22,15 @@ export const register = createAsyncThunk(
   },
 );
 
-export const login = createAsyncThunk('users/authLogin', async (user: User) => {
-  const response = await authApi.requestLogin(user);
-  if (!response.ok) throw new Error('Ошибка входа');
-  return user;
-});
+// +
+export const login = createAsyncThunk(
+  'users/authLogin',
+  async (user: UserLogin) => {
+    const response = await authApi.requestLogin(user);
+    if (!response.ok) throw new Error('Ошибка входа');
+    return user;
+  },
+);
 
 const userSlice = createSlice({
   name: 'users',

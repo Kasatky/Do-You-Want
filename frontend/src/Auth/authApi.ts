@@ -1,8 +1,10 @@
-import { User } from './usersTypes';
+import { UserLogin, UserRegister } from './usersTypes';
 
-export const requestRegister = async (newUser: User): Promise<Response> => {
+export const requestRegister = async (
+  newUser: UserRegister,
+): Promise<Response> => {
   // newUser - объект с ключами email, userName, password
-  const response = await fetch('/auth/register', {
+  const response = await fetch('/api/auth/register', {
     method: 'POST',
     body: JSON.stringify({ newUser }),
   });
@@ -10,11 +12,13 @@ export const requestRegister = async (newUser: User): Promise<Response> => {
   return response;
 };
 
-export const requestLogin = async (user: User) => {
+// +
+export const requestLogin = async (user: UserLogin) => {
   // user - объект с ключами email, password
-  const response = await fetch('/auth/login', {
+  // console.log('user in authApi: ', user);
+  const response = await fetch('/api/auth/login', {
     method: 'POST',
-    body: JSON.stringify({ user }),
+    body: JSON.stringify(user),
   });
   return response;
 };
