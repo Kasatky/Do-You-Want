@@ -1,11 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
 import './index.css';
 import Main from './MainPage/Main';
 
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement,
+  document.getElementById('root') as HTMLElement
 );
 root.render(
   // <React.StrictMode>
@@ -16,7 +17,7 @@ root.render(
       <Route path="/auth/register" element={<div>REGISTER</div>} />
       <Route path="/auth/logout" element={<div>LOGOUT</div>} /> */}
     </Routes>
-  </BrowserRouter>,
+  </BrowserRouter>
   // </React.StrictMode>
 );
 
