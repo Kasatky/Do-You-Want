@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { TextField, Typography, Modal, Button, Box } from '@mui/material';
 import { RootState, useAppDispatch } from '../store';
-import { login } from './userSlice';
-import { UserLogin, UserState } from './usersTypes';
+import { login, register } from './userSlice';
+import { UserLogin, UserRegister, UserState } from './usersTypes';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
@@ -45,6 +45,15 @@ function Auth({ open, setOpen }: Props) {
   const handleLogin = async (): Promise<any> => {
     const user: UserLogin = { email: userEmail, password: userPassword };
     dispatch(login(user));
+  };
+
+  const handleRegister = async (): Promise<any> => {
+    const user: UserRegister = {
+      email: userEmail,
+      userName: userName,
+      password: userPassword,
+    };
+    dispatch(register(user));
   };
 
   const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -119,7 +128,7 @@ function Auth({ open, setOpen }: Props) {
               Войти
             </Button>
           ) : (
-            <Button variant="contained" sx={{ mt: 2 }}>
+            <Button onClick={handleRegister} variant="contained" sx={{ mt: 2 }}>
               Зарегистрироваться
             </Button>
           )}

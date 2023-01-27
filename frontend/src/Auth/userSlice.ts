@@ -11,15 +11,8 @@ const initialState: UserState = {
 export const register = createAsyncThunk(
   'users/authRegister',
   async (newUser: UserRegister) => {
-    const response = await authApi.requestRegister(newUser);
-
-    // на бэке сделать обработку на эту ошибку и отсылать этот статус
-    if (response.status === 409)
-      throw new Error('Такой пользователь уже существует');
-
-    if (!response.ok) throw new Error('Ошибка при регистрации');
-
-    return newUser;
+    const data = await authApi.requestRegister(newUser);
+    return data;
   },
 );
 
@@ -45,6 +38,7 @@ const userSlice = createSlice({
       .addCase(register.fulfilled, (state, action) => {
         const newUser = action.payload;
         state.profile = newUser;
+        state.isAuth = true;
       })
       .addCase(register.rejected, (state, action) => {
         state.error = action.error.message;
