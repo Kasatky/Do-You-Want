@@ -1,15 +1,16 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { User, UserState } from './usersTypes';
+import { UserLogin, UserRegister, UserState } from './usersTypes';
 import * as authApi from './authApi';
 
 const initialState: UserState = {
+  isAuth: false,
   profile: undefined,
   error: undefined,
 };
 
 export const register = createAsyncThunk(
   'users/authRegister',
-  async (newUser: User) => {
+  async (newUser: UserRegister) => {
     const response = await authApi.requestRegister(newUser);
 
     // на бэке сделать обработку на эту ошибку и отсылать этот статус
@@ -22,10 +23,20 @@ export const register = createAsyncThunk(
   },
 );
 
-export const login = createAsyncThunk('users/authLogin', async (user: User) => {
-  const response = await authApi.requestLogin(user);
-  if (!response.ok) throw new Error('Ошибка входа');
-  return user;
+export const login = createAsyncThunk(
+  'users/authLogin',
+  async (user: UserLogin) => {
+    const { response, data } = await authApi.requestLogin(user);
+    if (!response.ok) throw new Error(data.error);
+    console.log(data);
+    console.log(response);
+    return user;
+  },
+);
+
+export const checkUser = createAsyncThunk('users/authCheckUser', async () => {
+  const isAuth = await authApi.requestIsAuth();
+  return isAuth;
 });
 
 const userSlice = createSlice({
@@ -44,8 +55,15 @@ const userSlice = createSlice({
       .addCase(login.fulfilled, (state, action) => {
         const user = action.payload;
         state.profile = user;
+        state.isAuth = true;
       })
       .addCase(login.rejected, (state, action) => {
+        state.error = action.error.message;
+      })
+      .addCase(checkUser.fulfilled, (state, action) => {
+        state.isAuth = action.payload.isAuth;
+      })
+      .addCase(checkUser.rejected, (state, action) => {
         state.error = action.error.message;
       });
   },

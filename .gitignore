@@ -18,3 +18,5 @@ build
 .env.production.local
 
 npm-debug.log*
+
+sessions

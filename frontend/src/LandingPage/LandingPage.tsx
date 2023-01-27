@@ -13,28 +13,39 @@ import {
 import Auth from '../Auth/Auth';
 import QuestionCarousel from '../features/questionCarousel';
 
-function Main(): JSX.Element {
+function LandingPage(): JSX.Element {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
+
   return (
     <div style={{ height: '100%' }}>
   
       <Box sx={{ flexGrow: 1 }}>
         <AppBar position="static">
-          <Container>
-            <Toolbar sx={{ padding: '20px 0' }}>
-              <Typography component="div" sx={{ flexGrow: 1 }}>
-                <img width="100px" src="img/logo.png" alt="logo" />
-              </Typography>
+          <Container
+            sx={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              paddingTop: '20px',
+              paddingBottom: '20px',
+            }}
+          >
+            <Typography component="div">
+              <img width="100px" src="img/logo.png" alt="logo" />
+            </Typography>
 
-              <Button
-                onClick={handleOpen}
-                variant="contained"
-                sx={{ width: '80px', height: '80px', borderRadius: '50%' }}
-              >
-                Войти
-              </Button>
-            </Toolbar>
+            <Button
+              onClick={handleOpen}
+              variant="contained"
+              sx={{
+                width: '80px',
+                height: '80px',
+
+                borderRadius: '50%',
+              }}
+            >
+              Войти
+            </Button>
           </Container>
         </AppBar>
       </Box>
@@ -116,4 +127,4 @@ function Main(): JSX.Element {
   );
 }
 
-export default Main;
+export default LandingPage;
