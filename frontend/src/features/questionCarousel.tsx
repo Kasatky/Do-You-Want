@@ -1,18 +1,22 @@
-import React, { useState, useMemo, useRef } from 'react';
+import React, { useState, useMemo, useRef, useEffect } from 'react';
 import TinderCard from 'react-tinder-card';
 import IconButton from '@mui/material/IconButton';
-// import Button from '@mui/material/Button';
+import CheckIcon from '@mui/icons-material/Check';
 import DeleteIcon from '@mui/icons-material/Delete';
 import '../App/App.css';
 const db = [
-  { wish: 'Хочу 1' },
-  { wish: 'Хочу 2' },
-  { wish: 'Хочу 3' },
-  { wish: 'Хочу 4' },
-  { wish: 'Хочу 5' },
+  { wish: 'Хочу прогуляться?' },
+  { wish: 'Хочу нарисовать гору?' },
+  { wish: 'Хочу приготовить пирог?' },
+  { wish: 'Хочу сходить в кино?' },
+  { wish: 'Хочу  кофе?' },
 ];
 
 function QuestionCarousel(): JSX.Element {
+  useEffect(() => {
+    fetch('/api/');
+  });
+
   const [currentIndex, setCurrentIndex] = useState(db.length - 1);
   const [lastDirection, setLastDirection] = useState<string>();
   const currentIndexRef = useRef(currentIndex);
@@ -96,12 +100,19 @@ function QuestionCarousel(): JSX.Element {
           </TinderCard>
         ))}
       </div>
-      <div className="buttons">
+      <div
+        className="buttons"
+        // style={{
+        //   // top: `${index * 8}px`,
+        //   // left: `${index * 8}px`,
+        //   position: 'relative',
+        // }}
+      >
         <IconButton
           onClick={() => swipe('left')}
           // style={{ backgroundColor: !canSwipe && '#c3c4d3' }}
         >
-          <DeleteIcon />
+          <CheckIcon />
         </IconButton>
 
         {/* Swipe left! */}
