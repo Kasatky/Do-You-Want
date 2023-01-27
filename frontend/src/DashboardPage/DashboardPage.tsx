@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   Container,
   Button,
@@ -10,8 +10,23 @@ import {
   CardContent,
   Grid,
 } from '@mui/material';
+import { useSelector } from 'react-redux';
+import { RootState, useAppDispatch } from '../store';
+import { checkUser } from '../Auth/userSlice';
+import { useNavigate } from 'react-router-dom';
 
 function DashboardPage() {
+  const isAuth = useSelector((state: RootState) => state.user.isAuth);
+
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    dispatch(checkUser());
+    if (!isAuth) navigate('/');
+    console.log('AUTH: ', isAuth);
+  }, [dispatch, isAuth, navigate]);
+
   return (
     <div style={{ height: '100%' }}>
       <Box sx={{ flexGrow: 1 }}>

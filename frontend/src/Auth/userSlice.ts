@@ -26,11 +26,8 @@ export const register = createAsyncThunk(
 export const login = createAsyncThunk(
   'users/authLogin',
   async (user: UserLogin) => {
-    const { response, data } = await authApi.requestLogin(user);
-    if (!response.ok) throw new Error(data.error);
-    console.log(data);
-    console.log(response);
-    return user;
+    const data = await authApi.requestLogin(user);
+    return data;
   },
 );
 

@@ -1,4 +1,9 @@
-import { UserLogin, UserRegister } from './usersTypes';
+import {
+  AuthApiError,
+  UserLogin,
+  UserProfile,
+  UserRegister,
+} from './usersTypes';
 
 export const requestRegister = async (
   newUser: UserRegister,
@@ -13,7 +18,7 @@ export const requestRegister = async (
   return response;
 };
 
-export const requestLogin = async (user: UserLogin) => {
+export const requestLogin = async (user: UserLogin): Promise<UserProfile> => {
   // user - объект с ключами email, password
   const response = await fetch('/api/auth/login', {
     method: 'POST',
@@ -22,7 +27,12 @@ export const requestLogin = async (user: UserLogin) => {
   });
 
   const data = await response.json();
-  return { response, data };
+
+  if (!response.ok) {
+    throw new Error((data as AuthApiError).error);
+  }
+
+  return data as UserProfile;
 };
 
 export const requestIsAuth = async () => {

@@ -2,6 +2,15 @@ const authRouter = require('express').Router();
 const bcrypt = require('bcrypt');
 const { User } = require('../db/models');
 
+const maskEmail = (email) => {
+  const splitted = email.split('@');
+  let part1 = splitted[0];
+  const avg = part1.length / 2;
+  part1 = part1.substring(0, part1.length - avg);
+  const part2 = splitted[1];
+  return `${part1}***@${part2}`;
+};
+
 authRouter.get('/user', (req, res) => {
   const { user } = res.locals;
 
@@ -67,7 +76,10 @@ authRouter.post('/login', async (req, res) => {
 
   console.log('auth/login', req.session);
 
-  res.json({ success: 'Вход выполнен' });
+  res.json({
+    email: maskEmail(user.email),
+    userName: user.userName,
+  });
 });
 
 module.exports = authRouter;
