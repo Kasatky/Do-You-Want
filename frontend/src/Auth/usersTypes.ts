@@ -11,8 +11,17 @@ export type UserRegister = {
   password: string;
 };
 
+export type UserProfile = {
+  email: string;
+  userName: string;
+};
+
 export type UserState = {
   isAuth: boolean;
-  profile: UserLogin | UserRegister | undefined;
+  profile: UserProfile | undefined;
   error: string | undefined;
+};
+
+export type AuthApiError = {
+  error: string;
 };

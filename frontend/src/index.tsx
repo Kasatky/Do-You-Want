@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import App from './App/App';
 import DashboardPage from './DashboardPage/DashboardPage';
 import './index.css';
+import LandingPage from './LandingPage/LandingPage';
 import store from './store';
 
 const root = ReactDOM.createRoot(
