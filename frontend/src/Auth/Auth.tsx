@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { TextField, Typography, Modal, Button, Box } from '@mui/material';
-import { useAppDispatch } from '../store';
+import { RootState, useAppDispatch } from '../store';
 import { login } from './userSlice';
-import { UserLogin } from './usersTypes';
+import { UserLogin, UserState } from './usersTypes';
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -30,6 +32,8 @@ function Auth({ open, setOpen }: Props) {
   const [userEmail, setUserEmail] = useState('');
   const [userPassword, setUserPassword] = useState('');
 
+  const error = useSelector((state: RootState) => state.user.error);
+
   const dispatch = useAppDispatch();
 
   const handleClose = () => setOpen(false);
@@ -40,22 +44,7 @@ function Auth({ open, setOpen }: Props) {
 
   const handleLogin = async (): Promise<any> => {
     const user: UserLogin = { email: userEmail, password: userPassword };
-    console.log(user);
     dispatch(login(user));
-    // event.preventDefault();
-    // const data = JSON.stringify({
-    //   email: userEmail,
-    //   password: userPassword,
-    // });
-    // const response = await fetch('/api/auth/login', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: data,
-    // });
-    // console.log(response);
-    // if (response.status === 200) console.log('Успешно');
   };
 
   const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -83,6 +72,13 @@ function Auth({ open, setOpen }: Props) {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style} component="form">
+          {error && (
+            <Typography
+              sx={{ display: 'flex', alignItems: 'center', color: 'red' }}
+            >
+              {error}
+            </Typography>
+          )}
           {authType === 'register' && (
             <TextField
               id="outlined-basic"
@@ -134,14 +130,22 @@ function Auth({ open, setOpen }: Props) {
             {authType === 'login' ? (
               <>
                 {'Впервые у нас? '}
-                <Button disableRipple onClick={handleAuthType}>
+                <Button
+                  disableRipple
+                  onClick={handleAuthType}
+                  sx={{ display: 'flex', alignItems: 'center' }}
+                >
                   Зарегистрироваться
                 </Button>
               </>
             ) : (
               <>
                 {'Уже есть аккаунт? '}
-                <Button disableRipple onClick={handleAuthType}>
+                <Button
+                  disableRipple
+                  onClick={handleAuthType}
+                  sx={{ display: 'flex', alignItems: 'center' }}
+                >
                   Войти
                 </Button>
               </>
