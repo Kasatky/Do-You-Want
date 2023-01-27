@@ -1,14 +1,12 @@
 import React from 'react';
 import './App.css';
-import Login from '../Auth/Login';
-import Registration from '../Auth/Registration';
+import QuestionView from '../Question/QuestionView';
 
 
 function App() {
   return (
     <div className="App">
-      <Registration />
-      <Login />
+      <QuestionView />
     </div>
   );
 }
