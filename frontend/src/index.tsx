@@ -2,8 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import App from './App/App';
+import DashboardPage from './DashboardPage/DashboardPage';
 import './index.css';
-import Main from './MainPage/Main';
 import store from './store';
 
 const root = ReactDOM.createRoot(
@@ -13,7 +14,8 @@ root.render(
   <Provider store={store}>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Main />} />
+        <Route path="/" element={<App />} />
+        <Route path="/dashboard" element={<DashboardPage />} />
       </Routes>
     </BrowserRouter>
   </Provider>,

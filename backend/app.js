@@ -6,6 +6,7 @@ const logger = require('morgan');
 const session = require('express-session');
 const sessionConfig = require('./config/sessionConfig');
 const authRouter = require('./routes/authRouter');
+const getUser = require('./middleware/getUser');
 
 const app = express();
 const PORT = process.env.PORT ?? 3000;
@@ -13,8 +14,9 @@ const buildDir = path.join(__dirname, '../frontend/build');
 
 app.use(logger('dev'));
 app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
 app.use(session(sessionConfig));
+app.use(getUser);
+app.use(express.json());
 app.use(express.static(buildDir));
 
 app.use('/api/auth', authRouter);
