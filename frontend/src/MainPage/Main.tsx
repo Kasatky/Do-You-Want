@@ -11,12 +11,14 @@ import {
   Grid,
 } from '@mui/material';
 import Auth from '../Auth/Auth';
+import QuestionCarousel from '../features/questionCarousel';
 
 function Main(): JSX.Element {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   return (
     <div style={{ height: '100%' }}>
+  
       <Box sx={{ flexGrow: 1 }}>
         <AppBar position="static">
           <Container>
@@ -51,7 +53,7 @@ function Main(): JSX.Element {
           <Grid item xs={1} container columnSpacing={4}>
             <Grid item xs={8}>
               <Card sx={{ backgroundColor: '#ccc' }}>
-                <CardContent>карточки с вопросами</CardContent>
+                <CardContent>    <QuestionCarousel /></CardContent>
               </Card>
             </Grid>
 
