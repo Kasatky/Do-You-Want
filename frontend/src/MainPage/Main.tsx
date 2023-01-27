@@ -11,6 +11,7 @@ import {
   Grid,
 } from '@mui/material';
 import Auth from '../Auth/Auth';
+import AddQuestion from '../AddQuestion/AddQuestion';
 
 function Main(): JSX.Element {
   const [open, setOpen] = useState(false);
@@ -110,6 +111,7 @@ function Main(): JSX.Element {
           </Container>
         </AppBar>
       </Box>
+      <AddQuestion />
     </div>
   );
 }
