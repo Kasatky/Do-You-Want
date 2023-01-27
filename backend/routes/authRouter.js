@@ -163,4 +163,10 @@ authRouter.post('/register', async (req, res) => {
   }
 });
 
+authRouter.delete('/logout', (req, res) => {
+  req.session.destroy();
+  res.clearCookie('user_sid');
+  res.end();
+});
+
 module.exports = authRouter;

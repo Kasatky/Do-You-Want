@@ -24,6 +24,10 @@ export const login = createAsyncThunk(
   },
 );
 
+export const logout = createAsyncThunk('users/authLogout', async () => {
+  await authApi.requestLogout();
+});
+
 export const checkUser = createAsyncThunk('users/authCheckUser', async () => {
   const isAuth = await authApi.requestIsAuth();
   return isAuth;
@@ -49,6 +53,12 @@ const userSlice = createSlice({
         state.isAuth = true;
       })
       .addCase(login.rejected, (state, action) => {
+        state.error = action.error.message;
+      })
+      .addCase(logout.fulfilled, (state, action) => {
+        state.isAuth = false;
+      })
+      .addCase(logout.rejected, (state, action) => {
         state.error = action.error.message;
       })
       .addCase(checkUser.fulfilled, (state, action) => {
