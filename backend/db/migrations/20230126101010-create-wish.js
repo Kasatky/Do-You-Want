@@ -20,6 +20,14 @@ module.exports = {
           key: 'id',
         },
       },
+      isPublic: {
+        type: Sequelize.BOOLEAN,
+        allowNull: false,
+      },
+      isModerated: {
+        type: Sequelize.BOOLEAN,
+        allowNull: true,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

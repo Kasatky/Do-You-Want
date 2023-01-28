@@ -19,7 +19,6 @@ authRouter.get('/user', (req, res) => {
     res.status(401).json({ isAuth: false, error: 'Вы не авторизованы!' });
     return;
   }
-
   res.json({ isAuth: true });
 });
 
