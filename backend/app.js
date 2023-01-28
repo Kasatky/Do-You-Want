@@ -1,17 +1,17 @@
 /* eslint-disable no-console */
 require('dotenv').config();
-const express = require('express');
 const path = require('path');
+const express = require('express');
 const serverConfig = require('./config/config');
 const authRouter = require('./routes/authRouter');
 const cabinetAdminRouter = require('./routes/cabinetAdminRouter');
 
 const app = express();
+serverConfig(app);
 const PORT = process.env.PORT ?? 3000;
-// const buildDir = path.join(__dirname, '../frontend/build');
-app.use(serverConfig);
-app.use('/auth', authRouter);
-app.use('/api', cabinetAdminRouter);
+
+app.use('/api/auth', authRouter);
+app.use('/api/admin', cabinetAdminRouter);
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../frontend/build/index.html'));
@@ -20,7 +20,7 @@ app.get('*', (req, res) => {
 app
   .listen(PORT)
   .on('listening', () => {
-    console.log(`Сервер слушает порт:${PORT}`);
+    console.log(`Server's listening port ${PORT}`);
   })
   .on('error', (error) => {
     console.log(`Connecting error: ${error.message}`);
