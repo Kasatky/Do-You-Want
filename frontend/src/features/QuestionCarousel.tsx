@@ -4,7 +4,20 @@ import IconButton from '@mui/material/IconButton';
 import CheckIcon from '@mui/icons-material/Check';
 import DeleteIcon from '@mui/icons-material/Delete';
 import '../App/App.css';
-const db = [
+import { RootState, useAppDispatch } from '../store';
+import { useSelector } from 'react-redux';
+import { getRandomWish } from '../wishSlice';
+
+type Wish = {
+  id: number;
+  wish: string;
+  userId: number;
+  isPublic: boolean;
+  isModerated: boolean;
+};
+type WishId = number;
+
+const wishMock = [
   { wish: 'Хочу прогуляться?' },
   { wish: 'Хочу нарисовать гору?' },
   { wish: 'Хочу приготовить пирог?' },
@@ -13,17 +26,30 @@ const db = [
 ];
 
 function QuestionCarousel(): JSX.Element {
-  useEffect(() => {
-    fetch('/api/');
-  });
+  const dispatch = useAppDispatch();
 
-  const [currentIndex, setCurrentIndex] = useState(db.length - 1);
+  const wish = [];
+  const store = useSelector((state: RootState) => state);
+  // const wishRandom = useSelector((state: RootState) => state.wish.list);
+  // const isAuth = useSelector((state: RootState) => state.user.isAuth);
+
+  // console.log(user);
+  useEffect(() => {
+    dispatch(getRandomWish());
+  }, [dispatch]);
+
+  if (store.user.isAuth) {
+    wish.push(...store.wish.list);
+  } else {
+    wish.push(...wishMock);
+  }
+  const [currentIndex, setCurrentIndex] = useState(wish.length - 1);
   const [lastDirection, setLastDirection] = useState<string>();
   const currentIndexRef = useRef(currentIndex);
 
   const childRefs: any = useMemo(
     () =>
-      Array(db.length)
+      Array(wish.length)
         .fill(0)
         .map((i) => React.createRef()),
     []
@@ -34,7 +60,7 @@ function QuestionCarousel(): JSX.Element {
     currentIndexRef.current = val;
   };
 
-  const canGoBack = currentIndex < db.length - 1;
+  const canGoBack = currentIndex < wish.length - 1;
 
   const canSwipe = currentIndex >= 0;
 
@@ -54,7 +80,7 @@ function QuestionCarousel(): JSX.Element {
   };
 
   const swipe = async (dir: any) => {
-    if (canSwipe && currentIndex < db.length) {
+    if (canSwipe && currentIndex < wish.length) {
       await childRefs[currentIndex].current.swipe(dir); // Swipe the card!
     }
   };
@@ -79,7 +105,7 @@ function QuestionCarousel(): JSX.Element {
       />
       <h1>React Tinder Card</h1>
       <div className="cardContainer">
-        {db.map((character, index) => (
+        {wish.map((character, index) => (
           <TinderCard
             ref={childRefs[index]}
             className="swipe"

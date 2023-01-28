@@ -4,8 +4,12 @@ import { useSelector } from 'react-redux';
 import { RootState, useAppDispatch } from '../store';
 import { checkUser } from '../Auth/userSlice';
 import { useNavigate } from 'react-router-dom';
+
+import QuestionCarousel from '../features/QuestionCarousel';
+
 import Header from '../features/Header';
 import Footer from '../features/Footer';
+
 
 function DashboardPage() {
   const isAuth = useSelector((state: RootState) => state.user.isAuth);

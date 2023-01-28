@@ -6,7 +6,7 @@ import wishSlice from './wishSlice';
 const store = configureStore({
   reducer: {
     user: userSlice,
-    wish : wishSlice,
+    wish: wishSlice,
   },
 });
 
