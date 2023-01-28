@@ -14,6 +14,8 @@ import { useSelector } from 'react-redux';
 import { RootState, useAppDispatch } from '../store';
 import { checkUser, logout } from '../Auth/userSlice';
 import { useNavigate } from 'react-router-dom';
+import Header from '../features/Header';
+import Footer from '../features/Footer';
 
 function DashboardPage() {
   const isAuth = useSelector((state: RootState) => state.user.isAuth);
@@ -27,39 +29,9 @@ function DashboardPage() {
     console.log('AUTH: ', isAuth);
   }, [dispatch, isAuth, navigate]);
 
-  const handleLogout = () => {
-    dispatch(logout());
-  };
-
   return (
     <div style={{ height: '100%' }}>
-      <Box sx={{ flexGrow: 1 }}>
-        <AppBar position="static">
-          <Container
-            sx={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              paddingTop: '20px',
-              paddingBottom: '20px',
-            }}
-          >
-            <Typography component="div">
-              <img width="100px" src="img/logo.png" alt="logo" />
-            </Typography>
-
-            <Button onClick={handleLogout} variant="contained">
-              Logout
-            </Button>
-
-            <Button
-              variant="contained"
-              sx={{ width: '80px', height: '80px', borderRadius: '50%' }}
-            >
-              Profile
-            </Button>
-          </Container>
-        </AppBar>
-      </Box>
+      <Header isProfile={false} isAuth={isAuth} handleOpen={() => {}} />
 
       <Container sx={{ marginTop: '40px', marginBottom: '40px' }}>
         <Grid
@@ -125,13 +97,7 @@ function DashboardPage() {
         </Grid>
       </Container>
 
-      <Box sx={{ flexGrow: 1 }}>
-        <AppBar position="static">
-          <Container>
-            <Toolbar sx={{ padding: '20px 0' }}>FOOTER</Toolbar>
-          </Container>
-        </AppBar>
-      </Box>
+      <Footer isAuth={isAuth} />
     </div>
   );
 }

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import {
   Container,
-  Button,
   AppBar,
   Box,
   Toolbar,
@@ -11,44 +10,22 @@ import {
   Grid,
 } from '@mui/material';
 import Auth from '../Auth/Auth';
-import QuestionCarousel from '../features/questionCarousel';
+import QuestionCarousel from '../features/QuestionCarousel';
+import Header from '../features/Header';
+import { useSelector } from 'react-redux';
+import { RootState } from '../store';
+import Footer from '../features/Footer';
 
 function LandingPage(): JSX.Element {
   const [open, setOpen] = useState(false);
+
+  const isAuth = useSelector((state: RootState) => state.user.isAuth);
+
   const handleOpen = () => setOpen(true);
 
   return (
     <div style={{ height: '100%' }}>
-
-      <Box sx={{ flexGrow: 1 }}>
-        <AppBar position="static">
-          <Container
-            sx={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              paddingTop: '20px',
-              paddingBottom: '20px',
-            }}
-          >
-            <Typography component="div">
-              <img width="100px" src="img/logo.png" alt="logo" />
-            </Typography>
-
-            <Button
-              onClick={handleOpen}
-              variant="contained"
-              sx={{
-                width: '80px',
-                height: '80px',
-
-                borderRadius: '50%',
-              }}
-            >
-              Войти
-            </Button>
-          </Container>
-        </AppBar>
-      </Box>
+      <Header isProfile={false} isAuth={isAuth} handleOpen={handleOpen} />
 
       <Auth open={open} setOpen={setOpen} />
 
@@ -64,7 +41,9 @@ function LandingPage(): JSX.Element {
           <Grid item xs={1} container columnSpacing={4}>
             <Grid item xs={8}>
               <Card sx={{ backgroundColor: '#ccc' }}>
-                <CardContent>    <QuestionCarousel /></CardContent>
+                <CardContent>
+                  <QuestionCarousel />
+                </CardContent>
               </Card>
             </Grid>
 
@@ -116,13 +95,7 @@ function LandingPage(): JSX.Element {
         </Grid>
       </Container>
 
-      <Box sx={{ flexGrow: 1 }}>
-        <AppBar position="static">
-          <Container>
-            <Toolbar sx={{ padding: '20px 0' }}>FOOTER</Toolbar>
-          </Container>
-        </AppBar>
-      </Box>
+      <Footer isAuth={isAuth} />
     </div>
   );
 }
