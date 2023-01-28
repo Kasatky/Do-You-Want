@@ -1,18 +1,8 @@
 import React, { useEffect } from 'react';
-import {
-  Container,
-  Button,
-  AppBar,
-  Box,
-  Toolbar,
-  Typography,
-  Card,
-  CardContent,
-  Grid,
-} from '@mui/material';
+import { Container, Typography, Card, CardContent, Grid } from '@mui/material';
 import { useSelector } from 'react-redux';
 import { RootState, useAppDispatch } from '../store';
-import { checkUser, logout } from '../Auth/userSlice';
+import { checkUser } from '../Auth/userSlice';
 import { useNavigate } from 'react-router-dom';
 import Header from '../features/Header';
 import Footer from '../features/Footer';

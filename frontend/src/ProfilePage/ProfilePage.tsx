@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
-import { Container, Button, AppBar, Box, Toolbar } from '@mui/material';
+import { Container } from '@mui/material';
 import { RootState, useAppDispatch } from '../store';
-import { checkUser, logout } from '../Auth/userSlice';
+import { checkUser } from '../Auth/userSlice';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Header from '../features/Header';

@@ -1,14 +1,5 @@
 import React, { useState } from 'react';
-import {
-  Container,
-  AppBar,
-  Box,
-  Toolbar,
-  Typography,
-  Card,
-  CardContent,
-  Grid,
-} from '@mui/material';
+import { Container, Typography, Card, CardContent, Grid } from '@mui/material';
 import Auth from '../Auth/Auth';
 import QuestionCarousel from '../features/QuestionCarousel';
 import Header from '../features/Header';
