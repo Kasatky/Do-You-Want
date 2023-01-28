@@ -11,4 +11,5 @@ export type WishState = {
     error : string | undefined
 }
 
+export type WishId = number
 

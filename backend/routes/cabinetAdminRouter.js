@@ -35,7 +35,7 @@ cabinetAdminRouter.put('/isModeration', async (req, res) => {
 
 cabinetAdminRouter.delete('/delete', async (req, res) => {
   try {
-    const wishChangeStatus = await Wish.destroy({ where: { id: req.body.id } });
+    await Wish.destroy({ where: { id: req.body.id } });
     return res.sendStatus(200);
   } catch (err) {
     console.log(err.message);

@@ -6,6 +6,8 @@ import { RootState, useAppDispatch } from '../store';
 import './App.css';
 import { Navigate } from 'react-router-dom';
 
+
+
 function App() {
   const isAuth = useSelector((state: RootState) => state.user.isAuth);
 

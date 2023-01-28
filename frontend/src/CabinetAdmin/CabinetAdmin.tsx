@@ -1,57 +1,49 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState, useAppDispatch } from '../store';
-import { getUnmoderatedWishes } from '../wishSlice';
-
-type Wish = {
-    id : number,
-    wish: string,
-    userId : number,
-    isPublic : boolean,
-    isModerated : boolean
-}
-type WishId = number
-
+import { changeWishes, deleteWishes, getUnmoderatedWishes } from '../wishSlice';
+import { WishId } from '../wishTypes';
+ 
 
 
 function CabinetAdmin() : JSX.Element {
-    const [arrayId, setArrayId] = useState<number[]>([])
+
+  const [arrayId, setArrayId] = useState<number[]>([])
 
 const dispatch = useAppDispatch()
-
 const wishes = useSelector((state : RootState)=> state.wish.list)
+
 
 useEffect(() => {
 dispatch(getUnmoderatedWishes())
-},[dispatch])
 
-async function changeStatus (event : React.ChangeEvent<HTMLInputElement>) {
+},[dispatch, arrayId]) 
+
+
+function deleteWish (id : WishId) {
+    dispatch(deleteWishes(id))
+    
+}
+function changeStatus (event : React.ChangeEvent<HTMLInputElement>) {
     const { id } = event.target
     setArrayId((prev) => [...prev, Number(id)]) 
 }
 
-
-async function deleteWish (id : WishId) {
-    await fetch('api/delete',{
-        method: 'DELETE',
-        headers: { 'Content-Type': 'Application/json' },
-        body: JSON.stringify({
-          id: id
-        }),
-      })
+function fetchData () {
+  dispatch(changeWishes(arrayId))
+  setArrayId([])
 }
 
-async function fetchData() {
-  await fetch('api/isModeration',{
-        method: 'PUT',
-        headers: { 'Content-Type': 'Application/json' },
-        body: JSON.stringify({
-         arrayId
-        }),
-      })
+// async function fetchData() {
+//   await fetch('api/isModeration',{
+//         method: 'PUT',
+//         headers: { 'Content-Type': 'Application/json' },
+//         body: JSON.stringify({
+//          arrayId
+//         }),
+//       })
   
-} 
-
+// } 
     return (
         <div>
          <h2>Вопросы на модерацию</h2>
@@ -67,7 +59,6 @@ async function fetchData() {
             ))}
             <button onClick={fetchData}>Проверенно</button>
          </div>
-         {/* <h2>Все Вопросы</h2> */}
         </div>
     );
 }

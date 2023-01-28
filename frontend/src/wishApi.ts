@@ -1,4 +1,4 @@
-import { Wish } from "./wishTypes";
+import { Wish, WishId } from "./wishTypes";
 
 export const requestUnmoderatedWishes = async () : Promise<Wish[]> => {
     const url = 'api/cabinetAdmin'
@@ -7,3 +7,23 @@ export const requestUnmoderatedWishes = async () : Promise<Wish[]> => {
     return data.wishes;
 }
 
+export const requestDeleteWishes = async (id : WishId) : Promise<WishId> => {
+    await fetch('api/delete',{
+        method: 'DELETE',
+        headers: { 'Content-Type': 'Application/json' },
+        body: JSON.stringify({id}
+        ),
+      })
+      return id;
+}
+
+export const requestChangeWishes = async ( arrayId : WishId[]) => {
+      await fetch('api/isModeration',{
+        method: 'PUT',
+        headers: { 'Content-Type': 'Application/json' },
+        body: JSON.stringify({
+         arrayId
+        }),
+      })
+  
+}
