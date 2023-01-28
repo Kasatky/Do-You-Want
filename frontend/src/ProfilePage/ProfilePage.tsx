@@ -20,12 +20,14 @@ function ProfilePage(): JSX.Element {
   }, [dispatch, isAuth, navigate]);
 
   return (
-    <div style={{ height: '100%' }}>
-      <Header isProfile={true} isAuth={isAuth} handleOpen={() => {}} />
+    <div className="wrapper" style={{ height: '100%' }}>
+      <div style={{ flex: '1 0 auto' }}>
+        <Header isProfile={true} isAuth={isAuth} handleOpen={() => {}} />
 
-      <Container sx={{ marginTop: '40px', marginBottom: '40px' }}>
-        CONTENT
-      </Container>
+        <Container sx={{ marginTop: '40px', marginBottom: '40px' }}>
+          CONTENT
+        </Container>
+      </div>
 
       <Footer isAuth={isAuth} />
     </div>
