@@ -1,20 +1,48 @@
-import { User } from './usersTypes';
+import {
+  AuthApiError,
+  UserLogin,
+  UserProfile,
+  UserRegister,
+} from './usersTypes';
 
-export const requestRegister = async (newUser: User): Promise<Response> => {
+export const requestRegister = async (
+  newUser: UserRegister,
+): Promise<UserProfile> => {
   // newUser - объект с ключами email, userName, password
-  const response = await fetch('/auth/register', {
+  const response = await fetch('/api/auth/register', {
     method: 'POST',
-    body: JSON.stringify({ newUser }),
+    body: JSON.stringify(newUser),
+    headers: { 'Content-Type': 'application/json' },
   });
 
-  return response;
+  const data = await response.json();
+
+  if (!response.ok) {
+    throw new Error((data as AuthApiError).error);
+  }
+
+  return data as UserProfile;
 };
 
-export const requestLogin = async (user: User) => {
+export const requestLogin = async (user: UserLogin): Promise<UserProfile> => {
   // user - объект с ключами email, password
-  const response = await fetch('/auth/login', {
+  const response = await fetch('/api/auth/login', {
     method: 'POST',
-    body: JSON.stringify({ user }),
+    body: JSON.stringify(user),
+    headers: { 'Content-Type': 'application/json' },
   });
-  return response;
+
+  const data = await response.json();
+
+  if (!response.ok) {
+    throw new Error((data as AuthApiError).error);
+  }
+
+  return data as UserProfile;
+};
+
+export const requestIsAuth = async () => {
+  const response = await fetch('/api/auth/user');
+  const data = await response.json();
+  return data;
 };
