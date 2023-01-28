@@ -11,7 +11,7 @@ serverConfig(app);
 const PORT = process.env.PORT ?? 3000;
 
 app.use('/api/auth', authRouter);
-app.use('/api/admin', cabinetAdminRouter);
+app.use('/api', cabinetAdminRouter);
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../frontend/build/index.html'));

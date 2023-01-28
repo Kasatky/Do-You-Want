@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import { TextField, Typography, Modal, Button, Box } from '@mui/material';
 import { RootState, useAppDispatch } from '../store';
 import { login, register } from './userSlice';
-import { UserLogin, UserRegister, UserState } from './usersTypes';
-import { useNavigate } from 'react-router-dom';
+import { UserLogin, UserRegister } from './usersTypes';
 import { useSelector } from 'react-redux';
 
 const style = {
@@ -132,9 +131,6 @@ function Auth({ open, setOpen }: Props) {
               Зарегистрироваться
             </Button>
           )}
-          {/* <Button onClick={handleLogin} variant="contained" sx={{ mt: 2 }}>
-            {authType === 'login' ? 'Войти' : 'Зарегистрироваться'}
-          </Button> */}
           <Typography sx={{ mt: 2, display: 'flex', alignItems: 'center' }}>
             {authType === 'login' ? (
               <>
