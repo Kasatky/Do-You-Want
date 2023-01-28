@@ -131,9 +131,6 @@ function Auth({ open, setOpen }: Props) {
               Зарегистрироваться
             </Button>
           )}
-          {/* <Button onClick={handleLogin} variant="contained" sx={{ mt: 2 }}>
-            {authType === 'login' ? 'Войти' : 'Зарегистрироваться'}
-          </Button> */}
           <Typography sx={{ mt: 2, display: 'flex', alignItems: 'center' }}>
             {authType === 'login' ? (
               <>
