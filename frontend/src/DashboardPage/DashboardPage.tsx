@@ -12,7 +12,7 @@ import {
 } from '@mui/material';
 import { useSelector } from 'react-redux';
 import { RootState, useAppDispatch } from '../store';
-import { checkUser } from '../Auth/userSlice';
+import { checkUser, logout } from '../Auth/userSlice';
 import { useNavigate } from 'react-router-dom';
 
 function DashboardPage() {
@@ -26,6 +26,10 @@ function DashboardPage() {
     if (!isAuth) navigate('/');
     console.log('AUTH: ', isAuth);
   }, [dispatch, isAuth, navigate]);
+
+  const handleLogout = () => {
+    dispatch(logout());
+  };
 
   return (
     <div style={{ height: '100%' }}>
@@ -42,6 +46,10 @@ function DashboardPage() {
             <Typography component="div">
               <img width="100px" src="img/logo.png" alt="logo" />
             </Typography>
+
+            <Button onClick={handleLogout} variant="contained">
+              Logout
+            </Button>
 
             <Button
               variant="contained"

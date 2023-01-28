@@ -41,6 +41,14 @@ export const requestLogin = async (user: UserLogin): Promise<UserProfile> => {
   return data as UserProfile;
 };
 
+export const requestLogout = async () => {
+  const response = await fetch('/api/auth/logout', { method: 'DELETE' });
+
+  if (!response.ok) {
+    throw new Error('Ошибка');
+  }
+};
+
 export const requestIsAuth = async () => {
   const response = await fetch('/api/auth/user');
   const data = await response.json();
