@@ -24,9 +24,9 @@ module.exports = {
         type: Sequelize.BOOLEAN,
         allowNull: false,
       },
-      isModeraited: {
+      isModerated: {
         type: Sequelize.BOOLEAN,
-        allowNull: false,
+        allowNull: true,
       },
       createdAt: {
         allowNull: false,

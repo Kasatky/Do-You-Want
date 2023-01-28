@@ -6,32 +6,44 @@ module.exports = {
         wish: 'арбуз?',
         userId: 1,
         isPublic: true,
-        isModeraited: false,
+        isModerated: false,
       },
       {
         wish: 'поцеловать кошку?',
         userId: 1,
         isPublic: true,
-        isModeraited: false,
+        isModerated: false,
       },
       {
         wish: 'погулять в Таврическом саду?',
         userId: 1,
         isPublic: false,
-        isModeraited: false,
+        isModerated: false,
 
       },
       {
         wish: 'попить чай?',
         userId: 1,
         isPublic: false,
-        isModeraited: false,
+        isModerated: false,
       },
       {
         wish: 'сделать перерерыв?',
         userId: 1,
         isPublic: true,
-        isModeraited: true,
+        isModerated: true,
+      },
+      {
+        wish: 'скушать булку?',
+        userId: 1,
+        isPublic: true,
+        isModerated: false,
+      },
+      {
+        wish: 'погулять?',
+        userId: 1,
+        isPublic: true,
+        isModerated: false,
       },
     ];
 
@@ -39,7 +51,7 @@ module.exports = {
       wish: el.wish,
       userId: el.userId,
       isPublic: el.isPublic,
-      isModeraited: el.isModeraited,
+      isModerated: el.isModerated,
       createdAt: new Date(),
       updatedAt: new Date(),
     })), {});

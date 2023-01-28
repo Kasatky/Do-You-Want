@@ -5,8 +5,8 @@ const {
 module.exports = (sequelize, DataTypes) => {
   class UsersWish extends Model {
     static associate(models) {
-      UsersWish.User = UsersWish.belongsTo(models.User, { foreignKey: 'userId' });
-      UsersWish.Wish = UsersWish.belongsTo(models.Wish, { foreignKey: 'wishId' });
+      UsersWish.User = UsersWish.belongsTo(models.User, { foreignKey: 'userId', onDelete: 'cascade' });
+      UsersWish.Wish = UsersWish.belongsTo(models.Wish, { foreignKey: 'wishId', onDelete: 'cascade' });
     }
   }
   UsersWish.init({

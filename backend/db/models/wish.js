@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
     wish: DataTypes.TEXT,
     userId: DataTypes.INTEGER,
     isPublic: DataTypes.BOOLEAN,
-    isModeraited: DataTypes.BOOLEAN,
+    isModerated: DataTypes.BOOLEAN,
   }, {
     sequelize,
     modelName: 'Wish',
