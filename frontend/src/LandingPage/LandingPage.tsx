@@ -19,7 +19,7 @@ function LandingPage(): JSX.Element {
 
   return (
     <div style={{ height: '100%' }}>
-  
+
       <Box sx={{ flexGrow: 1 }}>
         <AppBar position="static">
           <Container
