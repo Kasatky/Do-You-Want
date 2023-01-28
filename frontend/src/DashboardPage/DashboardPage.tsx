@@ -14,6 +14,7 @@ import { useSelector } from 'react-redux';
 import { RootState, useAppDispatch } from '../store';
 import { checkUser, logout } from '../Auth/userSlice';
 import { useNavigate } from 'react-router-dom';
+import QuestionCarousel from '../features/QuestionCarousel';
 
 function DashboardPage() {
   const isAuth = useSelector((state: RootState) => state.user.isAuth);
@@ -73,6 +74,7 @@ function DashboardPage() {
           <Grid item xs={1} container columnSpacing={4}>
             <Grid item xs={8}>
               <Card sx={{ backgroundColor: '#ccc' }}>
+                <QuestionCarousel />
                 <CardContent>карточки с вопросами</CardContent>
               </Card>
             </Grid>

@@ -11,7 +11,7 @@ import {
   Grid,
 } from '@mui/material';
 import Auth from '../Auth/Auth';
-import QuestionCarousel from '../features/questionCarousel';
+import QuestionCarousel from '../features/QuestionCarousel';
 
 function LandingPage(): JSX.Element {
   const [open, setOpen] = useState(false);
@@ -19,7 +19,6 @@ function LandingPage(): JSX.Element {
 
   return (
     <div style={{ height: '100%' }}>
-
       <Box sx={{ flexGrow: 1 }}>
         <AppBar position="static">
           <Container
@@ -64,7 +63,10 @@ function LandingPage(): JSX.Element {
           <Grid item xs={1} container columnSpacing={4}>
             <Grid item xs={8}>
               <Card sx={{ backgroundColor: '#ccc' }}>
-                <CardContent>    <QuestionCarousel /></CardContent>
+                <CardContent>
+                  {' '}
+                  <QuestionCarousel />
+                </CardContent>
               </Card>
             </Grid>
 
