@@ -9,6 +9,7 @@ import Footer from '../features/Footer';
 
 
 function LandingPage(): JSX.Element {
+  const isAuth = useSelector((state: RootState) => state.user.isAuth);
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
 
@@ -31,29 +32,8 @@ function LandingPage(): JSX.Element {
             <Grid item xs={1} container columnSpacing={4}>
               <Grid item xs={8}>
                 <Card sx={{ backgroundColor: '#ccc' }}>
-                  <CardContent>
-                    <QuestionCarousel />
-                  </CardContent>
+                  <CardContent>    <QuestionCarousel /></CardContent>
                 </Card>
-              </Grid>
-
-      <Container sx={{ marginTop: '40px', marginBottom: '40px' }}>
-        <Grid
-          container
-          rowSpacing={4}
-          direction="column"
-          justifyContent="center"
-          alignItems="center"
-          sx={{ height: '100%' }}
-        >
-          <Grid item xs={1} container columnSpacing={4}>
-            <Grid item xs={8}>
-              <Card sx={{ backgroundColor: '#ccc' }}>
-                <CardContent>
-                  {' '}
-                  <QuestionCarousel />
-                </CardContent>
-              </Card>
               </Grid>
 
               <Grid item xs={4}>
