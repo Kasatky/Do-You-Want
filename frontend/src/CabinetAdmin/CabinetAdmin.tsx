@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+import Header from '../features/Header';
 import { RootState, useAppDispatch } from '../store';
-import { changeWishes, deleteWishes, getUnmoderatedWishes } from '../wishSlice';
+import { changeWishes, deleteWish, getUnmoderatedWishes } from '../wishSlice';
 import { WishId } from '../wishTypes';
  
 
@@ -12,16 +13,18 @@ function CabinetAdmin() : JSX.Element {
 
 const dispatch = useAppDispatch()
 const wishes = useSelector((state : RootState)=> state.wish.list)
+const isAuth = useSelector((state : RootState)=> state.user.isAuth)
+
 
 
 useEffect(() => {
 dispatch(getUnmoderatedWishes())
 
-},[dispatch, arrayId]) 
+},[dispatch,]) 
 
 
-function deleteWish (id : WishId) {
-    dispatch(deleteWishes(id))
+function requestDelete (id : WishId) {
+    dispatch(deleteWish(id))
     
 }
 function changeStatus (event : React.ChangeEvent<HTMLInputElement>) {
@@ -45,7 +48,9 @@ function fetchData () {
   
 // } 
     return (
+      
         <div>
+           <Header isProfile={false} isAuth={isAuth} handleOpen={()=>{}} />
          <h2>Вопросы на модерацию</h2>
       <div>
             {wishes && (wishes.map((el)=> (
@@ -53,11 +58,11 @@ function fetchData () {
                   <div>{el.wish}  
                 {(el.isPublic && !el.isModerated) && (<span>
       <input onChange={changeStatus} type="checkbox" id={String(el.id)} name="scales" />
-      <label>Проверенно</label></span> )}
-      <button onClick={()=> deleteWish(el.id)}>Удалить</button></div> </div>
+      <label>Проверено</label></span> )}
+      <button onClick={()=> requestDelete(el.id)}>Удалить</button></div> </div>
             ) 
             ))}
-            <button onClick={fetchData}>Проверенно</button>
+            <button onClick={fetchData}>Проверено</button>
          </div>
         </div>
     );

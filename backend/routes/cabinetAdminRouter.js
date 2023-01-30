@@ -22,14 +22,15 @@ cabinetAdminRouter.get('/cabinetAdmin', async (req, res) => {
 cabinetAdminRouter.put('/isModeration', async (req, res) => {
   try {
     const { arrayId } = req.body;
-    arrayId.map(async (el) => {
-      const wishChangeStatus = await Wish.findOne({ where: { id: el } });
+    const promises = arrayId.map(async (id) => {
+      const wishChangeStatus = await Wish.findByPk(id);
       wishChangeStatus.isModerated = true;
       wishChangeStatus.save();
     });
+    await Promise.all(promises);
     return res.sendStatus(200);
   } catch (err) {
-    console.log(err.message);
+    res.status(500).json({ error: err.message });
   }
 });
 

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Container, Typography, Card, CardContent, Grid } from '@mui/material';
 import Auth from '../Auth/Auth';
-import QuestionCarousel from '../features/QuestionCarousel';
+import QuestionCarousel from '../features/questionCarousel';
 import Header from '../features/Header';
 import { useSelector } from 'react-redux';
 import { RootState } from '../store';

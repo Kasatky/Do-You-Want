@@ -17,7 +17,7 @@ export const requestDeleteWishes = async (id : WishId) : Promise<WishId> => {
       return id;
 }
 
-export const requestChangeWishes = async ( arrayId : WishId[]) => {
+export const requestChangeWish = async ( arrayId : WishId[]) => {
       await fetch('api/isModeration',{
         method: 'PUT',
         headers: { 'Content-Type': 'Application/json' },
