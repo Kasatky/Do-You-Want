@@ -11,14 +11,12 @@ export const getUnmoderatedWishes = createAsyncThunk(
   'wishes/unmoderated',
   async () => {
     const data = await wishApi.requestUnmoderatedWishes();
-    console.log(data);
     return data;
   }
 );
 
 export const getRandomWish = createAsyncThunk('wishes/random', async () => {
   const data = await wishApi.requestRandomdWish();
-  console.log(data);
   return data;
 });
 
