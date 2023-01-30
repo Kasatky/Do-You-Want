@@ -19,7 +19,10 @@ authRouter.get('/user', (req, res) => {
     res.status(401).json({ isAuth: false, error: 'Вы не авторизованы!' });
     return;
   }
-  res.json({ isAuth: true });
+  res.json({
+    isAuth: true,
+    user: { userName: user.userName, email: undefined },
+  });
 });
 
 authRouter.post('/login', async (req, res) => {
@@ -136,6 +139,7 @@ authRouter.post('/register', async (req, res) => {
     res.status(500).json({ error: 'Ошибка сервера' });
     return;
   }
+  
   // наконец-то создаём нового пользователя
   let defaultRole;
   try {

@@ -2,7 +2,6 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon app.js --ext json,jsx,js --ignore ./sessions",
@@ -32,7 +31,6 @@
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-jsx-a11y": "^6.7.1",
     "eslint-plugin-react": "^7.32.1",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "nodemon": "^2.0.20"
+    "eslint-plugin-react-hooks": "^4.6.0"
   }
 }

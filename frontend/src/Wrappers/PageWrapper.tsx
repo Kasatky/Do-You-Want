@@ -12,6 +12,7 @@ type Props = {
 };
 
 function PageWrapper({ children, isProfile }: Props): JSX.Element {
+
   const isAuth = useSelector((state: RootState) => state.user.isAuth);
 
   const dispatch = useAppDispatch();
@@ -24,7 +25,7 @@ function PageWrapper({ children, isProfile }: Props): JSX.Element {
   return (
     <div className="wrapper" style={{ height: '100%' }}>
       <div style={{ flex: '1 0 auto' }}>
-        <Header isProfile={isProfile} isAuth={isAuth} />
+        <Header isProfile={isProfile} isAuth={isAuth} userName={userName} />
         {children}
       </div>
 

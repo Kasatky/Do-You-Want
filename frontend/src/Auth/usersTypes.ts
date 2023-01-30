@@ -12,7 +12,7 @@ export type UserRegister = {
 };
 
 export type UserProfile = {
-  email: string;
+  email: string | undefined;
   userName: string;
   role: string | undefined;
 };

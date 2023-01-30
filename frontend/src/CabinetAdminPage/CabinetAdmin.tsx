@@ -131,6 +131,7 @@ function CabinetAdmin(): JSX.Element {
           </TableContainer>{" "}
         </div>
       ) : (
+
         <div>
           <h2
             style={{
