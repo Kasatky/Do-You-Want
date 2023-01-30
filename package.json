@@ -17,5 +17,9 @@
   "bugs": {
     "url": "https://github.com/Kasatky/Do-You-Want-/issues"
   },
-  "homepage": "https://github.com/Kasatky/Do-You-Want-#readme"
+  "homepage": "https://github.com/Kasatky/Do-You-Want-#readme",
+  "dependencies": {
+    "@react-spring/web": "^9.5.5",
+    "react-tinder-card": "^1.6.2"
+  }
 }

@@ -2,26 +2,21 @@
 require('dotenv').config();
 const path = require('path');
 const express = require('express');
-const logger = require('morgan');
-const session = require('express-session');
-const sessionConfig = require('./config/sessionConfig');
+const serverConfig = require('./config/config');
 const authRouter = require('./routes/authRouter');
+const cabinetAdminRouter = require('./routes/cabinetAdminRouter');
+const randomWishRouter = require('./routes/randomWishRouter');
 
 const app = express();
-const { PORT } = process.env ?? 3000;
-
-app.use(logger('dev'));
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-app.use(session(sessionConfig));
-
+serverConfig(app);
+const PORT = process.env.PORT ?? 4000;
+app.use('/', randomWishRouter);
 app.use('/api/auth', authRouter);
+app.use('/api', cabinetAdminRouter);
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../frontend/build/index.html'));
 });
-
-app.use(express.static(path.join(__dirname, '../../frontend/build')));
 
 app
   .listen(PORT)

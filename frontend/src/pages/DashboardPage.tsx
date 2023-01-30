@@ -1,38 +1,10 @@
 import React from 'react';
-import {
-  Container,
-  Button,
-  AppBar,
-  Box,
-  Toolbar,
-  Typography,
-  Card,
-  CardContent,
-  Grid,
-} from '@mui/material';
+import { Container, Typography, Card, CardContent, Grid } from '@mui/material';
+import PageWrapper from '../Wrappers/PageWrapper';
 
-function Main(): JSX.Element {
+function DashboardPage() {
   return (
-    <div style={{ height: '100%' }}>
-      <Box sx={{ flexGrow: 1 }}>
-        <AppBar position="static">
-          <Container>
-            <Toolbar sx={{ padding: '20px 0' }}>
-              <Typography component="div" sx={{ flexGrow: 1 }}>
-                <img width="100px" src="img/logo.png" alt="logo" />
-              </Typography>
-
-              <Button
-                variant="contained"
-                sx={{ width: '80px', height: '80px', borderRadius: '50%' }}
-              >
-                Войти
-              </Button>
-            </Toolbar>
-          </Container>
-        </AppBar>
-      </Box>
-
+    <PageWrapper isProfile={false}>
       <Container sx={{ marginTop: '40px', marginBottom: '40px' }}>
         <Grid
           container
@@ -96,16 +68,8 @@ function Main(): JSX.Element {
           </Grid>
         </Grid>
       </Container>
-
-      <Box sx={{ flexGrow: 1 }}>
-        <AppBar position="static">
-          <Container>
-            <Toolbar sx={{ padding: '20px 0' }}>FOOTER</Toolbar>
-          </Container>
-        </AppBar>
-      </Box>
-    </div>
+    </PageWrapper>
   );
 }
 
-export default Main;
+export default DashboardPage;

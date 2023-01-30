@@ -17,6 +17,8 @@ module.exports = (sequelize, DataTypes) => {
   Wish.init({
     wish: DataTypes.TEXT,
     userId: DataTypes.INTEGER,
+    isPublic: DataTypes.BOOLEAN,
+    isModerated: DataTypes.BOOLEAN,
   }, {
     sequelize,
     modelName: 'Wish',
