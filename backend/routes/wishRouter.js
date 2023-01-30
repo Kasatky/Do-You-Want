@@ -1,9 +1,9 @@
-const randomWishRouter = require('express').Router();
+const wishRouter = require('express').Router();
 const { Op } = require('sequelize');
 
 const { Wish } = require('../db/models');
 
-randomWishRouter.get('/wish', async (req, res) => {
+wishRouter.get('/random', async (req, res) => {
   let wishCount;
 
   try {
@@ -37,4 +37,29 @@ randomWishRouter.get('/wish', async (req, res) => {
   }
 });
 
-module.exports = randomWishRouter;
+wishRouter.post('/new', async (req, res) => {
+  let userId;
+  if (req.session) {
+    userId = req.session.userId;
+  }
+  const { wish, isPublic } = req.body;
+  const isModerated = !isPublic;
+
+  try {
+    const newWish = await Wish.create({
+      wish,
+      userId,
+      isPublic,
+      isModerated,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    });
+
+    newWish.save();
+  } catch (error) {
+    console.log(`Ошибка при добавлении вопроса: ${error.message}`);
+    res.status(500).json({ error: 'Не удалось добавить новый вопрос' });
+  }
+});
+
+module.exports = wishRouter;
