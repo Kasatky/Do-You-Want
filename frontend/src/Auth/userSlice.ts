@@ -30,7 +30,6 @@ export const logout = createAsyncThunk('users/authLogout', async () => {
 
 export const checkUser = createAsyncThunk('users/authCheckUser', async () => {
   const data = await authApi.requestIsAuth();
-  // console.log('data thunk', data);
   return data;
 });
 
@@ -63,6 +62,8 @@ const userSlice = createSlice({
         state.error = action.error.message;
       })
       .addCase(checkUser.fulfilled, (state, action) => {
+        const { user } = action.payload;
+        state.profile = user;
         state.isAuth = action.payload.isAuth;
       })
       .addCase(checkUser.rejected, (state, action) => {
