@@ -7,6 +7,8 @@ import '../App/App.css';
 import { RootState, useAppDispatch } from '../store';
 import { useSelector } from 'react-redux';
 import { getRandomWish } from '../wishSlice';
+import { Box, Paper, Stack } from '@mui/material';
+import { styled } from '@mui/material/styles';
 
 type Wish = {
   id: number;
@@ -24,6 +26,14 @@ const wishMock = [
   { wish: 'Хочу сходить в кино?' },
   { wish: 'Хочу  кофе?' },
 ];
+
+const Item = styled(Paper)(({ theme }) => ({
+  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+  ...theme.typography.body2,
+  padding: theme.spacing(1),
+  textAlign: 'center',
+  color: theme.palette.text.secondary,
+}));
 
 function QuestionCarousel(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -86,12 +96,13 @@ function QuestionCarousel(): JSX.Element {
   };
 
   // increase current index and show card
-  const goBack = async () => {
-    if (!canGoBack) return;
-    const newIndex = currentIndex + 1;
-    updateCurrentIndex(newIndex);
-    await childRefs[newIndex].current.restoreCard();
-  };
+  //Для кнопки вернуть карточку
+  // const goBack = async () => {
+  //   if (!canGoBack) return;
+  //   const newIndex = currentIndex + 1;
+  //   updateCurrentIndex(newIndex);
+  //   await childRefs[newIndex].current.restoreCard();
+  // };
 
   return (
     <div>
@@ -104,7 +115,15 @@ function QuestionCarousel(): JSX.Element {
         rel="stylesheet"
       />
       <h1>React Tinder Card</h1>
-      <div className="cardContainer">
+      <Box
+        className="cardContainer"
+        sx={{
+          height: '200px',
+          position: 'relative',
+          justifyContent: 'center',
+          display: 'flex',
+        }}
+      >
         {wish.map((character, index) => (
           <TinderCard
             ref={childRefs[index]}
@@ -113,50 +132,58 @@ function QuestionCarousel(): JSX.Element {
             onSwipe={(dir: any) => swiped(dir, character.wish, index)}
             onCardLeftScreen={() => outOfFrame(character.wish, index)}
           >
-            <div
-              style={{
-                top: `${index * 8}px`,
-                left: `${index * 8}px`,
+            <Stack
+              spacing={2}
+              justifyContent="center"
+              alignItems="center"
+              sx={{
+                top: `${index * 15}px`,
+                // left: `${index * 8}px`,
                 position: 'relative',
+                opacity: `${0.1 + 0.3 * index}`,
               }}
               className="card"
             >
-              <h3>{character.wish}</h3>
-            </div>
+              {/* Почему  Item из MUI не работает? */}
+              <Item>{character.wish}</Item>
+            </Stack>
           </TinderCard>
         ))}
-      </div>
+      </Box>
       <div
         className="buttons"
         // style={{
         //   // top: `${index * 8}px`,
         //   // left: `${index * 8}px`,
-        //   position: 'relative',
+        // position: 'relative',
         // }}
       >
         <IconButton
           onClick={() => swipe('left')}
           // style={{ backgroundColor: !canSwipe && '#c3c4d3' }}
         >
+          Да
           <CheckIcon />
         </IconButton>
 
         {/* Swipe left! */}
 
-        <button
+        {/* <button
           // style={{ backgroundColor: !canGoBack && '#c3c4d3' }}
           onClick={() => goBack()}
         >
           Undo swipe!
-        </button>
+        </button> */}
         <IconButton
           onClick={() => swipe('right')}
           // style={{ backgroundColor: !canSwipe && '#c3c4d3' }}
         >
+          {' '}
+          Нет
           <DeleteIcon />
         </IconButton>
       </div>
-      {lastDirection ? (
+      {/* {lastDirection ? (
         <h2 key={lastDirection} className="infoText">
           You swiped {lastDirection}
         </h2>
@@ -164,7 +191,7 @@ function QuestionCarousel(): JSX.Element {
         <h2 className="infoText">
           Swipe a card or press a button to get Restore Card button visible!
         </h2>
-      )}
+      )} */}
     </div>
   );
 }
