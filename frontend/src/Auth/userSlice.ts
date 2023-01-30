@@ -13,7 +13,7 @@ export const register = createAsyncThunk(
   async (newUser: UserRegister) => {
     const data = await authApi.requestRegister(newUser);
     return data;
-  },
+  }
 );
 
 export const login = createAsyncThunk(
@@ -21,7 +21,7 @@ export const login = createAsyncThunk(
   async (user: UserLogin) => {
     const data = await authApi.requestLogin(user);
     return data;
-  },
+  }
 );
 
 export const logout = createAsyncThunk('users/authLogout', async () => {

@@ -28,7 +28,7 @@ const wishMock = [
 ];
 
 const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#d7e8e4',
   ...theme.typography.body2,
   padding: theme.spacing(1),
   textAlign: 'center',
@@ -55,6 +55,7 @@ function QuestionCarousel(): JSX.Element {
   }
   const [currentIndex, setCurrentIndex] = useState(wish.length - 1);
   const [lastDirection, setLastDirection] = useState<string>();
+  const [op, setOp] = useState(0.6);
   const currentIndexRef = useRef(currentIndex);
 
   const childRefs: any = useMemo(
@@ -93,6 +94,7 @@ function QuestionCarousel(): JSX.Element {
     if (canSwipe && currentIndex < wish.length) {
       await childRefs[currentIndex].current.swipe(dir); // Swipe the card!
     }
+    setOp((prevOp) => prevOp + 0.1);
   };
 
   // increase current index and show card
@@ -140,12 +142,12 @@ function QuestionCarousel(): JSX.Element {
                 top: `${index * 15}px`,
                 // left: `${index * 8}px`,
                 position: 'relative',
-                opacity: `${0.1 + 0.3 * index}`,
               }}
               className="card"
             >
-              {/* Почему  Item из MUI не работает? */}
-              <Item>{character.wish}</Item>
+              <Item sx={{ opacity: `${0.1 * index + op}` }}>
+                {character.wish}
+              </Item>
             </Stack>
           </TinderCard>
         ))}
@@ -178,7 +180,6 @@ function QuestionCarousel(): JSX.Element {
           onClick={() => swipe('right')}
           // style={{ backgroundColor: !canSwipe && '#c3c4d3' }}
         >
-          {' '}
           Нет
           <DeleteIcon />
         </IconButton>

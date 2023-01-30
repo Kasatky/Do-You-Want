@@ -15,16 +15,16 @@ function LandingPage(): JSX.Element {
           alignItems="center"
           sx={{ height: '100%' }}
         >
-          <Grid item xs={1} container columnSpacing={4}>
-            <Grid item xs={8}>
-              <Card sx={{ backgroundColor: '#ccc' }}>
+          <Grid item xs={1} container spacing={2}>
+            <Grid item xs={12} sm={8}>
+              <Card sx={{ backgroundColor: '#d3eff7' }}>
                 <CardContent>
                   <QuestionCarousel />
                 </CardContent>
               </Card>
             </Grid>
 
-            <Grid item xs={4}>
+            <Grid item xs={12} sm={4}>
               <Card sx={{ backgroundColor: '#ccc', height: '400px' }}>
                 <CardContent>картинка или гифка для красоты</CardContent>
               </Card>
