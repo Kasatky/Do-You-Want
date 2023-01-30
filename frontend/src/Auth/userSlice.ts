@@ -13,7 +13,7 @@ export const register = createAsyncThunk(
   async (newUser: UserRegister) => {
     const data = await authApi.requestRegister(newUser);
     return data;
-  }
+  },
 );
 
 export const login = createAsyncThunk(
@@ -21,7 +21,7 @@ export const login = createAsyncThunk(
   async (user: UserLogin) => {
     const data = await authApi.requestLogin(user);
     return data;
-  }
+  },
 );
 
 export const logout = createAsyncThunk('users/authLogout', async () => {
@@ -29,8 +29,9 @@ export const logout = createAsyncThunk('users/authLogout', async () => {
 });
 
 export const checkUser = createAsyncThunk('users/authCheckUser', async () => {
-  const isAuth = await authApi.requestIsAuth();
-  return isAuth;
+  const data = await authApi.requestIsAuth();
+  // console.log('data thunk', data);
+  return data;
 });
 
 const userSlice = createSlice({
@@ -65,6 +66,7 @@ const userSlice = createSlice({
         state.isAuth = action.payload.isAuth;
       })
       .addCase(checkUser.rejected, (state, action) => {
+        state.isAuth = false;
         state.error = action.error.message;
       });
   },
