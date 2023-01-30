@@ -2,7 +2,6 @@
   "name": "Do-You-Want-",
   "version": "1.0.0",
   "description": "Приложение по выявлению желаний. Реализовано на React+TypeScript+Express Js с базой PostgreSQL.",
-  "main": "index.js",
   "scripts": {
     "postinstall": "cd backend && npm i && npx sequelize db:migrate:undo:all && npx sequelize db:migrate && npx sequelize db:seed:all && cd ../frontend && npm i && DISABLE_ESLINT_PLUGIN=true npm run build",
     "start": "cd backend && npm start"
