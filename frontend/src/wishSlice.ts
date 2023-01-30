@@ -11,7 +11,6 @@ export const getUnmoderatedWishes = createAsyncThunk(
   "wishes/unmoderated",
   async () => {
     const data = await wishApi.requestUnmoderatedWishes();
-    console.log(data);
     return data;
   }
 );
@@ -56,8 +55,8 @@ const wishSlice = createSlice({
         const arrayIds = action.payload;
         arrayIds.forEach((id) => {
           const wishIndex = state.list.findIndex((w) => w.id === id);
-          if (wishIndex) {
-            state.list.splice(wishIndex,1)
+          if (wishIndex || wishIndex === 0) {
+            state.list.splice(wishIndex, 1);
           }
         });
       })
