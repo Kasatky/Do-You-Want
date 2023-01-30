@@ -79,7 +79,7 @@ authRouter.post('/login', async (req, res) => {
   res.json({
     email: maskEmail(user.email),
     userName: user.userName,
-    role: user.roles[0].role,
+    role: user.roles[0].roleId,
   });
 });
 
@@ -139,7 +139,7 @@ authRouter.post('/register', async (req, res) => {
     res.status(500).json({ error: 'Ошибка сервера' });
     return;
   }
-  
+
   // наконец-то создаём нового пользователя
   let defaultRole;
   try {
