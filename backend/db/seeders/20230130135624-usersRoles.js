@@ -2,19 +2,23 @@
 module.exports = {
   async up(queryInterface) {
     const roles = [{
-      role: 'admin',
+      userId: 1,
+      roleId: 1,
     },
     {
-      role: 'user',
+      userId: 2,
+      roleId: 2,
     }];
-    await queryInterface.bulkInsert('Roles', roles.map((el) => ({
-      role: el.role,
+
+    await queryInterface.bulkInsert('UsersRoles', roles.map((el) => ({
+      userId: el.userId,
+      roleId: el.roleId,
       createdAt: new Date(),
       updatedAt: new Date(),
     })), {});
   },
 
   async down(queryInterface) {
-    await queryInterface.bulkDelete('Roles', null, {});
+    await queryInterface.bulkDelete('UsersRoles', null, {});
   },
 };
