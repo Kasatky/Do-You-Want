@@ -1,35 +1,48 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
-// import Switch from '@mui/material/Switch';
 import Paper from '@mui/material/Paper';
 import Zoom from '@mui/material/Zoom';
-// import FormControlLabel from '@mui/material/FormControlLabel';
-// import { Theme } from '@mui/material/styles';
 import { Typography } from '@mui/material';
+import { useSelector } from 'react-redux';
+import { RootState, useAppDispatch } from '../store';
+import { getRandomWish } from '../wishSlice';
 
-const icon = (
-	<Paper sx={{ m: 1 }} elevation={4}>
-		<Typography>
-			"Хочешь кушать?"
-		</Typography>
-		<Box component="svg" sx={{ width: 500, height: 200 }}>
-		</Box>
-	</Paper>
-);
 
 export default function QuestionView() {
-	const [checked, setChecked] = React.useState(false);
+	const [checked, setChecked] = React.useState(true);
+	const [wishes, setWishes] = React.useState<string[]>([]);
 
-	const handleChange = () => {
-		setChecked((prev) => !prev);
+	const wish = useSelector((state: RootState) => state.wish.list)
+
+	const dispatch = useAppDispatch()
+
+	React.useEffect(() => {
+		setChecked(true)
+		dispatch(getRandomWish())
+	}, [checked])
+
+	const handleFalse = () => {
+		setChecked(false);
 	};
+	const handleTrue = () => {
+		setWishes((prev) => [...prev, wish[0].wish])
+		setChecked(false);
+	};
+	const icon = (
+		<Paper sx={{ m: 1 }} elevation={4}>
+			<Typography>
+				{wish ? (wish[0].wish) : ('Вау! Вы перебрали все вопросы, совсем скоро появятся новые или можете добавить свои, нажав на кнопку "Добавить вопрос"')}
+			</Typography>
+			<Box component="svg" sx={{ width: 500, height: 200 }}>
+			</Box>
+		</Paper>
+	);
 
 	return (
 		<Box sx={{ height: 180 }}>
-			<Box>
-				<button type='button' onClick={handleChange}>Yes</button>
-				<button type='button' onClick={handleChange}>No</button>
-			</Box>
+			<div>{wishes}</div>
+			<button type='button' onClick={handleTrue}>Yes</button>
+			<button type='button' onClick={handleFalse}>No</button>
 			<Box sx={{ display: 'flex' }}>
 				<Zoom in={checked}>{icon}</Zoom>
 			</Box>

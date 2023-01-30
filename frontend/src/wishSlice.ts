@@ -18,7 +18,7 @@ export const getUnmoderatedWishes = createAsyncThunk(
 
 export const getRandomWish = createAsyncThunk('wishes/random', async () => {
   const data = await wishApi.requestRandomdWish();
-  console.log(data);
+  // console.log(data[0].wish);
   return data;
 });
 

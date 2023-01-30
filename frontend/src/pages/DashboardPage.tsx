@@ -1,6 +1,7 @@
 import React from 'react';
 import { Container, Typography, Card, CardContent, Grid } from '@mui/material';
 import PageWrapper from '../Wrappers/PageWrapper';
+import QuestionView from '../Question/QuestionView';
 
 function DashboardPage() {
   return (
@@ -17,13 +18,13 @@ function DashboardPage() {
           <Grid item xs={1} container columnSpacing={4}>
             <Grid item xs={8}>
               <Card sx={{ backgroundColor: '#ccc' }}>
-                <CardContent>карточки с вопросами</CardContent>
+                <CardContent><QuestionView /></CardContent>
               </Card>
             </Grid>
 
             <Grid item xs={4}>
               <Card sx={{ backgroundColor: '#ccc', height: '400px' }}>
-                <CardContent>картинка или гифка для красоты</CardContent>
+                <CardContent>Список вопросов, на которые пользователь ответил "да"</CardContent>
               </Card>
             </Grid>
           </Grid>

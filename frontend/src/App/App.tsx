@@ -3,8 +3,6 @@ import { useSelector } from 'react-redux';
 import LandingPage from '../pages/LandingPage';
 import { RootState } from '../store';
 import './App.css';
-import QuestionView from '../Question/QuestionView';
-
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import PublicRoute from '../Wrappers/PublicRoute';
 import ProtectedRoute from '../Wrappers/ProtectedRoute';
