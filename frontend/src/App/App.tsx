@@ -10,6 +10,8 @@ import DashboardPage from '../pages/DashboardPage';
 import ProfilePage from '../pages/ProfilePage';
 import CabinetAdmin from '../CabinetAdmin/CabinetAdmin';
 
+
+
 function App() {
   const isAuth = useSelector((state: RootState) => state.user.isAuth);
 
