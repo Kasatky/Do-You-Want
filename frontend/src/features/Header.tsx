@@ -50,26 +50,14 @@ function Header({ isProfile, isAuth, handleOpen }: Props): JSX.Element {
           paddingBottom: '20px',
         }}>
           <Logo />
-          <Box >
-            <Box className="Cloud Foreground"></Box>
-            <Box className="Cloud Background"></Box>
-            <Box className="Cloud Foreground"></Box>
-            <Box className="Cloud Background"></Box>
-            <Box className="Cloud Foreground"></Box>
-            <Box className="Cloud Background"></Box>
-            <Box className="Cloud Background"></Box>
-            <Box className="Cloud Foreground"></Box>
-            <Box className="Cloud Background"></Box>
-            <Box className="Cloud Background"></Box>
-          </Box>
-
           {!isAuth ? (
             <Button
+              className='btnLanding'
               onClick={handleOpen}
               variant="contained"
               sx={{
-                width: '80px',
-                height: '80px',
+                width: '120px',
+                height: '120px',
 
                 borderRadius: '50%',
               }}
@@ -132,6 +120,16 @@ function Header({ isProfile, isAuth, handleOpen }: Props): JSX.Element {
             </>
           )}
         </Container>
+        <Box className="Cloud Foreground"></Box>
+        <Box className="Cloud Background"></Box>
+        <Box className="Cloud Foreground"></Box>
+        <Box className="Cloud Background"></Box>
+        <Box className="Cloud Foreground"></Box>
+        <Box className="Cloud Background"></Box>
+        <Box className="Cloud Background"></Box>
+        <Box className="Cloud Foreground"></Box>
+        <Box className="Cloud Background"></Box>
+        <Box className="Cloud Background"></Box>
       </AppBar>
     </Box>
   );

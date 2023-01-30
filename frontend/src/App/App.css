@@ -29,3 +29,9 @@
   top:94vh;
   height: 6vh;
 }
+
+.btnLanding {
+  position: absolute;
+  top:7vh;
+  left: 40vw;
+}
