@@ -16,9 +16,10 @@ import Auth from '../Auth/Auth';
 type Props = {
   isProfile: boolean;
   isAuth: boolean;
+  userName: string | undefined;
 };
 
-function Header({ isProfile, isAuth }: Props): JSX.Element {
+function Header({ isProfile, isAuth, userName }: Props): JSX.Element {
   const [open, setOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const navigate = useNavigate();
@@ -76,7 +77,9 @@ function Header({ isProfile, isAuth }: Props): JSX.Element {
                 aria-haspopup="true"
                 aria-expanded={open ? 'true' : undefined}
               >
-                <Avatar sx={{ width: 80, height: 80 }}>Profile</Avatar>
+                <Avatar sx={{ width: 80, height: 80, fontSize: '50px' }}>
+                  {userName && userName[0]}
+                </Avatar>
               </IconButton>
               <Menu
                 anchorEl={anchorEl}

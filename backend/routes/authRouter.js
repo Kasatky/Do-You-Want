@@ -19,7 +19,10 @@ authRouter.get('/user', (req, res) => {
     res.status(401).json({ isAuth: false, error: 'Вы не авторизованы!' });
     return;
   }
-  res.json({ isAuth: true });
+  res.json({
+    isAuth: true,
+    user: { userName: user.userName, email: undefined },
+  });
 });
 
 authRouter.post('/login', async (req, res) => {
