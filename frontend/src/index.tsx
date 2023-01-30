@@ -1,6 +1,7 @@
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 import './index.css';
+// import CabinetAdmin from './CabinetAdminPage/CabinetAdmin';
 import App from './App/App';
 import store from './store';
 

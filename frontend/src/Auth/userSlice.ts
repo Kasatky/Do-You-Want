@@ -62,6 +62,8 @@ const userSlice = createSlice({
         state.error = action.error.message;
       })
       .addCase(checkUser.fulfilled, (state, action) => {
+        const { user } = action.payload;
+        state.profile = user;
         state.isAuth = action.payload.isAuth;
       })
       .addCase(checkUser.rejected, (state, action) => {
