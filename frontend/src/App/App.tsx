@@ -8,7 +8,7 @@ import PublicRoute from '../Wrappers/PublicRoute';
 import ProtectedRoute from '../Wrappers/ProtectedRoute';
 import DashboardPage from '../pages/DashboardPage';
 import ProfilePage from '../pages/ProfilePage';
-import CabinetAdmin from '../CabinetAdmin/CabinetAdmin';
+import CabinetAdmin from '../CabinetAdminPage/CabinetAdmin';
 
 
 

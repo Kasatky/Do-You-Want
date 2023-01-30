@@ -43,7 +43,7 @@ function CabinetAdmin(): JSX.Element {
 
   return (
     <div>
-      <Header isProfile={false} isAuth={isAuth} handleOpen={() => {}} />
+      <Header isProfile={false} isAuth={isAuth} userName={'Admin'} />
       {wishes.length > 0 ? (
         <div>
           <h2
@@ -134,17 +134,17 @@ function CabinetAdmin(): JSX.Element {
         </div>
       ) : (
         <div><h2
-        style={{
-          width: "90%",
-          margin: "auto",
-          marginTop: "15px",
-          marginBottom: "15px",
-          fontFamily: "Gill Sans",
-          fontSize: "40px",
-        }}
-      >
-        Вопросов на модерацию нет.
-      </h2></div>
+          style={{
+            width: "90%",
+            margin: "auto",
+            marginTop: "15px",
+            marginBottom: "15px",
+            fontFamily: "Gill Sans",
+            fontSize: "40px",
+          }}
+        >
+          Вопросов на модерацию нет.
+        </h2></div>
       )}
     </div>
   );

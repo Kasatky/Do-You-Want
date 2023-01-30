@@ -11,8 +11,11 @@ import { getRandomWish } from '../wishSlice';
 export default function QuestionView() {
 	const [checked, setChecked] = React.useState(true);
 	const [wishes, setWishes] = React.useState<string[]>([]);
-
-	const wish = useSelector((state: RootState) => state.wish.list)
+	let wish = ''
+	const wishList = useSelector((state: RootState) => state.wish.list)
+	if (wishList && wishList.length) {
+		wish = wishList[0].wish
+	}
 
 	const dispatch = useAppDispatch()
 
@@ -25,13 +28,13 @@ export default function QuestionView() {
 		setChecked(false);
 	};
 	const handleTrue = () => {
-		setWishes((prev) => [...prev, wish[0].wish])
+		setWishes((prev) => [...prev, wish])
 		setChecked(false);
 	};
 	const icon = (
 		<Paper sx={{ m: 1 }} elevation={4}>
 			<Typography>
-				{wish ? (wish[0].wish) : ('Вау! Вы перебрали все вопросы, совсем скоро появятся новые или можете добавить свои, нажав на кнопку "Добавить вопрос"')}
+				{wish ? (wish) : ('Вау! Вы перебрали все вопросы, совсем скоро появятся новые или можете добавить свои, нажав на кнопку "Добавить вопрос"')}
 			</Typography>
 			<Box component="svg" sx={{ width: 500, height: 200 }}>
 			</Box>
