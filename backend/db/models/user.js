@@ -13,10 +13,8 @@ module.exports = (sequelize, DataTypes) => {
         as: 'acceptedWishes',
       });
 
-      User.Role = User.belongsToMany(models.Role, {
-        through: 'UsersRoles',
+      User.Roles = User.hasMany(models.UsersRoles, {
         foreignKey: 'userId',
-        otherKey: 'roleId',
         as: 'roles',
       });
     }

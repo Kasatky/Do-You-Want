@@ -14,6 +14,7 @@ export type UserRegister = {
 export type UserProfile = {
   email: string | undefined;
   userName: string;
+  role: string | undefined;
 };
 
 export type UserState = {
@@ -25,4 +26,3 @@ export type UserState = {
 export type AuthApiError = {
   error: string;
 };
-

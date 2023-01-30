@@ -12,17 +12,16 @@ import React, { useEffect, useState } from "react";
 import DeleteIcon from "@mui/icons-material/Delete";
 import SendIcon from "@mui/icons-material/Send";
 import { useSelector } from "react-redux";
-import Header from "../features/Header";
 import { RootState, useAppDispatch } from "../store";
 import { changeWishes, deleteWish, getUnmoderatedWishes } from "../wishSlice";
 import { WishId } from "../wishTypes";
+import PageWrapper from "../Wrappers/PageWrapper";
 
 function CabinetAdmin(): JSX.Element {
   const [arrayId, setArrayId] = useState<number[]>([]);
 
   const dispatch = useAppDispatch();
   const wishes = useSelector((state: RootState) => state.wish.list);
-  const isAuth = useSelector((state: RootState) => state.user.isAuth);
 
   useEffect(() => {
     dispatch(getUnmoderatedWishes());
@@ -42,9 +41,8 @@ function CabinetAdmin(): JSX.Element {
   }
 
   return (
-    <div>
-      <Header isProfile={false} isAuth={isAuth} userName={'Admin'} />
-      {wishes.length > 0 ? (
+    <PageWrapper isProfile={false}>
+      {wishes && wishes.length > 0 ? (
         <div>
           <h2
             style={{
@@ -133,20 +131,23 @@ function CabinetAdmin(): JSX.Element {
           </TableContainer>{" "}
         </div>
       ) : (
-        <div><h2
-          style={{
-            width: "90%",
-            margin: "auto",
-            marginTop: "15px",
-            marginBottom: "15px",
-            fontFamily: "Gill Sans",
-            fontSize: "40px",
-          }}
-        >
-          Вопросов на модерацию нет.
-        </h2></div>
+
+        <div>
+          <h2
+            style={{
+              width: "90%",
+              margin: "auto",
+              marginTop: "15px",
+              marginBottom: "15px",
+              fontFamily: "Gill Sans",
+              fontSize: "40px",
+            }}
+          >
+            Вопросов на модерацию нет.
+          </h2>
+        </div>
       )}
-    </div>
+    </PageWrapper>
   );
 }
 
