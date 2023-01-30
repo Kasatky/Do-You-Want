@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState, useEffect } from 'react';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Zoom from '@mui/material/Zoom';
@@ -6,49 +6,52 @@ import { Typography } from '@mui/material';
 import { useSelector } from 'react-redux';
 import { RootState, useAppDispatch } from '../store';
 import { getRandomWish } from '../wishSlice';
-
+import { Wish } from '../wishTypes';
 
 export default function QuestionView() {
-	const [checked, setChecked] = React.useState(true);
-	const [wishes, setWishes] = React.useState<string[]>([]);
-	let wish = ''
-	const wishList = useSelector((state: RootState) => state.wish.list)
-	if (wishList && wishList.length) {
-		wish = wishList[0].wish
-	}
+  // const [checked, setChecked] = useState(true);
+  const [wishObj] = useSelector((state: RootState) => state.wish.list);
 
-	const dispatch = useAppDispatch()
+  let wish;
+  if (wishObj) {
+    wish = wishObj.wish;
+  }
 
-	React.useEffect(() => {
-		setChecked(true)
-		dispatch(getRandomWish())
-	}, [checked])
+  console.log(wish);
 
-	const handleFalse = () => {
-		setChecked(false);
-	};
-	const handleTrue = () => {
-		setWishes((prev) => [...prev, wish])
-		setChecked(false);
-	};
-	const icon = (
-		<Paper sx={{ m: 1 }} elevation={4}>
-			<Typography>
-				{wish ? (wish) : ('Вау! Вы перебрали все вопросы, совсем скоро появятся новые или можете добавить свои, нажав на кнопку "Добавить вопрос"')}
-			</Typography>
-			<Box component="svg" sx={{ width: 500, height: 200 }}>
-			</Box>
-		</Paper>
-	);
+  const dispatch = useAppDispatch();
 
-	return (
-		<Box sx={{ height: 180 }}>
-			<div>{wishes}</div>
-			<button type='button' onClick={handleTrue}>Yes</button>
-			<button type='button' onClick={handleFalse}>No</button>
-			<Box sx={{ display: 'flex' }}>
-				<Zoom in={checked}>{icon}</Zoom>
-			</Box>
-		</Box>
-	);
+  const handleFalse = () => {
+    // setChecked(false);
+    dispatch(getRandomWish());
+  };
+  const handleTrue = () => {
+    // setChecked(false);
+    dispatch(getRandomWish());
+  };
+  // const icon = (
+  //   <Paper sx={{ m: 1 }} elevation={4}>
+  //     <Typography>
+  //       {wish
+  //         ? wish
+  //         : 'Вау! Вы перебрали все вопросы, совсем скоро появятся новые или можете добавить свои, нажав на кнопку "Добавить вопрос"'}
+  //     </Typography>
+  //     <Box component="svg" sx={{ width: 500, height: 200 }}></Box>
+  //   </Paper>
+  // );
+
+  return (
+    <Box sx={{ height: 180 }}>
+      <div>{wish}</div>
+      <button type="button" onClick={handleTrue}>
+        Yes
+      </button>
+      <button type="button" onClick={handleFalse}>
+        No
+      </button>
+      {/* <Box sx={{ display: 'flex' }}>
+        <Zoom in={checked}>{icon}</Zoom>
+      </Box> */}
+    </Box>
+  );
 }
