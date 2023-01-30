@@ -11,18 +11,21 @@ import {
 } from '@mui/material';
 import Logo from './Logo';
 import { useNavigate } from 'react-router-dom';
+import Auth from '../Auth/Auth';
 
 type Props = {
   isProfile: boolean;
   isAuth: boolean;
-  handleOpen: () => void;
 };
 
-function Header({ isProfile, isAuth, handleOpen }: Props): JSX.Element {
+function Header({ isProfile, isAuth }: Props): JSX.Element {
+  const [open, setOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const navigate = useNavigate();
 
-  const open = Boolean(anchorEl);
+  const isOpen = Boolean(anchorEl);
+
+  const handleOpen = () => setOpen(true);
 
   const handleClose = () => {
     setAnchorEl(null);
@@ -78,7 +81,7 @@ function Header({ isProfile, isAuth, handleOpen }: Props): JSX.Element {
               <Menu
                 anchorEl={anchorEl}
                 id="account-menu"
-                open={open}
+                open={isOpen}
                 onClose={handleClose}
                 onClick={handleClose}
                 PaperProps={{
@@ -119,6 +122,7 @@ function Header({ isProfile, isAuth, handleOpen }: Props): JSX.Element {
             </>
           )}
         </Container>
+        <Auth open={open} setOpen={setOpen} />
       </AppBar>
     </Box>
   );
