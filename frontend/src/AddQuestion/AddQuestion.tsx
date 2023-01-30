@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Typography,
   Box,
@@ -9,6 +9,8 @@ import {
   Modal,
 } from '@mui/material';
 import Input from '@mui/joy/Input';
+import { useAppDispatch } from '../store';
+import { addWish } from '../wishSlice';
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -33,7 +35,26 @@ type Props = {
 };
 
 function AddQuestion({ open, setOpen }: Props) {
+  const [wish, setWish] = useState('');
+  const [status, setStatus] = useState(false);
+
+  const dispatch = useAppDispatch();
+
   const handleClose = () => setOpen(false);
+
+  const handleWishChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setWish(event.target.value);
+  };
+
+  const handleStatusChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setStatus((prev) => !prev);
+  };
+
+  const addNewWish = () => {
+    const newWish = { wish: wish + '?', isPublic: status };
+    dispatch(addWish(newWish));
+    handleClose();
+  };
 
   return (
     <Modal
@@ -55,6 +76,8 @@ function AddQuestion({ open, setOpen }: Props) {
             Хочешь
           </Typography>
           <Input
+            value={wish}
+            onChange={handleWishChange}
             placeholder="здесь писать вопрос.."
             variant="solid"
             size="lg"
@@ -79,7 +102,9 @@ function AddQuestion({ open, setOpen }: Props) {
         >
           <FormControlLabel
             value="top"
-            control={<Checkbox />}
+            control={
+              <Checkbox checked={status} onChange={handleStatusChange} />
+            }
             label="Добавить этот вопрос для всех"
             labelPlacement="top"
             sx={{ textAlign: 'left no-wrap' }}
@@ -93,6 +118,7 @@ function AddQuestion({ open, setOpen }: Props) {
               height: '40px',
             }}
             variant="contained"
+            onClick={addNewWish}
           >
             Добавить
           </Button>

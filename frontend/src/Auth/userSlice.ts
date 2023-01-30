@@ -30,7 +30,6 @@ export const logout = createAsyncThunk('users/authLogout', async () => {
 
 export const checkUser = createAsyncThunk('users/authCheckUser', async () => {
   const data = await authApi.requestIsAuth();
-  console.log('data thunk', data);
   return data;
 });
 

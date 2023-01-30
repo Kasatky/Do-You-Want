@@ -14,9 +14,7 @@ type Props = {
 function PageWrapper({ children, isProfile }: Props): JSX.Element {
   const user = useSelector((state: RootState) => state.user);
   const { isAuth } = user;
-  console.log(user);
   const userName = user.profile?.userName;
-  console.log('AUTH: ', isAuth);
 
   const dispatch = useAppDispatch();
   const navigate = useNavigate();

@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { WishState } from './wishTypes';
+import { NewWish, WishState } from './wishTypes';
 import * as wishApi from './wishApi';
 
 const initialState: WishState = {
@@ -13,7 +13,7 @@ export const getUnmoderatedWishes = createAsyncThunk(
     const data = await wishApi.requestUnmoderatedWishes();
     console.log(data);
     return data;
-  }
+  },
 );
 
 export const getRandomWish = createAsyncThunk('wishes/random', async () => {
@@ -21,6 +21,13 @@ export const getRandomWish = createAsyncThunk('wishes/random', async () => {
   console.log(data);
   return data;
 });
+
+export const addWish = createAsyncThunk(
+  'wishes/new',
+  async (newWish: NewWish) => {
+    await wishApi.requestNewWish(newWish);
+  },
+);
 
 const wishSlice = createSlice({
   name: 'wishes',
@@ -40,6 +47,9 @@ const wishSlice = createSlice({
         state.list = wish;
       })
       .addCase(getRandomWish.rejected, (state, action) => {
+        state.error = action.error.message;
+      })
+      .addCase(addWish.rejected, (state, action) => {
         state.error = action.error.message;
       });
   },

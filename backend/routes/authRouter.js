@@ -142,7 +142,6 @@ authRouter.post('/register', async (req, res) => {
     return;
   }
 
-  console.log(hashedPassword);
   // наконец-то создаём нового пользователя
   try {
     const user = await User.create({

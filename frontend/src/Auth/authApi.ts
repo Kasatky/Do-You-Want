@@ -52,6 +52,5 @@ export const requestLogout = async () => {
 export const requestIsAuth = async () => {
   const response = await fetch('/api/auth/user');
   const data = await response.json();
-  console.log('request user', data);
   return data;
 };
