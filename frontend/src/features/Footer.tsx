@@ -16,9 +16,9 @@ function Footer({ isAuth }: Props): JSX.Element {
   return (
     <div style={{ flex: '0 0 auto' }}>
       <Box sx={{ flexGrow: 1 }}>
-        <AppBar position="static">
+        <AppBar id='footer' position="absolute" sx={{ top: '93vh' }}>
           <Container>
-            <Toolbar sx={{ padding: '20px 0' }}>
+            <Toolbar>
               {isAuth ? (
                 <Button onClick={handleLogout} variant="contained">
                   Logout

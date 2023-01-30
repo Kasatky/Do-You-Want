@@ -4,9 +4,6 @@ import { useSelector } from 'react-redux';
 import { RootState, useAppDispatch } from '../store';
 import { checkUser } from '../Auth/userSlice';
 import { useNavigate } from 'react-router-dom';
-
-import QuestionCarousel from '../features/QuestionCarousel';
-
 import Header from '../features/Header';
 import Footer from '../features/Footer';
 
@@ -24,18 +21,18 @@ function DashboardPage() {
   }, [dispatch, isAuth, navigate]);
 
   return (
-    <div className="wrapper" style={{ height: '100%' }}>
+    <div className="wrapper" style={{ marginTop: '26vh', height: '50vh' }}>
       <div style={{ flex: '1 0 auto' }}>
-        <Header isProfile={false} isAuth={isAuth} handleOpen={() => {}} />
+        <Header isProfile={false} isAuth={isAuth} handleOpen={() => { }} />
 
-        <Container sx={{ marginTop: '40px', marginBottom: '40px' }}>
+        <Container>
           <Grid
             container
             rowSpacing={4}
             direction="column"
             justifyContent="center"
             alignItems="center"
-            sx={{ height: '100%' }}
+            sx={{ height: '70vh', maxWidth: '1600px' }}
           >
             <Grid item xs={1} container columnSpacing={4}>
               <Grid item xs={8}>

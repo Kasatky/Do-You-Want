@@ -14,13 +14,17 @@ function LandingPage(): JSX.Element {
   const handleOpen = () => setOpen(true);
 
   return (
-    <div className="wrapper" style={{ height: '100%' }}>
-      <div style={{ flex: '1 0 auto' }}>
+    <div className="wrapper" style={{ height: '100vh' }}>
+      <div style={{
+        flex: '1 0 auto',
+        height: 'fit-content',
+        // marginTop: '30vh',
+      }}>
         <Header isProfile={false} isAuth={isAuth} handleOpen={handleOpen} />
 
         <Auth open={open} setOpen={setOpen} />
 
-        <Container sx={{ marginTop: '40px', marginBottom: '40px' }}>
+        <Container sx={{ marginTop: '26vh', marginBottom: '2vh' }}>
           <Grid
             container
             rowSpacing={4}

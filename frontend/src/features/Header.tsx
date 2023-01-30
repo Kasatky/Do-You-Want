@@ -9,6 +9,7 @@ import {
   Menu,
   MenuItem,
 } from '@mui/material';
+import './headerStyle.css'
 import Logo from './Logo';
 import { useNavigate } from 'react-router-dom';
 
@@ -39,16 +40,28 @@ function Header({ isProfile, isAuth, handleOpen }: Props): JSX.Element {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
-        <Container
-          sx={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            paddingTop: '20px',
-            paddingBottom: '20px',
-          }}
-        >
+      <AppBar id="Clouds" position="static" className='headerCover'>
+        <Container sx={{
+          marginLeft: '0px',
+          display: 'flex',
+          width: '100vw',
+          justifyContent: 'space-between',
+          paddingTop: '20px',
+          paddingBottom: '20px',
+        }}>
           <Logo />
+          <Box >
+            <Box className="Cloud Foreground"></Box>
+            <Box className="Cloud Background"></Box>
+            <Box className="Cloud Foreground"></Box>
+            <Box className="Cloud Background"></Box>
+            <Box className="Cloud Foreground"></Box>
+            <Box className="Cloud Background"></Box>
+            <Box className="Cloud Background"></Box>
+            <Box className="Cloud Foreground"></Box>
+            <Box className="Cloud Background"></Box>
+            <Box className="Cloud Background"></Box>
+          </Box>
 
           {!isAuth ? (
             <Button
