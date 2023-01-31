@@ -6,7 +6,7 @@ import AddQuestion from "../AddQuestion/AddQuestion";
 import ModalPrompt from "../features/ModalPrompt";
 import { RootState, useAppDispatch } from "../store";
 import { useSelector } from "react-redux";
-import { addUserWishes } from "../CabinetAdminPage/wishSlice";
+import { addUserWishes } from "../wishSlice";
 
 function DashboardPage() {
   const [open, setOpen] = useState(false);
@@ -54,7 +54,7 @@ function DashboardPage() {
                   Список вопросов, на которые вы ответили "да":
                   <div>
                     {userWishes.map((el) => (
-                      <div key={el.id}>{el.Wish.wish}</div>
+                      <div key={el.id}>{el?.wish?.wish}</div>
                     ))}
                   </div>
                 </CardContent>

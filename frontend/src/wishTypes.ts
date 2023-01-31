@@ -13,11 +13,13 @@ export type NewWish = {
 
 export type WishId = number;
 
+type WishWithName = Pick<Wish, "wish">;
+
 export type UserWish = {
-  Wish: { wish: string };
   id: number;
-  wishId: string;
-  userId: string;
+  wishId: number;
+  wish: WishWithName;
+  userId: number;
   doneCount: number;
   isDone: boolean;
 };

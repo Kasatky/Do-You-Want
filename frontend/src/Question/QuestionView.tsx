@@ -2,7 +2,7 @@ import { Box, Paper, Button } from "@mui/material";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import { RootState, useAppDispatch } from "../store";
-import { addWishToUser, getRandomWish } from "../CabinetAdminPage/wishSlice";
+import { addWishToUser, getRandomWish } from "../wishSlice";
 
 export default function QuestionView() {
   const dispatch = useAppDispatch();
@@ -18,17 +18,13 @@ export default function QuestionView() {
     dispatch(getRandomWish());
   };
   async function handleTrue() {
-    dispatch(addWishToUser());
+    dispatch(addWishToUser(random?.id));
     dispatch(getRandomWish());
-    // const url = "/addWishToUser";
-    // await fetch(url, {
-    //   method: "PUT",
-    //   headers: { "Content-Type": "Application/json" },
-    //   body: JSON.stringify({
-    //     id: arr[0].id,
-    //   }),
-    // });
   }
+
+  // async function a () {
+  //   dispatch(addWishToUser(random));
+  // }
 
   return (
     <Box sx={{ height: "180px" }}>

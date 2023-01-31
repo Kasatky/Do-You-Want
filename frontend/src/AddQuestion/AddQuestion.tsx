@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import React, { useState } from "react";
 import {
   Typography,
   Box,
@@ -8,11 +7,10 @@ import {
   Checkbox,
   Button,
   Modal,
-} from '@mui/material';
-import Input from '@mui/joy/Input';
-import { useAppDispatch } from '../store';
-import { addWish } from '../wishSlice';
-import { WishState } from '../wishTypes';
+} from "@mui/material";
+import Input from "@mui/joy/Input";
+import { useAppDispatch } from "../store";
+import { addWish } from "../wishSlice";
 
 const style = {
   position: "absolute" as "absolute",
@@ -45,7 +43,7 @@ function AddQuestion({ open, setOpen, handleOpenPrompt }: Props) {
 
   const handleClose = () => {
     setOpen(false);
-    setWish('');
+    setWish("");
   };
 
   const handleWishChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -58,10 +56,10 @@ function AddQuestion({ open, setOpen, handleOpenPrompt }: Props) {
 
   const addNewWish = () => {
     let userWish;
-    if (wish.includes('?')) {
+    if (wish.includes("?")) {
       userWish = wish;
     } else {
-      userWish = wish + '?';
+      userWish = wish + "?";
     }
     const newWish = { wish: userWish, isPublic: status };
     dispatch(addWish(newWish));

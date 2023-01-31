@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
       UsersWish.Wish = UsersWish.belongsTo(models.Wish, {
         foreignKey: 'wishId',
         onDelete: 'cascade',
+        as: 'wish',
       });
     }
   }
