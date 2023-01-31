@@ -43,6 +43,7 @@ function AddQuestion({ open, setOpen, handleOpenPrompt }: Props) {
 
   const handleClose = () => {
     setOpen(false);
+    setWish('');
   };
 
   const handleWishChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -54,7 +55,13 @@ function AddQuestion({ open, setOpen, handleOpenPrompt }: Props) {
   };
 
   const addNewWish = () => {
-    const newWish = { wish: wish + '?', isPublic: status };
+    let userWish;
+    if (wish.includes('?')) {
+      userWish = wish;
+    } else {
+      userWish = wish + '?';
+    }
+    const newWish = { wish: userWish, isPublic: status };
     dispatch(addWish(newWish));
     handleClose();
     handleOpenPrompt();
