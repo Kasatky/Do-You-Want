@@ -4,33 +4,37 @@ const { Op } = require('sequelize');
 const { Wish } = require('../db/models');
 
 wishRouter.get('/random', async (req, res) => {
+  if (!req.session.userId) {
+    res.status(403).json({ error: 'Вы не авторизованы!' });
+    return;
+  }
+
+  const { userId } = req.session;
+
   let wishCount;
 
   try {
     wishCount = await Wish.count({
-      where: { [Op.or]: [{ isPublic: true }, { userId: req.session.userId }] },
+      where: { [Op.or]: [{ isPublic: true }, { userId }] },
     });
   } catch (error) {
-    console.log(`Ошибка сервера: ${error.message}`);
-    res.status(500).json({ error: 'Ошибка сервера1' });
+    console.log(`Ошибка при поиске количества wish: ${error.message}`);
+    res.status(500).json({ error: 'Ошибка сервера' });
     return;
   }
 
   try {
-    const wish = await Wish.findAll({
+    const wish = await Wish.findOne({
       where: {
-        //   isPublic: true,
-        [Op.or]: [{ isPublic: true }, { userId: req.session.userId }],
+        [Op.or]: [{ isPublic: true }, { userId }],
       },
       limit: 1,
       offset: Math.floor(Math.random() * wishCount),
-      // limit: 1,
-      // offset: 8,
     });
 
-    res.json({ wishes: wish });
+    res.json({ wish });
   } catch (error) {
-    console.log(`Ошибка сервера: ${error.message}`);
+    console.log(`Ошибка при поиске wish: ${error.message}`);
     res.status(500).json({ error: 'Ошибка сервера' });
   }
 });

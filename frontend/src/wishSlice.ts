@@ -6,6 +6,7 @@ const initialState: WishState = {
   list: [],
   error: undefined,
   loading: false,
+  random: undefined,
 };
 
 export const getUnmoderatedWishes = createAsyncThunk(
@@ -33,8 +34,8 @@ export const changeWishes = createAsyncThunk(
 );
 
 export const getRandomWish = createAsyncThunk('wishes/random', async () => {
-  const data = await wishApi.requestRandomdWish();
-  return data;
+  const wish = await wishApi.requestRandomWish();
+  return wish;
 });
 
 export const addWish = createAsyncThunk(
@@ -76,7 +77,7 @@ const wishSlice = createSlice({
       })
       .addCase(getRandomWish.fulfilled, (state, action) => {
         const wish = action.payload;
-        state.list = wish;
+        state.random = wish;
       })
       .addCase(getRandomWish.rejected, (state, action) => {
         state.error = action.error.message;
