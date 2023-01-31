@@ -17,12 +17,18 @@ function ProfilePage(): JSX.Element {
     <PageWrapper isProfile={true}>
       <Container sx={{ marginTop: '40px', marginBottom: '40px' }}>
         <Typography>Статистика</Typography>
-        <p>Всего желаний исполнено:</p>
-        <p>{stat?.doneWishesCount}</p>
-        <p>Ваше самое исполняемое желание:</p>
-        <p>{stat?.mostDoneWish}</p>
-        <p>Среднее время исполнения желаний в днях:</p>
-        <p>{stat?.averageTime}</p>
+        {stat ? (
+          <div>
+            <p>Всего желаний исполнено:</p>
+            <p>{stat?.doneWishesCount}</p>
+            <p>Ваше самое исполняемое желание:</p>
+            <p>{stat?.mostDoneWish}</p>
+            <p>Среднее время исполнения желаний в днях:</p>
+            <p>{stat?.averageTime}</p>
+          </div>
+        ) : (
+          <div>Выполненных желаний пока нет</div>
+        )}
       </Container>
     </PageWrapper>
   );
