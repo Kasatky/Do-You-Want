@@ -9,10 +9,9 @@ wishRouter.get('/random', async (req, res) => {
   try {
     wishCount = await Wish.count({
       where: { [Op.or]: [{ isPublic: true }, { userId: req.session.userId }] },
-      // where: { isPublic: true },
     });
   } catch (error) {
-    console.log(`Ошибка сервера1: ${error.message}`);
+    console.log(`Ошибка сервера: ${error.message}`);
     res.status(500).json({ error: 'Ошибка сервера1' });
     return;
   }
@@ -56,6 +55,7 @@ wishRouter.post('/new', async (req, res) => {
     });
 
     newWish.save();
+    return;
   } catch (error) {
     console.log(`Ошибка при добавлении вопроса: ${error.message}`);
     res.status(500).json({ error: 'Не удалось добавить новый вопрос' });
