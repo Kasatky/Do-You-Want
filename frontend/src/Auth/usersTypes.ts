@@ -14,7 +14,7 @@ export type UserRegister = {
 export type UserProfile = {
   email: string | undefined;
   userName: string;
-  role: string | undefined;
+  role: number | undefined;
 };
 
 export type UserState = {
