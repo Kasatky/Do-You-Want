@@ -49,3 +49,10 @@ export const requestNewWish = async (newWish: NewWish) => {
 
   return data.loading;
 };
+
+export const requestStat = async () => {
+  const url = '/api/wishes/stat';
+  const response = await fetch(url);
+  const data = response.json();
+  return data;
+};
