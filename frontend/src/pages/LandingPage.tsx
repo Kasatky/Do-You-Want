@@ -25,8 +25,8 @@ function LandingPage(): JSX.Element {
             </Grid>
 
             <Grid item xs={12} sm={4}>
-              <Card sx={{ backgroundColor: '#ccc', height: '400px' }}>
-                <CardContent>картинка или гифка для красоты</CardContent>
+              <Card sx={{ backgroundColor: '#ccc', width: '315px', justifyContent: 'center', height: '315px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                <img width="300" src='https://media.giphy.com/media/hrXNZuo6SYYx079zvd/giphy.gif' alt="logo" />
               </Card>
             </Grid>
           </Grid>

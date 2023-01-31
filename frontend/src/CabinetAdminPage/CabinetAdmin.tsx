@@ -105,6 +105,7 @@ function CabinetAdmin(): JSX.Element {
                         Удалить вопрос
                       </TableCell>
                     </TableRow>
+
                   </TableHead>
                   <TableBody>
                     {wishes &&
@@ -175,6 +176,8 @@ function CabinetAdmin(): JSX.Element {
           </div>
         )}
       </Grid>
+
+
     </PageWrapper>
   );
 }
