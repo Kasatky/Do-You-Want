@@ -13,8 +13,9 @@ body {
 }
 header {
   height: 10vh;
-  background-image: url(https://i.pinimg.com/originals/5a/b7/b1/5ab7b15f9a464da50b24a88f068e195b.jpg);
-  background-repeat: no-repeat;
+  /* background-image: url(https://i.pinimg.com/originals/5a/b7/b1/5ab7b15f9a464da50b24a88f068e195b.jpg); */
+  background-image: url(https://glass-pt.ru/galereya/gory/images/G-107.jpg);
+  /* background-repeat: no-repeat; */
   background-size: cover;
   width: 100vw;
 }

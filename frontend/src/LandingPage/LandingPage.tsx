@@ -89,7 +89,7 @@ function LandingPage(): JSX.Element {
         </Container>
       </div>
 
-      <Footer isAuth={isAuth} />
+      {/* <Footer isAuth={isAuth} /> */}
     </div>
   );
 }

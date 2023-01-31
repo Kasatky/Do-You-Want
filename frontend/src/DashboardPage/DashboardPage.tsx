@@ -90,7 +90,7 @@ function DashboardPage() {
         </Container>
       </div>
 
-      <Footer isAuth={isAuth} />
+      {/* <Footer isAuth={isAuth} /> */}
     </div>
   );
 }
