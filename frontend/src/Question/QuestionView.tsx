@@ -1,15 +1,12 @@
-import Box from "@mui/material/Box";
-import Paper from "@mui/material/Paper";
+import { Box, Paper, Button } from "@mui/material";
 import { useSelector } from "react-redux";
+import { useEffect } from "react";
 import { RootState, useAppDispatch } from "../store";
 import { addWishToUser, getRandomWish } from "../CabinetAdminPage/wishSlice";
-import { useEffect } from "react";
-import { Button } from "@mui/material";
 
 export default function QuestionView() {
-  const random = useSelector((state: RootState) => state.wish.random);
-
   const dispatch = useAppDispatch();
+  const random = useSelector((state: RootState) => state.wish.random);
 
   useEffect(() => {
     if (!random) {
@@ -21,7 +18,7 @@ export default function QuestionView() {
     dispatch(getRandomWish());
   };
   async function handleTrue() {
-    dispatch(addWishToUser())
+    dispatch(addWishToUser());
     dispatch(getRandomWish());
     // const url = "/addWishToUser";
     // await fetch(url, {

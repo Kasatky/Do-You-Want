@@ -25,7 +25,7 @@ function DashboardPage() {
     setOpenPrompt(true);
     setTimeout(() => {
       setOpenPrompt(false);
-    }, 1000);
+    }, 2000);
   };
 
   return (

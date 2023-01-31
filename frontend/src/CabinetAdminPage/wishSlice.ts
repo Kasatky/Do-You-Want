@@ -6,6 +6,7 @@ const initialState: WishState = {
   list: [],
   addedWishes: [],
   error: undefined,
+  loading: false,
   random: undefined,
 };
 
@@ -20,26 +21,24 @@ export const getUnmoderatedWishes = createAsyncThunk(
 );
 
 export const deleteWish = createAsyncThunk(
-  "wishes/delete",
+  'wishes/delete',
   async (id: WishId) => {
     await wishApi.requestDeleteWishes(id);
     return id;
-  }
+  },
 );
 
 export const changeWishes = createAsyncThunk(
-  "wishes/change",
+  'wishes/change',
   async (arrayId: WishId[]) => {
     await wishApi.requestChangeWish(arrayId);
     return arrayId;
-  }
+  },
 );
 
-// санки на получение рандомного вопроса
-
-export const getRandomWish = createAsyncThunk("wishes/random", async () => {
-  const data = await wishApi.requestRandomdWish();
-  return data;
+export const getRandomWish = createAsyncThunk('wishes/random', async () => {
+  const wish = await wishApi.requestRandomWish();
+  return wish;
 });
 
 // санки на добавление вопроса в кабинете пользователя
@@ -47,8 +46,9 @@ export const getRandomWish = createAsyncThunk("wishes/random", async () => {
 export const addWish = createAsyncThunk(
   "wishes/new",
   async (newWish: NewWish) => {
-    await wishApi.requestNewWish(newWish);
-  }
+    const { loading } = await wishApi.requestNewWish(newWish);
+    return loading;
+  },
 );
 
 // санки на кабинет пользователя
@@ -96,13 +96,20 @@ const wishSlice = createSlice({
       })
       .addCase(getRandomWish.fulfilled, (state, action) => {
         const wish = action.payload;
-        state.list = wish;
+        state.random = wish;
       })
       .addCase(getRandomWish.rejected, (state, action) => {
         state.error = action.error.message;
       })
+      .addCase(addWish.pending, (state) => {
+        state.loading = true;
+        state.error = undefined;
+      })
       .addCase(addWish.rejected, (state, action) => {
+        state.loading = false;
         state.error = action.error.message;
+      }).addCase(addWish.fulfilled, (state, action) => {
+        state.loading = action.payload;
       })
       .addCase(addUserWishes.fulfilled, (state, action) => {
         const userWishes = action.payload;
@@ -117,8 +124,9 @@ const wishSlice = createSlice({
       })
       .addCase(addWishToUser.rejected, (state, action) => {
         state.error = action.error.message;
-      });
-  },
+     
+  })
+  }
 });
 
 export default wishSlice.reducer;

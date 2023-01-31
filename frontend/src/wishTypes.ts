@@ -26,5 +26,6 @@ export type WishState = {
   list: Wish[];
   addedWishes: UserWish[];
   error: string | undefined;
+  loading: boolean;
   random: Wish | undefined;
 };
