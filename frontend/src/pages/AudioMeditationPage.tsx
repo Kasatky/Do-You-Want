@@ -10,6 +10,7 @@ function AudioMeditationPage() {
         src="video/test.mp4"
         style={{ position: 'relative' }}
       ></video>
+
       <audio
         style={{ position: 'absolute' }}
         autoPlay
@@ -17,6 +18,7 @@ function AudioMeditationPage() {
         src="audio/soundOfSea.mp3"
         preload="auto"
       ></audio>
+      <input type="range" />
     </>
   );
 }

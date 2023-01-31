@@ -1,5 +1,6 @@
 import {
   Button,
+  Grid,
   Paper,
   Table,
   TableBody,
@@ -7,15 +8,15 @@ import {
   TableContainer,
   TableHead,
   TableRow,
-} from "@mui/material";
-import React, { useEffect, useState } from "react";
-import DeleteIcon from "@mui/icons-material/Delete";
-import SendIcon from "@mui/icons-material/Send";
-import { useSelector } from "react-redux";
-import { RootState, useAppDispatch } from "../store";
-import { changeWishes, deleteWish, getUnmoderatedWishes } from "../wishSlice";
-import { WishId } from "../wishTypes";
-import PageWrapper from "../Wrappers/PageWrapper";
+} from '@mui/material';
+import React, { useEffect, useState } from 'react';
+import DeleteIcon from '@mui/icons-material/Delete';
+import SendIcon from '@mui/icons-material/Send';
+import { useSelector } from 'react-redux';
+import { RootState, useAppDispatch } from '../store';
+import { changeWishes, deleteWish, getUnmoderatedWishes } from '../wishSlice';
+import { WishId } from '../wishTypes';
+import PageWrapper from '../Wrappers/PageWrapper';
 
 function CabinetAdmin(): JSX.Element {
   const [arrayId, setArrayId] = useState<number[]>([]);
@@ -42,111 +43,138 @@ function CabinetAdmin(): JSX.Element {
 
   return (
     <PageWrapper isProfile={false}>
-      {wishes && wishes.length > 0 ? (
-        <div>
-          <h2
-            style={{
-              width: "90%",
-              margin: "auto",
-              marginTop: "15px",
-              marginBottom: "15px",
-              fontFamily: "Gill Sans",
-              fontSize: "40px",
-            }}
-          >
-            Вопросы на модерацию:
-          </h2>
-          <TableContainer
-            component={Paper}
-            style={{ width: "90%", margin: "auto" }}
-          >
-            <Table sx={{ minWidth: 650 }} aria-label="caption table">
-              <caption>
-                <Button
-                  onClick={fetchData}
-                  variant="contained"
-                  endIcon={<SendIcon />}
-                >
-                  Проверено
-                </Button>
-              </caption>
-              <TableHead>
-                <TableRow>
-                  <TableCell
-                    style={{ fontSize: "30px", fontFamily: "Gill Sans" }}
-                  >
-                    Вопрос
-                  </TableCell>
-                  <TableCell
-                    style={{ fontSize: "30px", fontFamily: "Gill Sans" }}
-                    align="right"
-                  >
-                    Модерация
-                  </TableCell>
-                  <TableCell
-                    style={{ fontSize: "30px", fontFamily: "Gill Sans" }}
-                    align="right"
-                  >
-                    Удалить вопрос
-                  </TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {wishes &&
-                  wishes.map((el) => (
-                    <TableRow key={el.id}>
+      <Grid xs={12} sm={12}>
+        {wishes && wishes.length > 0 ? (
+          <div>
+            <h2
+              style={{
+                width: '90%',
+                margin: 'auto',
+                marginTop: '15px',
+                marginBottom: '15px',
+                fontFamily: 'Gill Sans',
+                fontSize: '4vw',
+              }}
+            >
+              Вопросы на модерацию:
+            </h2>
+            <Grid xs={12} sm={12}>
+              <TableContainer
+                component={Paper}
+                style={{ width: '90%', margin: 'auto' }}
+              >
+                <Table aria-label="caption table">
+                  <caption>
+                    <Button
+                      onClick={fetchData}
+                      variant="contained"
+                      endIcon={<SendIcon />}
+                    >
+                      Проверено
+                    </Button>
+                  </caption>
+                  <TableHead>
+                    <TableRow>
                       <TableCell
-                        style={{ fontSize: "20px", fontFamily: "Gill Sans" }}
-                        component="th"
-                        scope="row"
+                        padding="normal"
+                        style={{
+                          fontSize: ' 2vw 2hw',
+                          fontFamily: 'Gill Sans',
+                        }}
                       >
-                        {el.wish}
+                        Вопрос1
                       </TableCell>
-                      <TableCell align="right">
-                        {el.isPublic && !el.isModerated && (
-                          <span>
-                            <input
-                              onChange={changeStatus}
-                              type="checkbox"
-                              id={String(el.id)}
-                              name="scales"
-                            />
-                            <label>Выбрать</label>
-                          </span>
-                        )}
+                      <TableCell
+                        padding="normal"
+                        style={{
+                          fontSize: '2vw 2hw',
+                          fontFamily: 'Gill Sans',
+                        }}
+                        align="right"
+                      >
+                        Модерация
                       </TableCell>
-                      <TableCell align="right">
-                        <Button
-                          onClick={() => requestDelete(el.id)}
-                          variant="outlined"
-                          startIcon={<DeleteIcon />}
-                        >
-                          Удалить
-                        </Button>
+                      <TableCell
+                        padding="normal"
+                        style={{
+                          fontSize: '2vw 2hw',
+                          fontFamily: 'Gill Sans',
+                        }}
+                        align="right"
+                      >
+                        Удалить вопрос
                       </TableCell>
                     </TableRow>
-                  ))}
-              </TableBody>
-            </Table>
-          </TableContainer>{" "}
-        </div>
-      ) : (
-
-        <div>
-          <h2
-            style={{
-              width: "90%",
-              margin: "auto",
-              marginTop: "15px",
-              marginBottom: "15px",
-              fontFamily: "Gill Sans",
-              fontSize: "40px",
-            }}
-          >
-            Вопросов на модерацию нет.
-          </h2>
-        </div>
-      )}
+                  </TableHead>
+                  <TableBody>
+                    {wishes &&
+                      wishes.map((el) => (
+                        <TableRow key={el.id}>
+                          <TableCell
+                            style={{
+                              fontSize: '2vw',
+                              fontFamily: 'Gill Sans',
+                            }}
+                            component="th"
+                            scope="row"
+                          >
+                            {el.wish}
+                          </TableCell>
+                          <TableCell align="right">
+                            {el.isPublic && !el.isModerated && (
+                              <span>
+                                <input
+                                  onChange={changeStatus}
+                                  type="checkbox"
+                                  id={String(el.id)}
+                                  name="scales"
+                                />
+                                <label
+                                  style={{
+                                    fontSize: '2vw',
+                                  }}
+                                >
+                                  Выбрать
+                                </label>
+                              </span>
+                            )}
+                          </TableCell>
+                          <TableCell align="right">
+                            <Button
+                              onClick={() => requestDelete(el.id)}
+                              variant="outlined"
+                              startIcon={<DeleteIcon />}
+                              style={{
+                                fontSize: '2vw',
+                              }}
+                            >
+                              Удалить
+                            </Button>
+                          </TableCell>
+                        </TableRow>
+                      ))}
+                  </TableBody>
+                </Table>
+              </TableContainer>{' '}
+            </Grid>
+          </div>
+        ) : (
+          <div>
+            <h2
+              style={{
+                width: '90%',
+                margin: 'auto',
+                marginTop: '15px',
+                marginBottom: '15px',
+                fontFamily: 'Gill Sans',
+                fontSize: '40px',
+              }}
+            >
+              Вопросов на модерацию нет.
+            </h2>
+          </div>
+        )}
+      </Grid>
     </PageWrapper>
   );
 }

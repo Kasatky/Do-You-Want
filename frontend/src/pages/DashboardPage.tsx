@@ -6,7 +6,6 @@ import AddQuestion from '../AddQuestion/AddQuestion';
 
 import ModalPrompt from '../features/ModalPrompt';
 
-
 function DashboardPage() {
   const [open, setOpen] = useState(false);
   const [openPrompt, setOpenPrompt] = useState(false);
@@ -19,7 +18,6 @@ function DashboardPage() {
       setOpenPrompt(false);
     }, 1000);
   };
-
 
   return (
     <PageWrapper isProfile={false}>
@@ -55,11 +53,6 @@ function DashboardPage() {
           </Grid>
         </Grid>
 
-
-        <Button variant="contained" onClick={handleOpen}>
-          Добавить вопрос
-        </Button>
-
         <AddQuestion
           open={open}
           setOpen={setOpen}
@@ -67,7 +60,6 @@ function DashboardPage() {
         />
 
         <ModalPrompt open={openPrompt} />
-
       </Container>
     </PageWrapper>
   );
