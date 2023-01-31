@@ -14,7 +14,7 @@ const PORT = process.env.PORT ?? 4000;
 app.use('/api/wishes', wishRouter);
 app.use('/api/auth', authRouter);
 app.use('/api', cabinetAdminRouter);
-app.use('/', cabinetUserRouter);
+app.use('/api/cabinetUser', cabinetUserRouter);
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../frontend/build/index.html'));

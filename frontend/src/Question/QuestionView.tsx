@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
-import { Box, Paper, Button } from '@mui/material';
-import { useSelector } from 'react-redux';
-import { RootState, useAppDispatch } from '../store';
-import { getRandomWish } from '../wishSlice';
+import { Box, Paper, Button } from "@mui/material";
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { RootState, useAppDispatch } from "../store";
+import { addWishToUser, getRandomWish } from "../wishSlice";
 
 export default function QuestionView() {
   const dispatch = useAppDispatch();
@@ -17,13 +17,17 @@ export default function QuestionView() {
   const handleFalse = () => {
     dispatch(getRandomWish());
   };
-
-  const handleTrue = () => {
+  async function handleTrue() {
+    dispatch(addWishToUser(random?.id));
     dispatch(getRandomWish());
-  };
+  }
+
+  // async function a () {
+  //   dispatch(addWishToUser(random));
+  // }
 
   return (
-    <Box sx={{ height: '180px' }}>
+    <Box sx={{ height: "180px" }}>
       <Paper>
         <Box component="h1">
           {

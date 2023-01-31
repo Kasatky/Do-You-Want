@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import React, { useState } from "react";
 import {
   Typography,
   Box,
@@ -8,27 +7,26 @@ import {
   Checkbox,
   Button,
   Modal,
-} from '@mui/material';
-import Input from '@mui/joy/Input';
-import { useAppDispatch } from '../store';
-import { addWish } from '../wishSlice';
-import { WishState } from '../wishTypes';
+} from "@mui/material";
+import Input from "@mui/joy/Input";
+import { useAppDispatch } from "../store";
+import { addWish } from "../wishSlice";
 
 const style = {
-  position: 'absolute' as 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
+  position: "absolute" as "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
   width: 600,
-  bgcolor: 'background.paper',
-  border: '2px solid black',
-  borderRadius: '8px',
+  bgcolor: "background.paper",
+  border: "2px solid black",
+  borderRadius: "8px",
   boxShadow: 24,
   p: 4,
   m: 5,
-  display: 'flex',
-  flexDirection: 'column',
-  justifyContent: 'space-between',
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "space-between",
 };
 
 type Props = {
@@ -38,14 +36,14 @@ type Props = {
 };
 
 function AddQuestion({ open, setOpen, handleOpenPrompt }: Props) {
-  const [wish, setWish] = useState('');
+  const [wish, setWish] = useState("");
   const [status, setStatus] = useState(false);
 
   const dispatch = useAppDispatch();
 
   const handleClose = () => {
     setOpen(false);
-    setWish('');
+    setWish("");
   };
 
   const handleWishChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -58,10 +56,10 @@ function AddQuestion({ open, setOpen, handleOpenPrompt }: Props) {
 
   const addNewWish = () => {
     let userWish;
-    if (wish.includes('?')) {
+    if (wish.includes("?")) {
       userWish = wish;
     } else {
-      userWish = wish + '?';
+      userWish = wish + "?";
     }
     const newWish = { wish: userWish, isPublic: status };
     dispatch(addWish(newWish));
@@ -79,13 +77,13 @@ function AddQuestion({ open, setOpen, handleOpenPrompt }: Props) {
       <Box sx={style} component="form">
         <Card
           sx={{
-            margin: '30px 0px',
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
+            margin: "30px 0px",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
           }}
         >
-          <Typography sx={{ fontSize: '40px', fontWeight: '600' }}>
+          <Typography sx={{ fontSize: "40px", fontWeight: "600" }}>
             Хочешь
           </Typography>
           <Input
@@ -95,22 +93,22 @@ function AddQuestion({ open, setOpen, handleOpenPrompt }: Props) {
             variant="solid"
             size="lg"
             sx={{
-              backgroundColor: 'black',
-              width: '400px',
-              color: '#FFFAFA',
-              fontSize: '24px',
-              borderRadius: '15px',
+              backgroundColor: "black",
+              width: "400px",
+              color: "#FFFAFA",
+              fontSize: "24px",
+              borderRadius: "15px",
             }}
           />
-          <i style={{ fontSize: '40px' }} className="fa-solid fa-question"></i>
+          <i style={{ fontSize: "40px" }} className="fa-solid fa-question"></i>
         </Card>
 
         <Card
           sx={{
-            margin: '30px 0px',
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
+            margin: "30px 0px",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
           }}
         >
           <FormControlLabel
@@ -120,15 +118,15 @@ function AddQuestion({ open, setOpen, handleOpenPrompt }: Props) {
             }
             label="Добавить этот вопрос для всех"
             labelPlacement="top"
-            sx={{ textAlign: 'left no-wrap' }}
+            sx={{ textAlign: "left no-wrap" }}
           />
           <Button
             sx={{
-              bgcolor: 'black',
-              color: 'white',
-              width: '300px',
-              borderRadius: '15px',
-              height: '40px',
+              bgcolor: "black",
+              color: "white",
+              width: "300px",
+              borderRadius: "15px",
+              height: "40px",
             }}
             variant="contained"
             onClick={addNewWish}

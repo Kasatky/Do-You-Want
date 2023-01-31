@@ -1,31 +1,30 @@
-import { NewWish, Wish, WishId } from './wishTypes';
+import { NewWish, UserWish, Wish, WishId } from "./wishTypes";
 
 export const requestUnmoderatedWishes = async (): Promise<Wish[]> => {
-  const url = 'api/cabinetAdmin';
+  const url = "api/cabinetAdmin";
   const response = await fetch(url);
   const data = await response.json();
   return data.wishes;
 };
 
 export const requestDeleteWishes = async (id: WishId): Promise<WishId> => {
-  await fetch('api/delete', {
-    method: 'DELETE',
-    headers: { 'Content-Type': 'Application/json' },
+  await fetch("api/delete", {
+    method: "DELETE",
+    headers: { "Content-Type": "Application/json" },
     body: JSON.stringify({ id }),
   });
   return id;
 };
 
 export const requestChangeWish = async (arrayId: WishId[]) => {
-  await fetch('api/isModeration', {
-    method: 'PUT',
-    headers: { 'Content-Type': 'Application/json' },
+  await fetch("api/isModeration", {
+    method: "PUT",
+    headers: { "Content-Type": "Application/json" },
     body: JSON.stringify({
       arrayId,
     }),
   });
 };
-
 export const requestRandomWish = async (): Promise<Wish> => {
   const url = '/api/wishes/random';
   const response = await fetch(url);
@@ -48,6 +47,24 @@ export const requestNewWish = async (newWish: NewWish) => {
   }
 
   return data.loading;
+};
+
+export const requestUserWishes = async (): Promise<UserWish[]> => {
+  const url = "/api/cabinetUser";
+  const response = await fetch(url);
+  const acceptedWishes = await response.json();
+  return acceptedWishes;
+};
+
+export const requestAddWishToUser = async (id: any) => {
+  const url = "/api/cabinetUser/addWishToUser";
+  const response = await fetch(url, {
+    method: "POST",
+    headers: { "Content-Type": "Application/json" },
+    body: JSON.stringify({id}),
+  });
+  const data = await response.json();
+  return data;
 };
 
 export const requestStat = async () => {
