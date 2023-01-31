@@ -4,7 +4,6 @@ import PageWrapper from '../Wrappers/PageWrapper';
 import QuestionView from '../Question/QuestionView';
 import AddQuestion from '../AddQuestion/AddQuestion';
 
-
 function DashboardPage() {
   const [open, setOpen] = useState(false);
 
@@ -21,24 +20,27 @@ function DashboardPage() {
           alignItems="center"
           sx={{ height: '100%' }}
         >
-          <Grid item xs={1} container columnSpacing={4}>
-            <Grid item xs={8}>
+          <Grid item xs={1} container spacing={2}>
+            <Grid item xs={12} sm={8}>
               <Card sx={{ backgroundColor: '#ccc' }}>
-                <CardContent><QuestionView /></CardContent>
+                <CardContent>
+                  <Button variant="contained" onClick={handleOpen}>
+                    Добавить свой вопрос
+                  </Button>
+                  <QuestionView />
+                </CardContent>
               </Card>
             </Grid>
 
-            <Grid item xs={4}>
+            <Grid item xs={12} sm={4}>
               <Card sx={{ backgroundColor: '#ccc', height: '400px' }}>
-                <CardContent>Список вопросов, на которые пользователь ответил "да"</CardContent>
+                <CardContent>
+                  Список вопросов, на которые пользователь ответил "да"
+                </CardContent>
               </Card>
             </Grid>
           </Grid>
         </Grid>
-
-        <Button variant="contained" onClick={handleOpen}>
-          Добавить вопрос
-        </Button>
 
         <AddQuestion open={open} setOpen={setOpen} />
       </Container>
