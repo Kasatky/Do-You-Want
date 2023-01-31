@@ -2,7 +2,6 @@ import React from 'react';
 import { Container, Typography, Card, CardContent, Grid } from '@mui/material';
 import QuestionCarousel from '../features/QuestionCarousel';
 import PageWrapper from '../Wrappers/PageWrapper';
-import RandomGif from '../features/RandomGif';
 
 function LandingPage(): JSX.Element {
   return (
