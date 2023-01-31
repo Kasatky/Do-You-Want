@@ -8,6 +8,7 @@ const initialState: WishState = {
   error: undefined,
   loading: false,
   random: undefined,
+  stat: undefined,
 };
 
 // санки на кабинет админа
@@ -68,6 +69,11 @@ export const addWishToUser = createAsyncThunk(
   }
 );
 
+export const getStat = createAsyncThunk('wishes/stat', async () => {
+  const data = await wishApi.requestStat();
+  return data;
+});
+
 const wishSlice = createSlice({
   name: "wishes",
   initialState,
@@ -126,6 +132,12 @@ const wishSlice = createSlice({
        state.addedWishes.push(action.payload); 
       })
       .addCase(addWishToUser.rejected, (state, action) => {
+      state.error = action.error.message;
+      })
+      .addCase(getStat.fulfilled, (state, action) => {
+        state.stat = action.payload;
+      })
+      .addCase(getStat.rejected, (state, action) => {
         state.error = action.error.message;
       });
   },

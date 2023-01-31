@@ -6,6 +6,12 @@ export type Wish = {
   isModerated: boolean;
 };
 
+export type WishStat = {
+  doneWishesCount: number;
+  mostDoneWish: string;
+  averageTime: number;
+};
+
 export type NewWish = {
   wish: string;
   isPublic: boolean;
@@ -30,4 +36,5 @@ export type WishState = {
   error: string | undefined;
   loading: boolean;
   random: Wish | undefined;
+  stat: WishStat | undefined;
 };
