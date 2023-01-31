@@ -1,23 +1,11 @@
-import React, { useState, useMemo, useRef, useEffect } from 'react';
+import React, { useState, useMemo, useRef } from 'react';
 import TinderCard from 'react-tinder-card';
 import IconButton from '@mui/material/IconButton';
 import CheckIcon from '@mui/icons-material/Check';
 import DeleteIcon from '@mui/icons-material/Delete';
 import '../App/App.css';
-import { RootState, useAppDispatch } from '../store';
-import { useSelector } from 'react-redux';
-import { getRandomWish } from '../wishSlice';
 import { Box, Paper, Stack } from '@mui/material';
 import { styled } from '@mui/material/styles';
-
-type Wish = {
-  id: number;
-  wish: string;
-  userId: number;
-  isPublic: boolean;
-  isModerated: boolean;
-};
-type WishId = number;
 
 const wishMock = [
   { wish: 'Хочу прогуляться?' },
@@ -36,34 +24,16 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 function QuestionCarousel(): JSX.Element {
-  const dispatch = useAppDispatch();
-
-  const wish = [];
-  const store = useSelector((state: RootState) => state);
-  // const wishRandom = useSelector((state: RootState) => state.wish.list);
-  // const isAuth = useSelector((state: RootState) => state.user.isAuth);
-
-  // console.log(user);
-  useEffect(() => {
-    dispatch(getRandomWish());
-  }, [dispatch]);
-
-  if (store.user.isAuth) {
-    wish.push(...store.wish.list);
-  } else {
-    wish.push(...wishMock);
-  }
-  const [currentIndex, setCurrentIndex] = useState(wish.length - 1);
-  const [lastDirection, setLastDirection] = useState<string>();
+  const [currentIndex, setCurrentIndex] = useState(wishMock.length - 1);
   const [op, setOp] = useState(0.6);
   const currentIndexRef = useRef(currentIndex);
 
   const childRefs: any = useMemo(
     () =>
-      Array(wish.length)
+      Array(wishMock.length)
         .fill(0)
         .map((i) => React.createRef()),
-    []
+    [],
   );
 
   const updateCurrentIndex = (val: number) => {
@@ -71,40 +41,22 @@ function QuestionCarousel(): JSX.Element {
     currentIndexRef.current = val;
   };
 
-  const canGoBack = currentIndex < wish.length - 1;
-
   const canSwipe = currentIndex >= 0;
 
-  // set last direction and decrease current index
   const swiped = (direction: string, wishToDelete: string, index: number) => {
-    setLastDirection(direction);
     updateCurrentIndex(index - 1);
   };
 
   const outOfFrame = (wish: string, idx: number) => {
-    console.log(`${wish} (${idx}) left the screen!`, currentIndexRef.current);
-    // handle the case in which go back is pressed before card goes outOfFrame
     currentIndexRef.current >= idx && childRefs[idx].current.restoreCard();
-    // TODO: when quickly swipe and restore multiple times the same card,
-    // it happens multiple outOfFrame events are queued and the card disappear
-    // during latest swipes. Only the last outOfFrame event should be considered valid
   };
 
   const swipe = async (dir: any) => {
-    if (canSwipe && currentIndex < wish.length) {
-      await childRefs[currentIndex].current.swipe(dir); // Swipe the card!
+    if (canSwipe && currentIndex < wishMock.length) {
+      await childRefs[currentIndex].current.swipe(dir);
     }
     setOp((prevOp) => prevOp + 0.1);
   };
-
-  // increase current index and show card
-  //Для кнопки вернуть карточку
-  // const goBack = async () => {
-  //   if (!canGoBack) return;
-  //   const newIndex = currentIndex + 1;
-  //   updateCurrentIndex(newIndex);
-  //   await childRefs[newIndex].current.restoreCard();
-  // };
 
   return (
     <div>
@@ -126,7 +78,7 @@ function QuestionCarousel(): JSX.Element {
           display: 'flex',
         }}
       >
-        {wish.map((character, index) => (
+        {wishMock.map((character, index) => (
           <TinderCard
             ref={childRefs[index]}
             className="swipe"
@@ -140,7 +92,6 @@ function QuestionCarousel(): JSX.Element {
               alignItems="center"
               sx={{
                 top: `${index * 15}px`,
-                // left: `${index * 8}px`,
                 position: 'relative',
               }}
               className="card"
@@ -152,47 +103,16 @@ function QuestionCarousel(): JSX.Element {
           </TinderCard>
         ))}
       </Box>
-      <div
-        className="buttons"
-        // style={{
-        //   // top: `${index * 8}px`,
-        //   // left: `${index * 8}px`,
-        // position: 'relative',
-        // }}
-      >
-        <IconButton
-          onClick={() => swipe('left')}
-          // style={{ backgroundColor: !canSwipe && '#c3c4d3' }}
-        >
+      <div className="buttons">
+        <IconButton onClick={() => swipe('left')}>
           Да
           <CheckIcon />
         </IconButton>
-
-        {/* Swipe left! */}
-
-        {/* <button
-          // style={{ backgroundColor: !canGoBack && '#c3c4d3' }}
-          onClick={() => goBack()}
-        >
-          Undo swipe!
-        </button> */}
-        <IconButton
-          onClick={() => swipe('right')}
-          // style={{ backgroundColor: !canSwipe && '#c3c4d3' }}
-        >
+        <IconButton onClick={() => swipe('right')}>
           Нет
           <DeleteIcon />
         </IconButton>
       </div>
-      {/* {lastDirection ? (
-        <h2 key={lastDirection} className="infoText">
-          You swiped {lastDirection}
-        </h2>
-      ) : (
-        <h2 className="infoText">
-          Swipe a card or press a button to get Restore Card button visible!
-        </h2>
-      )} */}
     </div>
   );
 }

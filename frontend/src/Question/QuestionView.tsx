@@ -1,59 +1,47 @@
+
 import * as React from 'react';
-import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
-import Zoom from '@mui/material/Zoom';
-import { Button, Typography } from '@mui/material';
+import { useEffect } from 'react';
+import { Box, Paper, Button,Typography  } from '@mui/material';
 import { useSelector } from 'react-redux';
 import { RootState, useAppDispatch } from '../store';
 import { getRandomWish } from '../wishSlice';
 
 export default function QuestionView() {
-  const [checked, setChecked] = React.useState(true);
-  const [wishes, setWishes] = React.useState<string[]>([]);
-  let wish = '';
-  const wishList = useSelector((state: RootState) => state.wish.list);
-  if (wishList && wishList.length) {
-    wish = wishList[0].wish;
-  }
-
   const dispatch = useAppDispatch();
+  const random = useSelector((state: RootState) => state.wish.random);
 
-  React.useEffect(() => {
-    setChecked(true);
-    dispatch(getRandomWish());
-  }, [checked]);
+  useEffect(() => {
+    if (!random) {
+      dispatch(getRandomWish());
+    }
+  }, [dispatch, random]);
 
   const handleFalse = () => {
-    setChecked(false);
+    dispatch(getRandomWish());
   };
+
   const handleTrue = () => {
-    setWishes((prev) => [...prev, wish]);
-    setChecked(false);
+    dispatch(getRandomWish());
   };
-  const icon = (
-    <Paper sx={{ m: 1 }} elevation={4}>
-      <Typography>
-        {wish
-          ? wish
-          : 'Вау! Вы перебрали все вопросы, совсем скоро появятся новые или можете добавить свои, нажав на кнопку "Добавить вопрос"'}
-      </Typography>
-      <Box component="svg" sx={{ width: 500, height: 200 }}></Box>
-    </Paper>
-  );
 
   return (
-    <Box sx={{ height: 180 }}>
-      <div>{wishes}</div>
-
-      <Box sx={{ display: 'flex' }}>
-        <Zoom in={checked}>{icon}</Zoom>
-        <Button type="button" onClick={handleTrue}>
-          Yes
-        </Button>
-        <Button type="button" onClick={handleFalse}>
-          No
-        </Button>
-      </Box>
+    <Box sx={{ height: '180px' }}>
+      <Paper>
+        <Box component="h1">
+          {
+            random && `Хочешь ${random.wish}`
+            // то, что ниже можно добавить, когда будет реализовано, чтобы вопросы не повторялись
+            // а если надо, чтобы они повторялись, то и строка ниже не нужна
+            // : 'Вау! Вы перебрали все вопросы, совсем скоро появятся новые или можете добавить свои, нажав на кнопку "Добавить вопрос"'
+          }
+        </Box>
+      </Paper>
+      <Button variant="contained" onClick={handleTrue}>
+        Да
+      </Button>
+      <Button variant="contained" onClick={handleFalse}>
+        Нет
+      </Button>
     </Box>
   );
 }

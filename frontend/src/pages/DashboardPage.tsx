@@ -4,10 +4,22 @@ import PageWrapper from '../Wrappers/PageWrapper';
 import QuestionView from '../Question/QuestionView';
 import AddQuestion from '../AddQuestion/AddQuestion';
 
+import ModalPrompt from '../features/ModalPrompt';
+
+
 function DashboardPage() {
   const [open, setOpen] = useState(false);
+  const [openPrompt, setOpenPrompt] = useState(false);
 
   const handleOpen = () => setOpen(true);
+
+  const handleOpenPrompt = () => {
+    setOpenPrompt(true);
+    setTimeout(() => {
+      setOpenPrompt(false);
+    }, 1000);
+  };
+
 
   return (
     <PageWrapper isProfile={false}>
@@ -27,6 +39,7 @@ function DashboardPage() {
                   <Button variant="contained" onClick={handleOpen}>
                     Добавить свой вопрос
                   </Button>
+
                   <QuestionView />
                 </CardContent>
               </Card>
@@ -42,7 +55,19 @@ function DashboardPage() {
           </Grid>
         </Grid>
 
-        <AddQuestion open={open} setOpen={setOpen} />
+
+        <Button variant="contained" onClick={handleOpen}>
+          Добавить вопрос
+        </Button>
+
+        <AddQuestion
+          open={open}
+          setOpen={setOpen}
+          handleOpenPrompt={handleOpenPrompt}
+        />
+
+        <ModalPrompt open={openPrompt} />
+
       </Container>
     </PageWrapper>
   );

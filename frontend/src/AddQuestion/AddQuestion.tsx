@@ -32,15 +32,19 @@ const style = {
 type Props = {
   open: boolean;
   setOpen: (open: boolean) => void;
+  handleOpenPrompt: () => void;
 };
 
-function AddQuestion({ open, setOpen }: Props) {
+function AddQuestion({ open, setOpen, handleOpenPrompt }: Props) {
   const [wish, setWish] = useState('');
   const [status, setStatus] = useState(false);
 
   const dispatch = useAppDispatch();
 
-  const handleClose = () => setOpen(false);
+  const handleClose = () => {
+    setOpen(false);
+    setWish('');
+  };
 
   const handleWishChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setWish(event.target.value);
@@ -51,9 +55,16 @@ function AddQuestion({ open, setOpen }: Props) {
   };
 
   const addNewWish = () => {
-    const newWish = { wish: wish + '?', isPublic: status };
+    let userWish;
+    if (wish.includes('?')) {
+      userWish = wish;
+    } else {
+      userWish = wish + '?';
+    }
+    const newWish = { wish: userWish, isPublic: status };
     dispatch(addWish(newWish));
     handleClose();
+    handleOpenPrompt();
   };
 
   return (
