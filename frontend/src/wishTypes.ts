@@ -11,9 +11,10 @@ export type NewWish = {
   isPublic: boolean;
 };
 
-export type WishId = number
+export type WishId = number;
 
 export type WishState = {
   list: Wish[];
   error: string | undefined;
+  random: Wish | undefined;
 };

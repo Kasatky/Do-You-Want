@@ -5,6 +5,7 @@ import * as wishApi from './wishApi';
 const initialState: WishState = {
   list: [],
   error: undefined,
+  random: undefined,
 };
 
 export const getUnmoderatedWishes = createAsyncThunk(
@@ -16,24 +17,24 @@ export const getUnmoderatedWishes = createAsyncThunk(
 );
 
 export const deleteWish = createAsyncThunk(
-  "wishes/delete",
+  'wishes/delete',
   async (id: WishId) => {
     await wishApi.requestDeleteWishes(id);
     return id;
-  }
+  },
 );
 
 export const changeWishes = createAsyncThunk(
-  "wishes/change",
+  'wishes/change',
   async (arrayId: WishId[]) => {
     await wishApi.requestChangeWish(arrayId);
     return arrayId;
-  }
+  },
 );
 
 export const getRandomWish = createAsyncThunk('wishes/random', async () => {
-  const data = await wishApi.requestRandomdWish();
-  return data;
+  const wish = await wishApi.requestRandomWish();
+  return wish;
 });
 
 export const addWish = createAsyncThunk(
@@ -74,7 +75,7 @@ const wishSlice = createSlice({
       })
       .addCase(getRandomWish.fulfilled, (state, action) => {
         const wish = action.payload;
-        state.list = wish;
+        state.random = wish;
       })
       .addCase(getRandomWish.rejected, (state, action) => {
         state.error = action.error.message;
