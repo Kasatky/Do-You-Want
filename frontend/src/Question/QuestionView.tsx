@@ -1,8 +1,11 @@
-import { Box, Paper, Button } from "@mui/material";
-import { useSelector } from "react-redux";
-import { useEffect } from "react";
-import { RootState, useAppDispatch } from "../store";
+import * as React from 'react';
+import { useEffect } from 'react';
+import { Box, Paper, Button,Typography  } from '@mui/material';
+import { useSelector } from 'react-redux';
+import { RootState, useAppDispatch } from '../store';
+
 import { addWishToUser, getRandomWish } from "../wishSlice";
+
 
 export default function QuestionView() {
   const dispatch = useAppDispatch();

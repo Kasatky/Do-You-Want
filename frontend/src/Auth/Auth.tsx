@@ -7,10 +7,10 @@ import { useSelector } from 'react-redux';
 
 const style = {
   position: 'absolute' as 'absolute',
-  top: '50%',
+  top: '40%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: 400,
+  minWidth: 300,
   bgcolor: 'background.paper',
   border: '2px solid #1525d8',
   boxShadow: 24,
@@ -60,13 +60,13 @@ function Auth({ open, setOpen }: Props) {
   };
 
   const handleEmailChange = (
-    event: React.ChangeEvent<HTMLInputElement>,
+    event: React.ChangeEvent<HTMLInputElement>
   ): void => {
     setUserEmail(event.target.value);
   };
 
   const handlePasswordChange = (
-    event: React.ChangeEvent<HTMLInputElement>,
+    event: React.ChangeEvent<HTMLInputElement>
   ): void => {
     setUserPassword(event.target.value);
   };
@@ -131,7 +131,14 @@ function Auth({ open, setOpen }: Props) {
               Зарегистрироваться
             </Button>
           )}
-          <Typography sx={{ mt: 2, display: 'flex', alignItems: 'center' }}>
+          <Typography
+            sx={{
+              mt: 2,
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+            }}
+          >
             {authType === 'login' ? (
               <>
                 {'Впервые у нас? '}

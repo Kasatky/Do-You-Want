@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import { Container, Card, CardContent, Button, Grid } from "@mui/material";
 import PageWrapper from "../Wrappers/PageWrapper";
@@ -7,6 +8,7 @@ import ModalPrompt from "../features/ModalPrompt";
 import { RootState, useAppDispatch } from "../store";
 import { useSelector } from "react-redux";
 import { addUserWishes } from "../wishSlice";
+
 
 function DashboardPage() {
   const [open, setOpen] = useState(false);
@@ -39,17 +41,25 @@ function DashboardPage() {
           alignItems="center"
           sx={{ height: "100%" }}
         >
-          <Grid item xs={1} container columnSpacing={4}>
-            <Grid item xs={8}>
-              <Card sx={{ backgroundColor: "#ccc" }}>
+
+          <Grid item xs={1} container spacing={2}>
+            <Grid item xs={12} sm={8}>
+              <Card sx={{ backgroundColor: '#ccc' }}>
+
                 <CardContent>
+                  <Button variant="contained" onClick={handleOpen}>
+                    Добавить свой вопрос
+                  </Button>
+
                   <QuestionView />
                 </CardContent>
               </Card>
             </Grid>
 
-            <Grid item xs={4}>
-              <Card sx={{ backgroundColor: "#ccc", height: "400px" }}>
+
+            <Grid item xs={12} sm={4}>
+              <Card sx={{ backgroundColor: '#ccc', height: '400px' }}>
+
                 <CardContent>
                   Список вопросов, на которые вы ответили "да":
                   <div>
@@ -62,10 +72,6 @@ function DashboardPage() {
             </Grid>
           </Grid>
         </Grid>
-
-        <Button variant="contained" onClick={handleOpen}>
-          Добавить вопрос
-        </Button>
 
         <AddQuestion
           open={open}
