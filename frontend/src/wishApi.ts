@@ -25,6 +25,7 @@ export const requestChangeWish = async (arrayId: WishId[]) => {
     }),
   });
 };
+
 export const requestRandomWish = async (): Promise<Wish> => {
   const url = '/api/wishes/random';
   const response = await fetch(url);
@@ -34,9 +35,17 @@ export const requestRandomWish = async (): Promise<Wish> => {
 
 export const requestNewWish = async (newWish: NewWish) => {
   const url = '/api/wishes/new';
-  await fetch(url, {
+  const response = await fetch(url, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(newWish),
   });
+
+  const data = await response.json();
+
+  if (!response.ok) {
+    throw new Error(data.error);
+  }
+
+  return data.loading;
 };

@@ -5,6 +5,7 @@ import * as wishApi from './wishApi';
 const initialState: WishState = {
   list: [],
   error: undefined,
+  loading: false,
   random: undefined,
 };
 
@@ -40,7 +41,8 @@ export const getRandomWish = createAsyncThunk('wishes/random', async () => {
 export const addWish = createAsyncThunk(
   'wishes/new',
   async (newWish: NewWish) => {
-    await wishApi.requestNewWish(newWish);
+    const { loading } = await wishApi.requestNewWish(newWish);
+    return loading;
   },
 );
 
@@ -80,8 +82,16 @@ const wishSlice = createSlice({
       .addCase(getRandomWish.rejected, (state, action) => {
         state.error = action.error.message;
       })
+      .addCase(addWish.pending, (state) => {
+        state.loading = true;
+        state.error = undefined;
+      })
       .addCase(addWish.rejected, (state, action) => {
+        state.loading = false;
         state.error = action.error.message;
+      })
+      .addCase(addWish.fulfilled, (state, action) => {
+        state.loading = action.payload;
       });
   },
 });

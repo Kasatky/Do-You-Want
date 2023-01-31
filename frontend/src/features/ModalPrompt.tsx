@@ -1,5 +1,7 @@
 import React from 'react';
 import { Modal, Box, Typography } from '@mui/material';
+import { useSelector } from 'react-redux';
+import { RootState } from '../store';
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -18,20 +20,59 @@ type Props = {
 };
 
 function ModalPrompt({ open }: Props): JSX.Element {
-  return (
+  const wish = useSelector((state: RootState) => state.wish);
+  const { loading, error } = wish;
+
+  const modal = (
     <Modal
       open={open}
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
     >
       <Box sx={style}>
-        <Typography
-          sx={{ textAlign: 'center', fontSize: '26px', color: 'green' }}
-        >
-          Вопрос добавлен
-        </Typography>
+        {error ? (
+          <Typography
+            sx={{ textAlign: 'center', fontSize: '26px', color: 'red' }}
+          >
+            Такой вопрос уже существует!
+          </Typography>
+        ) : (
+          <Typography
+            sx={{ textAlign: 'center', fontSize: '26px', color: 'green' }}
+          >
+            Вопрос добавлен
+          </Typography>
+        )}
       </Box>
     </Modal>
+  );
+
+  return (
+    <>
+      {!loading && (
+        <Modal
+          open={open}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+          <Box sx={style}>
+            {error ? (
+              <Typography
+                sx={{ textAlign: 'center', fontSize: '26px', color: 'red' }}
+              >
+                Такой вопрос уже существует!
+              </Typography>
+            ) : (
+              <Typography
+                sx={{ textAlign: 'center', fontSize: '26px', color: 'green' }}
+              >
+                Вопрос добавлен
+              </Typography>
+            )}
+          </Box>
+        </Modal>
+      )}
+    </>
   );
 }
 

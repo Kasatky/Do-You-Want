@@ -58,11 +58,13 @@ wishRouter.post('/new', async (req, res) => {
     });
 
     newWish.save();
-    return;
+    res.json({ loading: false });
   } catch (error) {
     console.log(`Ошибка при добавлении вопроса: ${error.message}`);
     res.status(500).json({ error: 'Не удалось добавить новый вопрос' });
   }
 });
+
+// wishRouter.get('/stat', (req, res) => {});
 
 module.exports = wishRouter;
