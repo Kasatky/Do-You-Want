@@ -32,7 +32,6 @@ wishRouter.get('/random', async (req, res) => {
   } catch (error) {
     console.log(`Ошибка сервера: ${error.message}`);
     res.status(500).json({ error: 'Ошибка сервера' });
-    return;
   }
 });
 
@@ -55,11 +54,13 @@ wishRouter.post('/new', async (req, res) => {
     });
 
     newWish.save();
-    return;
+    res.json({ loading: false });
   } catch (error) {
     console.log(`Ошибка при добавлении вопроса: ${error.message}`);
     res.status(500).json({ error: 'Не удалось добавить новый вопрос' });
   }
 });
+
+// wishRouter.get('/stat', (req, res) => {});
 
 module.exports = wishRouter;

@@ -5,6 +5,7 @@ import * as wishApi from './wishApi';
 const initialState: WishState = {
   list: [],
   error: undefined,
+  loading: false,
 };
 
 export const getUnmoderatedWishes = createAsyncThunk(
@@ -16,19 +17,19 @@ export const getUnmoderatedWishes = createAsyncThunk(
 );
 
 export const deleteWish = createAsyncThunk(
-  "wishes/delete",
+  'wishes/delete',
   async (id: WishId) => {
     await wishApi.requestDeleteWishes(id);
     return id;
-  }
+  },
 );
 
 export const changeWishes = createAsyncThunk(
-  "wishes/change",
+  'wishes/change',
   async (arrayId: WishId[]) => {
     await wishApi.requestChangeWish(arrayId);
     return arrayId;
-  }
+  },
 );
 
 export const getRandomWish = createAsyncThunk('wishes/random', async () => {
@@ -39,7 +40,8 @@ export const getRandomWish = createAsyncThunk('wishes/random', async () => {
 export const addWish = createAsyncThunk(
   'wishes/new',
   async (newWish: NewWish) => {
-    await wishApi.requestNewWish(newWish);
+    const { loading } = await wishApi.requestNewWish(newWish);
+    return loading;
   },
 );
 
@@ -79,8 +81,16 @@ const wishSlice = createSlice({
       .addCase(getRandomWish.rejected, (state, action) => {
         state.error = action.error.message;
       })
+      .addCase(addWish.pending, (state) => {
+        state.loading = true;
+        state.error = undefined;
+      })
       .addCase(addWish.rejected, (state, action) => {
+        state.loading = false;
         state.error = action.error.message;
+      })
+      .addCase(addWish.fulfilled, (state, action) => {
+        state.loading = action.payload;
       });
   },
 });

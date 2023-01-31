@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import {
   Typography,
   Box,
@@ -11,6 +12,7 @@ import {
 import Input from '@mui/joy/Input';
 import { useAppDispatch } from '../store';
 import { addWish } from '../wishSlice';
+import { WishState } from '../wishTypes';
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -43,6 +45,7 @@ function AddQuestion({ open, setOpen, handleOpenPrompt }: Props) {
 
   const handleClose = () => {
     setOpen(false);
+    setWish('');
   };
 
   const handleWishChange = (event: React.ChangeEvent<HTMLInputElement>) => {
