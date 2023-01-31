@@ -1,14 +1,14 @@
-import React, { useState, useMemo, useRef, useEffect } from 'react';
-import TinderCard from 'react-tinder-card';
-import IconButton from '@mui/material/IconButton';
-import CheckIcon from '@mui/icons-material/Check';
-import DeleteIcon from '@mui/icons-material/Delete';
-import '../App/App.css';
-import { RootState, useAppDispatch } from '../store';
-import { useSelector } from 'react-redux';
-import { getRandomWish } from '../wishSlice';
-import { Box, Paper, Stack } from '@mui/material';
-import { styled } from '@mui/material/styles';
+import React, { useState, useMemo, useRef, useEffect } from "react";
+import TinderCard from "react-tinder-card";
+import IconButton from "@mui/material/IconButton";
+import CheckIcon from "@mui/icons-material/Check";
+import DeleteIcon from "@mui/icons-material/Delete";
+import "../App/App.css";
+import { RootState, useAppDispatch } from "../store";
+import { useSelector } from "react-redux";
+import { getRandomWish } from "../CabinetAdminPage/wishSlice";
+import { Box, Paper, Stack } from "@mui/material";
+import { styled } from "@mui/material/styles";
 
 type Wish = {
   id: number;
@@ -20,18 +20,18 @@ type Wish = {
 type WishId = number;
 
 const wishMock = [
-  { wish: 'Хочу прогуляться?' },
-  { wish: 'Хочу нарисовать гору?' },
-  { wish: 'Хочу приготовить пирог?' },
-  { wish: 'Хочу сходить в кино?' },
-  { wish: 'Хочу  кофе?' },
+  { wish: "Хочу прогуляться?" },
+  { wish: "Хочу нарисовать гору?" },
+  { wish: "Хочу приготовить пирог?" },
+  { wish: "Хочу сходить в кино?" },
+  { wish: "Хочу  кофе?" },
 ];
 
 const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#d7e8e4',
+  backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#d7e8e4",
   ...theme.typography.body2,
   padding: theme.spacing(1),
-  textAlign: 'center',
+  textAlign: "center",
   color: theme.palette.text.secondary,
 }));
 
@@ -120,10 +120,10 @@ function QuestionCarousel(): JSX.Element {
       <Box
         className="cardContainer"
         sx={{
-          height: '200px',
-          position: 'relative',
-          justifyContent: 'center',
-          display: 'flex',
+          height: "200px",
+          position: "relative",
+          justifyContent: "center",
+          display: "flex",
         }}
       >
         {wish.map((character, index) => (
@@ -141,7 +141,7 @@ function QuestionCarousel(): JSX.Element {
               sx={{
                 top: `${index * 15}px`,
                 // left: `${index * 8}px`,
-                position: 'relative',
+                position: "relative",
               }}
               className="card"
             >
@@ -161,7 +161,7 @@ function QuestionCarousel(): JSX.Element {
         // }}
       >
         <IconButton
-          onClick={() => swipe('left')}
+          onClick={() => swipe("left")}
           // style={{ backgroundColor: !canSwipe && '#c3c4d3' }}
         >
           Да
@@ -177,7 +177,7 @@ function QuestionCarousel(): JSX.Element {
           Undo swipe!
         </button> */}
         <IconButton
-          onClick={() => swipe('right')}
+          onClick={() => swipe("right")}
           // style={{ backgroundColor: !canSwipe && '#c3c4d3' }}
         >
           Нет

@@ -13,7 +13,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import SendIcon from "@mui/icons-material/Send";
 import { useSelector } from "react-redux";
 import { RootState, useAppDispatch } from "../store";
-import { changeWishes, deleteWish, getUnmoderatedWishes } from "../wishSlice";
+import { changeWishes, deleteWish, getUnmoderatedWishes } from "./wishSlice";
 import { WishId } from "../wishTypes";
 import PageWrapper from "../Wrappers/PageWrapper";
 
@@ -131,7 +131,6 @@ function CabinetAdmin(): JSX.Element {
           </TableContainer>{" "}
         </div>
       ) : (
-
         <div>
           <h2
             style={{

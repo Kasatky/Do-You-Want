@@ -1,18 +1,22 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { WishId, NewWish, WishState } from './wishTypes';
-import * as wishApi from './wishApi';
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { WishId, NewWish, WishState, UserWish } from "../wishTypes";
+import * as wishApi from "./wishApi";
 
 const initialState: WishState = {
   list: [],
+  addedWishes: [],
   error: undefined,
+  random: undefined,
 };
 
+// санки на кабинет админа
+
 export const getUnmoderatedWishes = createAsyncThunk(
-  'wishes/unmoderated',
+  "wishes/unmoderated",
   async () => {
     const data = await wishApi.requestUnmoderatedWishes();
     return data;
-  },
+  }
 );
 
 export const deleteWish = createAsyncThunk(
@@ -31,20 +35,38 @@ export const changeWishes = createAsyncThunk(
   }
 );
 
-export const getRandomWish = createAsyncThunk('wishes/random', async () => {
+// санки на получение рандомного вопроса
+
+export const getRandomWish = createAsyncThunk("wishes/random", async () => {
   const data = await wishApi.requestRandomdWish();
   return data;
 });
 
+// санки на добавление вопроса в кабинете пользователя
+
 export const addWish = createAsyncThunk(
-  'wishes/new',
+  "wishes/new",
   async (newWish: NewWish) => {
     await wishApi.requestNewWish(newWish);
-  },
+  }
 );
 
+// санки на кабинет пользователя
+
+export const addUserWishes = createAsyncThunk("wishes/userWishes", async () => {
+  const data = await wishApi.requestUserWishes();
+  return data;
+});
+
+// санки добавления вопроса к пользователю
+
+export const addWishToUser = createAsyncThunk("wishes/addWishToUser", async (id) => {
+  const data = await wishApi.requestAddWishToUser(id);
+  return data;
+});
+
 const wishSlice = createSlice({
-  name: 'wishes',
+  name: "wishes",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
@@ -80,6 +102,20 @@ const wishSlice = createSlice({
         state.error = action.error.message;
       })
       .addCase(addWish.rejected, (state, action) => {
+        state.error = action.error.message;
+      })
+      .addCase(addUserWishes.fulfilled, (state, action) => {
+        const userWishes = action.payload;
+        state.addedWishes = userWishes;
+      })
+      .addCase(addUserWishes.rejected, (state, action) => {
+        state.error = action.error.message;
+      })
+      .addCase(addWishToUser.fulfilled, (state, action) => {
+        const userWishes = action.payload;
+        state.addedWishes.push(userWishes);
+      })
+      .addCase(addWishToUser.rejected, (state, action) => {
         state.error = action.error.message;
       });
   },
