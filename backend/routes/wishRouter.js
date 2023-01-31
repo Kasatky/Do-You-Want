@@ -90,6 +90,13 @@ wishRouter.get('/stat', async (req, res) => {
     res.status(500).json({ error: 'Не удалось получить данные из БД' });
   }
 
+  console.log(allDoneWishes);
+
+  if (!allDoneWishes.length) {
+    res.status(404);
+    return;
+  }
+
   let mostDoneWish;
 
   try {
