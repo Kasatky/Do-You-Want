@@ -58,11 +58,23 @@ function Header({ isAdmin, isAuth, userName }: Props): JSX.Element {
             sx={{
               display: 'flex',
               justifyContent: 'space-between',
-              paddingTop: '20px',
-              paddingBottom: '20px',
+              flexDirection: 'row',
+              alignItems: 'center',
             }}
           >
             <Logo />
+            <Box id="clouds">
+              <div className="Cloud Foreground" />
+              <div className="Cloud Foreground" />
+              <div className="Cloud Foreground" />
+              <div className="Cloud Foreground" />
+              <div className="Cloud Foreground" />
+              <div className="Cloud Foreground" />
+              <div className="Cloud Foreground" />
+              <div className="Cloud Foreground" />
+              <div className="Cloud Foreground" />
+              <div className="Cloud Foreground" />
+            </Box>
 
             {!isAuth ? (
               <Button
@@ -71,7 +83,7 @@ function Header({ isAdmin, isAuth, userName }: Props): JSX.Element {
                 sx={{
                   width: '80px',
                   height: '80px',
-
+                  zIndex: 7,
                   borderRadius: '50%',
                 }}
               >
@@ -82,7 +94,7 @@ function Header({ isAdmin, isAuth, userName }: Props): JSX.Element {
                 <IconButton
                   onClick={navigateToProfile}
                   size="small"
-                  sx={{ ml: 2 }}
+                  sx={{ ml: 2, zIndex: 7 }}
                   aria-controls={open ? 'account-menu' : undefined}
                   aria-haspopup="true"
                   aria-expanded={open ? 'true' : undefined}
@@ -96,8 +108,9 @@ function Header({ isAdmin, isAuth, userName }: Props): JSX.Element {
           </Container>
           <Auth open={open} setOpen={setOpen} />
         </AppBar>
-      )}
-    </Box>
+      )
+      }
+    </Box >
   );
 }
 

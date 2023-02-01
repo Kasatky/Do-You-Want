@@ -28,10 +28,6 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-import { UserWish } from '../wishTypes';
-import AddedWish from '../features/AddedWish';
-
-
 function DashboardPage() {
   const [open, setOpen] = useState(false);
   const [openPrompt, setOpenPrompt] = useState(false);

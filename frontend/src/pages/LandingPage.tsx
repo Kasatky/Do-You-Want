@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Typography, Card, CardContent, Grid } from '@mui/material';
+import { Container, Card, CardContent, Grid } from '@mui/material';
 import QuestionCarousel from '../features/QuestionCarousel';
 import PageWrapper from '../Wrappers/PageWrapper';
 
@@ -17,7 +17,7 @@ function LandingPage(): JSX.Element {
         >
           <Grid item xs={1} container spacing={2}>
             <Grid item xs={12} sm={8}>
-              <Card sx={{ backgroundColor: '#d3eff7' }}>
+              <Card sx={{ backgroundColor: '#03b8f00f' }}>
                 <CardContent>
                   <QuestionCarousel />
                 </CardContent>
@@ -27,13 +27,15 @@ function LandingPage(): JSX.Element {
             <Grid item xs={12} sm={4}>
               <Card
                 sx={{
-                  backgroundColor: '#ccc',
-
-                  justifyContent: 'center',
-
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center',
+                  backgroundColor: '#03b8f00f',
+                  fontFamily: 'monospace',
+                  fontSize: '4vh',
+                  height: '55vh',
+                  width: '30vw',
+                  // justifyContent: 'center',
+                  // display: 'flex',
+                  // flexDirection: 'column',
+                  // alignItems: 'center',
                 }}
               >
 
@@ -46,7 +48,7 @@ function LandingPage(): JSX.Element {
             </Grid>
           </Grid>
 
-          <Grid item xs={1}>
+          {/* <Grid item xs={1}>
             <Card sx={{ backgroundColor: '#ccc' }}>
               <CardContent>
                 <Typography
@@ -70,7 +72,7 @@ function LandingPage(): JSX.Element {
                 </Typography>
               </CardContent>
             </Card>
-          </Grid>
+          </Grid> */}
         </Grid>
       </Container>
     </PageWrapper>

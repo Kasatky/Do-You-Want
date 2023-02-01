@@ -1,10 +1,9 @@
 import { Typography } from '@mui/material';
-import React from 'react';
 import { Link } from 'react-router-dom';
 
 function Logo(): JSX.Element {
   return (
-    <Typography component="div">
+    <Typography component="div" sx={{ zIndex: 7 }} >
       <Link to="/">
         <img width="300px" src="img/logo.png" alt="logo" />
       </Link>
