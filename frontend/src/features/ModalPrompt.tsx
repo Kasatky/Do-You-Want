@@ -23,30 +23,6 @@ function ModalPrompt({ open }: Props): JSX.Element {
   const wish = useSelector((state: RootState) => state.wish);
   const { loading, error } = wish;
 
-  const modal = (
-    <Modal
-      open={open}
-      aria-labelledby="modal-modal-title"
-      aria-describedby="modal-modal-description"
-    >
-      <Box sx={style}>
-        {error ? (
-          <Typography
-            sx={{ textAlign: 'center', fontSize: '26px', color: 'red' }}
-          >
-            Такой вопрос уже существует!
-          </Typography>
-        ) : (
-          <Typography
-            sx={{ textAlign: 'center', fontSize: '26px', color: 'green' }}
-          >
-            Вопрос добавлен
-          </Typography>
-        )}
-      </Box>
-    </Modal>
-  );
-
   return (
     <>
       {!loading && (
