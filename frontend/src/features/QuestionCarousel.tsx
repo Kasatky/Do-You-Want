@@ -10,12 +10,14 @@ import Auth from '../Auth/Auth';
 
 import '../index.css';
 
+declare type Direction = 'left' | 'right' | 'up' | 'down';
+
 const wishMock = [
-  { id: 1, wish: 'Хочу прогуляться?' },
-  { id: 2, wish: 'Хочу нарисовать гору?' },
-  { id: 3, wish: 'Хочу приготовить пирог?' },
-  { id: 4, wish: 'Хочу сходить в кино?' },
-  { id: 5, wish: 'Хочу  кофе?' },
+  { id: 1, wish: 'Хочешь прогуляться?' },
+  { id: 2, wish: 'Хочешь нарисовать гору?' },
+  { id: 3, wish: 'Хочешь приготовить пирог?' },
+  { id: 4, wish: 'Хочешь сходить в кино?' },
+  { id: 5, wish: 'Хочешь кофе?' },
 ];
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -30,18 +32,14 @@ const Item = styled(Paper)(({ theme }) => ({
 
 function QuestionCarousel(): JSX.Element {
   const [currentIndex, setCurrentIndex] = useState(wishMock.length - 1);
-  const [op, setOp] = useState(0.6);
-  const currentIndexRef = useRef(currentIndex);
+  const [opacity, setOpacity] = useState(0.6);
+  const [top, setTop] = useState(0);
+  const [width, setWidth] = useState(35);
+  const [fontSize, setFontSize] = useState(40);
   const [open, setOpen] = useState(false);
-  // const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  // const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const currentIndexRef = useRef(currentIndex);
 
   const handleOpen = () => setOpen(true);
-  // const handleClose = () => setOpen(false);
-
-  // const handleClose = () => {
-  //   setAnchorEl(null);
-  // };
 
   const childRefs: any = useMemo(
     () =>
@@ -58,18 +56,26 @@ function QuestionCarousel(): JSX.Element {
 
   const canSwipe = currentIndex >= 0;
 
-  const swiped = (direction: string, wishToDelete: string, index: number) => {
+  const swiped = (
+    direction: Direction,
+    wishToDelete: string,
+    index: number
+  ) => {
+    // Количество вызовов для последующих вопросов растёт (1 раз, 2 раза, 4 раза, 8 раз, 16 раз).
+    // Чтобы игнорировать лишние вызовы, пока подаём предыдущее значение БЕЗ callback-функции.
+    // FIXME найти и убрать причину лишних вызовов
     updateCurrentIndex(index - 1);
-    setOp((prevOp) => prevOp + 0.1);
-    // console.log('swiped');
+    setOpacity(opacity + 0.1);
+    setTop(top + 10);
+    setWidth(width + 3);
+    setFontSize(fontSize + 1);
   };
 
   const outOfFrame = (wish: string, idx: number) => {
     currentIndexRef.current >= idx && childRefs[idx].current.restoreCard();
-    // console.log('outOfFrame');
   };
 
-  const swipe = async (dir: any) => {
+  const swipe = async (dir: Direction) => {
     if (canSwipe && currentIndex < wishMock.length) {
       await childRefs[currentIndex].current.swipe(dir);
     }
@@ -88,41 +94,40 @@ function QuestionCarousel(): JSX.Element {
         }}
       >
         {wishMock.map((character, index) => (
-          <>
-            {currentIndex > -1 && (
-              <TinderCard
-                ref={childRefs[index]}
-                className="swipe"
-                key={character.id}
-                onSwipe={(dir: any) => swiped(dir, character.wish, index)}
-                onCardLeftScreen={() => outOfFrame(character.wish, index)}
+          <TinderCard
+            key={character.id}
+            ref={childRefs[index]}
+            className="swipe"
+            onSwipe={(dir: Direction) => swiped(dir, character.wish, index)}
+            onCardLeftScreen={(index) =>
+              outOfFrame(character.wish, Number(index))
+            }
+          >
+            <Stack
+              spacing={2}
+              justifyContent="center"
+              alignItems="center"
+              sx={{
+                top: `${index * 15}px`,
+                position: 'relative',
+              }}
+              className="card"
+            >
+              <Item
+                sx={{
+                  opacity: `${0.1 * index + opacity}`,
+                  userSelect: 'none',
+                  width: `${index * 3 + width}vw`,
+                  fontSize: `${index + fontSize}px`,
+                  transform: `translateY(${top}px)`,
+                  transition: 'all .5s',
+                  color: `rgba(0, 0, 0, ${0.1 * index + opacity})`,
+                }}
               >
-                <Stack
-                  key={character.id}
-                  spacing={2}
-                  justifyContent="center"
-                  alignItems="center"
-                  sx={{
-                    top: `${index * 15}px`,
-                    position: 'relative',
-                  }}
-                  className="card"
-                >
-                  <Item
-                    sx={{
-                      opacity: `${0.1 * index + op}`,
-                      userSelect: 'none',
-                      fontSize: '1.5em',
-                      padding: '0.8em',
-                    }}
-                    key={character.id}
-                  >
-                    {character.wish}
-                  </Item>
-                </Stack>
-              </TinderCard>
-            )}
-          </>
+                {character.wish}
+              </Item>
+            </Stack>
+          </TinderCard>
         ))}{' '}
         {currentIndex === -1 && (
           <>
@@ -136,12 +141,12 @@ function QuestionCarousel(): JSX.Element {
 
       <div className="buttons">
         <IconButton onClick={() => swipe('left')}>
-          Да
-          <CheckIcon />
-        </IconButton>
-        <IconButton onClick={() => swipe('right')}>
           Нет
           <DeleteIcon />
+        </IconButton>
+        <IconButton onClick={() => swipe('right')}>
+          Да
+          <CheckIcon />
         </IconButton>
       </div>
     </div>

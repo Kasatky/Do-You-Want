@@ -5,6 +5,7 @@ import PageWrapper from '../Wrappers/PageWrapper';
 import { RootState, useAppDispatch } from '../store';
 import { getStat } from '../wishSlice';
 import { logout } from '../Auth/userSlice';
+import Diary from '../features/Diary';
 
 function ProfilePage(): JSX.Element {
   const stat = useSelector((state: RootState) => state.wish.stat);
@@ -24,7 +25,7 @@ function ProfilePage(): JSX.Element {
         <Typography>Статистика</Typography>
         {stat ? (
           <div>
-            <p>Создано желаний</p>
+            <p>Создано желаний:</p>
             <p>{stat?.createdWishes}</p>
             <p>Всего желаний исполнено:</p>
             <p>{stat?.doneWishesCount}</p>
@@ -36,6 +37,8 @@ function ProfilePage(): JSX.Element {
         ) : (
           <div>Выполненных желаний пока нет</div>
         )}
+
+        <Diary />
         <Button
           onClick={handleLogout}
           variant="contained"

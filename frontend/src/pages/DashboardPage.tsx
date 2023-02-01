@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-
 import {
   Container,
   Card,
@@ -9,7 +8,6 @@ import {
   Stack,
   Paper,
 } from '@mui/material';
-
 import PageWrapper from '../Wrappers/PageWrapper';
 import QuestionView from '../Question/QuestionView';
 import AddQuestion from '../AddQuestion/AddQuestion';
@@ -17,8 +15,8 @@ import ModalPrompt from '../features/ModalPrompt';
 import { RootState, useAppDispatch } from '../store';
 import { useSelector } from 'react-redux';
 import { addUserWishes } from '../wishSlice';
-
 import { styled } from '@mui/material/styles';
+import AddedWish from '../features/AddedWish';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -28,17 +26,14 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-// import { UserWish } from '../wishTypes';
-// import AddedWish from '../features/AddedWish';
-
 function DashboardPage() {
   const [open, setOpen] = useState(false);
   const [openPrompt, setOpenPrompt] = useState(false);
-
-  const handleOpen = () => setOpen(true);
+  const userWishes = useSelector((state: RootState) => state.wish.addedWishes);
 
   const dispatch = useAppDispatch();
-  const userWishes = useSelector((state: RootState) => state.wish.addedWishes);
+
+  const handleOpen = () => setOpen(true);
 
   useEffect(() => {
     dispatch(addUserWishes());
@@ -66,8 +61,14 @@ function DashboardPage() {
             <Grid item xs={12} sm={8}>
               <Card sx={{ backgroundColor: '#51b3fc', maxHeight: '800px' }}>
                 <CardContent>
-                  <Button variant="contained" onClick={handleOpen} sx={{background:
-                  'linear-gradient(to bottom, #0181f5 0%, rgba(93, 178, 255, 0.99) 100%)',}}>
+                  <Button
+                    variant="contained"
+                    onClick={handleOpen}
+                    sx={{
+                      background:
+                        'linear-gradient(to bottom, #0181f5 0%, rgba(93, 178, 255, 0.99) 100%)',
+                    }}
+                  >
                     Добавить свой вопрос
                   </Button>
 
@@ -100,19 +101,16 @@ function DashboardPage() {
 
                   <Stack style={{ marginTop: '10px' }}>
                     {userWishes.map((el) => (
-                      <>
-                        <Item
-                          key={el.id}
-                          style={{
-                            marginTop: '10px',
-                            fontSize: '2vw',
-                            userSelect: 'none',
-                          }}
-                        >
-                          {el?.wish?.wish[0].toUpperCase() +
-                            el?.wish?.wish.slice(1, el?.wish?.wish.length - 1)}
-                        </Item>
-                      </>
+                      <Item
+                        key={el.id}
+                        style={{
+                          marginTop: '10px',
+                          fontSize: '2vw',
+                          userSelect: 'none',
+                        }}
+                      >
+                        <AddedWish wish={el} />
+                      </Item>
                     ))}
                   </Stack>
                 </CardContent>

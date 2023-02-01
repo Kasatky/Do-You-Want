@@ -19,11 +19,31 @@ wishRouter.get('/random', async (req, res) => {
 
   const { userId } = req.session;
 
+  let userWishes;
+  try {
+    userWishes = await UsersWish.findAll({ where: { userId, isDone: true } });
+  } catch (error) {
+    console.log(`Ошибка UsersWishes: ${error.message}`);
+    res.status(500).json({ error: 'Ошибка сервера' });
+    return;
+  }
+
+  const ids = userWishes.map((wish) => wish.wishId);
+
   let wishCount;
 
   try {
     wishCount = await Wish.count({
-      where: { [Op.or]: [{ isPublic: true }, { userId }] },
+      where: {
+        [Op.or]: [
+          {
+            [Op.and]: [{ isPublic: true }, { id: { [Op.in]: ids } }],
+          },
+          {
+            [Op.and]: [{ userId }, { id: { [Op.in]: ids } }],
+          },
+        ],
+      },
     });
   } catch (error) {
     console.log(`Ошибка при поиске количества wish: ${error.message}`);
@@ -34,7 +54,12 @@ wishRouter.get('/random', async (req, res) => {
   try {
     const wish = await Wish.findOne({
       where: {
-        [Op.or]: [{ isPublic: true }, { userId }],
+        [Op.or]: [
+          { [Op.and]: [{ isPublic: true }, { id: { [Op.in]: ids } }] },
+          {
+            [Op.and]: [{ userId }, { id: { [Op.in]: ids } }],
+          },
+        ],
       },
       limit: 1,
       offset: Math.floor(Math.random() * wishCount),
