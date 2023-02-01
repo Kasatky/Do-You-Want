@@ -26,17 +26,17 @@ export const requestChangeWish = async (arrayId: WishId[]) => {
   });
 };
 export const requestRandomWish = async (): Promise<Wish> => {
-  const url = '/api/wishes/random';
+  const url = "/api/wishes/random";
   const response = await fetch(url);
   const data = await response.json();
   return data.wish;
 };
 
 export const requestNewWish = async (newWish: NewWish) => {
-  const url = '/api/wishes/new';
+  const url = "/api/wishes/new";
   const response = await fetch(url, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify(newWish),
   });
 
@@ -59,11 +59,14 @@ export const requestUserWishes = async (): Promise<UserWish[]> => {
 export const requestAddWishToUser = async (id: any) => {
   const url = '/api/cabinetUser/addWishToUser';
   const response = await fetch(url, {
-    method: 'POST',
-    headers: { 'Content-Type': 'Application/json' },
+    method: "POST",
+    headers: { "Content-Type": "Application/json" },
     body: JSON.stringify({ id }),
   });
   const data = await response.json();
+  if (!response.ok) {
+    throw new Error(data.error);
+  }
   return data;
 };
 

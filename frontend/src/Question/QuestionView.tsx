@@ -11,6 +11,8 @@ export default function QuestionView() {
   const dispatch = useAppDispatch();
   const random = useSelector((state: RootState) => state.wish.random);
 
+  const error = useSelector((state: RootState) => state.wish.error);
+
   useEffect(() => {
     if (!random) {
       dispatch(getRandomWish());
