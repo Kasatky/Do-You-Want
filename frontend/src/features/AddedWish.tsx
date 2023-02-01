@@ -21,8 +21,9 @@ function AddedWish({ wish }: Props): JSX.Element {
   return (
     <div>
       <button onClick={deleteWish}>X</button>
-      {wish.wish.wish}
-      <button onClick={completeWish}>Выполнено</button>
+      {wish?.wish?.wish[0].toUpperCase() +
+        wish?.wish?.wish.slice(1, wish?.wish?.wish.length - 1)}
+      <button onClick={completeWish}>✓</button>
     </div>
   );
 }
