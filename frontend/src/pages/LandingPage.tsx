@@ -55,15 +55,8 @@ function LandingPage(): JSX.Element {
                   }}
                   gutterBottom
                 >
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Adipiscing vitae proin sagittis nisl rhoncus mattis rhoncus.
-                  Nisl vel pretium lectus quam id leo in vitae. Nunc sed blandit
-                  libero volutpat sed. Orci eu lobortis elementum nibh tellus.
-                  Sagittis orci a scelerisque purus semper. Diam volutpat
-                  commodo sed egestas. Est lorem ipsum dolor sit amet
-                  consectetur. Turpis egestas maecenas pharetra convallis
-                  posuere morbi leo.
+                  «Мы любим психотерапию и глубоко понимаем её тончайшие нюансы.
+                  И наша миссия — в том, чтобы делиться этим знанием с вами»
                 </Typography>
                 <Typography
                   sx={{ fontSize: 18, textAlign: 'center' }}

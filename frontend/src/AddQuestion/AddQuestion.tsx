@@ -13,20 +13,21 @@ import { useAppDispatch } from "../store";
 import { addWish } from "../wishSlice";
 
 const style = {
-  position: "absolute" as "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 600,
-  bgcolor: "background.paper",
-  border: "2px solid black",
-  borderRadius: "8px",
+
+  position: 'absolute' as 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  minWidth: 300,
+  bgcolor: 'background.paper',
+  border: '2px solid black',
+  borderRadius: '8px',
   boxShadow: 24,
   p: 4,
-  m: 5,
-  display: "flex",
-  flexDirection: "column",
-  justifyContent: "space-between",
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'space-between',
+
 };
 
 type Props = {
@@ -83,9 +84,9 @@ function AddQuestion({ open, setOpen, handleOpenPrompt }: Props) {
             alignItems: "center",
           }}
         >
-          <Typography sx={{ fontSize: "40px", fontWeight: "600" }}>
-            Хочешь
-          </Typography>
+
+          <Typography sx={{ fontSize: '2vw' }}>Хочешь</Typography>
+
           <Input
             value={wish}
             onChange={handleWishChange}
@@ -93,14 +94,18 @@ function AddQuestion({ open, setOpen, handleOpenPrompt }: Props) {
             variant="solid"
             size="lg"
             sx={{
-              backgroundColor: "black",
-              width: "400px",
-              color: "#FFFAFA",
-              fontSize: "24px",
-              borderRadius: "15px",
+
+              backgroundColor: '#fff',
+              width: '400px',
+              color: '#000',
+              borderRadius: '15px',
+              fontSize: '2vw',
+              margin: '0 0 0 10px',
             }}
           />
-          <i style={{ fontSize: "40px" }} className="fa-solid fa-question"></i>
+          <i style={{ fontSize: '2vw' }} className="fa-solid fa-question"></i>
+
+             
         </Card>
 
         <Card
@@ -112,21 +117,25 @@ function AddQuestion({ open, setOpen, handleOpenPrompt }: Props) {
           }}
         >
           <FormControlLabel
+            sx={{ textAlign: 'left no-wrap', fontSize: '2vw' }}
             value="top"
             control={
               <Checkbox checked={status} onChange={handleStatusChange} />
             }
-            label="Добавить этот вопрос для всех"
+            label="Сделать вопрос публичным"
             labelPlacement="top"
-            sx={{ textAlign: "left no-wrap" }}
+
           />
           <Button
             sx={{
-              bgcolor: "black",
-              color: "white",
-              width: "300px",
-              borderRadius: "15px",
-              height: "40px",
+              bgcolor: '#ccc',
+              color: 'white',
+              width: '300px',
+              borderRadius: '15px',
+              height: '40px',
+              fontSize: '2vw',
+
+          
             }}
             variant="contained"
             onClick={addNewWish}
