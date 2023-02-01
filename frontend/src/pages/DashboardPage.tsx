@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+
 import {
   Container,
   Card,
@@ -8,6 +9,7 @@ import {
   Stack,
   Paper,
 } from '@mui/material';
+
 import PageWrapper from '../Wrappers/PageWrapper';
 import QuestionView from '../Question/QuestionView';
 import AddQuestion from '../AddQuestion/AddQuestion';
@@ -15,6 +17,7 @@ import ModalPrompt from '../features/ModalPrompt';
 import { RootState, useAppDispatch } from '../store';
 import { useSelector } from 'react-redux';
 import { addUserWishes } from '../wishSlice';
+
 import { styled } from '@mui/material/styles';
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -24,6 +27,10 @@ const Item = styled(Paper)(({ theme }) => ({
   textAlign: 'center',
   color: theme.palette.text.secondary,
 }));
+
+import { UserWish } from '../wishTypes';
+import AddedWish from '../features/AddedWish';
+
 
 function DashboardPage() {
   const [open, setOpen] = useState(false);
@@ -46,7 +53,9 @@ function DashboardPage() {
   };
 
   return (
-    <PageWrapper isProfile={false}>
+
+    <PageWrapper isAdmin={false}>
+
       <Container sx={{ marginTop: '40px', marginBottom: '40px' }}>
         <Grid
           container
@@ -58,7 +67,9 @@ function DashboardPage() {
         >
           <Grid item xs={1} container spacing={2}>
             <Grid item xs={12} sm={8}>
+
               <Card sx={{ backgroundColor: '#ccc', maxHeight: '800px' }}>
+
                 <CardContent>
                   <Button variant="contained" onClick={handleOpen}>
                     Добавить свой вопрос
@@ -68,6 +79,7 @@ function DashboardPage() {
                 </CardContent>
               </Card>
             </Grid>
+
 
             <Grid item xs={12} sm={4}>
               <Card
@@ -106,6 +118,7 @@ function DashboardPage() {
                             el?.wish?.wish.slice(1, el?.wish?.wish.length - 1)}
                         </Item>
                       </>
+
                     ))}
                   </Stack>
                 </CardContent>

@@ -14,6 +14,7 @@ import AudioMeditationPage from '../pages/AudioMeditationPage';
 function App() {
   const isAuth = useSelector((state: RootState) => state.user.isAuth);
   const role = useSelector((state: RootState) => state.user.profile?.role);
+  const isAdmin = role === 1;
 
   return (
     <div className="App">
@@ -22,7 +23,7 @@ function App() {
           <Route
             path="/"
             element={
-              <PublicRoute isAuth={isAuth} role={role}>
+              <PublicRoute isAuth={isAuth} isAdmin={isAdmin}>
                 <LandingPage />
               </PublicRoute>
             }

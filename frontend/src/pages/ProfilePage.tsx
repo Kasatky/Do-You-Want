@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { Container, Typography } from '@mui/material';
+import { Container, Typography, Button } from '@mui/material';
 import PageWrapper from '../Wrappers/PageWrapper';
 import { RootState, useAppDispatch } from '../store';
 import { getStat } from '../wishSlice';
+import { logout } from '../Auth/userSlice';
 
 function ProfilePage(): JSX.Element {
   const stat = useSelector((state: RootState) => state.wish.stat);
@@ -13,12 +14,18 @@ function ProfilePage(): JSX.Element {
   useEffect(() => {
     dispatch(getStat());
   }, [dispatch]);
+
+  const handleLogout = () => {
+    dispatch(logout());
+  };
   return (
-    <PageWrapper isProfile={true}>
+    <PageWrapper isAdmin={false}>
       <Container sx={{ marginTop: '40px', marginBottom: '40px' }}>
         <Typography>Статистика</Typography>
         {stat ? (
           <div>
+            <p>Создано желаний</p>
+            <p>{stat?.createdWishes}</p>
             <p>Всего желаний исполнено:</p>
             <p>{stat?.doneWishesCount}</p>
             <p>Ваше самое исполняемое желание:</p>
@@ -29,6 +36,9 @@ function ProfilePage(): JSX.Element {
         ) : (
           <div>Выполненных желаний пока нет</div>
         )}
+        <Button onClick={handleLogout} variant="contained">
+          Logout
+        </Button>
       </Container>
     </PageWrapper>
   );

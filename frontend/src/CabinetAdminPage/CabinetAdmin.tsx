@@ -42,8 +42,8 @@ function CabinetAdmin(): JSX.Element {
   }
 
   return (
-    <PageWrapper isProfile={false}>
-      <Grid xs={12} sm={12}>
+    <PageWrapper isAdmin={true}>
+      <Grid>
         {wishes && wishes.length > 0 ? (
           <div>
             <h2
@@ -58,7 +58,7 @@ function CabinetAdmin(): JSX.Element {
             >
               Вопросы на модерацию:
             </h2>
-            <Grid xs={12} sm={12}>
+            <Grid>
               <TableContainer
                 component={Paper}
                 style={{ width: '90%', margin: 'auto' }}
@@ -105,7 +105,6 @@ function CabinetAdmin(): JSX.Element {
                         Удалить вопрос
                       </TableCell>
                     </TableRow>
-
                   </TableHead>
                   <TableBody>
                     {wishes &&
@@ -176,8 +175,6 @@ function CabinetAdmin(): JSX.Element {
           </div>
         )}
       </Grid>
-
-
     </PageWrapper>
   );
 }
