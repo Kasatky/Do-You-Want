@@ -28,19 +28,20 @@ function LandingPage(): JSX.Element {
               <Card
                 sx={{
                   backgroundColor: '#ccc',
-                  width: '315px',
+
                   justifyContent: 'center',
-                  height: '315px',
+
                   display: 'flex',
                   flexDirection: 'column',
                   alignItems: 'center',
                 }}
               >
-                <img
-                  width="300"
-                  src="https://media.giphy.com/media/hrXNZuo6SYYx079zvd/giphy.gif"
-                  alt="logo"
-                />
+
+                Человеку в апатии сложно определить свои желания, кажется, что
+                совсем ничего не хочется и ничего не радует. Также в сложные
+                моменты не просто сориентироваться в своих желаниях, наш сайт
+                поможет скорректировать свои ценности и стремления.
+
               </Card>
             </Grid>
           </Grid>
@@ -62,16 +63,10 @@ function LandingPage(): JSX.Element {
                   sx={{ fontSize: 18, textAlign: 'center' }}
                   gutterBottom
                 >
-                  Cursus in hac habitasse platea dictumst quisque. Semper quis
-                  lectus nulla at. Sagittis aliquam malesuada bibendum arcu
-                  vitae elementum curabitur vitae nunc. Varius morbi enim nunc
-                  faucibus a. Suspendisse faucibus interdum posuere lorem ipsum
-                  dolor. Sit amet porttitor eget dolor morbi. Egestas dui id
-                  ornare arcu odio ut sem nulla pharetra. Magna sit amet purus
-                  gravida. Amet purus gravida quis blandit turpis cursus in. Ac
-                  auctor augue mauris augue neque gravida. Tellus rutrum tellus
-                  pellentesque eu tincidunt tortor. Massa eget egestas purus
-                  viverra accumsan in nisl.
+                  Человеку в апатии сложно определить свои желания, кажется, что
+                  совсем ничего не хочется и ничего не радует. Также в сложные
+                  моменты не просто сориентироваться в своих желаниях, наш сайт
+                  поможет скорректировать свои ценности и стремления.
                 </Typography>
               </CardContent>
             </Card>
