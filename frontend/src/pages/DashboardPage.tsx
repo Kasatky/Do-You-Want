@@ -19,6 +19,7 @@ import { useSelector } from 'react-redux';
 import { addUserWishes } from '../wishSlice';
 
 import { styled } from '@mui/material/styles';
+import AddedWish from '../features/AddedWish';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -27,10 +28,6 @@ const Item = styled(Paper)(({ theme }) => ({
   textAlign: 'center',
   color: theme.palette.text.secondary,
 }));
-
-import { UserWish } from '../wishTypes';
-import AddedWish from '../features/AddedWish';
-
 
 function DashboardPage() {
   const [open, setOpen] = useState(false);
@@ -53,9 +50,7 @@ function DashboardPage() {
   };
 
   return (
-
     <PageWrapper isAdmin={false}>
-
       <Container sx={{ marginTop: '40px', marginBottom: '40px' }}>
         <Grid
           container
@@ -67,9 +62,7 @@ function DashboardPage() {
         >
           <Grid item xs={1} container spacing={2}>
             <Grid item xs={12} sm={8}>
-
               <Card sx={{ backgroundColor: '#ccc', maxHeight: '800px' }}>
-
                 <CardContent>
                   <Button variant="contained" onClick={handleOpen}>
                     Добавить свой вопрос
@@ -79,7 +72,6 @@ function DashboardPage() {
                 </CardContent>
               </Card>
             </Grid>
-
 
             <Grid item xs={12} sm={4}>
               <Card
@@ -105,19 +97,16 @@ function DashboardPage() {
 
                   <Stack style={{ marginTop: '10px' }}>
                     {userWishes.map((el) => (
-                      <>
-                        <Item
-                          key={el.id}
-                          style={{
-                            marginTop: '10px',
-                            fontSize: '2vw',
-                            userSelect: 'none',
-                          }}
-                        >
-                          {el?.wish?.wish.slice(0, el?.wish?.wish.length - 1)}
-                        </Item>
-                      </>
-
+                      <Item
+                        key={el.id}
+                        style={{
+                          marginTop: '10px',
+                          fontSize: '2vw',
+                          userSelect: 'none',
+                        }}
+                      >
+                        <AddedWish wish={el} />
+                      </Item>
                     ))}
                   </Stack>
                 </CardContent>

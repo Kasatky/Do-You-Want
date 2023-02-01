@@ -24,7 +24,7 @@ function ProfilePage(): JSX.Element {
         <Typography>Статистика</Typography>
         {stat ? (
           <div>
-            <p>Создано желаний</p>
+            <p>Создано желаний:</p>
             <p>{stat?.createdWishes}</p>
             <p>Всего желаний исполнено:</p>
             <p>{stat?.doneWishesCount}</p>
