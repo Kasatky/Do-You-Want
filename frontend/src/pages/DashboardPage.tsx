@@ -28,9 +28,8 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-import { UserWish } from '../wishTypes';
-import AddedWish from '../features/AddedWish';
-
+// import { UserWish } from '../wishTypes';
+// import AddedWish from '../features/AddedWish';
 
 function DashboardPage() {
   const [open, setOpen] = useState(false);
@@ -53,9 +52,7 @@ function DashboardPage() {
   };
 
   return (
-
     <PageWrapper isAdmin={false}>
-
       <Container sx={{ marginTop: '40px', marginBottom: '40px' }}>
         <Grid
           container
@@ -67,11 +64,10 @@ function DashboardPage() {
         >
           <Grid item xs={1} container spacing={2}>
             <Grid item xs={12} sm={8}>
-
-              <Card sx={{ backgroundColor: '#ccc', maxHeight: '800px' }}>
-
+              <Card sx={{ backgroundColor: '#51b3fc', maxHeight: '800px' }}>
                 <CardContent>
-                  <Button variant="contained" onClick={handleOpen}>
+                  <Button variant="contained" onClick={handleOpen} sx={{background:
+                  'linear-gradient(to bottom, #0181f5 0%, rgba(93, 178, 255, 0.99) 100%)',}}>
                     Добавить свой вопрос
                   </Button>
 
@@ -80,11 +76,10 @@ function DashboardPage() {
               </Card>
             </Grid>
 
-
             <Grid item xs={12} sm={4}>
               <Card
                 sx={{
-                  backgroundColor: '#ccc',
+                  backgroundColor: '#51b3fc',
                   maxHeight: '800px',
                   overflowY: 'scroll',
                   userSelect: 'none',
@@ -118,7 +113,6 @@ function DashboardPage() {
                             el?.wish?.wish.slice(1, el?.wish?.wish.length - 1)}
                         </Item>
                       </>
-
                     ))}
                   </Stack>
                 </CardContent>

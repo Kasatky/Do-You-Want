@@ -43,13 +43,24 @@ export default function QuestionView() {
           }
         </Box>
       </Paper>
-      <Button variant="contained" onClick={handleTrue}>
+      <Button
+        variant="contained"
+        onClick={handleTrue}
+        sx={{
+          background:
+            'linear-gradient(to bottom, #0181f5 0%, rgba(93, 178, 255, 0.99) 100%)',
+        }}
+      >
         Да
       </Button>
       <Button
         variant="contained"
         onClick={handleFalse}
-        sx={{ marginLeft: '10px' }}
+        sx={{
+          marginLeft: '10px',
+          background:
+            'linear-gradient(to bottom, #0181f5 0%, rgba(93, 178, 255, 0.99) 100%)',
+        }}
       >
         Нет
       </Button>

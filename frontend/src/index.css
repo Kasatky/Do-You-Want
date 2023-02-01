@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600&display=swap');
+
 html {
   height: 100%;
 }
@@ -5,9 +7,10 @@ html {
 body {
   margin: 0;
   height: 100%;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: 'Raleway', sans-serif;
+  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+    sans-serif; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -27,13 +30,77 @@ code {
 }
 
 header {
-  background-image: url('https://glass-pt.ru/galereya/gory/images/G-107.jpg');
+  /* background-image: url('https://glass-pt.ru/galereya/gory/images/G-107.jpg');
   background-size: 100% 100%;
-  background-position: center;
+  background-position: center; */
+  background-color: black !important;
 
   /* background-repeat: no-repeat; */
+}
+
+header div {
+  display: flex;
+  align-items: center;
 }
 
 /* footer {
   background-color: red;
 }  */
+
+.questionCarousel {
+  /* background-color: aliceblue; */
+  /* border: 1px solid #ccc; */
+
+  font-family: 'Raleway', sans-serif;
+}
+
+.questionCarousel > * {
+  font-family: 'Raleway', sans-serif;
+}
+
+.questionCarousel h1 {
+  font-family: 'Raleway', sans-serif;
+
+  font-size: 1.6em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+/* .card div card {
+  /* background-color: #ed5564 !important; */
+/* } */
+
+/* .swipe .card:nth-child(7n + 1) {
+  background-color: #ed5564;
+}
+.swipe .card:nth-child(7n + 2) {
+  background-color: #fe8426;
+}
+.swipe .card:nth-child(7n + 3) {
+  background-color: #ffce55;
+}
+.swipe .card:nth-child(7n + 4) {
+  background-color: #a0d468;
+}
+.swipe .card:nth-child(7n + 5) {
+  background-color: #48cfae;
+}
+.swipe .card:nth-child(7n + 6) {
+  background-color: #50c1e9;
+}
+.swipe .card:nth-child(7n + 7) {
+  background-color: #ac92ed;
+}
+.swipe .card:nth-child(7n + 8) {
+  background-color: #ed5564;
+}
+.swipe .card:nth-child(7n + 9) {
+  background-color: #fe8426;
+}
+.swipe .card:nth-child(7n + 10) {
+  background-color: #ffce55;
+}
+
+.card div {
+  background-color: transparent;
+} */

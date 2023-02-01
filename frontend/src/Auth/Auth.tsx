@@ -123,11 +123,31 @@ function Auth({ open, setOpen }: Props) {
           />
 
           {authType === 'login' ? (
-            <Button onClick={handleLogin} variant="contained" sx={{ mt: 2 }}>
+            <Button
+              onClick={handleLogin}
+              variant="contained"
+              sx={{
+                paddingTop: '10px',
+                mt: 2,
+                borderRadius: '30px',
+                background:
+                  'linear-gradient(to bottom, #0181f5 0%, rgba(93, 178, 255, 0.99) 100%)',
+              }}
+            >
               Войти
             </Button>
           ) : (
-            <Button onClick={handleRegister} variant="contained" sx={{ mt: 2 }}>
+            <Button
+              onClick={handleRegister}
+              variant="contained"
+              sx={{
+                paddingTop: '10px',
+                mt: 2,
+                borderRadius: '30px',
+                background:
+                  'linear-gradient(to bottom, #0181f5 0%, rgba(93, 178, 255, 0.99) 100%)',
+              }}
+            >
               Зарегистрироваться
             </Button>
           )}

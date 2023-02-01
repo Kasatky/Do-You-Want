@@ -36,7 +36,15 @@ function ProfilePage(): JSX.Element {
         ) : (
           <div>Выполненных желаний пока нет</div>
         )}
-        <Button onClick={handleLogout} variant="contained">
+        <Button
+          onClick={handleLogout}
+          variant="contained"
+          sx={{
+            background:
+              'linear-gradient(to bottom, #0181f5 0%, rgba(93, 178, 255, 0.99) 100%)',
+            borderRadius: '30px',
+          }}
+        >
           Logout
         </Button>
       </Container>

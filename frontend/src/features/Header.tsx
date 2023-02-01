@@ -70,7 +70,9 @@ function Header({ isAdmin, isAuth, userName }: Props): JSX.Element {
                 sx={{
                   width: '80px',
                   height: '80px',
-
+                  background:
+                    'linear-gradient(to bottom, #0181f5 0%, rgba(93, 178, 255, 0.99) 100%)',
+                  fontFamily: "'Raleway', sans-serif",
                   borderRadius: '50%',
                 }}
               >
@@ -81,12 +83,24 @@ function Header({ isAdmin, isAuth, userName }: Props): JSX.Element {
                 <IconButton
                   onClick={navigateToProfile}
                   size="small"
-                  sx={{ ml: 2 }}
+                  sx={{
+                    ml: 2,
+                    background:
+                      'linear-gradient(to bottom, #0181f5 0%, rgba(93, 178, 255, 0.99) 100%)',
+                  }}
                   aria-controls={open ? 'account-menu' : undefined}
                   aria-haspopup="true"
                   aria-expanded={open ? 'true' : undefined}
                 >
-                  <Avatar sx={{ width: 80, height: 80, fontSize: '50px' }}>
+                  <Avatar
+                    sx={{
+                      width: 80,
+                      height: 80,
+                      fontSize: '50px',
+                      background:
+                        'linear-gradient(to bottom, #0181f5 0%, rgba(93, 178, 255, 0.99) 100%)',
+                    }}
+                  >
                     {userName && userName[0]}
                   </Avatar>
                 </IconButton>

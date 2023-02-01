@@ -6,7 +6,7 @@ function Logo(): JSX.Element {
   return (
     <Typography component="div">
       <Link to="/">
-        <img width="100px" src="img/logo.png" alt="logo" />
+        <img width="150px" src="img/logo.png" alt="logo" />
       </Link>
     </Typography>
   );

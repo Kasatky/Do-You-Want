@@ -8,6 +8,8 @@ import { Box, Button, Paper, Stack } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import Auth from '../Auth/Auth';
 
+import '../index.css';
+
 const wishMock = [
   { id: 1, wish: 'Хочу прогуляться?' },
   { id: 2, wish: 'Хочу нарисовать гору?' },
@@ -17,7 +19,9 @@ const wishMock = [
 ];
 
 const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#d7e8e4',
+  // backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#d7e8e4',
+  background:
+    'linear-gradient(to bottom, #0181f5 0%, rgba(93, 178, 255, 0.99) 100%)',
   ...theme.typography.body2,
   padding: theme.spacing(1),
   textAlign: 'center',
@@ -44,7 +48,7 @@ function QuestionCarousel(): JSX.Element {
       Array(wishMock.length)
         .fill(0)
         .map((i) => React.createRef()),
-    [],
+    []
   );
 
   const updateCurrentIndex = (val: number) => {
@@ -72,15 +76,7 @@ function QuestionCarousel(): JSX.Element {
   };
 
   return (
-    <div>
-      <link
-        href="https://fonts.googleapis.com/css?family=Damion&display=swap"
-        rel="stylesheet"
-      />
-      <link
-        href="https://fonts.googleapis.com/css?family=Alatsi&display=swap"
-        rel="stylesheet"
-      />
+    <div className="questionCarousel">
       <h1>Добрый вечер</h1>
       <Box
         className="cardContainer"
@@ -113,7 +109,12 @@ function QuestionCarousel(): JSX.Element {
                   className="card"
                 >
                   <Item
-                    sx={{ opacity: `${0.1 * index + op}`, userSelect: 'none' }}
+                    sx={{
+                      opacity: `${0.1 * index + op}`,
+                      userSelect: 'none',
+                      fontSize: '1.5em',
+                      padding: '0.8em',
+                    }}
                     key={character.id}
                   >
                     {character.wish}
