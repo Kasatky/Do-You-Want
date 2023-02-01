@@ -124,7 +124,7 @@ const wishSlice = createSlice({
       })
       .addCase(addWishToUser.fulfilled, (state, action) => {
        state.addedWishes.push(action.payload); 
-      })
+      })  
       .addCase(addWishToUser.rejected, (state, action) => {
         state.error = action.error.message;
       });
