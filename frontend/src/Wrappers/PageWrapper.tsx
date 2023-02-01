@@ -9,10 +9,10 @@ import { RootState, useAppDispatch } from '../store';
 type Props = {
   children: React.ReactNode | React.ReactNode[];
   isProfile: boolean;
+  isAdmin: boolean;
 };
 
-function PageWrapper({ children, isProfile }: Props): JSX.Element {
-
+function PageWrapper({ children, isProfile, isAdmin }: Props): JSX.Element {
   const user = useSelector((state: RootState) => state.user);
   const { isAuth } = user;
   const userName = user.profile?.userName;
@@ -27,7 +27,12 @@ function PageWrapper({ children, isProfile }: Props): JSX.Element {
   return (
     <div className="wrapper" style={{ height: '100%' }}>
       <div style={{ flex: '1 0 auto' }}>
-        <Header isProfile={isProfile} isAuth={isAuth} userName={userName} />
+        <Header
+          isProfile={isProfile}
+          isAdmin={isAdmin}
+          isAuth={isAuth}
+          userName={userName}
+        />
         {children}
       </div>
 

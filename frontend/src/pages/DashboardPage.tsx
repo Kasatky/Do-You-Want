@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import { Container, Card, CardContent, Button, Grid } from "@mui/material";
 import PageWrapper from "../Wrappers/PageWrapper";
@@ -8,7 +7,6 @@ import ModalPrompt from "../features/ModalPrompt";
 import { RootState, useAppDispatch } from "../store";
 import { useSelector } from "react-redux";
 import { addUserWishes } from "../wishSlice";
-
 
 function DashboardPage() {
   const [open, setOpen] = useState(false);
@@ -31,21 +29,19 @@ function DashboardPage() {
   };
 
   return (
-    <PageWrapper isProfile={false}>
-      <Container sx={{ marginTop: "40px", marginBottom: "40px" }}>
+    <PageWrapper isProfile={false} isAdmin={false}>
+      <Container sx={{ marginTop: '40px', marginBottom: '40px' }}>
         <Grid
           container
           rowSpacing={4}
           direction="column"
           justifyContent="center"
           alignItems="center"
-          sx={{ height: "100%" }}
+          sx={{ height: '100%' }}
         >
-
           <Grid item xs={1} container spacing={2}>
             <Grid item xs={12} sm={8}>
               <Card sx={{ backgroundColor: '#ccc' }}>
-
                 <CardContent>
                   <Button variant="contained" onClick={handleOpen}>
                     Добавить свой вопрос
@@ -55,11 +51,8 @@ function DashboardPage() {
                 </CardContent>
               </Card>
             </Grid>
-
-
             <Grid item xs={12} sm={4}>
               <Card sx={{ backgroundColor: '#ccc', height: '400px' }}>
-
                 <CardContent>
                   Список вопросов, на которые вы ответили "да":
                   <div>
