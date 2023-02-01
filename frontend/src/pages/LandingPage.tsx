@@ -5,7 +5,7 @@ import PageWrapper from '../Wrappers/PageWrapper';
 
 function LandingPage(): JSX.Element {
   return (
-    <PageWrapper isProfile={false} isAdmin={false}>
+    <PageWrapper isAdmin={false}>
       <Container sx={{ marginTop: '40px', marginBottom: '40px' }}>
         <Grid
           container

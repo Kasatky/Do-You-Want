@@ -42,7 +42,7 @@ function CabinetAdmin(): JSX.Element {
   }
 
   return (
-    <PageWrapper isProfile={false} isAdmin={true}>
+    <PageWrapper isAdmin={true}>
       <Grid>
         {wishes && wishes.length > 0 ? (
           <div>
