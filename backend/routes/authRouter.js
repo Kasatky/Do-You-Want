@@ -1,6 +1,6 @@
 const authRouter = require('express').Router();
 const bcrypt = require('bcrypt');
-const { User } = require('../db/models');
+const { User, Role, UsersRoles } = require('../db/models');
 
 // функция для шифрования почты
 const maskEmail = (email) => {
@@ -19,7 +19,14 @@ authRouter.get('/user', (req, res) => {
     res.status(401).json({ isAuth: false, error: 'Вы не авторизованы!' });
     return;
   }
-  res.json({ isAuth: true });
+  res.json({
+    isAuth: true,
+    user: {
+      email: maskEmail(user.email),
+      userName: user.userName,
+      role: user.roles[0].roleId,
+    },
+  });
 });
 
 authRouter.post('/login', async (req, res) => {
@@ -38,7 +45,10 @@ authRouter.post('/login', async (req, res) => {
 
   // достаём его из БД по email
   try {
-    user = await User.findOne({ where: { email: req.body.email } });
+    user = await User.findOne({
+      where: { email: req.body.email },
+      include: User.Roles,
+    });
   } catch (error) {
     console.log(`Ошибка при авторизации: ${error.message}`);
     res.status(500).json({ error: 'Ошибка сервера' });
@@ -73,17 +83,15 @@ authRouter.post('/login', async (req, res) => {
   // если всё хорошо, создаём сессию
   req.session.userId = user.id;
 
-  console.log('auth/login', req.session);
-
   res.json({
     email: maskEmail(user.email),
     userName: user.userName,
+    role: user.roles[0].roleId,
   });
 });
 
 authRouter.post('/register', async (req, res) => {
   // проверка на длину имени
-  console.log(req.body);
   if (req.body.userName.trim().length < 3) {
     res.status(403).json({ error: 'Имя должно содержать минимум 3 символа!' });
     return;
@@ -139,8 +147,15 @@ authRouter.post('/register', async (req, res) => {
     return;
   }
 
-  console.log(hashedPassword);
   // наконец-то создаём нового пользователя
+  let defaultRole;
+  try {
+    defaultRole = await Role.findOne({ where: { role: 'user' } });
+  } catch (error) {
+    console.log(`Ошибка при поиске роли: ${error.message}`);
+    res.status(500).json({ error: 'Не удалось зарегистрироваться' });
+    return;
+  }
   try {
     const user = await User.create({
       email: req.body.email,
@@ -150,14 +165,24 @@ authRouter.post('/register', async (req, res) => {
       updatedAt: new Date(),
     });
 
-    user.save();
-
     // создаём сессию
     req.session.userId = user.id;
 
     res.json({ email: maskEmail(user.email), userName: user.userName });
   } catch (error) {
     console.log(`Ошибка при создании пользователя: ${error.message}`);
+    res.status(500).json({ error: 'Не удалось зарегистрироваться' });
+    return;
+  }
+  try {
+    await UsersRoles.create({
+      userId: req.session.userId,
+      roleId: defaultRole.id,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    });
+  } catch (error) {
+    console.log(`Ошибка при создании роли: ${error.message}`);
     res.status(500).json({ error: 'Не удалось зарегистрироваться' });
   }
 });

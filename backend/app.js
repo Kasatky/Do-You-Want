@@ -5,14 +5,16 @@ const express = require('express');
 const serverConfig = require('./config/config');
 const authRouter = require('./routes/authRouter');
 const cabinetAdminRouter = require('./routes/cabinetAdminRouter');
-const randomWishRouter = require('./routes/randomWishRouter');
+const wishRouter = require('./routes/wishRouter');
+const cabinetUserRouter = require('./routes/cabinetUserRouter');
 
 const app = express();
 serverConfig(app);
 const PORT = process.env.PORT ?? 4000;
-app.use('/', randomWishRouter);
+app.use('/api/wishes', wishRouter);
 app.use('/api/auth', authRouter);
 app.use('/api', cabinetAdminRouter);
+app.use('/api/cabinetUser', cabinetUserRouter);
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../frontend/build/index.html'));
