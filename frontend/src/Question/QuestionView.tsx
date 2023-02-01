@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { useEffect } from 'react';
-import { Box, Paper, Button,Typography  } from '@mui/material';
+import { Box, Paper, Button, Typography } from '@mui/material';
 import { useSelector } from 'react-redux';
 import { RootState, useAppDispatch } from '../store';
 
-import { addWishToUser, getRandomWish } from "../wishSlice";
-
+import { addWishToUser, getRandomWish } from '../wishSlice';
+import { Margin } from '@mui/icons-material';
 
 export default function QuestionView() {
   const dispatch = useAppDispatch();
@@ -30,7 +30,7 @@ export default function QuestionView() {
   // }
 
   return (
-    <Box sx={{ height: "180px" }}>
+    <Box sx={{ height: '180px' }}>
       <Paper>
         <Box component="h1">
           {
@@ -44,7 +44,11 @@ export default function QuestionView() {
       <Button variant="contained" onClick={handleTrue}>
         Да
       </Button>
-      <Button variant="contained" onClick={handleFalse}>
+      <Button
+        variant="contained"
+        onClick={handleFalse}
+        sx={{ marginLeft: '10px' }}
+      >
         Нет
       </Button>
     </Box>

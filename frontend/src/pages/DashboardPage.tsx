@@ -1,18 +1,34 @@
+import React, { useEffect, useState } from 'react';
+import {
+  Container,
+  Card,
+  CardContent,
+  Button,
+  Grid,
+  Stack,
+  Paper,
+} from '@mui/material';
+import PageWrapper from '../Wrappers/PageWrapper';
+import QuestionView from '../Question/QuestionView';
+import AddQuestion from '../AddQuestion/AddQuestion';
+import ModalPrompt from '../features/ModalPrompt';
+import { RootState, useAppDispatch } from '../store';
+import { useSelector } from 'react-redux';
+import { addUserWishes } from '../wishSlice';
+import { styled } from '@mui/material/styles';
 
-import React, { useEffect, useState } from "react";
-import { Container, Card, CardContent, Button, Grid } from "@mui/material";
-import PageWrapper from "../Wrappers/PageWrapper";
-import QuestionView from "../Question/QuestionView";
-import AddQuestion from "../AddQuestion/AddQuestion";
-import ModalPrompt from "../features/ModalPrompt";
-import { RootState, useAppDispatch } from "../store";
-import { useSelector } from "react-redux";
-import { addUserWishes } from "../wishSlice";
-
+const Item = styled(Paper)(({ theme }) => ({
+  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+  ...theme.typography.body2,
+  padding: theme.spacing(1),
+  textAlign: 'center',
+  color: theme.palette.text.secondary,
+}));
 
 function DashboardPage() {
   const [open, setOpen] = useState(false);
   const [openPrompt, setOpenPrompt] = useState(false);
+  const [c, setC] = useState(0);
 
   const handleOpen = () => setOpen(true);
 
@@ -32,20 +48,18 @@ function DashboardPage() {
 
   return (
     <PageWrapper isProfile={false}>
-      <Container sx={{ marginTop: "40px", marginBottom: "40px" }}>
+      <Container sx={{ marginTop: '40px', marginBottom: '40px' }}>
         <Grid
           container
           rowSpacing={4}
           direction="column"
           justifyContent="center"
           alignItems="center"
-          sx={{ height: "100%" }}
+          sx={{ height: '100%' }}
         >
-
           <Grid item xs={1} container spacing={2}>
             <Grid item xs={12} sm={8}>
               <Card sx={{ backgroundColor: '#ccc' }}>
-
                 <CardContent>
                   <Button variant="contained" onClick={handleOpen}>
                     Добавить свой вопрос
@@ -56,17 +70,25 @@ function DashboardPage() {
               </Card>
             </Grid>
 
-
             <Grid item xs={12} sm={4}>
-              <Card sx={{ backgroundColor: '#ccc', height: '400px' }}>
-
-                <CardContent>
-                  Список вопросов, на которые вы ответили "да":
-                  <div>
+              <Card
+                sx={{
+                  backgroundColor: '#ccc',
+                  height: '400px',
+                  overflowY: 'scroll',
+                }}
+              >
+                <CardContent sx={{ fontSize: '2vw' }}>
+                  Список Ваших желаний: {userWishes.length}
+                  <Stack style={{ marginTop: '10px' }}>
                     {userWishes.map((el) => (
-                      <div key={el.id}>{el?.wish?.wish}</div>
+                      <>
+                        <Item key={el.id} style={{ marginTop: '10px' }}>
+                          {el?.wish?.wish.slice(0, el?.wish?.wish.length - 1)}
+                        </Item>
+                      </>
                     ))}
-                  </div>
+                  </Stack>
                 </CardContent>
               </Card>
             </Grid>
