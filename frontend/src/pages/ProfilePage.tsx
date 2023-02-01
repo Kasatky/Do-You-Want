@@ -14,7 +14,7 @@ function ProfilePage(): JSX.Element {
     dispatch(getStat());
   }, [dispatch]);
   return (
-    <PageWrapper isProfile={true}>
+    <PageWrapper isProfile={true} isAdmin={false}>
       <Container sx={{ marginTop: '40px', marginBottom: '40px' }}>
         <Typography>Статистика</Typography>
         {stat ? (

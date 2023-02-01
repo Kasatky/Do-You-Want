@@ -7,15 +7,15 @@ import {
   TableContainer,
   TableHead,
   TableRow,
-} from "@mui/material";
-import React, { useEffect, useState } from "react";
-import DeleteIcon from "@mui/icons-material/Delete";
-import SendIcon from "@mui/icons-material/Send";
-import { useSelector } from "react-redux";
-import { RootState, useAppDispatch } from "../store";
-import { changeWishes, deleteWish, getUnmoderatedWishes } from "../wishSlice";
-import { WishId } from "../wishTypes";
-import PageWrapper from "../Wrappers/PageWrapper";
+} from '@mui/material';
+import React, { useEffect, useState } from 'react';
+import DeleteIcon from '@mui/icons-material/Delete';
+import SendIcon from '@mui/icons-material/Send';
+import { useSelector } from 'react-redux';
+import { RootState, useAppDispatch } from '../store';
+import { changeWishes, deleteWish, getUnmoderatedWishes } from '../wishSlice';
+import { WishId } from '../wishTypes';
+import PageWrapper from '../Wrappers/PageWrapper';
 
 function CabinetAdmin(): JSX.Element {
   const [arrayId, setArrayId] = useState<number[]>([]);
@@ -41,24 +41,24 @@ function CabinetAdmin(): JSX.Element {
   }
 
   return (
-    <PageWrapper isProfile={false}>
+    <PageWrapper isProfile={false} isAdmin={true}>
       {wishes && wishes.length > 0 ? (
         <div>
           <h2
             style={{
-              width: "90%",
-              margin: "auto",
-              marginTop: "15px",
-              marginBottom: "15px",
-              fontFamily: "Gill Sans",
-              fontSize: "40px",
+              width: '90%',
+              margin: 'auto',
+              marginTop: '15px',
+              marginBottom: '15px',
+              fontFamily: 'Gill Sans',
+              fontSize: '40px',
             }}
           >
             Вопросы на модерацию:
           </h2>
           <TableContainer
             component={Paper}
-            style={{ width: "90%", margin: "auto" }}
+            style={{ width: '90%', margin: 'auto' }}
           >
             <Table sx={{ minWidth: 650 }} aria-label="caption table">
               <caption>
@@ -73,18 +73,18 @@ function CabinetAdmin(): JSX.Element {
               <TableHead>
                 <TableRow>
                   <TableCell
-                    style={{ fontSize: "30px", fontFamily: "Gill Sans" }}
+                    style={{ fontSize: '30px', fontFamily: 'Gill Sans' }}
                   >
                     Вопрос
                   </TableCell>
                   <TableCell
-                    style={{ fontSize: "30px", fontFamily: "Gill Sans" }}
+                    style={{ fontSize: '30px', fontFamily: 'Gill Sans' }}
                     align="right"
                   >
                     Модерация
                   </TableCell>
                   <TableCell
-                    style={{ fontSize: "30px", fontFamily: "Gill Sans" }}
+                    style={{ fontSize: '30px', fontFamily: 'Gill Sans' }}
                     align="right"
                   >
                     Удалить вопрос
@@ -96,7 +96,7 @@ function CabinetAdmin(): JSX.Element {
                   wishes.map((el) => (
                     <TableRow key={el.id}>
                       <TableCell
-                        style={{ fontSize: "20px", fontFamily: "Gill Sans" }}
+                        style={{ fontSize: '20px', fontFamily: 'Gill Sans' }}
                         component="th"
                         scope="row"
                       >
@@ -128,18 +128,18 @@ function CabinetAdmin(): JSX.Element {
                   ))}
               </TableBody>
             </Table>
-          </TableContainer>{" "}
+          </TableContainer>{' '}
         </div>
       ) : (
         <div>
           <h2
             style={{
-              width: "90%",
-              margin: "auto",
-              marginTop: "15px",
-              marginBottom: "15px",
-              fontFamily: "Gill Sans",
-              fontSize: "40px",
+              width: '90%',
+              margin: 'auto',
+              marginTop: '15px',
+              marginBottom: '15px',
+              fontFamily: 'Gill Sans',
+              fontSize: '40px',
             }}
           >
             Вопросов на модерацию нет.

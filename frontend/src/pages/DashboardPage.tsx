@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { Container, Card, CardContent, Button, Grid } from "@mui/material";
-import PageWrapper from "../Wrappers/PageWrapper";
-import QuestionView from "../Question/QuestionView";
-import AddQuestion from "../AddQuestion/AddQuestion";
-import ModalPrompt from "../features/ModalPrompt";
-import { RootState, useAppDispatch } from "../store";
-import { useSelector } from "react-redux";
-import { addUserWishes } from "../wishSlice";
+import React, { useEffect, useState } from 'react';
+import { Container, Card, CardContent, Button, Grid } from '@mui/material';
+import PageWrapper from '../Wrappers/PageWrapper';
+import QuestionView from '../Question/QuestionView';
+import AddQuestion from '../AddQuestion/AddQuestion';
+import ModalPrompt from '../features/ModalPrompt';
+import { RootState, useAppDispatch } from '../store';
+import { useSelector } from 'react-redux';
+import { addUserWishes } from '../wishSlice';
 
 function DashboardPage() {
   const [open, setOpen] = useState(false);
@@ -29,19 +29,19 @@ function DashboardPage() {
   };
 
   return (
-    <PageWrapper isProfile={false}>
-      <Container sx={{ marginTop: "40px", marginBottom: "40px" }}>
+    <PageWrapper isProfile={false} isAdmin={false}>
+      <Container sx={{ marginTop: '40px', marginBottom: '40px' }}>
         <Grid
           container
           rowSpacing={4}
           direction="column"
           justifyContent="center"
           alignItems="center"
-          sx={{ height: "100%" }}
+          sx={{ height: '100%' }}
         >
           <Grid item xs={1} container columnSpacing={4}>
             <Grid item xs={8}>
-              <Card sx={{ backgroundColor: "#ccc" }}>
+              <Card sx={{ backgroundColor: '#ccc' }}>
                 <CardContent>
                   <QuestionView />
                 </CardContent>
@@ -49,7 +49,7 @@ function DashboardPage() {
             </Grid>
 
             <Grid item xs={4}>
-              <Card sx={{ backgroundColor: "#ccc", height: "400px" }}>
+              <Card sx={{ backgroundColor: '#ccc', height: '400px' }}>
                 <CardContent>
                   Список вопросов, на которые вы ответили "да":
                   <div>
