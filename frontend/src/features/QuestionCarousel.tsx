@@ -9,18 +9,18 @@ import { styled } from '@mui/material/styles';
 import Auth from '../Auth/Auth';
 
 const wishMock = [
-  { wish: "Хочу прогуляться?" },
-  { wish: "Хочу нарисовать гору?" },
-  { wish: "Хочу приготовить пирог?" },
-  { wish: "Хочу сходить в кино?" },
-  { wish: "Хочу  кофе?" },
+  { id: 1, wish: 'Хочу прогуляться?' },
+  { id: 2, wish: 'Хочу нарисовать гору?' },
+  { id: 3, wish: 'Хочу приготовить пирог?' },
+  { id: 4, wish: 'Хочу сходить в кино?' },
+  { id: 5, wish: 'Хочу  кофе?' },
 ];
 
 const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#d7e8e4",
+  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#d7e8e4',
   ...theme.typography.body2,
   padding: theme.spacing(1),
-  textAlign: "center",
+  textAlign: 'center',
   color: theme.palette.text.secondary,
 }));
 
@@ -44,7 +44,7 @@ function QuestionCarousel(): JSX.Element {
       Array(wishMock.length)
         .fill(0)
         .map((i) => React.createRef()),
-    []
+    [],
   );
 
   const updateCurrentIndex = (val: number) => {
@@ -85,10 +85,10 @@ function QuestionCarousel(): JSX.Element {
       <Box
         className="cardContainer"
         sx={{
-          height: "200px",
-          position: "relative",
-          justifyContent: "center",
-          display: "flex",
+          height: '200px',
+          position: 'relative',
+          justifyContent: 'center',
+          display: 'flex',
         }}
       >
         {wishMock.map((character, index) => (
@@ -97,11 +97,12 @@ function QuestionCarousel(): JSX.Element {
               <TinderCard
                 ref={childRefs[index]}
                 className="swipe"
-                key={character.wish}
+                key={character.id}
                 onSwipe={(dir: any) => swiped(dir, character.wish, index)}
                 onCardLeftScreen={() => outOfFrame(character.wish, index)}
               >
                 <Stack
+                  key={character.id}
                   spacing={2}
                   justifyContent="center"
                   alignItems="center"
@@ -113,6 +114,7 @@ function QuestionCarousel(): JSX.Element {
                 >
                   <Item
                     sx={{ opacity: `${0.1 * index + op}`, userSelect: 'none' }}
+                    key={character.id}
                   >
                     {character.wish}
                   </Item>
