@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import {
   Typography,
   Box,
@@ -7,13 +7,12 @@ import {
   Checkbox,
   Button,
   Modal,
-} from "@mui/material";
-import Input from "@mui/joy/Input";
-import { useAppDispatch } from "../store";
-import { addWish } from "../wishSlice";
+} from '@mui/material';
+import Input from '@mui/joy/Input';
+import { useAppDispatch } from '../store';
+import { addWish } from '../wishSlice';
 
 const style = {
-
   position: 'absolute' as 'absolute',
   top: '50%',
   left: '50%',
@@ -27,7 +26,6 @@ const style = {
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'space-between',
-
 };
 
 type Props = {
@@ -37,14 +35,14 @@ type Props = {
 };
 
 function AddQuestion({ open, setOpen, handleOpenPrompt }: Props) {
-  const [wish, setWish] = useState("");
+  const [wish, setWish] = useState('');
   const [status, setStatus] = useState(false);
 
   const dispatch = useAppDispatch();
 
   const handleClose = () => {
     setOpen(false);
-    setWish("");
+    setWish('');
   };
 
   const handleWishChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -57,10 +55,10 @@ function AddQuestion({ open, setOpen, handleOpenPrompt }: Props) {
 
   const addNewWish = () => {
     let userWish;
-    if (wish.includes("?")) {
+    if (wish.includes('?')) {
       userWish = wish;
     } else {
-      userWish = wish + "?";
+      userWish = wish + '?';
     }
     const newWish = { wish: userWish, isPublic: status };
     dispatch(addWish(newWish));
@@ -78,13 +76,13 @@ function AddQuestion({ open, setOpen, handleOpenPrompt }: Props) {
       <Box sx={style} component="form">
         <Card
           sx={{
-            margin: "30px 0px",
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
+            minWidth: 300,
+            margin: '30px 0px',
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
           }}
         >
-
           <Typography sx={{ fontSize: '2vw' }}>Хочешь</Typography>
 
           <Input
@@ -94,9 +92,8 @@ function AddQuestion({ open, setOpen, handleOpenPrompt }: Props) {
             variant="solid"
             size="lg"
             sx={{
-
               backgroundColor: '#fff',
-              width: '400px',
+              minWidth: 300,
               color: '#000',
               borderRadius: '15px',
               fontSize: '2vw',
@@ -104,16 +101,15 @@ function AddQuestion({ open, setOpen, handleOpenPrompt }: Props) {
             }}
           />
           <i style={{ fontSize: '2vw' }} className="fa-solid fa-question"></i>
-
-             
         </Card>
 
         <Card
           sx={{
-            margin: "30px 0px",
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
+            minWidth: 300,
+            margin: '30px 0px',
+            display: 'flex',
+            justifyContent: 'space-around',
+            alignItems: 'center',
           }}
         >
           <FormControlLabel
@@ -124,18 +120,16 @@ function AddQuestion({ open, setOpen, handleOpenPrompt }: Props) {
             }
             label="Сделать вопрос публичным"
             labelPlacement="top"
-
           />
           <Button
             sx={{
               bgcolor: '#ccc',
               color: 'white',
-              width: '300px',
+              // width: '300px',
               borderRadius: '15px',
               height: '40px',
               fontSize: '2vw',
-
-          
+              // justifyContent: 'center',
             }}
             variant="contained"
             onClick={addNewWish}

@@ -12,7 +12,6 @@ type Props = {
 };
 
 function PageWrapper({ children, isProfile }: Props): JSX.Element {
-
   const user = useSelector((state: RootState) => state.user);
   const { isAuth } = user;
   const userName = user.profile?.userName;
@@ -31,7 +30,7 @@ function PageWrapper({ children, isProfile }: Props): JSX.Element {
         {children}
       </div>
 
-      <Footer isAuth={isAuth} />
+      {/* <Footer isAuth={isAuth} /> */}
     </div>
   );
 }

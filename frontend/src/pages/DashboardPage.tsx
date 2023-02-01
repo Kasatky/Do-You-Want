@@ -102,7 +102,8 @@ function DashboardPage() {
                             userSelect: 'none',
                           }}
                         >
-                          {el?.wish?.wish.slice(0, el?.wish?.wish.length - 1)}
+                          {el?.wish?.wish[0].toUpperCase() +
+                            el?.wish?.wish.slice(1, el?.wish?.wish.length - 1)}
                         </Item>
                       </>
                     ))}

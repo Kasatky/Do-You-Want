@@ -8,6 +8,8 @@ import {
   Avatar,
   Menu,
   MenuItem,
+  ThemeProvider,
+  createTheme,
 } from '@mui/material';
 import Logo from './Logo';
 import { useNavigate } from 'react-router-dom';
@@ -18,6 +20,15 @@ type Props = {
   isAuth: boolean;
   userName: string | undefined;
 };
+
+// const darkTheme = createTheme({
+//   palette: {
+//     mode: 'dark',
+//     primary: {
+//       main: '#1976d2',
+//     },
+//   },
+// });
 
 function Header({ isProfile, isAuth, userName }: Props): JSX.Element {
   const [open, setOpen] = useState(false);
@@ -42,7 +53,14 @@ function Header({ isProfile, isAuth, userName }: Props): JSX.Element {
   };
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box
+      sx={{
+        flexGrow: 1,
+        backgroundImage:
+          "url('https://glass-pt.ru/galereya/gory/images/G-107.jpg')",
+      }}
+    >
+      {/* <ThemeProvider theme={darkTheme}> */}
       <AppBar position="static">
         <Container
           sx={{
@@ -127,6 +145,7 @@ function Header({ isProfile, isAuth, userName }: Props): JSX.Element {
         </Container>
         <Auth open={open} setOpen={setOpen} />
       </AppBar>
+      {/* </ThemeProvider> */}
     </Box>
   );
 }

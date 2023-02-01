@@ -9,18 +9,18 @@ import { styled } from '@mui/material/styles';
 import Auth from '../Auth/Auth';
 
 const wishMock = [
-  { wish: "Хочу прогуляться?" },
-  { wish: "Хочу нарисовать гору?" },
-  { wish: "Хочу приготовить пирог?" },
-  { wish: "Хочу сходить в кино?" },
-  { wish: "Хочу  кофе?" },
+  { wish: 'Хочу прогуляться?' },
+  { wish: 'Хочу нарисовать гору?' },
+  { wish: 'Хочу приготовить пирог?' },
+  { wish: 'Хочу сходить в кино?' },
+  { wish: 'Хочу  кофе?' },
 ];
 
 const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#d7e8e4",
+  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#d7e8e4',
   ...theme.typography.body2,
   padding: theme.spacing(1),
-  textAlign: "center",
+  textAlign: 'center',
   color: theme.palette.text.secondary,
 }));
 
@@ -85,10 +85,10 @@ function QuestionCarousel(): JSX.Element {
       <Box
         className="cardContainer"
         sx={{
-          height: "200px",
-          position: "relative",
-          justifyContent: "center",
-          display: "flex",
+          height: '200px',
+          position: 'relative',
+          justifyContent: 'center',
+          display: 'flex',
         }}
       >
         {wishMock.map((character, index) => (
