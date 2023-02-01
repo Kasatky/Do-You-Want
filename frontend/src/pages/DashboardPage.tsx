@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from "react";
-import { Container, Card, CardContent, Button, Grid } from "@mui/material";
-import PageWrapper from "../Wrappers/PageWrapper";
-import QuestionView from "../Question/QuestionView";
-import AddQuestion from "../AddQuestion/AddQuestion";
-import ModalPrompt from "../features/ModalPrompt";
-import { RootState, useAppDispatch } from "../store";
-import { useSelector } from "react-redux";
-import { addUserWishes } from "../wishSlice";
+import React, { useEffect, useState } from 'react';
+import { Container, Card, CardContent, Button, Grid } from '@mui/material';
+import PageWrapper from '../Wrappers/PageWrapper';
+import QuestionView from '../Question/QuestionView';
+import AddQuestion from '../AddQuestion/AddQuestion';
+import ModalPrompt from '../features/ModalPrompt';
+import { RootState, useAppDispatch } from '../store';
+import { useSelector } from 'react-redux';
+import { addUserWishes } from '../wishSlice';
+import AddedWish from '../features/AddedWish';
+import { UserWish } from '../wishTypes';
 
 function DashboardPage() {
   const [open, setOpen] = useState(false);
@@ -56,8 +58,8 @@ function DashboardPage() {
                 <CardContent>
                   Список вопросов, на которые вы ответили "да":
                   <div>
-                    {userWishes.map((el) => (
-                      <div key={el.id}>{el?.wish?.wish}</div>
+                    {userWishes.map((el: UserWish) => (
+                      <AddedWish key={el.id} wish={el} />
                     ))}
                   </div>
                 </CardContent>

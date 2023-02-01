@@ -6,11 +6,13 @@ cabinetUserRouter.get('/', async (req, res) => {
   const { userId } = req.session;
   try {
     const addedWishes = await UsersWish.findAll({
-      where: { userId },
-      include: [{
-        association: UsersWish.Wish,
-        attributes: ['wish'],
-      }],
+      where: { userId, isDone: false },
+      include: [
+        {
+          association: UsersWish.Wish,
+          attributes: ['wish'],
+        },
+      ],
     });
     res.json(addedWishes);
     // console.log(wishUserYes.__proto__); !!!!!!!! ТАК ДОСТАВАТЬ МЕТОДЫ МОДЕЛЕЙ
@@ -30,10 +32,12 @@ cabinetUserRouter.post('/addWishToUser', async (req, res) => {
       isDone: false,
     });
     const userWishWithName = await UsersWish.findByPk(newUserWish.id, {
-      include: [{
-        association: UsersWish.Wish,
-        attributes: ['wish'],
-      }],
+      include: [
+        {
+          association: UsersWish.Wish,
+          attributes: ['wish'],
+        },
+      ],
     });
     res.json(userWishWithName);
   } catch (error) {

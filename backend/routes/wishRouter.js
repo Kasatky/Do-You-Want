@@ -118,4 +118,39 @@ wishRouter.get('/stat', async (req, res) => {
   });
 });
 
+wishRouter.put('/complete', async (req, res) => {
+  const { wishId } = req.body;
+
+  try {
+    const wishToComplete = await UsersWish.findByPk(wishId);
+    wishToComplete.doneCount += 1;
+    wishToComplete.isDone = true;
+    wishToComplete.save();
+
+    res.sendStatus(200);
+  } catch (error) {
+    console.log(
+      `Ошибка при обращении к БД (таблица UsersWish): ${error.message}`,
+    );
+    res.status(500).json({ error: 'Не удалось получить данные из БД' });
+  }
+});
+
+wishRouter.delete('/delete', async (req, res) => {
+  const { wishId } = req.body;
+
+  try {
+    const wishToDelete = await UsersWish.findByPk(wishId);
+    wishToDelete.isDone = true;
+    wishToDelete.save();
+
+    res.sendStatus(200);
+  } catch (error) {
+    console.log(
+      `Ошибка при обращении к БД (таблица UsersWish): ${error.message}`,
+    );
+    res.status(500).json({ error: 'Не удалось получить данные из БД' });
+  }
+});
+
 module.exports = wishRouter;

@@ -19,10 +19,10 @@ export type NewWish = {
 
 export type WishId = number;
 
-type WishWithName = Pick<Wish, "wish">;
+type WishWithName = Pick<Wish, 'wish'>;
 
 export type UserWish = {
-  id: number;
+  id: WishId;
   wishId: number;
   wish: WishWithName;
   userId: number;
