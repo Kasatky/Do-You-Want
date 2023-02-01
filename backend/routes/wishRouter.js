@@ -1,7 +1,15 @@
 const wishRouter = require('express').Router();
 const { Op } = require('sequelize');
+const { Wish, UsersWish } = require('../db/models');
 
-const { Wish } = require('../db/models');
+const getAverageDoneTime = (createdDates, updatedDates) => {
+  // вычитаем из каждого updatedAt createdAt
+  const dates = updatedDates.map((date, i) => date - createdDates[i]);
+  // складываем все полученные разности
+  const commonDate = dates.reduce((acc, cur) => acc + cur, 0);
+  // время будет в милисекундах, переводим его в дни
+  return Number((commonDate / dates.length / (60 * 60 * 24 * 1000)).toFixed(2));
+};
 
 wishRouter.get('/random', async (req, res) => {
   if (!req.session.userId) {
@@ -65,6 +73,84 @@ wishRouter.post('/new', async (req, res) => {
   }
 });
 
-// wishRouter.get('/stat', (req, res) => {});
+wishRouter.get('/stat', async (req, res) => {
+  const { userId } = req.session;
+
+  let allDoneWishes;
+
+  try {
+    allDoneWishes = await UsersWish.findAll({
+      where: { userId, isDone: true },
+      order: [['doneCount', 'DESC']],
+    });
+  } catch (error) {
+    console.log(
+      `Ошибка при обращении к БД (таблица UsersWishes): ${error.message}`,
+    );
+    res.status(500).json({ error: 'Не удалось получить данные из БД' });
+  }
+
+  console.log(allDoneWishes);
+
+  if (!allDoneWishes.length) {
+    res.status(404);
+    return;
+  }
+
+  let mostDoneWish;
+
+  try {
+    mostDoneWish = await Wish.findByPk(allDoneWishes[0].wishId);
+  } catch (error) {
+    console.log(`Ошибка при обращении к БД (таблица Wishes): ${error.message}`);
+    res.status(500).json({ error: 'Не удалось получить данные из БД' });
+  }
+
+  const createdDates = allDoneWishes.map((date) => date.createdAt);
+  const updatedDates = allDoneWishes.map((date) => date.updatedAt);
+
+  const averageTime = getAverageDoneTime(createdDates, updatedDates);
+
+  res.json({
+    doneWishesCount: allDoneWishes.length,
+    mostDoneWish: mostDoneWish.wish.slice(0, -1),
+    averageTime,
+  });
+});
+
+wishRouter.put('/complete', async (req, res) => {
+  const { wishId } = req.body;
+
+  try {
+    const wishToComplete = await UsersWish.findByPk(wishId);
+    wishToComplete.doneCount += 1;
+    wishToComplete.isDone = true;
+    wishToComplete.save();
+
+    res.sendStatus(200);
+  } catch (error) {
+    console.log(
+      `Ошибка при обращении к БД (таблица UsersWish): ${error.message}`,
+    );
+    res.status(500).json({ error: 'Не удалось получить данные из БД' });
+  }
+});
+
+wishRouter.delete('/delete', async (req, res) => {
+  const { wishId } = req.body;
+
+  try {
+    const wishToDelete = await UsersWish.findByPk(wishId);
+    wishToDelete.isDone = true;
+    wishToDelete.save();
+
+    res.sendStatus(200);
+  } catch (error) {
+    console.log(
+      `Ошибка при обращении к БД (таблица UsersWish): ${error.message}`,
+    );
+    res.status(500).json({ error: 'Не удалось получить данные из БД' });
+  }
+});
 
 module.exports = wishRouter;

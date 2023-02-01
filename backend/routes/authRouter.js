@@ -21,7 +21,11 @@ authRouter.get('/user', (req, res) => {
   }
   res.json({
     isAuth: true,
-    user: { userName: user.userName, email: undefined },
+    user: {
+      email: maskEmail(user.email),
+      userName: user.userName,
+      role: user.roles[0].roleId,
+    },
   });
 });
 
@@ -41,7 +45,10 @@ authRouter.post('/login', async (req, res) => {
 
   // достаём его из БД по email
   try {
-    user = await User.findOne({ where: { email: req.body.email }, include: User.Roles });
+    user = await User.findOne({
+      where: { email: req.body.email },
+      include: User.Roles,
+    });
   } catch (error) {
     console.log(`Ошибка при авторизации: ${error.message}`);
     res.status(500).json({ error: 'Ошибка сервера' });

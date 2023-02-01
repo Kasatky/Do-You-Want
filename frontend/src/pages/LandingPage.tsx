@@ -5,7 +5,7 @@ import PageWrapper from '../Wrappers/PageWrapper';
 
 function LandingPage(): JSX.Element {
   return (
-    <PageWrapper isProfile={false}>
+    <PageWrapper isProfile={false} isAdmin={false}>
       <Container sx={{ marginTop: '40px', marginBottom: '40px' }}>
         <Grid
           container
@@ -25,8 +25,22 @@ function LandingPage(): JSX.Element {
             </Grid>
 
             <Grid item xs={12} sm={4}>
-              <Card sx={{ backgroundColor: '#ccc', height: '400px' }}>
-                <CardContent>картинка или гифка для красоты</CardContent>
+              <Card
+                sx={{
+                  backgroundColor: '#ccc',
+                  width: '315px',
+                  justifyContent: 'center',
+                  height: '315px',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                }}
+              >
+                <img
+                  width="300"
+                  src="https://media.giphy.com/media/hrXNZuo6SYYx079zvd/giphy.gif"
+                  alt="logo"
+                />
               </Card>
             </Grid>
           </Grid>
@@ -41,15 +55,8 @@ function LandingPage(): JSX.Element {
                   }}
                   gutterBottom
                 >
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Adipiscing vitae proin sagittis nisl rhoncus mattis rhoncus.
-                  Nisl vel pretium lectus quam id leo in vitae. Nunc sed blandit
-                  libero volutpat sed. Orci eu lobortis elementum nibh tellus.
-                  Sagittis orci a scelerisque purus semper. Diam volutpat
-                  commodo sed egestas. Est lorem ipsum dolor sit amet
-                  consectetur. Turpis egestas maecenas pharetra convallis
-                  posuere morbi leo.
+                  «Мы любим психотерапию и глубоко понимаем её тончайшие нюансы.
+                  И наша миссия — в том, чтобы делиться этим знанием с вами»
                 </Typography>
                 <Typography
                   sx={{ fontSize: 18, textAlign: 'center' }}

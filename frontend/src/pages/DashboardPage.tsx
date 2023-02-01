@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from "react";
-import { Container, Card, CardContent, Button, Grid } from "@mui/material";
-import PageWrapper from "../Wrappers/PageWrapper";
-import QuestionView from "../Question/QuestionView";
-import AddQuestion from "../AddQuestion/AddQuestion";
-import ModalPrompt from "../features/ModalPrompt";
-import { RootState, useAppDispatch } from "../store";
-import { useSelector } from "react-redux";
-import { addUserWishes } from "../wishSlice";
+import React, { useEffect, useState } from 'react';
+import { Container, Card, CardContent, Button, Grid } from '@mui/material';
+import PageWrapper from '../Wrappers/PageWrapper';
+import QuestionView from '../Question/QuestionView';
+import AddQuestion from '../AddQuestion/AddQuestion';
+import ModalPrompt from '../features/ModalPrompt';
+import { RootState, useAppDispatch } from '../store';
+import { useSelector } from 'react-redux';
+import { addUserWishes } from '../wishSlice';
+import AddedWish from '../features/AddedWish';
+import { UserWish } from '../wishTypes';
 
 function DashboardPage() {
   const [open, setOpen] = useState(false);
@@ -29,32 +31,35 @@ function DashboardPage() {
   };
 
   return (
-    <PageWrapper isProfile={false}>
-      <Container sx={{ marginTop: "40px", marginBottom: "40px" }}>
+    <PageWrapper isProfile={false} isAdmin={false}>
+      <Container sx={{ marginTop: '40px', marginBottom: '40px' }}>
         <Grid
           container
           rowSpacing={4}
           direction="column"
           justifyContent="center"
           alignItems="center"
-          sx={{ height: "100%" }}
+          sx={{ height: '100%' }}
         >
-          <Grid item xs={1} container columnSpacing={4}>
-            <Grid item xs={8}>
-              <Card sx={{ backgroundColor: "#ccc" }}>
+          <Grid item xs={1} container spacing={2}>
+            <Grid item xs={12} sm={8}>
+              <Card sx={{ backgroundColor: '#ccc' }}>
                 <CardContent>
+                  <Button variant="contained" onClick={handleOpen}>
+                    Добавить свой вопрос
+                  </Button>
+
                   <QuestionView />
                 </CardContent>
               </Card>
             </Grid>
-
-            <Grid item xs={4}>
-              <Card sx={{ backgroundColor: "#ccc", height: "400px" }}>
+            <Grid item xs={12} sm={4}>
+              <Card sx={{ backgroundColor: '#ccc', height: '400px' }}>
                 <CardContent>
                   Список вопросов, на которые вы ответили "да":
                   <div>
-                    {userWishes.map((el) => (
-                      <div key={el.id}>{el?.wish?.wish}</div>
+                    {userWishes.map((el: UserWish) => (
+                      <AddedWish key={el.id} wish={el} />
                     ))}
                   </div>
                 </CardContent>
@@ -62,10 +67,6 @@ function DashboardPage() {
             </Grid>
           </Grid>
         </Grid>
-
-        <Button variant="contained" onClick={handleOpen}>
-          Добавить вопрос
-        </Button>
 
         <AddQuestion
           open={open}

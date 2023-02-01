@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { UserLogin, UserRegister, UserState } from './usersTypes';
+import { UserLogin, UserProfile, UserRegister, UserState } from './usersTypes';
 import * as authApi from './authApi';
 
 const initialState: UserState = {
@@ -13,15 +13,16 @@ export const register = createAsyncThunk(
   async (newUser: UserRegister) => {
     const data = await authApi.requestRegister(newUser);
     return data;
-  }
+  },
 );
 
 export const login = createAsyncThunk(
   'users/authLogin',
   async (user: UserLogin) => {
-    const data = await authApi.requestLogin(user);
+    const data: UserProfile = await authApi.requestLogin(user);
+    // console.log('login', data);
     return data;
-  }
+  },
 );
 
 export const logout = createAsyncThunk('users/authLogout', async () => {
@@ -48,8 +49,7 @@ const userSlice = createSlice({
         state.error = action.error.message;
       })
       .addCase(login.fulfilled, (state, action) => {
-        const user = action.payload;
-        state.profile = user;
+        state.profile = action.payload;
         state.isAuth = true;
       })
       .addCase(login.rejected, (state, action) => {
