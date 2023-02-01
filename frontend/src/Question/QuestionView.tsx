@@ -30,9 +30,9 @@ export default function QuestionView() {
   // }
 
   return (
-    <Box sx={{ height: '180px' }}>
+    <Box sx={{ height: '180px', userSelect: 'none' }}>
       <Paper>
-        <Box component="h1">
+        <Box component="h1" sx={{ userSelect: 'none' }}>
           {
             random && `Хочешь ${random.wish}`
             // то, что ниже можно добавить, когда будет реализовано, чтобы вопросы не повторялись

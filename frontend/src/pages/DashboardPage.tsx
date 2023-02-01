@@ -28,7 +28,6 @@ const Item = styled(Paper)(({ theme }) => ({
 function DashboardPage() {
   const [open, setOpen] = useState(false);
   const [openPrompt, setOpenPrompt] = useState(false);
-  const [c, setC] = useState(0);
 
   const handleOpen = () => setOpen(true);
 
@@ -59,7 +58,7 @@ function DashboardPage() {
         >
           <Grid item xs={1} container spacing={2}>
             <Grid item xs={12} sm={8}>
-              <Card sx={{ backgroundColor: '#ccc' }}>
+              <Card sx={{ backgroundColor: '#ccc', maxHeight: '800px' }}>
                 <CardContent>
                   <Button variant="contained" onClick={handleOpen}>
                     Добавить свой вопрос
@@ -74,16 +73,35 @@ function DashboardPage() {
               <Card
                 sx={{
                   backgroundColor: '#ccc',
-                  height: '400px',
+                  maxHeight: '800px',
                   overflowY: 'scroll',
+                  userSelect: 'none',
                 }}
               >
-                <CardContent sx={{ fontSize: '2vw' }}>
-                  Список Ваших желаний: {userWishes.length}
+                <CardContent sx={{ fontSize: '2vw', userSelect: 'none' }}>
+                  {userWishes.length > 7 ? (
+                    <>
+                      <p style={{ margin: '0px' }}>
+                        Доступно желаний {userWishes.length}
+                      </p>
+                      <p style={{ margin: '0px' }}></p>
+                      Пора воплощать их!
+                    </>
+                  ) : (
+                    `Ваши желания`
+                  )}
+
                   <Stack style={{ marginTop: '10px' }}>
                     {userWishes.map((el) => (
                       <>
-                        <Item key={el.id} style={{ marginTop: '10px' }}>
+                        <Item
+                          key={el.id}
+                          style={{
+                            marginTop: '10px',
+                            fontSize: '2vw',
+                            userSelect: 'none',
+                          }}
+                        >
                           {el?.wish?.wish.slice(0, el?.wish?.wish.length - 1)}
                         </Item>
                       </>
