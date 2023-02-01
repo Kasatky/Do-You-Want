@@ -7,8 +7,8 @@ import ModalPrompt from '../features/ModalPrompt';
 import { RootState, useAppDispatch } from '../store';
 import { useSelector } from 'react-redux';
 import { addUserWishes } from '../wishSlice';
-import AddedWish from '../features/AddedWish';
 import { UserWish } from '../wishTypes';
+import AddedWish from '../features/AddedWish';
 
 function DashboardPage() {
   const [open, setOpen] = useState(false);
@@ -31,7 +31,7 @@ function DashboardPage() {
   };
 
   return (
-    <PageWrapper isProfile={false} isAdmin={false}>
+    <PageWrapper isAdmin={false}>
       <Container sx={{ marginTop: '40px', marginBottom: '40px' }}>
         <Grid
           container

@@ -7,6 +7,7 @@ export type Wish = {
 };
 
 export type WishStat = {
+  createdWishes: number;
   doneWishesCount: number;
   mostDoneWish: string;
   averageTime: number;
