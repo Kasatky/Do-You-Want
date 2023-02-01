@@ -5,7 +5,7 @@ import PageWrapper from '../Wrappers/PageWrapper';
 
 function LandingPage(): JSX.Element {
   return (
-    <PageWrapper isProfile={false}>
+    <PageWrapper isAdmin={false}>
       <Container sx={{ marginTop: '40px', marginBottom: '40px' }}>
         <Grid
           container
@@ -28,16 +28,20 @@ function LandingPage(): JSX.Element {
               <Card
                 sx={{
                   backgroundColor: '#ccc',
+
                   justifyContent: 'center',
+
                   display: 'flex',
                   flexDirection: 'column',
                   alignItems: 'center',
                 }}
               >
+
                 Человеку в апатии сложно определить свои желания, кажется, что
                 совсем ничего не хочется и ничего не радует. Также в сложные
                 моменты не просто сориентироваться в своих желаниях, наш сайт
                 поможет скорректировать свои ценности и стремления.
+
               </Card>
             </Grid>
           </Grid>
