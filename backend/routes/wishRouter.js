@@ -48,15 +48,13 @@ wishRouter.get('/random', async (req, res) => {
 });
 
 wishRouter.post('/new', async (req, res) => {
-  let userId;
-  if (req.session) {
-    userId = req.session.userId;
-  }
+  const { userId } = req.session;
   const { wish, isPublic } = req.body;
   const isModerated = !isPublic;
 
+  let newWish;
   try {
-    const newWish = await Wish.create({
+    newWish = await Wish.create({
       wish: wish.toLowerCase(),
       userId,
       isPublic,
@@ -66,10 +64,46 @@ wishRouter.post('/new', async (req, res) => {
     });
 
     newWish.save();
-    res.json({ loading: false });
   } catch (error) {
     console.log(`Ошибка при добавлении вопроса: ${error.message}`);
     res.status(500).json({ error: 'Не удалось добавить новый вопрос' });
+    return;
+  }
+
+  let newUserWish;
+  try {
+    newUserWish = await UsersWish.create({
+      wishId: newWish.id,
+      userId,
+      doneCount: 0,
+      isDone: false,
+    });
+
+    newUserWish.save();
+  } catch (error) {
+    console.log(
+      `Ошибка при обращении к БД (таблица UsersWishes): ${error.message}`,
+    );
+    res.status(500).json({ error: 'Не удалось получить данные из БД' });
+    return;
+  }
+
+  try {
+    const userWishWithName = await UsersWish.findByPk(newUserWish.id, {
+      include: [
+        {
+          association: UsersWish.Wish,
+          attributes: ['wish'],
+        },
+      ],
+    });
+
+    res.json({ loading: false, newUserWish: userWishWithName });
+  } catch (error) {
+    console.log(
+      `Ошибка при обращении к БД (таблица UsersWishes): ${error.message}`,
+    );
+    res.status(500).json({ error: 'Не удалось получить данные из БД' });
   }
 });
 

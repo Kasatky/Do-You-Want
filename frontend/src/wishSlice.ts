@@ -47,8 +47,8 @@ export const getRandomWish = createAsyncThunk('wishes/random', async () => {
 export const addWish = createAsyncThunk(
   'wishes/new',
   async (newWish: NewWish) => {
-    const { loading } = await wishApi.requestNewWish(newWish);
-    return loading;
+    const data = await wishApi.requestNewWish(newWish);
+    return data;
   },
 );
 
@@ -135,7 +135,8 @@ export const wishSlice = createSlice({
         state.error = action.error.message;
       })
       .addCase(addWish.fulfilled, (state, action) => {
-        state.loading = action.payload;
+        state.loading = action.payload.loading;
+        state.addedWishes.push(action.payload.newUserWish);
       })
       .addCase(addUserWishes.fulfilled, (state, action) => {
         const userWishes = action.payload;
