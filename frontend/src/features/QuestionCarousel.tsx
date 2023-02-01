@@ -7,7 +7,6 @@ import '../App/App.css';
 import { Box, Button, Paper, Stack } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import Auth from '../Auth/Auth';
-import QuestionCard from './QuestionCard';
 
 declare type Direction = 'left' | 'right' | 'up' | 'down';
 

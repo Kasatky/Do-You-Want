@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-
 import {
   Container,
   Card,
@@ -9,7 +8,6 @@ import {
   Stack,
   Paper,
 } from '@mui/material';
-
 import PageWrapper from '../Wrappers/PageWrapper';
 import QuestionView from '../Question/QuestionView';
 import AddQuestion from '../AddQuestion/AddQuestion';
@@ -17,7 +15,6 @@ import ModalPrompt from '../features/ModalPrompt';
 import { RootState, useAppDispatch } from '../store';
 import { useSelector } from 'react-redux';
 import { addUserWishes } from '../wishSlice';
-
 import { styled } from '@mui/material/styles';
 import AddedWish from '../features/AddedWish';
 
@@ -32,11 +29,11 @@ const Item = styled(Paper)(({ theme }) => ({
 function DashboardPage() {
   const [open, setOpen] = useState(false);
   const [openPrompt, setOpenPrompt] = useState(false);
-
-  const handleOpen = () => setOpen(true);
+  const userWishes = useSelector((state: RootState) => state.wish.addedWishes);
 
   const dispatch = useAppDispatch();
-  const userWishes = useSelector((state: RootState) => state.wish.addedWishes);
+
+  const handleOpen = () => setOpen(true);
 
   useEffect(() => {
     dispatch(addUserWishes());
