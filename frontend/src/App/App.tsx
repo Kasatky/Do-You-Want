@@ -9,6 +9,7 @@ import ProtectedRoute from '../Wrappers/ProtectedRoute';
 import DashboardPage from '../pages/DashboardPage';
 import ProfilePage from '../pages/ProfilePage';
 import CabinetAdmin from '../CabinetAdminPage/CabinetAdmin';
+import AudioMeditationPage from '../pages/AudioMeditationPage';
 
 function App() {
   const isAuth = useSelector((state: RootState) => state.user.isAuth);
