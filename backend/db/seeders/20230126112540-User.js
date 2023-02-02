@@ -12,7 +12,7 @@ module.exports = {
     {
       email: 'farit@mail.ru',
       userName: 'Farit',
-      password: await bcrypt.hash('123', Number(process.env.SALT_ROUNDS)),
+      password: await bcrypt.hash('123456', Number(process.env.SALT_ROUNDS)),
     }];
 
     await queryInterface.bulkInsert('Users', users.map((el) => ({

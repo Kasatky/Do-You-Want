@@ -8,15 +8,15 @@ import {
   TableContainer,
   TableHead,
   TableRow,
-} from '@mui/material';
-import React, { useEffect, useState } from 'react';
-import DeleteIcon from '@mui/icons-material/Delete';
-import SendIcon from '@mui/icons-material/Send';
-import { useSelector } from 'react-redux';
-import { RootState, useAppDispatch } from '../store';
-import { changeWishes, deleteWish, getUnmoderatedWishes } from '../wishSlice';
-import { WishId } from '../wishTypes';
-import PageWrapper from '../Wrappers/PageWrapper';
+} from "@mui/material";
+import React, { useEffect, useState } from "react";
+import DeleteIcon from "@mui/icons-material/Delete";
+import SendIcon from "@mui/icons-material/Send";
+import { useSelector } from "react-redux";
+import { RootState, useAppDispatch } from "../store";
+import { changeWishes, deleteWish, getUnmoderatedWishes } from "../wishSlice";
+import { WishId } from "../wishTypes";
+import PageWrapper from "../Wrappers/PageWrapper";
 
 function CabinetAdmin(): JSX.Element {
   const [arrayId, setArrayId] = useState<number[]>([]);
@@ -32,8 +32,14 @@ function CabinetAdmin(): JSX.Element {
     dispatch(deleteWish(id));
   }
   function changeStatus(event: React.ChangeEvent<HTMLInputElement>) {
+    console.log(event.target.checked);
+
     const { id } = event.target;
-    setArrayId((prev) => [...prev, Number(id)]);
+    if (event.target.checked) {
+    setArrayId((prev) => [...prev, Number(id)])
+    return
+    }
+    setArrayId((prev) => prev.filter((el) => el !== Number(id)))  
   }
 
   function fetchData() {
@@ -48,12 +54,12 @@ function CabinetAdmin(): JSX.Element {
           <div>
             <h2
               style={{
-                width: '90%',
-                margin: 'auto',
-                marginTop: '15px',
-                marginBottom: '15px',
-                fontFamily: 'Gill Sans',
-                fontSize: '4vw',
+                width: "90%",
+                margin: "auto",
+                marginTop: "15px",
+                marginBottom: "15px",
+                fontFamily: "Gill Sans",
+                fontSize: "4vw",
               }}
             >
               Вопросы на модерацию:
@@ -61,7 +67,7 @@ function CabinetAdmin(): JSX.Element {
             <Grid>
               <TableContainer
                 component={Paper}
-                style={{ width: '90%', margin: 'auto' }}
+                style={{ width: "90%", margin: "auto" }}
               >
                 <Table aria-label="caption table">
                   <caption>
@@ -78,17 +84,17 @@ function CabinetAdmin(): JSX.Element {
                       <TableCell
                         padding="normal"
                         style={{
-                          fontSize: ' 2vw 2hw',
-                          fontFamily: 'Gill Sans',
+                          fontSize: " 2vw 2hw",
+                          fontFamily: "Gill Sans",
                         }}
                       >
-                        Вопрос1
+                        Вопрос
                       </TableCell>
                       <TableCell
                         padding="normal"
                         style={{
-                          fontSize: '2vw 2hw',
-                          fontFamily: 'Gill Sans',
+                          fontSize: "2vw 2hw",
+                          fontFamily: "Gill Sans",
                         }}
                         align="right"
                       >
@@ -97,8 +103,8 @@ function CabinetAdmin(): JSX.Element {
                       <TableCell
                         padding="normal"
                         style={{
-                          fontSize: '2vw 2hw',
-                          fontFamily: 'Gill Sans',
+                          fontSize: "2vw 2hw",
+                          fontFamily: "Gill Sans",
                         }}
                         align="right"
                       >
@@ -112,8 +118,8 @@ function CabinetAdmin(): JSX.Element {
                         <TableRow key={el.id}>
                           <TableCell
                             style={{
-                              fontSize: '2vw',
-                              fontFamily: 'Gill Sans',
+                              fontSize: "2vw",
+                              fontFamily: "Gill Sans",
                             }}
                             component="th"
                             scope="row"
@@ -131,7 +137,7 @@ function CabinetAdmin(): JSX.Element {
                                 />
                                 <label
                                   style={{
-                                    fontSize: '2vw',
+                                    fontSize: "2vw",
                                   }}
                                 >
                                   Выбрать
@@ -145,7 +151,7 @@ function CabinetAdmin(): JSX.Element {
                               variant="outlined"
                               startIcon={<DeleteIcon />}
                               style={{
-                                fontSize: '2vw',
+                                fontSize: "2vw",
                               }}
                             >
                               Удалить
@@ -155,19 +161,19 @@ function CabinetAdmin(): JSX.Element {
                       ))}
                   </TableBody>
                 </Table>
-              </TableContainer>{' '}
+              </TableContainer>{" "}
             </Grid>
           </div>
         ) : (
           <div>
             <h2
               style={{
-                width: '90%',
-                margin: 'auto',
-                marginTop: '15px',
-                marginBottom: '15px',
-                fontFamily: 'Gill Sans',
-                fontSize: '40px',
+                width: "90%",
+                margin: "auto",
+                marginTop: "15px",
+                marginBottom: "15px",
+                fontFamily: "Gill Sans",
+                fontSize: "40px",
               }}
             >
               Вопросов на модерацию нет.

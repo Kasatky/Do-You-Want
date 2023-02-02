@@ -41,7 +41,7 @@ function QuestionCarousel(): JSX.Element {
       Array(wishMock.length)
         .fill(0)
         .map((i) => React.createRef()),
-    [],
+    []
   );
 
   const updateCurrentIndex = (val: number) => {
@@ -54,7 +54,7 @@ function QuestionCarousel(): JSX.Element {
   const swiped = (
     direction: Direction,
     wishToDelete: string,
-    index: number,
+    index: number
   ) => {
     // Количество вызовов для последующих вопросов растёт (1 раз, 2 раза, 4 раза, 8 раз, 16 раз).
     // Чтобы игнорировать лишние вызовы, пока подаём предыдущее значение БЕЗ callback-функции.
@@ -77,7 +77,9 @@ function QuestionCarousel(): JSX.Element {
   };
 
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', }}>
+    <Box
+      sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
+    >
       <>
         <link
           href="https://fonts.googleapis.com/css?family=Damion&display=swap"
@@ -138,12 +140,15 @@ function QuestionCarousel(): JSX.Element {
                     color: `#fff ${0.1 * index + opacity})`,
                   }}
                 >
-                  {character.wish}
+                  <>
+                    {character.wish}
+                    {currentIndex} {console.log(currentIndex)}
+                  </>
                 </Item>
               </Stack>
             </TinderCard>
           ))}{' '}
-          {currentIndex === -1 && (
+          {currentIndex <= -1 && (
             <>
               <Auth open={open} setOpen={setOpen} />
               <h2>Авторизуйтесь чтобы продолжить</h2>
@@ -163,7 +168,7 @@ function QuestionCarousel(): JSX.Element {
           </Box>)}
 
       </>
-    </Box >
+    </Box>
   );
 }
 

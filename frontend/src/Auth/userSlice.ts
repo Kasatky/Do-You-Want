@@ -44,6 +44,10 @@ const userSlice = createSlice({
         const newUser = action.payload;
         state.profile = newUser;
         state.isAuth = true;
+        state.error = undefined;
+      })
+      .addCase(register.pending, (state, action) => {
+        state.error = undefined;
       })
       .addCase(register.rejected, (state, action) => {
         state.error = action.error.message;
@@ -51,6 +55,9 @@ const userSlice = createSlice({
       .addCase(login.fulfilled, (state, action) => {
         state.profile = action.payload;
         state.isAuth = true;
+      })
+      .addCase(login.pending, (state, action) => {
+        state.error = undefined;
       })
       .addCase(login.rejected, (state, action) => {
         state.error = action.error.message;

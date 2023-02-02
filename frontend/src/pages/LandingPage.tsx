@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Card, Box } from '@mui/material';
+import { Container, Card, Box, Typography } from '@mui/material';
 import QuestionCarousel from '../features/QuestionCarousel';
 import PageWrapper from '../Wrappers/PageWrapper';
 import About from '../features/About';
@@ -25,18 +25,21 @@ function LandingPage(): JSX.Element {
               boxShadow: 'none'
             }}>
               <Box>
-                Человеку в апатии сложно определить свои желания, кажется, что
-                совсем ничего не хочется и ничего не радует.
+                <Typography variant="h5">
+                  Человеку в апатии сложно определить свои желания, кажется, что
+                  совсем ничего не хочется и ничего не радует.
+                </Typography>
               </Box>
-              Также в сложные
-              моменты не просто сориентироваться в своих желаниях, наш сайт
-              поможет скорректировать свои ценности и стремления.
-
+              <Typography variant="h5">
+                Также в сложные моменты не просто сориентироваться в своих
+                желаниях, наш сайт поможет скорректировать свои ценности и
+                стремления.
+              </Typography>
             </Box>
           </Box>
         </Box>
       </Container>
-    </PageWrapper >
+    </PageWrapper>
   );
 }
 

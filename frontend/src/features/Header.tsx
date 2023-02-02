@@ -7,7 +7,7 @@ import {
   IconButton,
   Avatar,
 } from '@mui/material';
-import './headerStyle.css'
+import './headerStyle.css';
 import '../index.css';
 import Logo from './Logo';
 import { useNavigate } from 'react-router-dom';

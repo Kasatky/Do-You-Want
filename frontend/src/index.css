@@ -11,11 +11,15 @@ html {
 }
 
 body {
-  width: 100%;
+  /* font-family: "Roboto","Helvetica","Arial",sans-serif; */
+  /* width: 100%; */
+  margin: 0.5em;
+  /* background-image: url(../public/img/Plants-at-a-botanical-gar-2560x1600.jpg); */
   background-image: url(../public/img/6267773749.jpg);
-  background-size: 100%;
+
   background-position: center;
-  background-repeat: repeat-y;
+  background-repeat: no-repeat;
+  background-size: cover;
   background-attachment: fixed;
 }
 
@@ -25,6 +29,7 @@ header.css-hip9hq-MuiPaper-root-MuiAppBar-root, .AppBarHeader   {
   padding-top: 20px ;
   background-color: #ffffff;
   box-shadow: none;
+  /* margin: 1em; */
 }
 
 
@@ -32,24 +37,32 @@ header.css-hip9hq-MuiPaper-root-MuiAppBar-root, .AppBarHeader   {
   width: 50vw !important;
 }
 
-@media (min-width: 1200px){
+@media (min-width: 1200px) {
   .css-1i9grp-MuiContainer-root {
-  max-width: 80% !important;
+  max-width: 1600px !important;
 }}
 @media (max-width: 1200px){
   #clouds {
     display: none !important;
-}}
+  }
+}
 
-@media (max-width: 600px){
-  header .css-1i9grp-MuiContainer-root{ display: flex; flex-direction: column; align-items: center ; }
-  #carouselFont, #optLogo{display: none;}
-  .optImg{
+@media (max-width: 600px) {
+  header .css-1i9grp-MuiContainer-root {
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: space-between;
+  }
+  #carouselFont,
+  #optLogo {
+    width: 150px;
+  }
+  .optImg {
     width: 150px !important;
   }
 }
 
-.MuiBox-root css-0{
+.MuiBox-root css-0 {
   display: flex;
 }
 
@@ -62,22 +75,8 @@ header.css-hip9hq-MuiPaper-root-MuiAppBar-root, .AppBarHeader   {
   flex-direction: column;
 }
 
-.css-1clzr65-MuiButtonBase-root-MuiButton-root, .MuiButton-contained {
+.css-1clzr65-MuiButtonBase-root-MuiButton-root,
+.MuiButton-contained {
   background-color: #02611d !important;
   color: bisque;
-}
-
-.whyCard {
-  width: 20em;
-  height: 10em;
-}
-
-.MuiBox-root .textDiv.css-pgvgg1{
-  border-radius: 10px;
-  padding: 50px;
-  margin-top: 7vh;
-  width: 48vw;
-  background-color: #ffffff;
-  font-size: 2em;
-  box-shadow: none;
 }
