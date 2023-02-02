@@ -1,4 +1,5 @@
 html {
+  font-family: 'Sofia Sans Condensed', sans-serif;
   margin: 0px;
   width: 100%;
 }
@@ -11,10 +12,8 @@ html {
 }
 
 body {
-  /* font-family: "Roboto","Helvetica","Arial",sans-serif; */
-  /* width: 100%; */
+  width: 100%;
   margin: 0.5em;
-  /* background-image: url(../public/img/Plants-at-a-botanical-gar-2560x1600.jpg); */
   background-image: url(../public/img/6267773749.jpg);
 
   background-position: center;
@@ -34,12 +33,12 @@ header.css-hip9hq-MuiPaper-root-MuiAppBar-root, .AppBarHeader   {
 
 
 .css-1p32o3w-MuiPaper-root-MuiCard-root {
-  width: 50vw !important;
+  width: 53vw !important;
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1200px){
   .css-1i9grp-MuiContainer-root {
-  max-width: 1600px !important;
+  max-width: 80% !important;
 }}
 @media (max-width: 1200px){
   #clouds {
@@ -79,4 +78,24 @@ header.css-hip9hq-MuiPaper-root-MuiAppBar-root, .AppBarHeader   {
 .MuiButton-contained {
   background-color: #02611d !important;
   color: bisque;
+}
+
+.whyCard, .css-1v5z4dq-MuiPaper-root-MuiCard-root {
+  border-radius: 10px;
+  width: 20em;
+  height: 10em;
+}
+
+.MuiBox-root .textDiv.css-pgvgg1{
+  border-radius: 10px;
+  padding: 50px;
+  margin-top: 7vh;
+  width: 48vw;
+  background-color: #ffffff;
+  font-size: 2em;
+  box-shadow: none;
+}
+
+.MuiBox-root.css-dvxtzn {
+  width: 100%;
 }

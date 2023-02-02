@@ -1,8 +1,6 @@
 import React, { useState, useMemo, useRef } from 'react';
 import TinderCard from 'react-tinder-card';
 import IconButton from '@mui/material/IconButton';
-import CheckIcon from '@mui/icons-material/Check';
-import ClearIcon from '@mui/icons-material/Clear';
 import { Box, Paper, Stack } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutlined';
@@ -140,15 +138,12 @@ function QuestionCarousel(): JSX.Element {
                     color: `#fff ${0.1 * index + opacity})`,
                   }}
                 >
-                  <>
-                    {character.wish}
-                    {currentIndex} {console.log(currentIndex)}
-                  </>
+                  {character.wish}
                 </Item>
               </Stack>
             </TinderCard>
           ))}{' '}
-          {currentIndex <= -1 && (
+          {currentIndex === -1 && (
             <>
               <Auth open={open} setOpen={setOpen} />
               <h2>Авторизуйтесь чтобы продолжить</h2>
