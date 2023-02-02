@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useEffect } from 'react';
 import { Box, Paper, Button } from '@mui/material';
 import { useSelector } from 'react-redux';
@@ -8,7 +8,6 @@ import { addWishToUser, getRandomWish } from '../wishSlice';
 export default function QuestionView() {
   const dispatch = useAppDispatch();
   const random = useSelector((state: RootState) => state.wish.random);
-  const error = useSelector((state: RootState) => state.wish.error);
 
   useEffect(() => {
     if (!random) {
@@ -34,16 +33,20 @@ export default function QuestionView() {
             : 'Вау! Вы перебрали все вопросы, совсем скоро появятся новые или можете добавить свои, нажав на кнопку "Добавить вопрос"'}
         </Box>
       </Paper>
-      <Button variant="contained" onClick={handleTrue}>
-        Да
-      </Button>
-      <Button
-        variant="contained"
-        onClick={handleFalse}
-        sx={{ marginLeft: '10px' }}
-      >
-        Нет
-      </Button>
+      {random && (
+        <>
+          <Button variant="contained" onClick={handleTrue}>
+            Да
+          </Button>
+          <Button
+            variant="contained"
+            onClick={handleFalse}
+            sx={{ marginLeft: '10px' }}
+          >
+            Нет
+          </Button>
+        </>
+      )}
     </Box>
   );
 }
