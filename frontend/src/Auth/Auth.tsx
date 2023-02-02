@@ -13,7 +13,7 @@ const style = {
   transform: 'translate(-50%, -50%)',
   minWidth: 300,
   bgcolor: 'background.paper',
-  border: '2px solid #1525d8',
+  border: '2px solid #02611d',
   boxShadow: 24,
   p: 4,
   display: 'flex',
@@ -24,7 +24,7 @@ const style = {
 type Props = {
   open: boolean;
   setOpen: (open: boolean) => void;
-  onClose?: any
+  onClose?: any;
 };
 
 function Auth({ open, setOpen }: Props) {

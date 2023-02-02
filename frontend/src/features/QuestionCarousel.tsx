@@ -40,7 +40,7 @@ function QuestionCarousel(): JSX.Element {
       Array(wishMock.length)
         .fill(0)
         .map((i) => React.createRef()),
-    [],
+    []
   );
 
   const updateCurrentIndex = (val: number) => {
@@ -53,7 +53,7 @@ function QuestionCarousel(): JSX.Element {
   const swiped = (
     direction: Direction,
     wishToDelete: string,
-    index: number,
+    index: number
   ) => {
     // Количество вызовов для последующих вопросов растёт (1 раз, 2 раза, 4 раза, 8 раз, 16 раз).
     // Чтобы игнорировать лишние вызовы, пока подаём предыдущее значение БЕЗ callback-функции.
@@ -134,7 +134,10 @@ function QuestionCarousel(): JSX.Element {
                     transition: 'all .5s',
                   }}
                 >
-                  {character.wish}
+                  <>
+                    {character.wish}
+                    {currentIndex} {console.log(currentIndex)}
+                  </>
                 </Item>
               </Stack>
             </TinderCard>

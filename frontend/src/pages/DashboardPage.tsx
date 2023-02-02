@@ -59,9 +59,13 @@ function DashboardPage() {
         >
           <Grid item xs={1} container spacing={2}>
             <Grid item xs={12} sm={8}>
-              <Card sx={{ backgroundColor: '#ccc', maxHeight: '800px' }}>
+              <Card sx={{ backgroundColor: '#ffffff00', maxHeight: '800px' }}>
                 <CardContent>
-                  <Button variant="contained" onClick={handleOpen} className="btn">
+                  <Button
+                    variant="contained"
+                    onClick={handleOpen}
+                    className="btn"
+                  >
                     Добавить свой вопрос
                   </Button>
 
@@ -73,7 +77,7 @@ function DashboardPage() {
             <Grid item xs={12} sm={4}>
               <Card
                 sx={{
-                  backgroundColor: '#ccc',
+                  backgroundColor: '#ffffff00',
                   maxHeight: '800px',
                   overflowY: 'scroll',
                   userSelect: 'none',
@@ -100,6 +104,7 @@ function DashboardPage() {
                           marginTop: '10px',
                           fontSize: '2vw',
                           userSelect: 'none',
+                          backgroundColor: '#d9dde6',
                         }}
                       >
                         <AddedWish wish={el} />
