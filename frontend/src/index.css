@@ -12,12 +12,14 @@ html {
 
 body {
   /* font-family: "Roboto","Helvetica","Arial",sans-serif; */
-  width: 100%;
+  /* width: 100%; */
+  margin: 0.5em;
   /* background-image: url(../public/img/Plants-at-a-botanical-gar-2560x1600.jpg); */
   background-image: url(../public/img/6267773749.jpg);
-  background-size: 100%;
+
   background-position: center;
-  background-repeat: repeat-y;
+  background-repeat: no-repeat;
+  background-size: cover;
   background-attachment: fixed;
 
   /* background: linear-gradient(#4ccecc, hsla(167, 83%, 61%, 0.141), #4cd8ac, #3be090); */
@@ -31,6 +33,7 @@ header {
   /* background-size: cover; */
   /* background-position: 40% 60%; */
   box-shadow: none;
+  /* margin: 1em; */
 }
 
 .css-hip9hq-MuiPaper-root-MuiAppBar-root {
@@ -47,24 +50,33 @@ header {
   box-shadow: inset -2px -2px 20px 20px rgb(251 251 251) !important;
 } */
 
-@media (min-width: 1200px){
+@media (min-width: 1200px) {
   .css-1i9grp-MuiContainer-root {
-  max-width: 1600px !important;
-}}
-@media (max-width: 1200px){
+    max-width: 1600px !important;
+  }
+}
+@media (max-width: 1200px) {
   #clouds {
     display: none !important;
-}}
+  }
+}
 
-@media (max-width: 600px){
-  header .css-1i9grp-MuiContainer-root{ display: flex; flex-direction: column; align-items: center ; }
-  #carouselFont, #optLogo{display: none;}
-  .optImg{
+@media (max-width: 600px) {
+  header .css-1i9grp-MuiContainer-root {
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: space-between;
+  }
+  #carouselFont,
+  #optLogo {
+    width: 150px;
+  }
+  .optImg {
     width: 150px !important;
   }
 }
 
-.MuiBox-root css-0{
+.MuiBox-root css-0 {
   display: flex;
 }
 
@@ -89,7 +101,8 @@ header {
   flex-direction: column;
 }
 
-.css-1clzr65-MuiButtonBase-root-MuiButton-root, .MuiButton-contained {
+.css-1clzr65-MuiButtonBase-root-MuiButton-root,
+.MuiButton-contained {
   background-color: #02611d !important;
   color: bisque;
 }

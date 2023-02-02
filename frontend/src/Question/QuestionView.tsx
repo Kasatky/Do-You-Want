@@ -27,26 +27,32 @@ export default function QuestionView() {
   return (
     <Box sx={{ height: '180px', userSelect: 'none' }}>
       <Paper>
-        <Box component="h1" sx={{ userSelect: 'none' }}>
+        <Box
+          component="h1"
+          sx={{
+            userSelect: 'none',
+            backgroundColor: '#d9dde6',
+            textAlign: 'center',
+          }}
+        >
           {random
             ? `Хочешь ${random.wish}`
             : 'Вау! Вы перебрали все вопросы, совсем скоро появятся новые или можете добавить свои, нажав на кнопку "Добавить вопрос"'}
         </Box>
       </Paper>
-      {random && (
-        <>
-          <Button variant="contained" onClick={handleTrue}>
-            Да
-          </Button>
-          <Button
-            variant="contained"
-            onClick={handleFalse}
-            sx={{ marginLeft: '10px' }}
-          >
-            Нет
-          </Button>
-        </>
-      )}
+      <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <Button variant="contained" onClick={handleTrue}>
+          Да
+        </Button>
+        <Button
+          variant="contained"
+          onClick={handleFalse}
+          sx={{ marginLeft: '10px' }}
+        >
+          Нет
+        </Button>
+      </div>
+      <div>{openError}</div>
     </Box>
   );
 }
