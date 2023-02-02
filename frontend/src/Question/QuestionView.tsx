@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useEffect } from 'react';
 import { Box, Paper, Button } from '@mui/material';
 import { useSelector } from 'react-redux';
@@ -6,11 +6,8 @@ import { RootState, useAppDispatch } from '../store';
 import { addWishToUser, getRandomWish } from '../wishSlice';
 
 export default function QuestionView() {
-  const [openError, setOpenError] = useState<string | undefined>('');
   const dispatch = useAppDispatch();
   const random = useSelector((state: RootState) => state.wish.random);
-  const error = useSelector((state: RootState) => state.wish.error);
-  console.log(error);
 
   useEffect(() => {
     if (!random) {
@@ -25,10 +22,6 @@ export default function QuestionView() {
   const handleTrue = () => {
     dispatch(addWishToUser(random?.id));
     dispatch(getRandomWish());
-    setOpenError(error);
-    setTimeout(() => {
-      setOpenError('');
-    }, 1000);
   };
 
   return (
