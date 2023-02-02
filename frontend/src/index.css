@@ -76,8 +76,9 @@ header.css-hip9hq-MuiPaper-root-MuiAppBar-root, .AppBarHeader   {
 
 .css-1clzr65-MuiButtonBase-root-MuiButton-root,
 .MuiButton-contained {
+  text-align: center;
   background-color: #02611d !important;
-  color: bisque;
+  color: rgb(255, 255, 255);
 }
 
 .whyCard, .css-1v5z4dq-MuiPaper-root-MuiCard-root {

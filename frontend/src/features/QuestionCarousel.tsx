@@ -151,14 +151,14 @@ function QuestionCarousel(): JSX.Element {
           )}
         </Box>
         {currentIndex > -1 && (
-          <Box className="buttons">
-            <IconButton onClick={() => swipe('left')} sx={{ marginRight: "5em" }}>
-              <ArrowBackIosOutlinedIcon />
+          <Box className="buttons" >
+            <IconButton color='success' onClick={() => swipe('left')} sx={{ marginRight: "5em" }}>
+              <ArrowBackIosOutlinedIcon color='success' />
               Нет
             </IconButton>
-            <IconButton onClick={() => swipe('right')} sx={{ marginLeft: "5em" }}>
+            <IconButton color='success' onClick={() => swipe('right')} sx={{ marginLeft: "5em" }}>
               Да
-              <ArrowForwardIosOutlinedIcon />
+              <ArrowForwardIosOutlinedIcon color='success' />
             </IconButton>
           </Box>)}
 
