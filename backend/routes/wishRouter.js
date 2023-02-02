@@ -36,9 +36,10 @@ wishRouter.get('/random', async (req, res) => {
     wishCount = await Wish.count({
       where: {
         [Op.or]: [
-          {
-            [Op.and]: [{ isPublic: true }, { id: { [Op.in]: ids } }],
-          },
+          { isPublic: true },
+          // {
+          //   [Op.and]: [{ isPublic: true }, { id: { [Op.in]: ids } }],
+          // },
           {
             [Op.and]: [{ userId }, { id: { [Op.in]: ids } }],
           },
@@ -55,7 +56,8 @@ wishRouter.get('/random', async (req, res) => {
     const wish = await Wish.findOne({
       where: {
         [Op.or]: [
-          { [Op.and]: [{ isPublic: true }, { id: { [Op.in]: ids } }] },
+          { isPublic: true },
+          // { [Op.and]: [{ isPublic: true }, { id: { [Op.in]: ids } }] },
           {
             [Op.and]: [{ userId }, { id: { [Op.in]: ids } }],
           },
@@ -149,7 +151,7 @@ wishRouter.get('/stat', async (req, res) => {
 
   try {
     allDoneWishes = await UsersWish.findAll({
-      where: { userId, isDone: true },
+      where: { userId, doneCount: { [Op.gt]: 0 } },
       order: [['doneCount', 'DESC']],
     });
   } catch (error) {
