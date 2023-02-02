@@ -1,12 +1,14 @@
-import { configureStore } from "@reduxjs/toolkit";
-import { useDispatch } from "react-redux";
-import userSlice from "./Auth/userSlice";
-import wishSlice from "./wishSlice";
+import { configureStore } from '@reduxjs/toolkit';
+import { useDispatch } from 'react-redux';
+import userSlice from './Auth/userSlice';
+import diarySlice from './Diary/diarySlice';
+import wishSlice from './wishSlice';
 
 const store = configureStore({
   reducer: {
     user: userSlice,
     wish: wishSlice,
+    diary: diarySlice,
   },
 });
 
