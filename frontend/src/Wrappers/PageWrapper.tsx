@@ -30,7 +30,7 @@ function PageWrapper({ children, isAdmin }: Props): JSX.Element {
         {children}
       </div>
 
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

@@ -1,27 +1,95 @@
 html {
-  height: 100%;
+  margin: 0px;
+  width: 100%;
+}
+.swipe {
+  position: absolute;
+}
+
+.cardContainer {
+  position: relative;
 }
 
 body {
-  margin: 0;
-  height: 100%;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  /* font-family: "Roboto","Helvetica","Arial",sans-serif; */
+  width: 100%;
+  /* background-image: url(../public/img/Plants-at-a-botanical-gar-2560x1600.jpg); */
+  background-image: url(../public/img/6267773749.jpg);
+  background-size: 100%;
+  background-position: center;
+  background-repeat: repeat-y;
+  background-attachment: fixed;
+
+  /* background: linear-gradient(#4ccecc, hsla(167, 83%, 61%, 0.141), #4cd8ac, #3be090); */
+  /* background-repeat: no-repeat; */
 }
 
+header {
+  /* background-image: url(https://glass-pt.ru/galereya/gory/images/G-107.jpg); */
+  /* background-repeat: no-repeat; */
+  background-color: rgba(255, 222, 173, 0);
+  /* background-size: cover; */
+  /* background-position: 40% 60%; */
+  box-shadow: none;
+}
+
+.css-hip9hq-MuiPaper-root-MuiAppBar-root {
+  background: none !important;
+}
+
+/* .MuiBox-root.css-dvxtzn,  */
+/* .css-46bh2p-MuiCardContent-root, .css-o4bg9w-MuiGrid-root,  */
+.css-1p32o3w-MuiPaper-root-MuiCard-root {
+  width: 50vw !important;
+}
+
+/* .css-hip9hq-MuiPaper-root-MuiAppBar-root {
+  box-shadow: inset -2px -2px 20px 20px rgb(251 251 251) !important;
+} */
+
+@media (min-width: 1200px){
+  .css-1i9grp-MuiContainer-root {
+  max-width: 1600px !important;
+}}
+@media (max-width: 1200px){
+  #clouds {
+    display: none !important;
+}}
+
+@media (max-width: 600px){
+  header .css-1i9grp-MuiContainer-root{ display: flex; flex-direction: column; align-items: center ; }
+  #carouselFont, #optLogo{display: none;}
+  .optImg{
+    width: 150px !important;
+  }
+}
+
+.MuiBox-root css-0{
+  display: flex;
+}
+
+/* .tinderCard {
+  width: 6000px;
+} */
+
+/* .tatet {
+  background-image: url('../public/img/cloud.png') !important;
+} */
 #root {
-  height: 100%;
+  width: 100%;
 }
 
-code {
+/* code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
-}
+} */
 
 .wrapper {
   display: flex;
   flex-direction: column;
+}
+
+.css-1clzr65-MuiButtonBase-root-MuiButton-root, .MuiButton-contained {
+  background-color: #02611d !important;
+  color: bisque;
 }
