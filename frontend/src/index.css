@@ -13,8 +13,13 @@ html {
 body {
   /* font-family: "Roboto","Helvetica","Arial",sans-serif; */
   width: 100%;
-  background-image: url(../public/img/Plants-at-a-botanical-gar-2560x1600.jpg);
-  background-size: cover;
+  /* background-image: url(../public/img/Plants-at-a-botanical-gar-2560x1600.jpg); */
+  background-image: url(../public/img/6267773749.jpg);
+  background-size: 100%;
+  background-position: center;
+  background-repeat: repeat-y;
+  background-attachment: fixed;
+
   /* background: linear-gradient(#4ccecc, hsla(167, 83%, 61%, 0.141), #4cd8ac, #3be090); */
   /* background-repeat: no-repeat; */
 }
@@ -82,4 +87,9 @@ header {
 .wrapper {
   display: flex;
   flex-direction: column;
+}
+
+.css-1clzr65-MuiButtonBase-root-MuiButton-root, .MuiButton-contained {
+  background-color: #02611d !important;
+  color: bisque;
 }

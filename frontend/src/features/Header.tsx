@@ -67,17 +67,14 @@ function Header({ isAdmin, isAuth, userName }: Props): JSX.Element {
             <Logo />
 
             {!isAuth ? (
-              <IconButton aria-label="fingerprint" color="success"
-                onClick={handleOpen}
+              <Button color="success" variant="contained" onClick={handleOpen}
                 sx={{
-                  background: 'white',
-                  borderRadius: '15px',
+                  borderRadius: '10px',
+                  width: '7em',
                   zIndex: 7,
                   cursor: 'pointer'
-                }}>
-                <Fingerprint />
-                ВОЙТИ
-              </IconButton>
+                }}
+              >ВОЙТИ</Button>
             ) : (
               <>
                 <IconButton

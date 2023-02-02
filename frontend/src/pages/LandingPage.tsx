@@ -1,12 +1,13 @@
 import React from 'react';
-import { Container, Card, CardContent, Grid, Box } from '@mui/material';
+import { Container, Card, Box } from '@mui/material';
 import QuestionCarousel from '../features/QuestionCarousel';
 import PageWrapper from '../Wrappers/PageWrapper';
+import About from '../features/About';
 
 function LandingPage(): JSX.Element {
   return (
     <PageWrapper isAdmin={false}>
-      <Container sx={{ marginTop: '40px', marginBottom: '40px' }}>
+      <Container sx={{ marginTop: '40px', marginBottom: '40px', backgroundColor: '#d6dde596', width: '90vw', borderRadius: '9px' }}>
         <Box
         >
           <Box>
@@ -17,6 +18,7 @@ function LandingPage(): JSX.Element {
 
               </Card>
             </Box>
+            <About />
 
             <Box sx={{
               marginTop: '10vh',

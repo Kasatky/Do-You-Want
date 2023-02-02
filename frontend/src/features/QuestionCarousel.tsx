@@ -129,7 +129,7 @@ function QuestionCarousel(): JSX.Element {
                     fontSize: '1.5em',
                     transform: `translateY(${top}px)`,
                     transition: 'all .5s',
-                    color: `#0313c8 ${0.1 * index + opacity})`,
+                    color: `#fff ${0.1 * index + opacity})`,
                   }}
                 >
                   {character.wish}
