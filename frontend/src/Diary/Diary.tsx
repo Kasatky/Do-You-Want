@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   Box,
   Table,
@@ -11,58 +11,18 @@ import {
 } from '@mui/material';
 import DiaryToolbar from './DiaryToolbar';
 import DiaryTableHead from './DiaryTableHead';
+import { useSelector } from 'react-redux';
+import { RootState, useAppDispatch } from '../store';
+import { getDiary } from './diarySlice';
 
 export interface Data {
-  date: string;
+  id: number;
+  createdAt: string;
   situation: string;
   emotion: string;
   mind: string;
   action: string;
 }
-
-function createData(
-  date: string,
-  situation: string,
-  emotion: string,
-  mind: string,
-  action: string,
-): Data {
-  return {
-    date,
-    situation,
-    emotion,
-    mind,
-    action,
-  };
-}
-
-const rows = [
-  createData('01.01.2023', 'sssss1', 'eeeee1', 'mmmmm1', 'aaaaa1'),
-  createData('02.01.2023', 'sssss2', 'eeeee2', 'mmmmm2', 'aaaaa2'),
-  createData(
-    '03.01.2023',
-    'ssssaerth  th theahs3',
-    'eee3ee',
-    'mmmm3m',
-    'aaaaa3',
-  ),
-  createData('04.01.2023', 'sssss4', 'e4eeee', 'mmm4mm', 'aaaaa4'),
-  createData('05.01.2023', 'sfetn etah essss5', 'eeeee', 'mmmmm', 'aaaaa'),
-  createData(
-    '06.01.2023',
-    'sssddddddddddddddddddddddd ffffff fffffffffffffffffffff fwwwwwwwwwwwwwwww wwwwwwwwwwwwwwwwwwww fffffffff fffffffffffffffffffff dddddddddddddaeth th hass6',
-    'eeeee',
-    'mmmmm',
-    'aaaaa',
-  ),
-  createData('07.01.2023', 'sssss7', 'eeeee', 'mmmmm', 'aaaaa'),
-  createData('08.01.2023', 'sssss8', 'eeeee', 'mmmmm', 'aaaaa'),
-  createData('09.01.2023', 'sssss9', 'eeeee', 'mmmmm', 'aaaaa'),
-  createData('10.01.2023', 'sssss10', 'eeeee', 'mmmmm', 'aaaaa'),
-  createData('11.01.2023', 'sssss11', 'eeeee', 'mmmmm', 'aaaaa'),
-  createData('12.01.2023', 'sssss12', 'eeeee', 'mmmmm', 'aaaaa'),
-  createData('13.01.2023', 'sssss13', 'eeeee', 'mmmmm', 'aaaaa'),
-];
 
 function descendingComparator<T>(a: T, b: T, orderBy: keyof T) {
   if (b[orderBy] < a[orderBy]) {
@@ -109,9 +69,17 @@ function stableSort<T>(
 
 export default function EnhancedTable() {
   const [order, setOrder] = React.useState<Order>('asc');
-  const [orderBy, setOrderBy] = React.useState<keyof Data>('date');
+  const [orderBy, setOrderBy] = React.useState<keyof Data>('createdAt');
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
+
+  const notes = useSelector((state: RootState) => state.diary.notes);
+
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(getDiary());
+  }, []);
 
   const handleRequestSort = (
     event: React.MouseEvent<unknown>,
@@ -145,25 +113,18 @@ export default function EnhancedTable() {
               onRequestSort={handleRequestSort}
             />
             <TableBody>
-              {stableSort(rows, getComparator(order, orderBy))
+              {stableSort(notes, getComparator(order, orderBy))
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                .map((row, index) => {
-                  const labelId = `enhanced-table-checkbox-${index}`;
-
+                .map((note) => {
                   return (
-                    <TableRow hover tabIndex={-1} key={row.date}>
-                      <TableCell
-                        component="th"
-                        id={labelId}
-                        scope="row"
-                        padding="none"
-                      >
-                        {row.date}
+                    <TableRow hover tabIndex={-1} key={note.id}>
+                      <TableCell sx={{ minWidth: '80px' }}>
+                        {note.createdAt.slice(0, 10)}
                       </TableCell>
-                      <TableCell align="right">{row.situation}</TableCell>
-                      <TableCell align="right">{row.mind}</TableCell>
-                      <TableCell align="right">{row.emotion}</TableCell>
-                      <TableCell align="right">{row.action}</TableCell>
+                      <TableCell align="right">{note.situation}</TableCell>
+                      <TableCell align="right">{note.mind}</TableCell>
+                      <TableCell align="right">{note.emotion}</TableCell>
+                      <TableCell align="right">{note.action}</TableCell>
                     </TableRow>
                   );
                 })}
@@ -173,7 +134,7 @@ export default function EnhancedTable() {
         <TablePagination
           rowsPerPageOptions={[5, 10, 25]}
           component="div"
-          count={rows.length}
+          count={notes.length}
           rowsPerPage={rowsPerPage}
           page={page}
           onPageChange={handleChangePage}
@@ -181,10 +142,10 @@ export default function EnhancedTable() {
           labelRowsPerPage={'Количество строк:'}
           labelDisplayedRows={() =>
             `${page * rowsPerPage + 1}–${
-              rowsPerPage * (page + 1) > rows.length
-                ? rows.length
+              rowsPerPage * (page + 1) > notes.length
+                ? notes.length
                 : rowsPerPage * (page + 1)
-            } из ${rows.length}`
+            } из ${notes.length}`
           }
         />
       </Paper>

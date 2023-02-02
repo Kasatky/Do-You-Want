@@ -19,7 +19,8 @@ module.exports = (sequelize, DataTypes) => {
       });
       User.DiaryEmotion = User.hasMany(models.DiaryEmotion, {
         foreignKey: 'userId',
-        as: 'acceptedEmotion',
+        as: 'userDiaryNotes',
+
       });
     }
   }

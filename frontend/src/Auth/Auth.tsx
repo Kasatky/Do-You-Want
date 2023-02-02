@@ -6,6 +6,7 @@ import { UserLogin, UserRegister } from './usersTypes';
 import { useSelector } from 'react-redux';
 
 const style = {
+  borderRadius: '15px',
   position: 'absolute' as 'absolute',
   top: '40%',
   left: '50%',
@@ -23,6 +24,7 @@ const style = {
 type Props = {
   open: boolean;
   setOpen: (open: boolean) => void;
+  onClose?: any
 };
 
 function Auth({ open, setOpen }: Props) {

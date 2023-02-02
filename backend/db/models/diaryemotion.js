@@ -1,6 +1,4 @@
-const {
-  Model,
-} = require('sequelize');
+const { Model } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
   class DiaryEmotion extends Model {
@@ -11,16 +9,19 @@ module.exports = (sequelize, DataTypes) => {
       });
     }
   }
-  DiaryEmotion.init({
-    userId: DataTypes.INTEGER,
-    situation: DataTypes.TEXT,
-    emotion: DataTypes.TEXT,
-    mind: DataTypes.TEXT,
-    action: DataTypes.TEXT,
-  }, {
-    sequelize,
-    modelName: 'DiaryEmotion',
-    tableName: 'DiaryEmotions',
-  });
+  DiaryEmotion.init(
+    {
+      userId: DataTypes.INTEGER,
+      situation: DataTypes.TEXT,
+      emotion: DataTypes.TEXT,
+      mind: DataTypes.TEXT,
+      action: DataTypes.TEXT,
+    },
+    {
+      sequelize,
+      modelName: 'DiaryEmotion',
+      tableName: 'DiaryEmotions',
+    },
+  );
   return DiaryEmotion;
 };

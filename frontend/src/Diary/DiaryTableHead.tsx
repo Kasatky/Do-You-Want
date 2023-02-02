@@ -18,7 +18,7 @@ interface HeadCell {
 
 const headCells: readonly HeadCell[] = [
   {
-    id: 'date',
+    id: 'createdAt',
     numeric: false,
     disablePadding: true,
     label: 'Дата',
@@ -66,13 +66,16 @@ function DiaryTableHead(props: DiaryTableProps) {
     };
 
   return (
-    <TableHead>
+    <TableHead
+      sx={{
+        borderTop: '1px solid #e7e7e7',
+      }}
+    >
       <TableRow>
         {headCells.map((headCell) => (
           <TableCell
             key={headCell.id}
             align={headCell.numeric ? 'right' : 'left'}
-            padding={headCell.disablePadding ? 'none' : 'normal'}
             sortDirection={orderBy === headCell.id ? order : false}
           >
             <TableSortLabel
