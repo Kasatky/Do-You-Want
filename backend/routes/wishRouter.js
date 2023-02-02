@@ -142,6 +142,7 @@ wishRouter.get('/stat', async (req, res) => {
   } catch (error) {
     console.log(`Ошибка при обращении к БД (таблица Wishes): ${error.message}`);
     res.status(500).json({ error: 'Не удалось получить данные из БД' });
+    return;
   }
 
   let allDoneWishes;
@@ -156,6 +157,7 @@ wishRouter.get('/stat', async (req, res) => {
       `Ошибка при обращении к БД (таблица UsersWishes): ${error.message}`,
     );
     res.status(500).json({ error: 'Не удалось получить данные из БД' });
+    return;
   }
 
   if (!allDoneWishes.length) {
@@ -170,6 +172,7 @@ wishRouter.get('/stat', async (req, res) => {
   } catch (error) {
     console.log(`Ошибка при обращении к БД (таблица Wishes): ${error.message}`);
     res.status(500).json({ error: 'Не удалось получить данные из БД' });
+    return;
   }
 
   const createdDates = allDoneWishes.map((date) => date.createdAt);

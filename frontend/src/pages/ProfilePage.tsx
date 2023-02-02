@@ -5,7 +5,7 @@ import PageWrapper from '../Wrappers/PageWrapper';
 import { RootState, useAppDispatch } from '../store';
 import { getStat } from '../wishSlice';
 import { logout } from '../Auth/userSlice';
-import Diary from '../features/Diary';
+import Diary from '../Diary/Diary';
 
 function ProfilePage(): JSX.Element {
   const stat = useSelector((state: RootState) => state.wish.stat);
@@ -38,10 +38,15 @@ function ProfilePage(): JSX.Element {
           <div>Выполненных желаний пока нет</div>
         )}
         <Diary />
-        <Button onClick={handleLogout} variant="contained">
-          Logout
-        </Button>
       </Container>
+
+      <Button
+        onClick={handleLogout}
+        variant="contained"
+        sx={{ flex: '0 0 auto' }}
+      >
+        Logout
+      </Button>
     </PageWrapper>
   );
 }
