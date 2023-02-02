@@ -3,11 +3,10 @@ import TinderCard from 'react-tinder-card';
 import IconButton from '@mui/material/IconButton';
 import CheckIcon from '@mui/icons-material/Check';
 import ClearIcon from '@mui/icons-material/Clear';
-import '../App/App.css';
-import { Box, Button, Paper, Stack } from '@mui/material';
+import { Box, Paper, Stack } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import Auth from '../Auth/Auth';
-import { url } from 'inspector';
+import '../App/App.css';
 
 declare type Direction = 'left' | 'right' | 'up' | 'down';
 
@@ -90,11 +89,10 @@ function QuestionCarousel(): JSX.Element {
           rel="stylesheet"
         />
         <h2 id="carouselFont">
-          Более 300 вопросов будут доступны после регистрации, на любые темы, с
-          возможность добавления своих
+          Более 300 вопросов на любые темы с возможностью добавления новых будут
+          доступны после регистрации
         </h2>
         <Box
-          onClick={() => setOpen(false)}
           className="cardContainer"
           sx={{
             width: '600px',
@@ -134,7 +132,6 @@ function QuestionCarousel(): JSX.Element {
                     fontSize: '1.5em',
                     transform: `translateY(${top}px)`,
                     transition: 'all .5s',
-                    color: `#fff ${0.1 * index + opacity})`,
                   }}
                 >
                   <>
@@ -145,10 +142,10 @@ function QuestionCarousel(): JSX.Element {
               </Stack>
             </TinderCard>
           ))}{' '}
-          {currentIndex <= -1 && (
+          {currentIndex < 0 && (
             <>
               <Auth open={open} setOpen={setOpen} />
-              <h2>Авторизуйтесь чтобы продолжить</h2>
+              <h2>Авторизуйтесь, чтобы продолжить</h2>
             </>
           )}
         </Box>
