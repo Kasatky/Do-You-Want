@@ -3,11 +3,11 @@ import TinderCard from 'react-tinder-card';
 import IconButton from '@mui/material/IconButton';
 import CheckIcon from '@mui/icons-material/Check';
 import ClearIcon from '@mui/icons-material/Clear';
-import '../App/App.css';
-import { Box, Button, Paper, Stack } from '@mui/material';
+import { Box, Paper, Stack } from '@mui/material';
 import { styled } from '@mui/material/styles';
+import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutlined';
+import ArrowBackIosOutlinedIcon from '@mui/icons-material/ArrowBackIosOutlined';
 import Auth from '../Auth/Auth';
-import { url } from 'inspector';
 
 declare type Direction = 'left' | 'right' | 'up' | 'down';
 
@@ -87,13 +87,14 @@ function QuestionCarousel(): JSX.Element {
           href="https://fonts.googleapis.com/css?family=Alatsi&display=swap"
           rel="stylesheet"
         />
-        <h2 id='carouselFont'>Более 300 вопросов будут доступны после регистрации, на любые темы, с возможность добавления своих</h2>
+        {/* <h2 id='carouselFont'>Более 300 вопросов будут доступны после регистрации, на любые темы, с возможность добавления своих</h2> */}
         <Box
           onClick={() => setOpen(false)}
           className="cardContainer"
           sx={{
+            marginTop: '3em',
             width: '600px',
-            height: '200px',
+            height: '160px',
             position: 'relative',
             justifyContent: 'center',
             display: 'flex',
@@ -114,13 +115,18 @@ function QuestionCarousel(): JSX.Element {
                 justifyContent="center"
                 alignItems="center"
                 sx={{
-                  top: `${index * 20}px`,
+                  top: `${index * 23}px`,
                   position: 'relative',
                 }}
                 className="card"
               >
                 <Item
                   sx={{
+                    background: 'white',
+                    height: '50px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
                     padding: '0.3em',
                     borderRadius: '30px',
                     opacity: `${0.1 * index + opacity}`,
@@ -144,18 +150,18 @@ function QuestionCarousel(): JSX.Element {
             </>
           )}
         </Box>
-
         {currentIndex > -1 && (
           <Box className="buttons">
-            <IconButton onClick={() => swipe('left')}>
+            <IconButton onClick={() => swipe('left')} sx={{ marginRight: "5em" }}>
+              <ArrowBackIosOutlinedIcon />
               Нет
-              <ClearIcon />
             </IconButton>
-            <IconButton onClick={() => swipe('right')}>
+            <IconButton onClick={() => swipe('right')} sx={{ marginLeft: "5em" }}>
               Да
-              <CheckIcon />
+              <ArrowForwardIosOutlinedIcon />
             </IconButton>
           </Box>)}
+
       </>
     </Box >
   );
