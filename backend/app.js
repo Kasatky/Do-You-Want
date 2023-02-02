@@ -7,6 +7,7 @@ const authRouter = require('./routes/authRouter');
 const cabinetAdminRouter = require('./routes/cabinetAdminRouter');
 const wishRouter = require('./routes/wishRouter');
 const cabinetUserRouter = require('./routes/cabinetUserRouter');
+const diaryRouter = require('./routes/diaryRouter');
 
 const app = express();
 serverConfig(app);
@@ -15,6 +16,7 @@ app.use('/api/wishes', wishRouter);
 app.use('/api/auth', authRouter);
 app.use('/api', cabinetAdminRouter);
 app.use('/api/cabinetUser', cabinetUserRouter);
+app.use('/api/diary', diaryRouter);
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../frontend/build/index.html'));

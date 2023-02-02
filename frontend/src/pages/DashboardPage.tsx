@@ -61,7 +61,7 @@ function DashboardPage() {
             <Grid item xs={12} sm={8}>
               <Card sx={{ backgroundColor: '#ccc', maxHeight: '800px' }}>
                 <CardContent>
-                  <Button variant="contained" onClick={handleOpen}>
+                  <Button variant="contained" onClick={handleOpen} className="btn">
                     Добавить свой вопрос
                   </Button>
 
