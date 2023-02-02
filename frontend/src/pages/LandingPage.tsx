@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Card, CardContent, Grid } from '@mui/material';
+import { Container, Card, CardContent, Grid, Box } from '@mui/material';
 import QuestionCarousel from '../features/QuestionCarousel';
 import PageWrapper from '../Wrappers/PageWrapper';
 
@@ -7,46 +7,40 @@ function LandingPage(): JSX.Element {
   return (
     <PageWrapper isAdmin={false}>
       <Container sx={{ marginTop: '40px', marginBottom: '40px' }}>
-        <Grid
-          container
-          rowSpacing={4}
-          direction="column"
-          justifyContent="center"
-          alignItems="center"
-          sx={{ height: '100%' }}
+        <Box
         >
-          <Grid item xs={1} container spacing={2}>
-            <Grid item xs={12} sm={8}>
-              <Card sx={{ backgroundColor: '#03b8f00f' }}>
-                <CardContent>
-                  <QuestionCarousel />
-                </CardContent>
+          <Box>
+            <Box>
+              <Card sx={{ backgroundColor: '#03b8f00f', background: '#ffffff00', boxShadow: 'none' }}>
+
+                <QuestionCarousel />
+
               </Card>
-            </Grid>
+            </Box>
 
-            <Grid item xs={12} sm={4}>
-              <Card
-                sx={{
-                  backgroundColor: '#03b8f00f',
-                  fontFamily: 'monospace',
-                  fontSize: '4vh',
-                  height: '55vh',
-                  width: '30vw',
-                  // justifyContent: 'center',
-                  // display: 'flex',
-                  // flexDirection: 'column',
-                  // alignItems: 'center',
-                }}
-              >
-
+            <Box sx={{
+              marginTop: '10vh',
+              width: '60vw',
+              backgroundColor: '#ffffff00',
+              fontSize: '4vh',
+              boxShadow: 'none'
+              // height: '55vh',
+              // width: '',
+              // justifyContent: 'center',
+              // display: 'flex',
+              // flexDirection: 'column',
+              // alignItems: 'center',
+            }}>
+              <Box>
                 Человеку в апатии сложно определить свои желания, кажется, что
-                совсем ничего не хочется и ничего не радует. Также в сложные
-                моменты не просто сориентироваться в своих желаниях, наш сайт
-                поможет скорректировать свои ценности и стремления.
+                совсем ничего не хочется и ничего не радует.
+              </Box>
+              Также в сложные
+              моменты не просто сориентироваться в своих желаниях, наш сайт
+              поможет скорректировать свои ценности и стремления.
 
-              </Card>
-            </Grid>
-          </Grid>
+            </Box>
+          </Box>
 
           {/* <Grid item xs={1}>
             <Card sx={{ backgroundColor: '#ccc' }}>
@@ -73,9 +67,9 @@ function LandingPage(): JSX.Element {
               </CardContent>
             </Card>
           </Grid> */}
-        </Grid>
+        </Box>
       </Container>
-    </PageWrapper>
+    </PageWrapper >
   );
 }
 

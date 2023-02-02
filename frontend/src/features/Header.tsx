@@ -8,11 +8,13 @@ import {
   Avatar,
 } from '@mui/material';
 import './headerStyle.css'
+import '../index.css';
 import Logo from './Logo';
 import { useNavigate } from 'react-router-dom';
 import Auth from '../Auth/Auth';
 import { logout } from '../Auth/userSlice';
 import { useAppDispatch } from '../store';
+import { Fingerprint } from '@mui/icons-material';
 
 type Props = {
   isAdmin: boolean;
@@ -63,32 +65,19 @@ function Header({ isAdmin, isAuth, userName }: Props): JSX.Element {
             }}
           >
             <Logo />
-            <Box id="clouds">
-              <div className="Cloud Foreground" />
-              <div className="Cloud Foreground" />
-              <div className="Cloud Foreground" />
-              <div className="Cloud Foreground" />
-              <div className="Cloud Foreground" />
-              <div className="Cloud Foreground" />
-              <div className="Cloud Foreground" />
-              <div className="Cloud Foreground" />
-              <div className="Cloud Foreground" />
-              <div className="Cloud Foreground" />
-            </Box>
 
             {!isAuth ? (
-              <Button
+              <IconButton aria-label="fingerprint" color="success"
                 onClick={handleOpen}
-                variant="contained"
                 sx={{
-                  width: '80px',
-                  height: '80px',
+                  background: 'white',
+                  borderRadius: '15px',
                   zIndex: 7,
-                  borderRadius: '50%',
-                }}
-              >
-                Войти
-              </Button>
+                  cursor: 'pointer'
+                }}>
+                <Fingerprint />
+                ВОЙТИ
+              </IconButton>
             ) : (
               <>
                 <IconButton

@@ -23,6 +23,7 @@ const style = {
 type Props = {
   open: boolean;
   setOpen: (open: boolean) => void;
+  onClose?: any
 };
 
 function Auth({ open, setOpen }: Props) {

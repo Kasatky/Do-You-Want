@@ -2,11 +2,12 @@ import React, { useState, useMemo, useRef } from 'react';
 import TinderCard from 'react-tinder-card';
 import IconButton from '@mui/material/IconButton';
 import CheckIcon from '@mui/icons-material/Check';
-import DeleteIcon from '@mui/icons-material/Delete';
+import ClearIcon from '@mui/icons-material/Clear';
 import '../App/App.css';
 import { Box, Button, Paper, Stack } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import Auth from '../Auth/Auth';
+import { url } from 'inspector';
 
 declare type Direction = 'left' | 'right' | 'up' | 'down';
 
@@ -32,10 +33,8 @@ function QuestionCarousel(): JSX.Element {
   const [top, setTop] = useState(0);
   const [width, setWidth] = useState(35);
   const [fontSize, setFontSize] = useState(40);
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
   const currentIndexRef = useRef(currentIndex);
-
-  const handleOpen = () => setOpen(true);
 
   const childRefs: any = useMemo(
     () =>
@@ -78,82 +77,87 @@ function QuestionCarousel(): JSX.Element {
   };
 
   return (
-    <div>
-      <link
-        href="https://fonts.googleapis.com/css?family=Damion&display=swap"
-        rel="stylesheet"
-      />
-      <link
-        href="https://fonts.googleapis.com/css?family=Alatsi&display=swap"
-        rel="stylesheet"
-      />
-      <h1>Добрый вечер</h1>
-      <Box
-        className="cardContainer"
-        sx={{
-          height: '200px',
-          position: 'relative',
-          justifyContent: 'center',
-          display: 'flex',
-        }}
-      >
-        {wishMock.map((character, index) => (
-          <TinderCard
-            key={character.id}
-            ref={childRefs[index]}
-            className="swipe"
-            onSwipe={(dir: Direction) => swiped(dir, character.wish, index)}
-            onCardLeftScreen={(index) =>
-              outOfFrame(character.wish, Number(index))
-            }
-          >
-            <Stack
-              spacing={2}
-              justifyContent="center"
-              alignItems="center"
-              sx={{
-                top: `${index * 15}px`,
-                position: 'relative',
-              }}
-              className="card"
+    <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', }}>
+      <>
+        <link
+          href="https://fonts.googleapis.com/css?family=Damion&display=swap"
+          rel="stylesheet"
+        />
+        <link
+          href="https://fonts.googleapis.com/css?family=Alatsi&display=swap"
+          rel="stylesheet"
+        />
+        <h2 id='carouselFont'>Более 300 вопросов будут доступны после регистрации, на любые темы, с возможность добавления своих</h2>
+        <Box
+          onClick={() => setOpen(false)}
+          className="cardContainer"
+          sx={{
+            width: '600px',
+            height: '200px',
+            position: 'relative',
+            justifyContent: 'center',
+            display: 'flex',
+          }}
+        >
+          {wishMock.map((character, index) => (
+            <TinderCard
+              key={character.id}
+              ref={childRefs[index]}
+              className="swipe"
+              onSwipe={(dir: Direction) => swiped(dir, character.wish, index)}
+              onCardLeftScreen={(index) =>
+                outOfFrame(character.wish, Number(index))
+              }
             >
-              <Item
+              <Stack
+                spacing={2}
+                justifyContent="center"
+                alignItems="center"
                 sx={{
-                  opacity: `${0.1 * index + opacity}`,
-                  userSelect: 'none',
-                  width: `${index * 3 + width}vw`,
-                  fontSize: `${index + fontSize}px`,
-                  transform: `translateY(${top}px)`,
-                  transition: 'all .5s',
-                  color: `rgba(0, 0, 0, ${0.1 * index + opacity})`,
+                  top: `${index * 20}px`,
+                  position: 'relative',
                 }}
+                className="card"
               >
-                {character.wish}
-              </Item>
-            </Stack>
-          </TinderCard>
-        ))}{' '}
-        {currentIndex === -1 && (
-          <>
-            <Button onClick={handleOpen}>
-              Если хотите еще вопросов войдите
-            </Button>
-            <Auth open={open} setOpen={setOpen} />
-          </>
-        )}
-      </Box>
+                <Item
+                  sx={{
+                    padding: '0.3em',
+                    borderRadius: '30px',
+                    opacity: `${0.1 * index + opacity}`,
+                    userSelect: 'none',
+                    width: `${index * 2.5 + width}vw`,
+                    fontSize: '1.5em',
+                    transform: `translateY(${top}px)`,
+                    transition: 'all .5s',
+                    color: `#0313c8 ${0.1 * index + opacity})`,
+                  }}
+                >
+                  {character.wish}
+                </Item>
+              </Stack>
+            </TinderCard>
+          ))}{' '}
+          {currentIndex === -1 && (
+            <>
+              <Auth open={open} setOpen={setOpen} />
+              <h2>Авторизуйтесь чтобы продолжить</h2>
+            </>
+          )}
+        </Box>
 
-      <div className="buttons">
-        <IconButton onClick={() => swipe('left')}>
-          Нет
-          <DeleteIcon />
-        </IconButton>
-        <IconButton onClick={() => swipe('right')}>
-          Да
-          <CheckIcon />
-        </IconButton>
-      </div>
-    </div>
+        {currentIndex > -1 && (
+          <Box className="buttons">
+            <IconButton onClick={() => swipe('left')}>
+              Нет
+              <ClearIcon />
+            </IconButton>
+            <IconButton onClick={() => swipe('right')}>
+              Да
+              <CheckIcon />
+            </IconButton>
+          </Box>)}
+      </>
+    </Box >
   );
 }
 
