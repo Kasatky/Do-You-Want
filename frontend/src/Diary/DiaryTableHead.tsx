@@ -1,6 +1,6 @@
 import React from 'react';
 import { visuallyHidden } from '@mui/utils';
-import { Data, Order } from './Diary';
+import { Order } from './Diary';
 import {
   Box,
   TableCell,
@@ -8,10 +8,11 @@ import {
   TableRow,
   TableSortLabel,
 } from '@mui/material';
+import { DiaryNote } from './diaryTypes';
 
 interface HeadCell {
   disablePadding: boolean;
-  id: keyof Data;
+  id: keyof DiaryNote;
   label: string;
   numeric: boolean;
 }
@@ -52,7 +53,7 @@ const headCells: readonly HeadCell[] = [
 interface DiaryTableProps {
   onRequestSort: (
     event: React.MouseEvent<unknown>,
-    property: keyof Data,
+    property: keyof DiaryNote,
   ) => void;
   order: Order;
   orderBy: string;
@@ -61,7 +62,7 @@ interface DiaryTableProps {
 function DiaryTableHead(props: DiaryTableProps) {
   const { order, orderBy, onRequestSort } = props;
   const createSortHandler =
-    (property: keyof Data) => (event: React.MouseEvent<unknown>) => {
+    (property: keyof DiaryNote) => (event: React.MouseEvent<unknown>) => {
       onRequestSort(event, property);
     };
 

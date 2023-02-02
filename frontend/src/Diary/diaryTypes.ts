@@ -1,10 +1,10 @@
 export type DiaryNote = {
-  id: number;
+  id: number | undefined;
   situation: string;
   emotion: string;
   mind: string;
   action: string;
-  createdAt: string;
+  createdAt: string | undefined;
 };
 
 export type DiaryState = {
