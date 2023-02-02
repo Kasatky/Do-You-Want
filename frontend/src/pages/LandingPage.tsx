@@ -2,6 +2,7 @@ import React from 'react';
 import { Container, Typography, Card, CardContent, Grid } from '@mui/material';
 import QuestionCarousel from '../features/QuestionCarousel';
 import PageWrapper from '../Wrappers/PageWrapper';
+import About from '../About/About';
 
 function LandingPage(): JSX.Element {
   return (
@@ -16,52 +17,52 @@ function LandingPage(): JSX.Element {
           sx={{ height: '100%' }}
         >
           <Grid item xs={1} container spacing={2}>
-            <Grid item xs={12} sm={8}>
-              <Card
-                sx={{ backgroundColor: 'aliceblue', border: '1px solid #ccc' }}
-              >
+            <Grid item xs={12} sm={12}>
+              <Card sx={{ backgroundColor: '#d3eff7' }}>
                 <CardContent>
                   <QuestionCarousel />
                 </CardContent>
               </Card>
             </Grid>
-
+            {/* 
             <Grid item xs={12} sm={4}>
               <Card
                 sx={{
-                  backgroundColor: '#51b3fc',
-                  fontFamily: "'Raleway', sans-serif",
-                  fontWeight: '300',
-                  justifyContent: 'center',
-                  padding: '10px',
+                  backgroundColor: '#ccc',
 
+                  justifyContent: 'center',
+                  fontSize: 24,
                   display: 'flex',
                   flexDirection: 'column',
                   alignItems: 'center',
                 }}
               >
+                {' '}
+                <ul>
+                  <p style={{ textAlign: 'left' }}>Приложение помогает:</p>{' '}
+                  <li style={{ textAlign: 'left' }}>
+                    Cформировать свои желания
+                  </li>
+                  <li style={{ textAlign: 'left' }}>
+                    Cкорректировать ценности и стремления
+                  </li>
+                </ul>
+                {/*                 
                 Человеку в апатии сложно определить свои желания, кажется, что
                 совсем ничего не хочется и ничего не радует. Также в сложные
                 моменты не просто сориентироваться в своих желаниях, наш сайт
-                поможет скорректировать свои ценности и стремления.
-              </Card>
-            </Grid>
+                поможет скорректировать свои ценности и стремления. */}
+            {/* </Card>
+            </Grid> }*/}
           </Grid>
-
+          <About />
           <Grid item xs={1}>
-            <Card sx={{ backgroundColor: '#51b3fc' }}>
+            <Card sx={{ backgroundColor: '#ccc' }}>
               <CardContent>
                 <Typography
                   sx={{
+                    fontSize: 18,
                     textAlign: 'center',
-                    backgroundColor: '#51b3fc',
-                    fontFamily: "'Raleway', sans-serif",
-                    fontWeight: '300',
-                    justifyContent: 'center',
-
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
                   }}
                   gutterBottom
                 >
@@ -69,17 +70,7 @@ function LandingPage(): JSX.Element {
                   И наша миссия — в том, чтобы делиться этим знанием с вами»
                 </Typography>
                 <Typography
-                  sx={{
-                    textAlign: 'center',
-                    backgroundColor: '#51b3fc',
-                    fontFamily: "'Raleway', sans-serif",
-                    fontWeight: '300',
-                    justifyContent: 'center',
-
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                  }}
+                  sx={{ fontSize: 18, textAlign: 'center' }}
                   gutterBottom
                 >
                   Человеку в апатии сложно определить свои желания, кажется, что
