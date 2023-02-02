@@ -82,7 +82,7 @@ function CabinetAdmin(): JSX.Element {
                           fontFamily: 'Gill Sans',
                         }}
                       >
-                        Вопрос1
+                        Вопрос
                       </TableCell>
                       <TableCell
                         padding="normal"

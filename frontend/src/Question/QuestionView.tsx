@@ -6,11 +6,9 @@ import { RootState, useAppDispatch } from '../store';
 import { addWishToUser, getRandomWish } from '../wishSlice';
 
 export default function QuestionView() {
-  const [openError, setOpenError] = useState<string | undefined>('');
   const dispatch = useAppDispatch();
   const random = useSelector((state: RootState) => state.wish.random);
   const error = useSelector((state: RootState) => state.wish.error);
-  console.log(error);
 
   useEffect(() => {
     if (!random) {
@@ -25,10 +23,6 @@ export default function QuestionView() {
   const handleTrue = () => {
     dispatch(addWishToUser(random?.id));
     dispatch(getRandomWish());
-    setOpenError(error);
-    setTimeout(() => {
-      setOpenError('');
-    }, 1000);
   };
 
   return (
@@ -50,8 +44,6 @@ export default function QuestionView() {
       >
         Нет
       </Button>
-
-      <div>{openError}</div>
     </Box>
   );
 }
