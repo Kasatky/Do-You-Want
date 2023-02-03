@@ -75,7 +75,7 @@ function QuestionCarousel(): JSX.Element {
   };
 
   return (
-    <Box
+    <Box className='carouselDiv'
       sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
     >
       <>

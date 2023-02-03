@@ -8,7 +8,7 @@ import HistoryEduRoundedIcon from '@mui/icons-material/HistoryEduRounded';
 
 function About(): JSX.Element {
   return (
-    <Grid container spacing={4} sx={{ marginTop: '1rem', width: '100%' }}>
+    <Grid container spacing={4} xs={12} sx={{ marginTop: '1rem', width: '100%' }}>
       <Grid item xs={12} lg={4}>
         <Card variant="outlined" className="whyCard">
           <CardContent sx={{ textAlign: 'center' }}>
