@@ -78,7 +78,8 @@ function DiaryModalNew({ open, setOpen }: Props): JSX.Element {
       aria-describedby="modal-modal-description"
     >
       <Box sx={style}>
-        <Typography>Добавить запись в дневник</Typography>
+        <Typography sx={{fontWeight: "lighter ",
+        fontFamily: '"Gill Sans", sans-serif' }}>Добавить запись в дневник</Typography>
 
         <TextField
           id="outlined-basic"

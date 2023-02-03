@@ -7,6 +7,7 @@ import {
   Grid,
   Stack,
   Paper,
+  Hidden,
 } from "@mui/material";
 import PageWrapper from "../Wrappers/PageWrapper";
 import QuestionView from "../Question/QuestionView";
@@ -61,7 +62,7 @@ function DashboardPage() {
             <Grid item xs={12} sm={8}>
               <Card
                 sx={{
-                  marginTop: '50px',
+                  marginTop: "50px",
                   backgroundColor: "rgba(255,255,255, 0.7)",
                   maxHeight: "800px",
                   fontWeight: "lighter !important",
@@ -83,19 +84,20 @@ function DashboardPage() {
             </Grid>
 
             <Grid item xs={12} sm={4}>
-              <Card
+              <Card className="scrollBar"
                 sx={{
                   // backgroundColor: 'rgba(255,255,255, 0.0)',
-                  background: 'transparent',
-                  boxShadow:"none",
+                  background: "transparent",
+                  boxShadow: "none",
                   maxHeight: "800px",
-                  overflowY: "scroll",
+                  overflowY: "auto",
                   userSelect: "none",
+      
                 }}
               >
                 <CardContent
                   sx={{
-                    marginTop: '-20px',
+                    marginTop: "-20px",
                     fontSize: "1.9em",
                     userSelect: "none",
                     fontWeight: "lighter !important",

@@ -1,6 +1,8 @@
 html {
   margin: 0px;
   width: 100%;
+  font-weight: lighter !important;
+font-family: "Gill Sans", sans-serif !important;
 }
 .swipe {
   position: absolute;
@@ -172,4 +174,11 @@ font-family: "Gill Sans", sans-serif !important;
 .MuiButtonBase-root {
   font-weight: lighter !important;
 font-family: "Gill Sans", sans-serif !important;
+}
+.scrollBar::-webkit-scrollbar {
+  display: none;
+}
+.scrollBar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }

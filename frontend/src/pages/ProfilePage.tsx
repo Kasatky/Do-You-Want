@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import { Container, Typography, Button } from '@mui/material';
-import PageWrapper from '../Wrappers/PageWrapper';
-import { RootState, useAppDispatch } from '../store';
-import { getStat } from '../wishSlice';
-import { logout } from '../Auth/userSlice';
-import Diary from '../Diary/Diary';
+import React, { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { Container, Typography, Button } from "@mui/material";
+import PageWrapper from "../Wrappers/PageWrapper";
+import { RootState, useAppDispatch } from "../store";
+import { getStat } from "../wishSlice";
+import { logout } from "../Auth/userSlice";
+import Diary from "../Diary/Diary";
 
 function ProfilePage(): JSX.Element {
   const stat = useSelector((state: RootState) => state.wish.stat);
@@ -21,7 +21,16 @@ function ProfilePage(): JSX.Element {
   };
   return (
     <PageWrapper isAdmin={false}>
-      <Container sx={{ marginTop: '40px', marginBottom: '40px' }}>
+      <Container
+        sx={{
+          marginTop: "40px",
+          marginBottom: "40px",
+          textAlign: "center",
+          fontSize: "normal",
+          fontWeight: "inherit",
+          
+        }}
+      >
         <Typography>Статистика</Typography>
         {stat ? (
           <div>
@@ -43,9 +52,9 @@ function ProfilePage(): JSX.Element {
       <Button
         onClick={handleLogout}
         variant="contained"
-        sx={{ flex: '0 0 auto' }}
+        sx={{ flex: "0 0 auto" }}
       >
-        Logout
+        Выход
       </Button>
     </PageWrapper>
   );

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   Typography,
   Box,
@@ -7,25 +7,25 @@ import {
   Checkbox,
   Button,
   Modal,
-} from '@mui/material';
-import Input from '@mui/joy/Input';
-import { useAppDispatch } from '../store';
-import { addWish } from '../wishSlice';
+} from "@mui/material";
+import Input from "@mui/joy/Input";
+import { useAppDispatch } from "../store";
+import { addWish } from "../wishSlice";
 
 const style = {
-  position: 'absolute' as 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
+  position: "absolute" as "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
   minWidth: 300,
-  bgcolor: 'background.paper',
-  border: '2px solid black',
-  borderRadius: '8px',
+  bgcolor: "background.paper",
+  border: "2px solid black",
+  borderRadius: "8px",
   boxShadow: 24,
   p: 4,
-  display: 'flex',
-  flexDirection: 'column',
-  justifyContent: 'space-between',
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "space-between",
 };
 
 type Props = {
@@ -35,14 +35,14 @@ type Props = {
 };
 
 function AddQuestion({ open, setOpen, handleOpenPrompt }: Props) {
-  const [wish, setWish] = useState('');
+  const [wish, setWish] = useState("");
   const [status, setStatus] = useState(false);
 
   const dispatch = useAppDispatch();
 
   const handleClose = () => {
     setOpen(false);
-    setWish('');
+    setWish("");
   };
 
   const handleWishChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -55,10 +55,10 @@ function AddQuestion({ open, setOpen, handleOpenPrompt }: Props) {
 
   const addNewWish = () => {
     let userWish;
-    if (wish.includes('?')) {
+    if (wish.includes("  ?")) {
       userWish = wish;
     } else {
-      userWish = wish + '?';
+      userWish = wish + "  ?";
     }
     const newWish = { wish: userWish, isPublic: status };
     dispatch(addWish(newWish));
@@ -76,42 +76,59 @@ function AddQuestion({ open, setOpen, handleOpenPrompt }: Props) {
       <Box sx={style} component="form">
         <Card
           sx={{
-            margin: '30px 0px',
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
+            margin: "30px 0px",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            boxShadow: "none",
           }}
         >
-          <Typography sx={{ fontSize: '2vw' }}>Хочешь</Typography>
+          <Typography
+            sx={{
+              fontSize: "2vw",
+              fontWeight: "lighter ",
+              fontFamily: '"Gill Sans", sans-serif',
+            }}
+          >
+            Хочешь
+          </Typography>
 
           <Input
             value={wish}
+            color="success"
             onChange={handleWishChange}
             placeholder="здесь писать вопрос.."
             variant="solid"
             size="lg"
             sx={{
-              backgroundColor: '#fff',
-              width: '400px',
-              color: '#000',
-              borderRadius: '15px',
-              fontSize: '2vw',
-              margin: '0 0 0 10px',
+              backgroundColor: "#fff",
+              width: "400px",
+              color: "#000",
+              borderRadius: "15px",
+              fontSize: "2vw",
+              margin: "0 0 0 10px",
+              outline: "none",
+              
             }}
           />
-          <i style={{ fontSize: '2vw' }} className="fa-solid fa-question"></i>
+          <i style={{ fontSize: "2vw" }} className="fa-solid fa-question"></i>
         </Card>
 
         <Card
           sx={{
-            margin: '30px 0px',
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
+            margin: "30px 0px",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            boxShadow: "none",
           }}
         >
           <FormControlLabel
-            sx={{ textAlign: 'left no-wrap', fontSize: '2vw' }}
+            sx={{
+              textAlign: "left no-wrap",
+              fontSize: "2vw",
+              boxShadow: "none",
+            }}
             value="top"
             control={
               <Checkbox checked={status} onChange={handleStatusChange} />
@@ -121,12 +138,15 @@ function AddQuestion({ open, setOpen, handleOpenPrompt }: Props) {
           />
           <Button
             sx={{
-              bgcolor: '#ccc',
-              color: 'white',
-              width: '300px',
-              borderRadius: '15px',
-              height: '40px',
-              fontSize: '2vw',
+              bgcolor: "#ccc",
+              boxShadow: "none",
+              color: "white",
+              width: "300px",
+              borderRadius: "15px",
+              height: "40px",
+              fontSize: "1.5vw",
+              fontWeight: "lighter !important",
+              fontFamily: '"Gill Sans", sans-serif !important',
             }}
             variant="contained"
             onClick={addNewWish}
