@@ -7,8 +7,9 @@ import {
   Checkbox,
   Button,
   Modal,
+  Input
 } from "@mui/material";
-import Input from "@mui/joy/Input";
+// import Input from "@mui/joy/Input";
 import { useAppDispatch } from "../store";
 import { addWish } from "../wishSlice";
 
@@ -95,11 +96,10 @@ function AddQuestion({ open, setOpen, handleOpenPrompt }: Props) {
 
           <Input
             value={wish}
+            disableUnderline={true}
             color="success"
             onChange={handleWishChange}
             placeholder="здесь писать вопрос.."
-            variant="solid"
-            size="lg"
             sx={{
               backgroundColor: "#fff",
               width: "400px",
@@ -108,7 +108,6 @@ function AddQuestion({ open, setOpen, handleOpenPrompt }: Props) {
               fontSize: "2vw",
               margin: "0 0 0 10px",
               outline: "none",
-              
             }}
           />
           <i style={{ fontSize: "2vw" }} className="fa-solid fa-question"></i>

@@ -118,8 +118,8 @@ export default function EnhancedTable() {
                         {String(note.createdAt).slice(0, 10)}
                       </TableCell>
                       <TableCell align="right">{note.situation}</TableCell>
-                      <TableCell align="right">{note.mind}</TableCell>
                       <TableCell align="right">{note.emotion}</TableCell>
+                      <TableCell align="right">{note.mind}</TableCell>
                       <TableCell align="right">{note.action}</TableCell>
                     </TableRow>
                   );

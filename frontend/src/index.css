@@ -1,6 +1,7 @@
 html {
   margin: 0px;
   width: 100%;
+  overflow-x: hidden;
   font-weight: lighter !important;
 font-family: "Gill Sans", sans-serif !important;
 }
@@ -181,4 +182,12 @@ font-family: "Gill Sans", sans-serif !important;
 .scrollBar {
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
+}
+.css-1wnsr1i {
+display: flex;
+justify-content: space-between;
+flex-wrap: wrap
+}
+.css-qlxkye-MuiContainer-root {
+  right: 0em;
 }

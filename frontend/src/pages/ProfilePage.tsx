@@ -28,7 +28,6 @@ function ProfilePage(): JSX.Element {
           textAlign: "center",
           fontSize: "normal",
           fontWeight: "inherit",
-          
         }}
       >
         <Typography>Статистика</Typography>
@@ -47,15 +46,14 @@ function ProfilePage(): JSX.Element {
           <div>Выполненных желаний пока нет</div>
         )}
         <Diary />
+        <Button
+          onClick={handleLogout}
+          variant="contained"
+          sx={{ flex: "0 0 auto", marginTop: "20px" }}
+        >
+          Выход
+        </Button>
       </Container>
-
-      <Button
-        onClick={handleLogout}
-        variant="contained"
-        sx={{ flex: "0 0 auto" }}
-      >
-        Выход
-      </Button>
     </PageWrapper>
   );
 }

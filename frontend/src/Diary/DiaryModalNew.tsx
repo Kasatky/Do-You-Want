@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import { Box, Button, Modal, TextField, Typography } from '@mui/material';
-import { useAppDispatch } from '../store';
-import { addNewNote } from './diarySlice';
-import { DiaryNote } from './diaryTypes';
+import React, { useState } from "react";
+import { Box, Button, Modal, TextField, Typography } from "@mui/material";
+import { useAppDispatch } from "../store";
+import { addNewNote } from "./diarySlice";
+import { DiaryNote } from "./diaryTypes";
 
 type Props = {
   open: boolean;
@@ -10,36 +10,36 @@ type Props = {
 };
 
 const style = {
-  position: 'absolute' as 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
+  position: "absolute" as "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
   width: 400,
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
+  bgcolor: "background.paper",
+  border: "2px solid #000",
   boxShadow: 24,
   p: 4,
 };
 
 function DiaryModalNew({ open, setOpen }: Props): JSX.Element {
-  const [situation, setSituation] = useState('');
-  const [emotion, setEmotion] = useState('');
-  const [mind, setMind] = useState('');
-  const [action, setAction] = useState('');
+  const [situation, setSituation] = useState("");
+  const [emotion, setEmotion] = useState("");
+  const [mind, setMind] = useState("");
+  const [action, setAction] = useState("");
 
   const dispatch = useAppDispatch();
 
   const handleClose = () => setOpen(false);
 
   const clearFields = () => {
-    setSituation('');
-    setEmotion('');
-    setMind('');
-    setAction('');
+    setSituation("");
+    setEmotion("");
+    setMind("");
+    setAction("");
   };
 
   const handleSituationChange = (
-    event: React.ChangeEvent<HTMLInputElement>,
+    event: React.ChangeEvent<HTMLInputElement>
   ) => {
     setSituation(event.target.value);
   };
@@ -78,8 +78,11 @@ function DiaryModalNew({ open, setOpen }: Props): JSX.Element {
       aria-describedby="modal-modal-description"
     >
       <Box sx={style}>
-        <Typography sx={{fontWeight: "lighter ",
-        fontFamily: '"Gill Sans", sans-serif' }}>Добавить запись в дневник</Typography>
+        <Typography
+          sx={{ fontWeight: "lighter ", fontFamily: '"Gill Sans", sans-serif' }}
+        >
+          Добавить запись в дневник
+        </Typography>
 
         <TextField
           id="outlined-basic"
@@ -89,7 +92,7 @@ function DiaryModalNew({ open, setOpen }: Props): JSX.Element {
           required
           onChange={handleSituationChange}
           value={situation}
-          sx={{ mt: 2, width: '100%' }}
+          sx={{ mt: 2, width: "100%" }}
         />
         <TextField
           id="outlined-basic"
@@ -99,7 +102,7 @@ function DiaryModalNew({ open, setOpen }: Props): JSX.Element {
           required
           onChange={handleEmotionChange}
           value={emotion}
-          sx={{ mt: 2, width: '100%' }}
+          sx={{ mt: 2, width: "100%" }}
         />
         <TextField
           id="outlined-basic"
@@ -109,7 +112,7 @@ function DiaryModalNew({ open, setOpen }: Props): JSX.Element {
           required
           onChange={handleMindChange}
           value={mind}
-          sx={{ mt: 2, width: '100%' }}
+          sx={{ mt: 2, width: "100%" }}
         />
         <TextField
           id="outlined-basic"
@@ -119,14 +122,24 @@ function DiaryModalNew({ open, setOpen }: Props): JSX.Element {
           required
           onChange={handleActionChange}
           value={action}
-          sx={{ mt: 2, width: '100%' }}
+          sx={{ mt: 2, width: "100%" }}
         />
-        <Button variant="contained" onClick={handleClose}>
-          Отмена
-        </Button>
-        <Button variant="contained" onClick={handleSubmit}>
-          Сохранить
-        </Button>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            width: "100%",
+            marginTop: "20px",
+          }}
+        >
+          <Button variant="contained" onClick={handleClose}>
+            Отмена
+          </Button>
+
+          <Button variant="contained" onClick={handleSubmit}>
+            Сохранить
+          </Button>
+        </div>
       </Box>
     </Modal>
   );
