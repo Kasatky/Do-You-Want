@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { DiaryState } from './diaryTypes';
+import { DiaryNote, DiaryState } from './diaryTypes';
 import * as diaryApi from './diaryApi';
 
 const initialState: DiaryState = {
@@ -12,6 +12,14 @@ export const getDiary = createAsyncThunk('diary/all', async () => {
   return data;
 });
 
+export const addNewNote = createAsyncThunk(
+  'diary/new',
+  async (newNote: DiaryNote) => {
+    const data = await diaryApi.requestNewNote(newNote);
+    return data;
+  },
+);
+
 export const diarySlice = createSlice({
   name: 'diary',
   initialState,
@@ -22,6 +30,12 @@ export const diarySlice = createSlice({
         state.notes = action.payload;
       })
       .addCase(getDiary.rejected, (state, action) => {
+        state.error = action.error.message;
+      })
+      .addCase(addNewNote.fulfilled, (state, action) => {
+        state.notes.push(action.payload);
+      })
+      .addCase(addNewNote.rejected, (state, action) => {
         state.error = action.error.message;
       });
   },

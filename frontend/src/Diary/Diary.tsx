@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Box,
   Table,
@@ -8,21 +8,15 @@ import {
   TablePagination,
   TableRow,
   Paper,
+  Button,
 } from '@mui/material';
 import DiaryToolbar from './DiaryToolbar';
 import DiaryTableHead from './DiaryTableHead';
 import { useSelector } from 'react-redux';
 import { RootState, useAppDispatch } from '../store';
 import { getDiary } from './diarySlice';
-
-export interface Data {
-  id: number;
-  createdAt: string;
-  situation: string;
-  emotion: string;
-  mind: string;
-  action: string;
-}
+import DiaryModalNew from './DiaryModalNew';
+import { DiaryNote } from './diaryTypes';
 
 function descendingComparator<T>(a: T, b: T, orderBy: keyof T) {
   if (b[orderBy] < a[orderBy]) {
@@ -36,13 +30,12 @@ function descendingComparator<T>(a: T, b: T, orderBy: keyof T) {
 
 export type Order = 'asc' | 'desc';
 
-function getComparator<Key extends keyof any>(
+type DiaryNoteKey = keyof DiaryNote;
+
+function getComparator<Key extends DiaryNoteKey>(
   order: Order,
   orderBy: Key,
-): (
-  a: { [key in Key]: number | string },
-  b: { [key in Key]: number | string },
-) => number {
+): (a: DiaryNote, b: DiaryNote) => number {
   return order === 'desc'
     ? (a, b) => descendingComparator(a, b, orderBy)
     : (a, b) => -descendingComparator(a, b, orderBy);
@@ -68,10 +61,11 @@ function stableSort<T>(
 }
 
 export default function EnhancedTable() {
-  const [order, setOrder] = React.useState<Order>('asc');
-  const [orderBy, setOrderBy] = React.useState<keyof Data>('createdAt');
-  const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  const [order, setOrder] = useState<Order>('asc');
+  const [orderBy, setOrderBy] = useState<DiaryNoteKey>('createdAt');
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(5);
+  const [open, setOpen] = useState(false);
 
   const notes = useSelector((state: RootState) => state.diary.notes);
 
@@ -79,11 +73,13 @@ export default function EnhancedTable() {
 
   useEffect(() => {
     dispatch(getDiary());
-  }, []);
+  }, [dispatch]);
+
+  const handleOpen = () => setOpen(true);
 
   const handleRequestSort = (
     event: React.MouseEvent<unknown>,
-    property: keyof Data,
+    property: DiaryNoteKey,
   ) => {
     const isAsc = orderBy === property && order === 'asc';
     setOrder(isAsc ? 'desc' : 'asc');
@@ -113,13 +109,13 @@ export default function EnhancedTable() {
               onRequestSort={handleRequestSort}
             />
             <TableBody>
-              {stableSort(notes, getComparator(order, orderBy))
+              {stableSort<DiaryNote>(notes, getComparator(order, orderBy))
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((note) => {
                   return (
                     <TableRow hover tabIndex={-1} key={note.id}>
                       <TableCell sx={{ minWidth: '80px' }}>
-                        {note.createdAt.slice(0, 10)}
+                        {String(note.createdAt).slice(0, 10)}
                       </TableCell>
                       <TableCell align="right">{note.situation}</TableCell>
                       <TableCell align="right">{note.mind}</TableCell>
@@ -149,6 +145,10 @@ export default function EnhancedTable() {
           }
         />
       </Paper>
+      <Button onClick={handleOpen} variant="contained">
+        Добавить запись
+      </Button>
+      <DiaryModalNew open={open} setOpen={setOpen} />
     </Box>
   );
 }

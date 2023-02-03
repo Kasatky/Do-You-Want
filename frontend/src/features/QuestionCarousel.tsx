@@ -3,8 +3,7 @@ import TinderCard from 'react-tinder-card';
 import IconButton from '@mui/material/IconButton';
 import CheckIcon from '@mui/icons-material/Check';
 import ClearIcon from '@mui/icons-material/Clear';
-import '../App/App.css';
-import { Box, Button, Paper, Stack } from '@mui/material';
+import { Box, Paper, Stack } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import Auth from '../Auth/Auth';
 
@@ -40,7 +39,7 @@ function QuestionCarousel(): JSX.Element {
       Array(wishMock.length)
         .fill(0)
         .map((i) => React.createRef()),
-    [],
+    []
   );
 
   const updateCurrentIndex = (val: number) => {
@@ -53,7 +52,7 @@ function QuestionCarousel(): JSX.Element {
   const swiped = (
     direction: Direction,
     wishToDelete: string,
-    index: number,
+    index: number
   ) => {
     // Количество вызовов для последующих вопросов растёт (1 раз, 2 раза, 4 раза, 8 раз, 16 раз).
     // Чтобы игнорировать лишние вызовы, пока подаём предыдущее значение БЕЗ callback-функции.
@@ -76,7 +75,9 @@ function QuestionCarousel(): JSX.Element {
   };
 
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', }}>
+    <Box
+      sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
+    >
       <>
         <link
           // href="https://fonts.googleapis.com/css?family=Damion&display=swap"
@@ -86,9 +87,11 @@ function QuestionCarousel(): JSX.Element {
            href="https://fonts.googleapis.com/css?family=Alatsi&display=swap"
           rel="stylesheet"
         />
-        <h2 id='carouselFont'>Более 300 вопросов будут доступны после регистрации, на любые темы, с возможность добавления своих</h2>
+        <h2 id="carouselFont">
+          Более 300 вопросов на любые темы с возможностью добавления новых будут
+          доступны после регистрации
+        </h2>
         <Box
-          onClick={() => setOpen(false)}
           className="cardContainer"
           sx={{
             width: '600px',
@@ -133,15 +136,18 @@ function QuestionCarousel(): JSX.Element {
                     fontFamily: '"Gill Sans", sans-serif',
                   }}
                 >
-                  {character.wish}
+                  <>
+                    {character.wish}
+                    {currentIndex} {console.log(currentIndex)}
+                  </>
                 </Item>
               </Stack>
             </TinderCard>
           ))}{' '}
-          {currentIndex === -1 && (
+          {currentIndex < 0 && (
             <>
               <Auth open={open} setOpen={setOpen} />
-              <h2>Авторизуйтесь чтобы продолжить</h2>
+              <h2>Авторизуйтесь, чтобы продолжить</h2>
             </>
           )}
         </Box>
@@ -156,9 +162,10 @@ function QuestionCarousel(): JSX.Element {
               Да
               <CheckIcon />
             </IconButton>
-          </Box>)}
+          </Box>
+        )}
       </>
-    </Box >
+    </Box>
   );
 }
 

@@ -5,22 +5,6 @@ import Grid from '@mui/material/Grid';
 import PsychologyAltRoundedIcon from '@mui/icons-material/PsychologyAltRounded';
 import ClearAllRoundedIcon from '@mui/icons-material/ClearAllRounded';
 import HistoryEduRoundedIcon from '@mui/icons-material/HistoryEduRounded';
-// import './About.css';
-
-// const features = [
-//   {
-//     icon: React.createElement(PsychologyAltRoundedIcon),
-//     text: 'Поможем выявить желания и потребности',
-//   },
-//   {
-//     icon: React.createElement(ClearAllRoundedIcon),
-//     text: 'Случайные вопросы, которые могут повторяться через некоторое время',
-//   },
-//   {
-//     icon: React.createElement(HistoryEduRoundedIcon),
-//     text: 'Добавляй свои вопросы и публикуй их, если хочешь',
-//   },
-// ];
 
 function About(): JSX.Element {
 	return (

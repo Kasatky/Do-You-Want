@@ -3,12 +3,15 @@ const { Op } = require('sequelize');
 const { Wish, UsersWish } = require('../db/models');
 
 const getAverageDoneTime = (createdDates, updatedDates) => {
-  // вычитаем из каждого updatedAt createdAt
-  const dates = updatedDates.map((date, i) => date - createdDates[i]);
-  // складываем все полученные разности
-  const commonDate = dates.reduce((acc, cur) => acc + cur, 0);
-  // время будет в милисекундах, переводим его в дни
-  return Number((commonDate / dates.length / (60 * 60 * 24 * 1000)).toFixed(2));
+  const updateTimes = updatedDates.map(
+    (date) => date / (60 * 60 * 24 * 1000 * 30),
+  );
+  const createTimes = createdDates.map(
+    (date) => date / (60 * 60 * 24 * 1000 * 30),
+  );
+  const days = updateTimes.map((date, i) => date - createTimes[i]);
+  const commonDate = days.reduce((acc, cur) => acc + cur, 0) / days.length;
+  return commonDate.toFixed(2);
 };
 
 wishRouter.get('/random', async (req, res) => {

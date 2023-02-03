@@ -7,7 +7,7 @@ import {
   IconButton,
   Avatar,
 } from '@mui/material';
-import './headerStyle.css'
+import './headerStyle.css';
 import '../index.css';
 import Logo from './Logo';
 import { useNavigate } from 'react-router-dom';
@@ -67,14 +67,19 @@ function Header({ isAdmin, isAuth, userName }: Props): JSX.Element {
             <Logo />
 
             {!isAuth ? (
-              <Button color="success" variant="contained" onClick={handleOpen}
+              <Button
+                color="success"
+                variant="contained"
+                onClick={handleOpen}
                 sx={{
                   borderRadius: '10px',
                   width: '7em',
                   zIndex: 7,
-                  cursor: 'pointer'
+                  cursor: 'pointer',
                 }}
-              >ВОЙТИ</Button>
+              >
+                ВОЙТИ
+              </Button>
             ) : (
               <>
                 <IconButton
@@ -85,7 +90,14 @@ function Header({ isAdmin, isAuth, userName }: Props): JSX.Element {
                   aria-haspopup="true"
                   aria-expanded={open ? 'true' : undefined}
                 >
-                  <Avatar sx={{ width: 80, height: 80, fontSize: '50px' }}>
+                  <Avatar
+                    sx={{
+                      width: 80,
+                      height: 80,
+                      fontSize: '50px',
+                      backgroundColor: '#02611d',
+                    }}
+                  >
                     {userName && userName[0]}
                   </Avatar>
                 </IconButton>
@@ -94,9 +106,8 @@ function Header({ isAdmin, isAuth, userName }: Props): JSX.Element {
           </Container>
           <Auth open={open} setOpen={setOpen} />
         </AppBar>
-      )
-      }
-    </Box >
+      )}
+    </Box>
   );
 }
 
