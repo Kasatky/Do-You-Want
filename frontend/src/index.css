@@ -1,7 +1,7 @@
 html {
-  /* font-family: 'Sofia Sans Condensed', sans-serif; */
+  font-family: "Roboto","Helvetica","Arial",sans-serif;
   margin: 0;
-  padding: 0;
+  /* padding: 0; */
   width: 100%;
   box-sizing: border-box;
   overflow-x: hidden;
@@ -20,12 +20,12 @@ html {
 }
 
 body {
-  width: 100%;
+  /* width: 100%; */
   margin: 0;
   background-image: url(../public/img/6267773749.jpg);
-  background-position: 25% 75%;
+  /* background-position: 25% 75%; */
   background-repeat: no-repeat;
-  background-size: 110%;
+  background-size: cover;
   background-attachment: fixed;
 }
 
@@ -51,11 +51,11 @@ header.css-hip9hq-MuiPaper-root-MuiAppBar-root,
     max-width: 80% !important;
   }
 }
-@media (max-width: 1200px) {
+/* @media (max-width: 1200px) {
   #clouds {
     display: none !important;
   }
-}
+} */
 
 @media (max-width: 600px) {
   .MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation1.MuiCard-root.css-1wryamr-MuiPaper-root-MuiCard-root {

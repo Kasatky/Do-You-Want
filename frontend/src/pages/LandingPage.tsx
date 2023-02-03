@@ -11,7 +11,7 @@ function LandingPage(): JSX.Element {
         sx={{
           marginTop: '40px',
           marginBottom: '40px',
-          width: '90vw',
+          width: '100vw',
           borderRadius: '9px',
         }}
       >
@@ -22,7 +22,7 @@ function LandingPage(): JSX.Element {
         <Box
           className="textDiv"
           sx={{
-            marginTop: '10vh',
+            marginTop: '2em',
             backgroundColor: '#ffffff',
             fontSize: '4vh',
             boxShadow: 'none',
