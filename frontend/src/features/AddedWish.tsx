@@ -24,10 +24,10 @@ function AddedWish({ wish }: Props): JSX.Element {
   return (
     <div style={{ display: 'flex', justifyContent: 'space-between' }} >
       <IconButton
-        onClick={deleteWish}><CloseIcon /></IconButton>
+        onClick={deleteWish}><CloseIcon color='error' /></IconButton>
       {wish?.wish?.wish[0].toUpperCase() +
         wish?.wish?.wish.slice(1, wish?.wish?.wish.length - 1)}
-      <IconButton onClick={completeWish}><TaskAltIcon /></IconButton>
+      <IconButton onClick={completeWish}><TaskAltIcon color='success' /></IconButton>
     </div>
   );
 }

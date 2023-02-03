@@ -23,10 +23,9 @@ body {
   width: 100%;
   margin: 0;
   background-image: url(../public/img/6267773749.jpg);
-
-  background-position: center;
+  background-position: 25% 75%;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: 110%;
   background-attachment: fixed;
 }
 
