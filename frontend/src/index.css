@@ -1,8 +1,16 @@
 html {
-  font-family: 'Sofia Sans Condensed', sans-serif;
-  margin: 0px;
+  /* font-family: 'Sofia Sans Condensed', sans-serif; */
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+#root {
   width: 100%;
 }
+
 .swipe {
   position: absolute;
 }
@@ -13,7 +21,7 @@ html {
 
 body {
   width: 100%;
-  margin: 0.5em;
+  margin: 0;
   background-image: url(../public/img/6267773749.jpg);
 
   background-position: center;
@@ -22,25 +30,29 @@ body {
   background-attachment: fixed;
 }
 
-header.css-hip9hq-MuiPaper-root-MuiAppBar-root, .AppBarHeader   {
+header.css-hip9hq-MuiPaper-root-MuiAppBar-root,
+.AppBarHeader {
   margin-top: 10px;
   border-radius: 10px;
-  padding: 20px 0 ;
+  padding: 20px 0;
   background-color: #ffffff;
   box-shadow: none;
-  /* margin: 1em; */
 }
-
 
 .css-1p32o3w-MuiPaper-root-MuiCard-root {
   width: 53vw !important;
 }
 
-@media (min-width: 1200px){
+.css-3jphol-MuiCardContent-root:last-child {
+  padding-bottom: 0 !important;
+}
+
+@media (min-width: 1200px) {
   .css-1i9grp-MuiContainer-root {
-  max-width: 80% !important;
-}}
-@media (max-width: 1200px){
+    max-width: 80% !important;
+  }
+}
+@media (max-width: 1200px) {
   #clouds {
     display: none !important;
   }
@@ -52,7 +64,6 @@ header.css-hip9hq-MuiPaper-root-MuiAppBar-root, .AppBarHeader   {
   }
   header .css-1i9grp-MuiContainer-root {
     display: flex;
-    /* flex-direction: column; */
     justify-content: space-between;
   }
   #carouselFont,
@@ -73,17 +84,8 @@ header.css-hip9hq-MuiPaper-root-MuiAppBar-root, .AppBarHeader   {
 
 .carouselDiv {
   display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-#root {
-  width: 100%;
-}
-
-.wrapper {
-  display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .css-1clzr65-MuiButtonBase-root-MuiButton-root,
@@ -109,8 +111,9 @@ header.css-hip9hq-MuiPaper-root-MuiAppBar-root, .AppBarHeader   {
 
 .whyCard, .css-1v5z4dq-MuiPaper-root-MuiCard-root {
   border-radius: 10px;
+  padding-bottom: 0 !important;
   width: 15em;
-  height: 10em;
+  height: 100%;
 }
 
 .MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation1.MuiCard-root.css-2iyxf1-MuiPaper-root-MuiCard-root{
@@ -125,7 +128,7 @@ header.css-hip9hq-MuiPaper-root-MuiAppBar-root, .AppBarHeader   {
   background-color: #ffffff;
 }
 
-.MuiBox-root .textDiv.css-pgvgg1{
+.MuiBox-root .textDiv.css-pgvgg1 {
   border-radius: 10px;
   padding: 50px;
   margin-top: 7vh;
@@ -138,7 +141,6 @@ header.css-hip9hq-MuiPaper-root-MuiAppBar-root, .AppBarHeader   {
 .MuiBox-root.css-dvxtzn {
   width: 100%;
 }
-
 .profileStat{
   padding: 0.5em 1em;
   background-color: #ffffff;

@@ -38,8 +38,8 @@ function Header({ isAdmin, isAuth, userName }: Props): JSX.Element {
   };
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" className='AppBarHeader'>
+    <Box sx={{ flexGrow: 1, padding: '0 20px' }}>
+      <AppBar position="static" className="AppBarHeader">
         {isAdmin ? (
           <>
             <Container
@@ -66,14 +66,19 @@ function Header({ isAdmin, isAuth, userName }: Props): JSX.Element {
             >
               <Logo />
               {!isAuth ? (
-                <Button color="success" variant="contained" onClick={handleOpen}
+                <Button
+                  color="success"
+                  variant="contained"
+                  onClick={handleOpen}
                   sx={{
                     borderRadius: '10px',
                     width: '7em',
                     zIndex: 7,
-                    cursor: 'pointer'
+                    cursor: 'pointer',
                   }}
-                >ВОЙТИ</Button>
+                >
+                  ВОЙТИ
+                </Button>
               ) : (
                 <>
                   <IconButton
@@ -93,10 +98,9 @@ function Header({ isAdmin, isAuth, userName }: Props): JSX.Element {
             </Container>
             <Auth open={open} setOpen={setOpen} />
           </>
-        )
-        }
+        )}
       </AppBar>
-    </Box >
+    </Box>
   );
 }
 

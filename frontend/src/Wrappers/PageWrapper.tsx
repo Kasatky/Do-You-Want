@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { checkUser } from '../Auth/userSlice';
-import Footer from '../features/Footer';
 import Header from '../features/Header';
 import { RootState, useAppDispatch } from '../store';
 
@@ -24,13 +23,9 @@ function PageWrapper({ children, isAdmin }: Props): JSX.Element {
   }, [dispatch, navigate]);
 
   return (
-    <div className="wrapper" style={{ height: '100%' }}>
-      <div style={{ flex: '1 0 auto' }}>
-        <Header isAdmin={isAdmin} isAuth={isAuth} userName={userName} />
-        {children}
-      </div>
-
-      {/* <Footer /> */}
+    <div>
+      <Header isAdmin={isAdmin} isAuth={isAuth} userName={userName} />
+      {children}
     </div>
   );
 }

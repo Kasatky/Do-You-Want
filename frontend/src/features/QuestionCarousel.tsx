@@ -1,8 +1,7 @@
 import React, { useState, useMemo, useRef } from 'react';
 import TinderCard from 'react-tinder-card';
 import IconButton from '@mui/material/IconButton';
-
-import { Box, Paper, Stack } from '@mui/material';
+import { Box, Paper, Stack, Typography } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutlined';
 import ArrowBackIosOutlinedIcon from '@mui/icons-material/ArrowBackIosOutlined';
@@ -40,7 +39,7 @@ function QuestionCarousel(): JSX.Element {
       Array(wishMock.length)
         .fill(0)
         .map((i) => React.createRef()),
-    []
+    [],
   );
 
   const updateCurrentIndex = (val: number) => {
@@ -53,7 +52,7 @@ function QuestionCarousel(): JSX.Element {
   const swiped = (
     direction: Direction,
     wishToDelete: string,
-    index: number
+    index: number,
   ) => {
     // Количество вызовов для последующих вопросов растёт (1 раз, 2 раза, 4 раза, 8 раз, 16 раз).
     // Чтобы игнорировать лишние вызовы, пока подаём предыдущее значение БЕЗ callback-функции.
@@ -76,7 +75,8 @@ function QuestionCarousel(): JSX.Element {
   };
 
   return (
-    <Box className='carouselDiv'
+    <Box
+      className="carouselDiv"
       sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
     >
       <>
@@ -144,26 +144,35 @@ function QuestionCarousel(): JSX.Element {
               </Stack>
             </TinderCard>
           ))}{' '}
-
           {currentIndex < 0 && (
             <>
               <Auth open={open} setOpen={setOpen} />
-              <h2>Авторизуйтесь, чтобы продолжить</h2>
+              <Typography variant="h5">
+                Авторизуйтесь, чтобы продолжить
+              </Typography>
             </>
           )}
         </Box>
         {currentIndex > -1 && (
-          <Box className="buttons" >
-            <IconButton color='success' onClick={() => swipe('left')} sx={{ marginRight: "5em" }}>
-              <ArrowBackIosOutlinedIcon color='success' />
+          <Box className="buttons">
+            <IconButton
+              color="success"
+              onClick={() => swipe('left')}
+              sx={{ marginRight: '5em' }}
+            >
+              <ArrowBackIosOutlinedIcon color="success" />
               Нет
             </IconButton>
-            <IconButton color='success' onClick={() => swipe('right')} sx={{ marginLeft: "5em" }}>
+            <IconButton
+              color="success"
+              onClick={() => swipe('right')}
+              sx={{ marginLeft: '5em' }}
+            >
               Да
-              <ArrowForwardIosOutlinedIcon color='success' />
+              <ArrowForwardIosOutlinedIcon color="success" />
             </IconButton>
-          </Box>)}
-
+          </Box>
+        )}
       </>
     </Box>
   );
