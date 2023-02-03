@@ -1,7 +1,9 @@
-import React from 'react';
-import { useAppDispatch } from '../store';
-import { completeUserWish, deleteUserWish } from '../wishSlice';
-import { UserWish } from '../wishTypes';
+import { Close, DoneOutline } from "@mui/icons-material";
+import { IconButton } from "@mui/material";
+import React from "react";
+import { useAppDispatch } from "../store";
+import { completeUserWish, deleteUserWish } from "../wishSlice";
+import { UserWish } from "../wishTypes";
 
 type Props = {
   wish: UserWish;
@@ -19,11 +21,19 @@ function AddedWish({ wish }: Props): JSX.Element {
   };
 
   return (
-    <div>
-      <button onClick={deleteWish}>X</button>
+    <div
+      style={{
+        fontWeight: "lighter ",
+        fontFamily: '"Gill Sans", sans-serif',
+        display : 'flex',
+        justifyContent : 'space-between',
+        fontSize: '0.8em'
+      }}
+    >
+      <IconButton onClick={deleteWish}><Close/></IconButton>
       {wish?.wish?.wish[0].toUpperCase() +
         wish?.wish?.wish.slice(1, wish?.wish?.wish.length - 1)}
-      <button onClick={completeWish}>✓</button>
+      <IconButton onClick={completeWish}><DoneOutline /></IconButton>
     </div>
   );
 }

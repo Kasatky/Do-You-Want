@@ -7,7 +7,6 @@ import '../App/App.css';
 import { Box, Button, Paper, Stack } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import Auth from '../Auth/Auth';
-import { url } from 'inspector';
 
 declare type Direction = 'left' | 'right' | 'up' | 'down';
 
@@ -20,7 +19,7 @@ const wishMock = [
 ];
 
 const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#d7e8e4',
+  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fffff',
   ...theme.typography.body2,
   padding: theme.spacing(1),
   textAlign: 'center',
@@ -80,11 +79,11 @@ function QuestionCarousel(): JSX.Element {
     <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', }}>
       <>
         <link
-          href="https://fonts.googleapis.com/css?family=Damion&display=swap"
+          // href="https://fonts.googleapis.com/css?family=Damion&display=swap"
           rel="stylesheet"
         />
         <link
-          href="https://fonts.googleapis.com/css?family=Alatsi&display=swap"
+           href="https://fonts.googleapis.com/css?family=Alatsi&display=swap"
           rel="stylesheet"
         />
         <h2 id='carouselFont'>Более 300 вопросов будут доступны после регистрации, на любые темы, с возможность добавления своих</h2>
@@ -130,6 +129,8 @@ function QuestionCarousel(): JSX.Element {
                     transform: `translateY(${top}px)`,
                     transition: 'all .5s',
                     color: `#fff ${0.1 * index + opacity})`,
+                    fontWeight: 'lighter',
+                    fontFamily: '"Gill Sans", sans-serif',
                   }}
                 >
                   {character.wish}

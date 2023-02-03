@@ -1,46 +1,61 @@
-import React from 'react';
-import { Container, Card, Box } from '@mui/material';
-import QuestionCarousel from '../features/QuestionCarousel';
-import PageWrapper from '../Wrappers/PageWrapper';
-import About from '../features/About';
+import React from "react";
+import { Container, Card, Box } from "@mui/material";
+import QuestionCarousel from "../features/QuestionCarousel";
+import PageWrapper from "../Wrappers/PageWrapper";
+import About from "../features/About";
 
 function LandingPage(): JSX.Element {
   return (
     <PageWrapper isAdmin={false}>
-      <Container sx={{ marginTop: '40px', marginBottom: '40px', backgroundColor: '#d6dde596', width: '90vw', borderRadius: '9px' }}>
-        <Box
-        >
+      <Container
+        sx={{
+          marginTop: "40px",
+          marginBottom: "40px",
+          borderRadius: "9px",
+          width: '70%',
+position: 'absolute',
+right: '1em'
+        }}
+      >
+        <Box>
           <Box>
             <Box>
-              <Card sx={{ backgroundColor: '#03b8f00f', background: '#ffffff00', boxShadow: 'none' }}>
-
+              <Card
+                sx={{
+                  backgroundColor: "#03b8f00f",
+                  background: "#ffffff00",
+                  boxShadow: "none",
+                }}
+              >
                 <QuestionCarousel />
-
               </Card>
             </Box>
             <About />
 
-            <Box sx={{
-              marginTop: '10vh',
-              width: '60vw',
-              backgroundColor: '#ffffff00',
-              fontSize: '4vh',
-              boxShadow: 'none'
-              // height: '55vh',
-              // width: '',
-              // justifyContent: 'center',
-              // display: 'flex',
-              // flexDirection: 'column',
-              // alignItems: 'center',
-            }}>
+            <Box
+              sx={{
+                marginTop: "10vh",
+                width: "60vw",
+                backgroundColor: "#ffffff00",
+                fontSize: "4vh",
+                boxShadow: "none",
+                // height: '55vh',
+                // width: '',
+                // justifyContent: 'center',
+                // display: 'flex',
+                // flexDirection: 'column',
+                // alignItems: 'center',
+              }}
+            >
               <Box>
-                Человеку в апатии сложно определить свои желания, кажется, что
-                совсем ничего не хочется и ничего не радует.
+                <div className="text">
+                  Человеку в апатии сложно определить свои желания, кажется, что
+                  совсем ничего не хочется и ничего не радует.
+                </div>
               </Box>
-              Также в сложные
-              моменты не просто сориентироваться в своих желаниях, наш сайт
-              поможет скорректировать свои ценности и стремления.
-
+              Также в сложные моменты не просто сориентироваться в своих
+              желаниях, наш сайт поможет скорректировать свои ценности и
+              стремления.
             </Box>
           </Box>
 
@@ -71,7 +86,7 @@ function LandingPage(): JSX.Element {
           </Grid> */}
         </Box>
       </Container>
-    </PageWrapper >
+    </PageWrapper>
   );
 }
 

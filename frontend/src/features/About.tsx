@@ -30,7 +30,7 @@ function About(): JSX.Element {
 					<CardContent>
 						<PsychologyAltRoundedIcon fontSize="large" />
 						<Typography variant="h5">
-							Поможем выявить желания и потребности
+							Поможем выявить личные желания и потребности
 						</Typography>
 					</CardContent>
 				</Card>
@@ -40,7 +40,7 @@ function About(): JSX.Element {
 					<CardContent>
 						<ClearAllRoundedIcon fontSize="large" />
 						<Typography variant="h5">
-							Случайные вопросы, которые могут повторяться через некоторое время
+							Случайные вопросы, которые повторяются через время
 						</Typography>
 					</CardContent>
 				</Card>

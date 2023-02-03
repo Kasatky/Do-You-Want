@@ -1,37 +1,37 @@
-import React, { useState } from 'react';
-import { TextField, Typography, Modal, Button, Box } from '@mui/material';
-import { RootState, useAppDispatch } from '../store';
-import { login, register } from './userSlice';
-import { UserLogin, UserRegister } from './usersTypes';
-import { useSelector } from 'react-redux';
+import React, { useState } from "react";
+import { TextField, Typography, Modal, Button, Box } from "@mui/material";
+import { RootState, useAppDispatch } from "../store";
+import { login, register } from "./userSlice";
+import { UserLogin, UserRegister } from "./usersTypes";
+import { useSelector } from "react-redux";
 
 const style = {
-  borderRadius: '15px',
-  position: 'absolute' as 'absolute',
-  top: '40%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
+  borderRadius: "15px",
+  position: "absolute" as "absolute",
+  top: "40%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
   minWidth: 300,
-  bgcolor: 'background.paper',
-  border: '2px solid #1525d8',
+  bgcolor: "background.paper",
+  border: "2px solid #1525d8",
   boxShadow: 24,
   p: 4,
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
 };
 
 type Props = {
   open: boolean;
   setOpen: (open: boolean) => void;
-  onClose?: any
+  onClose?: any;
 };
 
 function Auth({ open, setOpen }: Props) {
-  const [authType, setAuthType] = useState('login');
-  const [userName, setUserName] = useState('');
-  const [userEmail, setUserEmail] = useState('');
-  const [userPassword, setUserPassword] = useState('');
+  const [authType, setAuthType] = useState("login");
+  const [userName, setUserName] = useState("");
+  const [userEmail, setUserEmail] = useState("");
+  const [userPassword, setUserPassword] = useState("");
 
   const error = useSelector((state: RootState) => state.user.error);
 
@@ -40,7 +40,7 @@ function Auth({ open, setOpen }: Props) {
   const handleClose = () => setOpen(false);
 
   const handleAuthType = () => {
-    setAuthType((prev) => (prev === 'login' ? 'register' : 'login'));
+    setAuthType((prev) => (prev === "login" ? "register" : "login"));
   };
 
   const handleLogin = async (): Promise<any> => {
@@ -84,12 +84,12 @@ function Auth({ open, setOpen }: Props) {
         <Box sx={style} component="form">
           {error && (
             <Typography
-              sx={{ display: 'flex', alignItems: 'center', color: 'red' }}
+              sx={{ display: "flex", alignItems: "center", color: "red" }}
             >
               {error}
             </Typography>
           )}
-          {authType === 'register' && (
+          {authType === "register" && (
             <TextField
               id="outlined-basic"
               label="Ваше имя"
@@ -98,7 +98,7 @@ function Auth({ open, setOpen }: Props) {
               required
               onChange={handleNameChange}
               value={userName}
-              sx={{ mt: 2, width: '100%' }}
+              sx={{ mt: 2, width: "100%" }}
             />
           )}
 
@@ -110,7 +110,7 @@ function Auth({ open, setOpen }: Props) {
             required
             onChange={handleEmailChange}
             value={userEmail}
-            sx={{ mt: 2, width: '100%' }}
+            sx={{ mt: 2, width: "100%" }}
           />
 
           <TextField
@@ -121,44 +121,72 @@ function Auth({ open, setOpen }: Props) {
             required
             onChange={handlePasswordChange}
             value={userPassword}
-            sx={{ mt: 2, width: '100%' }}
+            sx={{ mt: 2, width: "100%" }}
           />
 
-          {authType === 'login' ? (
-            <Button onClick={handleLogin} variant="contained" sx={{ mt: 2 }}>
+          {authType === "login" ? (
+            <Button
+              onClick={handleLogin}
+              variant="contained"
+              sx={{
+                mt: 2,
+                fontWeight: "lighter !important",
+                fontFamily: '"Gill Sans", sans-serif !important',
+              }}
+            >
               Войти
             </Button>
           ) : (
-            <Button onClick={handleRegister} variant="contained" sx={{ mt: 2 }}>
+            <Button
+              onClick={handleRegister}
+              variant="contained"
+              sx={{
+                mt: 2,
+                fontWeight: "lighter !important",
+                fontFamily: '"Gill Sans", sans-serif !important',
+              }}
+            >
               Зарегистрироваться
             </Button>
           )}
           <Typography
             sx={{
               mt: 2,
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              fontWeight: "lighter !important",
+              fontFamily: '"Gill Sans", sans-serif !important',
             }}
           >
-            {authType === 'login' ? (
+            {authType === "login" ? (
               <>
-                {'Впервые у нас? '}
+                {"Впервые у нас? "}
                 <Button
                   disableRipple
                   onClick={handleAuthType}
-                  sx={{ display: 'flex', alignItems: 'center' }}
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    fontWeight: "lighter !important",
+                    fontFamily: '"Gill Sans", sans-serif !important',
+                  }}
                 >
                   Зарегистрироваться
                 </Button>
               </>
             ) : (
               <>
-                {'Уже есть аккаунт? '}
+                {"Уже есть аккаунт? "}
                 <Button
                   disableRipple
                   onClick={handleAuthType}
-                  sx={{ display: 'flex', alignItems: 'center' }}
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    fontWeight: "lighter !important",
+                    fontFamily: '"Gill Sans", sans-serif !important',
+                  }}
                 >
                   Войти
                 </Button>

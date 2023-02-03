@@ -1,9 +1,9 @@
-import React from 'react';
-import { useEffect } from 'react';
-import { Box, Paper, Button } from '@mui/material';
-import { useSelector } from 'react-redux';
-import { RootState, useAppDispatch } from '../store';
-import { addWishToUser, getRandomWish } from '../wishSlice';
+import React from "react";
+import { useEffect } from "react";
+import { Box, Paper, Button } from "@mui/material";
+import { useSelector } from "react-redux";
+import { RootState, useAppDispatch } from "../store";
+import { addWishToUser, getRandomWish } from "../wishSlice";
 
 export default function QuestionView() {
   const dispatch = useAppDispatch();
@@ -25,9 +25,17 @@ export default function QuestionView() {
   };
 
   return (
-    <Box sx={{ height: '180px', userSelect: 'none' }}>
+    <Box sx={{ height: "180px", userSelect: "none" }}>
       <Paper>
-        <Box component="h1" sx={{ userSelect: 'none' }}>
+        <Box
+          component="h1"
+          sx={{
+            userSelect: "none",
+            fontWeight: "lighter !important",
+            fontFamily: '"Gill Sans", sans-serif !important',
+            padding: '5px'
+          }}
+        >
           {random
             ? `Хочешь ${random.wish}`
             : 'Вау! Вы перебрали все вопросы, совсем скоро появятся новые или можете добавить свои, нажав на кнопку "Добавить вопрос"'}
@@ -41,7 +49,7 @@ export default function QuestionView() {
           <Button
             variant="contained"
             onClick={handleFalse}
-            sx={{ marginLeft: '10px' }}
+            sx={{ marginLeft: "10px" }}
           >
             Нет
           </Button>
