@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import {
   Container,
   Button,
@@ -6,15 +6,15 @@ import {
   Box,
   IconButton,
   Avatar,
-} from "@mui/material";
-import "./headerStyle.css";
-import "../index.css";
-import Logo from "./Logo";
-import { useNavigate } from "react-router-dom";
-import Auth from "../Auth/Auth";
-import { logout } from "../Auth/userSlice";
-import { useAppDispatch } from "../store";
-import { Fingerprint } from "@mui/icons-material";
+} from '@mui/material';
+import './headerStyle.css';
+import '../index.css';
+import Logo from './Logo';
+import { useNavigate } from 'react-router-dom';
+import Auth from '../Auth/Auth';
+import { logout } from '../Auth/userSlice';
+import { useAppDispatch } from '../store';
+import { Fingerprint } from '@mui/icons-material';
 
 type Props = {
   isAdmin: boolean;
@@ -31,7 +31,7 @@ function Header({ isAdmin, isAuth, userName }: Props): JSX.Element {
   const handleOpen = () => setOpen(true);
 
   const navigateToProfile = () => {
-    navigate("/profile");
+    navigate('/profile');
   };
 
   const handleLogout = () => {
@@ -45,20 +45,20 @@ function Header({ isAdmin, isAuth, userName }: Props): JSX.Element {
           onClick={handleLogout}
           variant="contained"
           sx={{
-            width: "100px",
-            float: "right",
+            width: '100px',
+            float: 'right',
           }}
         >
           Выход
         </Button>
       ) : (
-        <AppBar position="static">
+        <AppBar position="static" color="primary">
           <Container
             sx={{
-              display: "flex",
-              justifyContent: "space-between",
-              flexDirection: "row",
-              alignItems: "center",
+              display: 'flex',
+              justifyContent: 'space-between',
+              flexDirection: 'row',
+              alignItems: 'center',
             }}
           >
             <Logo />
@@ -69,10 +69,10 @@ function Header({ isAdmin, isAuth, userName }: Props): JSX.Element {
                 variant="contained"
                 onClick={handleOpen}
                 sx={{
-                  borderRadius: "10px",
-                  width: "7em",
+                  borderRadius: '10px',
+                  width: '7em',
                   zIndex: 7,
-                  cursor: "pointer",
+                  cursor: 'pointer',
                 }}
               >
                 ВОЙТИ
@@ -83,16 +83,16 @@ function Header({ isAdmin, isAuth, userName }: Props): JSX.Element {
                   onClick={navigateToProfile}
                   size="small"
                   sx={{ ml: 2, zIndex: 7 }}
-                  aria-controls={open ? "account-menu" : undefined}
+                  aria-controls={open ? 'account-menu' : undefined}
                   aria-haspopup="true"
-                  aria-expanded={open ? "true" : undefined}
+                  aria-expanded={open ? 'true' : undefined}
                 >
                   <Avatar
                     sx={{
                       width: 80,
                       height: 80,
-                      fontSize: "50px",
-                      backgroundColor: "#02611d",
+                      fontSize: '50px',
+                      backgroundColor: '#02611d',
                     }}
                   >
                     {userName && userName[0]}

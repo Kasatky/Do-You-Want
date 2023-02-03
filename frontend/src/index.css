@@ -3,7 +3,7 @@ html {
   width: 100%;
   overflow-x: hidden;
   font-weight: lighter !important;
-font-family: "Gill Sans", sans-serif !important;
+  font-family: 'Gill Sans', sans-serif !important;
 }
 .swipe {
   position: absolute;
@@ -21,8 +21,7 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-size: cover ;
-
+  background-size: cover;
 
   /* background: linear-gradient(#4ccecc, hsla(167, 83%, 61%, 0.141), #4cd8ac, #3be090); */
   /* background-repeat: no-repeat; */
@@ -38,11 +37,8 @@ header {
   /* margin: 1em; */
 }
 
-.css-hip9hq-MuiPaper-root-MuiAppBar-root {
-  background: #fff !important;
-}
 .css-d3hlll-MuiContainer-root {
-  margin-right: 8em  !important;;
+  margin-right: 8em !important;
 }
 .css-d3hlll-MuiContainer-root {
   background-color: transparent !important;
@@ -64,9 +60,10 @@ header {
 
 @media (min-width: 1200px) {
   .css-1i9grp-MuiContainer-root {
-  max-width: 100% !important;
-}}
-@media (max-width: 1200px){
+    max-width: 100% !important;
+  }
+}
+@media (max-width: 1200px) {
   #clouds {
     display: none !important;
   }
@@ -119,74 +116,74 @@ header {
 }
 #carouselFont {
   font-weight: lighter;
-  font-family: "Gill Sans", sans-serif;
+  font-family: 'Gill Sans', sans-serif;
 }
 .css-1c5rax0-MuiButtonBase-root-MuiButton-root {
   font-weight: lighter !important;
   background-color: #02611d !important;
-  font-family: "Gill Sans", sans-serif !important;
+  font-family: 'Gill Sans', sans-serif !important;
 }
 .css-ag7rrr-MuiTypography-root {
   font-weight: normal !important;
-  font-family: "Gill Sans", sans-serif !important;
+  font-family: 'Gill Sans', sans-serif !important;
 }
-.css-1jxlqnd { 
+.css-1jxlqnd {
   font-weight: lighter !important;
-  font-family: "Gill Sans", sans-serif !important;
+  font-family: 'Gill Sans', sans-serif !important;
 }
 .css-jkxysc-MuiPaper-root {
   font-weight: lighter !important;
-  font-family: "Gill Sans", sans-serif !important;
+  font-family: 'Gill Sans', sans-serif !important;
 }
 .css-8df4l-MuiPaper-root {
   font-weight: lighter !important;
-  font-family: "Gill Sans", sans-serif !important;
+  font-family: 'Gill Sans', sans-serif !important;
 }
 .css-16eu0r1-MuiPaper-root {
   font-weight: lighter !important;
-  font-family: "Gill Sans", sans-serif !important;
+  font-family: 'Gill Sans', sans-serif !important;
 }
 .css-1edw60n-MuiPaper-root {
   font-weight: lighter !important;
-  font-family: "Gill Sans", sans-serif !important;
+  font-family: 'Gill Sans', sans-serif !important;
 }
 .css-1nmw7nc-MuiPaper-root {
   font-weight: lighter !important;
-  font-family: "Gill Sans", sans-serif !important;
+  font-family: 'Gill Sans', sans-serif !important;
 }
 .css-78trlr-MuiButtonBase-root-MuiIconButton-root {
   font-weight: lighter !important;
-  font-family: "Gill Sans", sans-serif !important;
+  font-family: 'Gill Sans', sans-serif !important;
 }
 .css-1v5z4dq-MuiPaper-root-MuiCard-root {
   border-radius: 16px !important;
 }
 .text {
-margin-bottom: 16px;
+  margin-bottom: 16px;
 }
-.css-1wx3yy4-MuiPaper-root-MuiCard-root{
-font-weight: lighter !important;
-font-family: "Gill Sans", sans-serif !important;
+.css-1wx3yy4-MuiPaper-root-MuiCard-root {
+  font-weight: lighter !important;
+  font-family: 'Gill Sans', sans-serif !important;
 }
 .css-sghohy-MuiButtonBase-root-MuiButton-root {
   font-weight: lighter !important;
-font-family: "Gill Sans", sans-serif !important;
+  font-family: 'Gill Sans', sans-serif !important;
 }
 .MuiButtonBase-root {
   font-weight: lighter !important;
-font-family: "Gill Sans", sans-serif !important;
+  font-family: 'Gill Sans', sans-serif !important;
 }
 .scrollBar::-webkit-scrollbar {
   display: none;
 }
 .scrollBar {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 .css-1wnsr1i {
-display: flex;
-justify-content: space-between;
-flex-wrap: wrap
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 .css-qlxkye-MuiContainer-root {
   right: 0em;
