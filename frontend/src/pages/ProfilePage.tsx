@@ -22,31 +22,28 @@ function ProfilePage(): JSX.Element {
   return (
     <PageWrapper isAdmin={false}>
       <Container sx={{ marginTop: '40px', marginBottom: '40px' }}>
-        <Typography>Статистика</Typography>
+        <h2>Статистика:</h2>
         {stat ? (
-          <div>
-            <p>Создано желаний:</p>
-            <p>{stat?.createdWishes}</p>
-            <p>Всего желаний исполнено:</p>
-            <p>{stat?.doneWishesCount}</p>
-            <p>Ваше самое исполняемое желание:</p>
-            <p>{stat?.mostDoneWish}</p>
-            <p>Среднее время исполнения желаний в днях:</p>
-            <p>{stat?.averageTime}</p>
+          <div className='profileStat'>
+            <p>Создано желаний: {stat?.createdWishes}</p>
+            <p>Всего желаний исполнено: {stat?.doneWishesCount}</p>
+            <p>Чаще всего ты хочешь: {stat?.mostDoneWish}</p>
+            <p>Среднее время исполнения желаний в днях: {stat?.averageTime}</p>
           </div>
         ) : (
-          <div>Выполненных желаний пока нет</div>
+          <div className='profileStat'>Выполненных желаний пока нет</div>
         )}
         <Diary />
+
+        <Button
+          onClick={handleLogout}
+          variant="contained"
+          sx={{ flex: '0 0 auto', float: 'right' }}
+        >
+          Выйти
+        </Button>
       </Container>
 
-      <Button
-        onClick={handleLogout}
-        variant="contained"
-        sx={{ flex: '0 0 auto' }}
-      >
-        Logout
-      </Button>
     </PageWrapper>
   );
 }

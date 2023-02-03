@@ -118,8 +118,8 @@ export default function EnhancedTable() {
                         {String(note.createdAt).slice(0, 10)}
                       </TableCell>
                       <TableCell align="right">{note.situation}</TableCell>
-                      <TableCell align="right">{note.mind}</TableCell>
                       <TableCell align="right">{note.emotion}</TableCell>
+                      <TableCell align="right">{note.mind}</TableCell>
                       <TableCell align="right">{note.action}</TableCell>
                     </TableRow>
                   );
@@ -137,10 +137,9 @@ export default function EnhancedTable() {
           onRowsPerPageChange={handleChangeRowsPerPage}
           labelRowsPerPage={'Количество строк:'}
           labelDisplayedRows={() =>
-            `${page * rowsPerPage + 1}–${
-              rowsPerPage * (page + 1) > notes.length
-                ? notes.length
-                : rowsPerPage * (page + 1)
+            `${page * rowsPerPage + 1}–${rowsPerPage * (page + 1) > notes.length
+              ? notes.length
+              : rowsPerPage * (page + 1)
             } из ${notes.length}`
           }
         />

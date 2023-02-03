@@ -1,8 +1,6 @@
 import React, { useState, useMemo, useRef } from 'react';
 import TinderCard from 'react-tinder-card';
 import IconButton from '@mui/material/IconButton';
-import CheckIcon from '@mui/icons-material/Check';
-import ClearIcon from '@mui/icons-material/Clear';
 
 import { Box, Paper, Stack } from '@mui/material';
 import { styled } from '@mui/material/styles';

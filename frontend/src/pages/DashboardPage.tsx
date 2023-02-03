@@ -17,6 +17,8 @@ import { useSelector } from 'react-redux';
 import { addUserWishes } from '../wishSlice';
 import { styled } from '@mui/material/styles';
 import AddedWish from '../features/AddedWish';
+import AddIcon from '@mui/icons-material/Add';
+import { Box } from '@mui/material';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -66,7 +68,7 @@ function DashboardPage() {
                     onClick={handleOpen}
                     className="btn"
                   >
-                    Добавить свой вопрос
+                    <AddIcon /> свой вопрос
                   </Button>
 
                   <QuestionView />
@@ -76,14 +78,18 @@ function DashboardPage() {
 
             <Grid item xs={12} sm={4}>
               <Card
+                className='scrollBar'
                 sx={{
+                  boxShadow: 'none',
+                  marginTop: '3.5em',
                   backgroundColor: '#ffffff00',
-                  maxHeight: '800px',
-                  overflowY: 'scroll',
+                  maxHeight: '600px',
+                  overflowY: 'auto',
                   userSelect: 'none',
+
                 }}
               >
-                <CardContent sx={{ fontSize: '2vw', userSelect: 'none' }}>
+                <CardContent sx={{ fontSize: '1.5em', fontWeight: 'bold', userSelect: 'none', background: '#ffffff00' }}>
                   {userWishes.length > 7 ? (
                     <>
                       <p style={{ margin: '0px' }}>
@@ -93,7 +99,7 @@ function DashboardPage() {
                       Пора воплощать их!
                     </>
                   ) : (
-                    `Ваши желания`
+                    <Box sx={{ fontWeight: 'bold', fontSize: '30px' }}>Ваши желания:</Box>
                   )}
 
                   <Stack style={{ marginTop: '10px' }}>
@@ -102,9 +108,9 @@ function DashboardPage() {
                         key={el.id}
                         style={{
                           marginTop: '10px',
-                          fontSize: '2vw',
+                          fontSize: '1em',
                           userSelect: 'none',
-                          backgroundColor: '#d9dde6',
+                          backgroundColor: '#ffffff',
                         }}
                       >
                         <AddedWish wish={el} />

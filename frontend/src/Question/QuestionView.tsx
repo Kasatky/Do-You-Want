@@ -25,13 +25,19 @@ export default function QuestionView() {
   };
 
   return (
-    <Box sx={{ height: '180px', userSelect: 'none' }}>
+    <Box sx={{ height: '180px', userSelect: 'none', }}>
       <Paper>
         <Box
           component="h1"
           sx={{
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'center',
+            alignItems: 'center',
+            height: '60px',
+            borderRadius: '50px',
             userSelect: 'none',
-            backgroundColor: '#d9dde6',
+            backgroundColor: '#ffffff',
             textAlign: 'center',
           }}
         >
@@ -40,14 +46,14 @@ export default function QuestionView() {
             : 'Вау! Вы перебрали все вопросы, совсем скоро появятся новые или можете добавить свои, нажав на кнопку "Добавить вопрос"'}
         </Box>
       </Paper>
-      <div style={{ display: 'flex', justifyContent: 'center' }}>
+      <div style={{ display: 'flex', justifyContent: 'center', marginTop: "3em" }}>
         <Button variant="contained" onClick={handleTrue}>
           Да
         </Button>
         <Button
           variant="contained"
           onClick={handleFalse}
-          sx={{ marginLeft: '10px' }}
+          sx={{ marginLeft: '10em' }}
         >
           Нет
         </Button>

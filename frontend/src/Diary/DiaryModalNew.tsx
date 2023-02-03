@@ -17,6 +17,7 @@ const style = {
   width: 400,
   bgcolor: 'background.paper',
   border: '2px solid #000',
+  borderRadius: '10px',
   boxShadow: 24,
   p: 4,
 };
@@ -85,6 +86,7 @@ function DiaryModalNew({ open, setOpen }: Props): JSX.Element {
           label="Событие"
           type="text"
           variant="outlined"
+          color='success'
           required
           onChange={handleSituationChange}
           value={situation}
@@ -95,6 +97,7 @@ function DiaryModalNew({ open, setOpen }: Props): JSX.Element {
           label="Эмоции"
           type="text"
           variant="outlined"
+          color='success'
           required
           onChange={handleEmotionChange}
           value={emotion}
@@ -105,6 +108,7 @@ function DiaryModalNew({ open, setOpen }: Props): JSX.Element {
           label="Мысли"
           type="text"
           variant="outlined"
+          color='success'
           required
           onChange={handleMindChange}
           value={mind}
@@ -115,17 +119,20 @@ function DiaryModalNew({ open, setOpen }: Props): JSX.Element {
           label="Поведение"
           type="text"
           variant="outlined"
+          color='success'
           required
           onChange={handleActionChange}
           value={action}
           sx={{ mt: 2, width: '100%' }}
         />
-        <Button variant="contained" onClick={handleClose}>
-          Отмена
-        </Button>
-        <Button variant="contained" onClick={handleSubmit}>
-          Сохранить
-        </Button>
+        <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '1em' }}>
+          <Button variant="contained" onClick={handleClose}>
+            Отмена
+          </Button>
+          <Button variant="contained" onClick={handleSubmit}>
+            Сохранить
+          </Button>
+        </div>
       </Box>
     </Modal>
   );
