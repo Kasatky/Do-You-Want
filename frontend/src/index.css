@@ -34,7 +34,7 @@ header {
   /* background-size: cover; */
   /* background-position: 40% 60%; */
   box-shadow: none;
-  /* margin: 1em; */
+  /* margin-top: 1em; */
 }
 
 .css-d3hlll-MuiContainer-root {
@@ -43,20 +43,11 @@ header {
 .css-d3hlll-MuiContainer-root {
   background-color: transparent !important;
 }
-.css-1i9grp-MuiContainer-root {
-  margin-top: 1em;
-  margin-bottom: 1em;
-}
-/* .MuiBox-root.css-dvxtzn,  */
-/* .css-46bh2p-MuiCardContent-root, .css-o4bg9w-MuiGrid-root,  */
+
 .css-1p32o3w-MuiPaper-root-MuiCard-root {
   width: 50vw !important;
   margin: auto;
 }
-
-/* .css-hip9hq-MuiPaper-root-MuiAppBar-root {
-  box-shadow: inset -2px -2px 20px 20px rgb(251 251 251) !important;
-} */
 
 @media (min-width: 1200px) {
   .css-1i9grp-MuiContainer-root {

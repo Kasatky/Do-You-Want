@@ -14,7 +14,6 @@ import { useNavigate } from 'react-router-dom';
 import Auth from '../Auth/Auth';
 import { logout } from '../Auth/userSlice';
 import { useAppDispatch } from '../store';
-import { Fingerprint } from '@mui/icons-material';
 
 type Props = {
   isAdmin: boolean;
@@ -52,7 +51,7 @@ function Header({ isAdmin, isAuth, userName }: Props): JSX.Element {
           Выход
         </Button>
       ) : (
-        <AppBar position="static" color="primary">
+        <AppBar position="static" color="primary" sx={{ paddingY: '2rem' }}>
           <Container
             sx={{
               display: 'flex',
