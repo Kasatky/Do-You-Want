@@ -12,15 +12,14 @@ module.exports = {
           process.env.DEMO_PASSWORD,
           Number(process.env.SALT_ROUNDS),
         ),
+      }, {
+        email: 'ira@mail.ru',
+        userName: 'IraTeamLead',
+        password: await bcrypt.hash('123456', Number(process.env.SALT_ROUNDS)),
       },
       {
         email: 'farit@mail.ru',
         userName: 'Farit',
-        password: await bcrypt.hash('123456', Number(process.env.SALT_ROUNDS)),
-      },
-      {
-        email: 'ira@mail.ru',
-        userName: 'IraTeamLead',
         password: await bcrypt.hash('123456', Number(process.env.SALT_ROUNDS)),
       },
     ];
