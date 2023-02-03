@@ -95,7 +95,7 @@ function QuestionCarousel(): JSX.Element {
           className="cardContainer"
           sx={{
             marginTop: '3em',
-            width: '600px',
+            // width: '600px',
             height: '160px',
             position: 'relative',
             justifyContent: 'center',
