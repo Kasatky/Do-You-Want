@@ -19,7 +19,6 @@ module.exports = {
         userId: 1,
         isPublic: true,
         isModerated: true,
-
       },
       {
         wish: 'попить чай?',
@@ -46,7 +45,7 @@ module.exports = {
         isModerated: true,
       },
       {
-        wish: 'послушать музыка?',
+        wish: 'послушать музыку?',
         userId: 1,
         isPublic: true,
         isModerated: true,
@@ -80,8 +79,9 @@ module.exports = {
         userId: 1,
         isPublic: true,
         isModerated: true,
-      }, {
-        wish: 'понаблюдать за звездами?',
+      },
+      {
+        wish: 'понаблюдать за звёздами?',
         userId: 1,
         isPublic: true,
         isModerated: true,
@@ -117,7 +117,7 @@ module.exports = {
         isModerated: true,
       },
       {
-        wish: 'потренероваться?',
+        wish: 'потренироваться?',
         userId: 1,
         isPublic: true,
         isModerated: true,
@@ -177,7 +177,7 @@ module.exports = {
         isModerated: false,
       },
       {
-        wish: 'покататься самокате?',
+        wish: 'покататься на самокате?',
         userId: 2,
         isPublic: true,
         isModerated: false,
@@ -188,17 +188,56 @@ module.exports = {
         isPublic: true,
         isModerated: false,
       },
-
+      {
+        wish: 'порисовать?',
+        userId: 3,
+        isPublic: true,
+        isModerated: false,
+      },
+      {
+        wish: 'посмотреть аниме?',
+        userId: 3,
+        isPublic: true,
+        isModerated: false,
+      },
+      {
+        wish: 'посмотреть в окно?',
+        userId: 3,
+        isPublic: true,
+        isModerated: false,
+      },
+      {
+        wish: 'засеять таблицу?',
+        userId: 3,
+        isPublic: true,
+        isModerated: false,
+      },
+      {
+        wish: 'пофиксить баги?',
+        userId: 3,
+        isPublic: true,
+        isModerated: false,
+      },
+      {
+        wish: 'вкусно поесть в кафе?',
+        userId: 3,
+        isPublic: true,
+        isModerated: false,
+      },
     ];
 
-    await queryInterface.bulkInsert('Wishes', wish.map((el) => ({
-      wish: el.wish,
-      userId: el.userId,
-      isPublic: el.isPublic,
-      isModerated: el.isModerated,
-      createdAt: new Date(),
-      updatedAt: new Date(),
-    })), {});
+    await queryInterface.bulkInsert(
+      'Wishes',
+      wish.map((el) => ({
+        wish: el.wish,
+        userId: el.userId,
+        isPublic: el.isPublic,
+        isModerated: el.isModerated,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      })),
+      {},
+    );
   },
 
   async down(queryInterface) {
