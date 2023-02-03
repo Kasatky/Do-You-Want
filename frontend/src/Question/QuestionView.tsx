@@ -52,7 +52,6 @@ export default function QuestionView() {
           Нет
         </Button>
       </div>
-      <div>{openError}</div>
     </Box>
   );
 }

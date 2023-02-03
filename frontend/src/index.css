@@ -1,4 +1,5 @@
 html {
+  font-family: 'Sofia Sans Condensed', sans-serif;
   margin: 0px;
   width: 100%;
 }
@@ -11,51 +12,35 @@ html {
 }
 
 body {
-  /* font-family: "Roboto","Helvetica","Arial",sans-serif; */
-  /* width: 100%; */
+  width: 100%;
   margin: 0.5em;
-  /* background-image: url(../public/img/Plants-at-a-botanical-gar-2560x1600.jpg); */
   background-image: url(../public/img/6267773749.jpg);
 
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
-
-  /* background: linear-gradient(#4ccecc, hsla(167, 83%, 61%, 0.141), #4cd8ac, #3be090); */
-  /* background-repeat: no-repeat; */
 }
 
-header {
-  /* background-image: url(https://glass-pt.ru/galereya/gory/images/G-107.jpg); */
-  /* background-repeat: no-repeat; */
-  background-color: rgba(255, 222, 173, 0);
-  /* background-size: cover; */
-  /* background-position: 40% 60%; */
+header.css-hip9hq-MuiPaper-root-MuiAppBar-root, .AppBarHeader   {
+  margin-top: 10px;
+  border-radius: 10px;
+  padding: 20px 0 ;
+  background-color: #ffffff;
   box-shadow: none;
   /* margin: 1em; */
 }
 
-.css-hip9hq-MuiPaper-root-MuiAppBar-root {
-  background: none !important;
-}
 
-/* .MuiBox-root.css-dvxtzn,  */
-/* .css-46bh2p-MuiCardContent-root, .css-o4bg9w-MuiGrid-root,  */
 .css-1p32o3w-MuiPaper-root-MuiCard-root {
-  width: 50vw !important;
+  width: 53vw !important;
 }
 
-/* .css-hip9hq-MuiPaper-root-MuiAppBar-root {
-  box-shadow: inset -2px -2px 20px 20px rgb(251 251 251) !important;
-} */
-
-@media (min-width: 1200px) {
+@media (min-width: 1200px){
   .css-1i9grp-MuiContainer-root {
-    max-width: 1600px !important;
-  }
-}
-@media (max-width: 1200px) {
+  max-width: 80% !important;
+}}
+@media (max-width: 1200px){
   #clouds {
     display: none !important;
   }
@@ -76,25 +61,22 @@ header {
   }
 }
 
-.MuiBox-root css-0 {
+.MuiBox-root.css-dvxtzn {
   display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
 }
 
-/* .tinderCard {
-  width: 6000px;
-} */
+.carouselDiv {
+  display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
-/* .tatet {
-  background-image: url('../public/img/cloud.png') !important;
-} */
 #root {
   width: 100%;
 }
-
-/* code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-} */
 
 .wrapper {
   display: flex;
@@ -103,6 +85,27 @@ header {
 
 .css-1clzr65-MuiButtonBase-root-MuiButton-root,
 .MuiButton-contained {
+  text-align: center;
   background-color: #02611d !important;
-  color: bisque;
+  color: rgb(255, 255, 255);
+}
+
+.whyCard, .css-1v5z4dq-MuiPaper-root-MuiCard-root {
+  border-radius: 10px;
+  width: 15em;
+  height: 10em;
+}
+
+.MuiBox-root .textDiv.css-pgvgg1{
+  border-radius: 10px;
+  padding: 50px;
+  margin-top: 7vh;
+  width: 80%;
+  background-color: #ffffff;
+  font-size: 2em;
+  box-shadow: none;
+}
+
+.MuiBox-root.css-dvxtzn {
+  width: 100%;
 }
