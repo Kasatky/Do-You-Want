@@ -1,6 +1,9 @@
 import React from 'react';
 import { useAppDispatch } from '../store';
 import { completeUserWish, deleteUserWish } from '../wishSlice';
+import { IconButton } from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
+import TaskAltIcon from '@mui/icons-material/TaskAlt';
 import { UserWish } from '../wishTypes';
 
 type Props = {
@@ -19,11 +22,12 @@ function AddedWish({ wish }: Props): JSX.Element {
   };
 
   return (
-    <div>
-      <button onClick={deleteWish}>X</button>
+    <div style={{ display: 'flex', justifyContent: 'space-between' }} >
+      <IconButton
+        onClick={deleteWish}><CloseIcon color='error' /></IconButton>
       {wish?.wish?.wish[0].toUpperCase() +
         wish?.wish?.wish.slice(1, wish?.wish?.wish.length - 1)}
-      <button onClick={completeWish}>✓</button>
+      <IconButton onClick={completeWish}><TaskAltIcon color='success' /></IconButton>
     </div>
   );
 }

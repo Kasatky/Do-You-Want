@@ -7,8 +7,8 @@ import {
   Checkbox,
   Button,
   Modal,
+  Input
 } from '@mui/material';
-import Input from '@mui/joy/Input';
 import { useAppDispatch } from '../store';
 import { addWish } from '../wishSlice';
 
@@ -76,6 +76,7 @@ function AddQuestion({ open, setOpen, handleOpenPrompt }: Props) {
       <Box sx={style} component="form">
         <Card
           sx={{
+            padding: '0 1em',
             margin: '30px 0px',
             display: 'flex',
             justifyContent: 'space-between',
@@ -87,9 +88,8 @@ function AddQuestion({ open, setOpen, handleOpenPrompt }: Props) {
           <Input
             value={wish}
             onChange={handleWishChange}
-            placeholder="здесь писать вопрос.."
-            variant="solid"
-            size="lg"
+            placeholder="здесь текст желания..."
+            disableUnderline={true}
             sx={{
               backgroundColor: '#fff',
               width: '400px',
@@ -114,7 +114,7 @@ function AddQuestion({ open, setOpen, handleOpenPrompt }: Props) {
             sx={{ textAlign: 'left no-wrap', fontSize: '2vw' }}
             value="top"
             control={
-              <Checkbox checked={status} onChange={handleStatusChange} />
+              <Checkbox checked={status} color='success' onChange={handleStatusChange} />
             }
             label="Сделать вопрос публичным"
             labelPlacement="top"
@@ -123,10 +123,10 @@ function AddQuestion({ open, setOpen, handleOpenPrompt }: Props) {
             sx={{
               bgcolor: '#ccc',
               color: 'white',
-              width: '300px',
+              // width: '300px',
               borderRadius: '15px',
               height: '40px',
-              fontSize: '2vw',
+              fontSize: '1.3em',
             }}
             variant="contained"
             onClick={addNewWish}

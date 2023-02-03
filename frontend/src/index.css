@@ -23,10 +23,9 @@ body {
   width: 100%;
   margin: 0;
   background-image: url(../public/img/6267773749.jpg);
-
-  background-position: center;
+  background-position: 25% 75%;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: 110%;
   background-attachment: fixed;
 }
 
@@ -59,6 +58,9 @@ header.css-hip9hq-MuiPaper-root-MuiAppBar-root,
 }
 
 @media (max-width: 600px) {
+  .MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation1.MuiCard-root.css-1wryamr-MuiPaper-root-MuiCard-root {
+    margin-top: 0em
+  }
   header .css-1i9grp-MuiContainer-root {
     display: flex;
     justify-content: space-between;
@@ -92,14 +94,37 @@ header.css-hip9hq-MuiPaper-root-MuiAppBar-root,
   color: rgb(255, 255, 255);
 }
 
-.css-1vpky67-MuiCardContent-root:last-child {
-  padding-bottom: 0 !important;
+.scrollBar::-webkit-scrollbar {
+  display: none;
 }
 
-.whyCard,
-.css-1v5z4dq-MuiPaper-root-MuiCard-root {
+/* Hide scrollbar for IE, Edge and Firefox */
+.scrollBar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.MuiAvatar-root.MuiAvatar-circular.MuiAvatar-colorDefault.css-we5ke1-MuiAvatar-root {
+  background-color: #02611d;
+}
+
+.whyCard, .css-1v5z4dq-MuiPaper-root-MuiCard-root {
+  border-radius: 10px;
+  padding-bottom: 0 !important;
   width: 15em;
   height: 100%;
+}
+
+.MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation1.MuiCard-root.css-2iyxf1-MuiPaper-root-MuiCard-root{
+  box-shadow: none;
+}
+
+/* .MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation1.MuiCard-root.css-p2e9to-MuiPaper-root-MuiCard-root {
+  margin-top: '10em' 
+} */
+
+.css-25x0kt{
+  background-color: #ffffff;
 }
 
 .MuiBox-root .textDiv.css-pgvgg1 {
@@ -114,4 +139,11 @@ header.css-hip9hq-MuiPaper-root-MuiAppBar-root,
 
 .MuiBox-root.css-dvxtzn {
   width: 100%;
+}
+.profileStat{
+  padding: 0.5em 1em;
+  background-color: #ffffff;
+  border-radius: 7px;
+  font-size: larger;
+  margin-bottom: 3em;
 }

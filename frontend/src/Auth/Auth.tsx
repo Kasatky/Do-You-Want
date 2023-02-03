@@ -94,6 +94,7 @@ function Auth({ open, setOpen }: Props) {
               id="outlined-basic"
               label="Ваше имя"
               type="text"
+              color='success'
               variant="outlined"
               required
               onChange={handleNameChange}
@@ -106,6 +107,7 @@ function Auth({ open, setOpen }: Props) {
             id="outlined-basic"
             label="Email"
             type="email"
+            color='success'
             variant="outlined"
             required
             onChange={handleEmailChange}
@@ -118,6 +120,7 @@ function Auth({ open, setOpen }: Props) {
             label="Пароль"
             type="password"
             variant="outlined"
+            color='success'
             required
             onChange={handlePasswordChange}
             value={userPassword}
@@ -145,6 +148,7 @@ function Auth({ open, setOpen }: Props) {
               <>
                 {'Впервые у нас? '}
                 <Button
+                  color='success'
                   disableRipple
                   onClick={handleAuthType}
                   sx={{ display: 'flex', alignItems: 'center' }}
@@ -156,6 +160,7 @@ function Auth({ open, setOpen }: Props) {
               <>
                 {'Уже есть аккаунт? '}
                 <Button
+                  color='success'
                   disableRipple
                   onClick={handleAuthType}
                   sx={{ display: 'flex', alignItems: 'center' }}
