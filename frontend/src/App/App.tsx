@@ -9,7 +9,6 @@ import ProtectedRoute from '../Wrappers/ProtectedRoute';
 import DashboardPage from '../pages/DashboardPage';
 import ProfilePage from '../pages/ProfilePage';
 import CabinetAdmin from '../CabinetAdminPage/CabinetAdmin';
-import AudioMeditationPage from '../pages/AudioMeditationPage';
 
 function App() {
   const isAuth = useSelector((state: RootState) => state.user.isAuth);
@@ -28,8 +27,6 @@ function App() {
               </PublicRoute>
             }
           />
-          <Route path="/audioMeditation" element={<AudioMeditationPage />} />
-          {/* сюда потом можно закинуть админа */}
           <Route element={<ProtectedRoute isAuth={isAuth} />}>
             <Route path="/dashboard" element={<DashboardPage />}></Route>
             <Route path="/profile" element={<ProfilePage />}></Route>
