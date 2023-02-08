@@ -38,7 +38,7 @@ function Header({ isAdmin, isAuth, userName }: Props): JSX.Element {
 
   return (
     <Box sx={{ flexGrow: 1, padding: '0 20px' }}>
-      <AppBar position="static" className="AppBarHeader">
+      <AppBar position="static" color='primary' className="AppBarHeader">
         {isAdmin ? (
           <>
             <Container
