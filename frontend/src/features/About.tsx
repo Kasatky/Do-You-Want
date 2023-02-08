@@ -11,14 +11,11 @@ function About(): JSX.Element {
     <Grid
       container
       spacing={4}
-      xs={12}
-      // columnSpacing={{ md: 12 }}
       sx={{
         marginTop: '2rem',
-        width: '100%',
       }}
     >
-      <Grid item xs={12}>
+      <Grid item xs={12} md={4}>
         <Card
           variant="outlined"
           className="whyCard"
@@ -39,7 +36,7 @@ function About(): JSX.Element {
         </Card>
       </Grid>
 
-      <Grid item xs={12}>
+      <Grid item xs={12} md={4}>
         <Card
           variant="outlined"
           className="whyCard"
@@ -60,7 +57,7 @@ function About(): JSX.Element {
         </Card>
       </Grid>
 
-      <Grid item xs={12}>
+      <Grid item xs={12} md={4}>
         <Card
           variant="outlined"
           className="whyCard"
