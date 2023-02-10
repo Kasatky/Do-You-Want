@@ -5,6 +5,15 @@ html {
   width: 100%;
   box-sizing: border-box;
   overflow-x: hidden;
+  /* background-image: url(../public/img/8afb060e21176c5db5f0a4ac410b98ab.gif); */
+  background-image: url(../public/img/fincos.png);
+  /* background-position: 0em 6em; */
+  background-repeat: no-repeat;
+  /* background-repeat: repeat; */
+  background-color: #9b7bc3b3;
+  background-size: 87%;
+  /* background-size: cover; */
+  background-attachment: fixed;
 }
 
 #root {
@@ -20,21 +29,15 @@ html {
 }
 
 body {
-  /* width: 100%; */
   margin: 0;
-  background-image: url(../public/img/6267773749.jpg);
-  /* background-position: 25% 75%; */
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
 }
 
 header.css-hip9hq-MuiPaper-root-MuiAppBar-root,
 .AppBarHeader {
-  margin-top: 10px;
+  margin-top: 1.5em;
+  /* height: 8em; */
   border-radius: 10px;
-  padding: 20px 0;
-  background-color: #ffffff;
+  /* padding: 20px 0; */
   box-shadow: none;
 }
 
@@ -51,11 +54,6 @@ header.css-hip9hq-MuiPaper-root-MuiAppBar-root,
     max-width: 80% !important;
   }
 }
-/* @media (max-width: 1200px) {
-  #clouds {
-    display: none !important;
-  }
-} */
 
 @media (max-width: 600px) {
   .MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation1.MuiCard-root.css-1wryamr-MuiPaper-root-MuiCard-root {
@@ -90,7 +88,17 @@ header.css-hip9hq-MuiPaper-root-MuiAppBar-root,
 .css-1clzr65-MuiButtonBase-root-MuiButton-root,
 .MuiButton-contained {
   text-align: center;
-  background-color: #02611d !important;
+  background-color: #ff818c !important;
+  color: rgb(255, 255, 255);
+}
+#loginBtn{
+  text-align: center;
+  background-color: #464b68 !important;
+  color: rgb(255, 255, 255);
+}
+#loginBtn:hover{
+  text-align: center;
+  background-color: #b8a2d4 !important;
   color: rgb(255, 255, 255);
 }
 
@@ -105,7 +113,7 @@ header.css-hip9hq-MuiPaper-root-MuiAppBar-root,
 }
 
 .MuiAvatar-root.MuiAvatar-circular.MuiAvatar-colorDefault.css-we5ke1-MuiAvatar-root {
-  background-color: #02611d;
+  background-color: #464b68;
 }
 
 .whyCard, .css-1v5z4dq-MuiPaper-root-MuiCard-root {

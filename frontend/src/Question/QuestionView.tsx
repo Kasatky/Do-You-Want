@@ -26,18 +26,18 @@ export default function QuestionView() {
 
   return (
     <Box sx={{ height: '180px', userSelect: 'none', }}>
-      <Paper>
+      <Paper sx={{ backgroundColor: '#ffffffba', borderRadius: '100px', }}>
         <Box
           component="h1"
           sx={{
+            color: '#464b68',
             display: 'flex',
             flexDirection: 'row',
             justifyContent: 'center',
             alignItems: 'center',
-            height: '60px',
-            borderRadius: '50px',
+            height: '70px',
+            backgroundColor: '#fff0',
             userSelect: 'none',
-            backgroundColor: '#ffffff',
             textAlign: 'center',
           }}
         >

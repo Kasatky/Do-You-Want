@@ -137,6 +137,10 @@ function QuestionCarousel(): JSX.Element {
                     fontSize: '1.5em',
                     transform: `translateY(${top}px)`,
                     transition: 'all .5s',
+                    "&:hover": {
+                      color: '#464b68',
+                      backgroundColor: '#ece2fa'
+                    },
                   }}
                 >
                   {character.wish}
@@ -156,20 +160,30 @@ function QuestionCarousel(): JSX.Element {
         {currentIndex > -1 && (
           <Box className="buttons">
             <IconButton
-              color="success"
+              // color="error"
               onClick={() => swipe('left')}
-              sx={{ marginRight: '5em' }}
+              sx={{
+                marginRight: '5em', borderRadius: '30px', backgroundColor: 'white', "&:hover": {
+                  color: '#464b68',
+                  backgroundColor: '#fa9ea6'
+                },
+              }}
             >
-              <ArrowBackIosOutlinedIcon color="success" />
+              <ArrowBackIosOutlinedIcon />
               Нет
             </IconButton>
             <IconButton
-              color="success"
+              // color="success"
               onClick={() => swipe('right')}
-              sx={{ marginLeft: '5em' }}
+              sx={{
+                marginLeft: '5em', borderRadius: '30px', backgroundColor: 'white', "&:hover": {
+                  color: '#464b68',
+                  backgroundColor: '#96ff85b3'
+                },
+              }}
             >
               Да
-              <ArrowForwardIosOutlinedIcon color="success" />
+              <ArrowForwardIosOutlinedIcon />
             </IconButton>
           </Box>
         )}

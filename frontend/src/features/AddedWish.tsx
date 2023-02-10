@@ -22,7 +22,7 @@ function AddedWish({ wish }: Props): JSX.Element {
   };
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'space-between' }} >
+    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', lineHeight: 0.9, }} >
       <IconButton
         onClick={deleteWish}><CloseIcon color='error' /></IconButton>
       {wish?.wish?.wish[0].toUpperCase() +

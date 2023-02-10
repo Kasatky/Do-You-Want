@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { Container, Typography, Button } from '@mui/material';
+import { Container, Button } from '@mui/material';
 import PageWrapper from '../Wrappers/PageWrapper';
 import { RootState, useAppDispatch } from '../store';
 import { getStat } from '../wishSlice';
