@@ -76,31 +76,49 @@ function DashboardPage() {
               </Card>
             </Grid>
 
-            <Grid item xs={12} sm={4}>
+            <Grid item xs={12} sm={4} sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+              <Card sx={{
+                color: '#464b68',
+                backgroundColor: '#dcd8e2f2',
+                marginTop: '0em',
+                alignItems: 'center',
+                userSelect: 'none',
+                fontFamily: '"Roboto","Helvetica","Arial",sans-serif',
+                fontWeight: 500,
+                fontSize: '1.3rem',
+                lineHeight: 1.5,
+                letterSpacing: '0.02857em',
+                textTransform: 'uppercase',
+                width: '90%',
+                padding: '6px 16px',
+                borderRadius: '30px',
+                marginBottom: '1em'
+              }}>
+                {userWishes.length > 7 ? (
+                  <>
+                    <p style={{ margin: '0px' }}>
+                      Доступно желаний {userWishes.length}
+                    </p>
+                    <p style={{ margin: '0px' }}></p>
+                    Пора воплощать их!
+                  </>
+                ) : (
+                  <Box sx={{ fontSize: '1.1rem' }}>Ваши желания:</Box>
+                )}
+              </Card>
               <Card
                 className='scrollBar'
                 sx={{
+                  borderRadius: '50px',
                   boxShadow: 'none',
-                  marginTop: '3.5em',
                   backgroundColor: '#ffffff00',
                   maxHeight: '600px',
                   overflowY: 'auto',
                   userSelect: 'none',
-
+                  maxWidth: '28em'
                 }}
               >
                 <CardContent sx={{ fontSize: '1.5em', fontWeight: 'bold', userSelect: 'none', background: '#ffffff00' }}>
-                  {userWishes.length > 7 ? (
-                    <>
-                      <p style={{ margin: '0px' }}>
-                        Доступно желаний {userWishes.length}
-                      </p>
-                      <p style={{ margin: '0px' }}></p>
-                      Пора воплощать их!
-                    </>
-                  ) : (
-                    <Box sx={{ fontWeight: 'bold', fontSize: '30px' }}>Ваши желания:</Box>
-                  )}
 
                   <Stack style={{ marginTop: '10px' }}>
                     {userWishes.map((el) => (
@@ -109,8 +127,10 @@ function DashboardPage() {
                         style={{
                           marginTop: '10px',
                           fontSize: '1em',
+                          lineHeight: 0.8,
                           userSelect: 'none',
-                          backgroundColor: '#ffffff',
+                          backgroundColor: '#dcd8e2e6',
+                          borderRadius: '30px',
                         }}
                       >
                         <AddedWish wish={el} />
@@ -131,7 +151,7 @@ function DashboardPage() {
 
         <ModalPrompt open={openPrompt} />
       </Container>
-    </PageWrapper>
+    </PageWrapper >
   );
 }
 

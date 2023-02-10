@@ -66,12 +66,16 @@ function Header({ isAdmin, isAuth, userName }: Props): JSX.Element {
               <Logo />
               {!isAuth ? (
                 <Button
-                  color="success"
+                  id='loginBtn'
+                  // color="success"
                   variant="contained"
                   onClick={handleOpen}
                   sx={{
-                    borderRadius: '10px',
-                    width: '7em',
+                    margin: '0.5em',
+                    width: '80px',
+                    height: '80px',
+                    borderRadius: '50%',
+                    backgroundColor: '#464b67',
                     zIndex: 7,
                     cursor: 'pointer',
                   }}
