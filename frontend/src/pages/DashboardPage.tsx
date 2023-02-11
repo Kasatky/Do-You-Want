@@ -7,6 +7,8 @@ import {
   Grid,
   Stack,
   Paper,
+  IconButton,
+  Tooltip,
 } from '@mui/material';
 import PageWrapper from '../Wrappers/PageWrapper';
 import QuestionView from '../Question/QuestionView';
@@ -18,7 +20,9 @@ import { addUserWishes } from '../wishSlice';
 import { styled } from '@mui/material/styles';
 import AddedWish from '../features/AddedWish';
 import AddIcon from '@mui/icons-material/Add';
+import LiveHelpIcon from '@mui/icons-material/LiveHelp';
 import { Box } from '@mui/material';
+import InfoModal from '../features/InfoModal';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -29,22 +33,24 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 function DashboardPage() {
-  const [open, setOpen] = useState(false);
-  const [openPrompt, setOpenPrompt] = useState(false);
+  const [openNewQuestion, setOpenNewQuestion] = useState(false);
+  const [openInfo, setOpenInfo] = useState(false);
+  const [openPromptQuestion, setOpenPromptQuestion] = useState(false);
   const userWishes = useSelector((state: RootState) => state.wish.addedWishes);
 
   const dispatch = useAppDispatch();
 
-  const handleOpen = () => setOpen(true);
+  const handleOpenNewQuestion = () => setOpenNewQuestion(true);
+  const handleOpenInfo = () => setOpenInfo(true);
 
   useEffect(() => {
     dispatch(addUserWishes());
   }, [dispatch]);
 
   const handleOpenPrompt = () => {
-    setOpenPrompt(true);
+    setOpenPromptQuestion(true);
     setTimeout(() => {
-      setOpenPrompt(false);
+      setOpenPromptQuestion(false);
     }, 2000);
   };
 
@@ -61,19 +67,25 @@ function DashboardPage() {
         >
           <Grid item xs={1} container spacing={2}>
             <Grid item xs={12} sm={8}>
-              <Card sx={{ backgroundColor: '#ffffff00', maxHeight: '800px' }}>
+              <Card sx={{ backgroundColor: '#ffffff00', boxShadow: 'none', maxHeight: '800px' }}>
                 <CardContent>
                   <Button
                     variant="contained"
-                    onClick={handleOpen}
+                    onClick={handleOpenNewQuestion}
                     className="btn"
                   >
                     <AddIcon /> свой вопрос
                   </Button>
-
                   <QuestionView />
                 </CardContent>
               </Card>
+              <IconButton onClick={handleOpenInfo}>
+                <Tooltip title="О приложении" sx={{ fontSize: '30px', width: '30px', background: 'white' }}>
+
+                  <LiveHelpIcon fontSize='large' sx={{ color: 'white' }} />
+
+                </Tooltip>
+              </IconButton>
             </Grid>
 
             <Grid item xs={12} sm={4} sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
@@ -95,15 +107,15 @@ function DashboardPage() {
                 marginBottom: '1em'
               }}>
                 {userWishes.length > 7 ? (
-                  <>
-                    <p style={{ margin: '0px' }}>
-                      Доступно желаний {userWishes.length}
+                  <Box sx={{ fontFamily: 'Caveat, cursive', lineHeight: 1.1, }} >
+                    <p style={{ margin: '0px', }}>
+                      Желаний уже <span style={{ fontSize: '1.1em', fontFamily: 'cursive' }}>{' '}{userWishes.length}!</span>
                     </p>
                     <p style={{ margin: '0px' }}></p>
-                    Пора воплощать их!
-                  </>
+                    Самое время начать!
+                  </Box>
                 ) : (
-                  <Box sx={{ fontSize: '1.1rem' }}>Ваши желания:</Box>
+                  <Box sx={{ fontSize: '1.1rem' }}>Ты хочешь:</Box>
                 )}
               </Card>
               <Card
@@ -118,7 +130,7 @@ function DashboardPage() {
                   maxWidth: '28em'
                 }}
               >
-                <CardContent sx={{ fontSize: '1.5em', fontWeight: 'bold', userSelect: 'none', background: '#ffffff00' }}>
+                <CardContent sx={{ fontSize: '1.5em', fontWeight: 'bold', userSelect: 'none', background: '#ffffff00', marginTop: '-1em', }}>
 
                   <Stack style={{ marginTop: '10px' }}>
                     {userWishes.map((el) => (
@@ -144,12 +156,13 @@ function DashboardPage() {
         </Grid>
 
         <AddQuestion
-          open={open}
-          setOpen={setOpen}
+          open={openNewQuestion}
+          setOpen={setOpenNewQuestion}
           handleOpenPrompt={handleOpenPrompt}
         />
+        {openInfo && <InfoModal open={openInfo} setOpenInfo={setOpenInfo} />}
 
-        <ModalPrompt open={openPrompt} />
+        <ModalPrompt open={openPromptQuestion} />
       </Container>
     </PageWrapper >
   );

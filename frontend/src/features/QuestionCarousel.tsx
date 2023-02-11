@@ -158,32 +158,30 @@ function QuestionCarousel(): JSX.Element {
           )}
         </Box>
         {currentIndex > -1 && (
-          <Box className="buttons">
+          <Box className="buttons" sx={{ display: 'flex', justifyContent: 'space-between', width: '40%', marginTop: '1em' }}>
             <IconButton
               // color="error"
               onClick={() => swipe('left')}
               sx={{
-                marginRight: '5em', borderRadius: '30px', backgroundColor: 'white', "&:hover": {
+                borderRadius: '30px', backgroundColor: 'white', "&:hover": {
                   color: '#464b68',
                   backgroundColor: '#fa9ea6'
                 },
               }}
             >
-              <ArrowBackIosOutlinedIcon />
-              Нет
+              <ArrowBackIosOutlinedIcon />Нет
             </IconButton>
             <IconButton
               // color="success"
               onClick={() => swipe('right')}
               sx={{
-                marginLeft: '5em', borderRadius: '30px', backgroundColor: 'white', "&:hover": {
+                borderRadius: '30px', backgroundColor: 'white', "&:hover": {
                   color: '#464b68',
                   backgroundColor: '#96ff85b3'
                 },
               }}
             >
-              Да
-              <ArrowForwardIosOutlinedIcon />
+              Да<ArrowForwardIosOutlinedIcon />
             </IconButton>
           </Box>
         )}

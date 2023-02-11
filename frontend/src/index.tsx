@@ -14,11 +14,28 @@ const theme = createTheme({
     MuiAppBar: {
       styleOverrides: {
         colorPrimary: {
-          backgroundColor: '#eeeaf2e3',
+          backgroundColor: '#ffffffbd',
         },
       },
     },
+    MuiTooltip: {
+      styleOverrides: {
+        tooltip: {
+          fontSize: "1.5em",
+          color: "grey",
+          backgroundColor: "white"
+        }
+      }
+    },
   },
+  typography: {
+    fontFamily: [
+      'Caveat',
+      'cursive'
+    ].join(','),
+  },
+
+
 });
 
 root.render(

@@ -76,7 +76,8 @@ function DiaryTableHead(props: DiaryTableProps) {
         {headCells.map((headCell) => (
           <TableCell
             key={headCell.id}
-            align={headCell.numeric ? 'right' : 'left'}
+            // align={headCell.numeric ? 'right' : 'left'}
+            align={'center'}
             sortDirection={orderBy === headCell.id ? order : false}
           >
             <TableSortLabel

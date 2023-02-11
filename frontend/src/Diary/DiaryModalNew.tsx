@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, Button, Modal, TextField, Typography } from '@mui/material';
+import { Box, Button, Grid, Modal, TextField, Typography } from '@mui/material';
 import { useAppDispatch } from '../store';
 import { addNewNote } from './diarySlice';
 import { DiaryNote } from './diaryTypes';
@@ -78,7 +78,7 @@ function DiaryModalNew({ open, setOpen }: Props): JSX.Element {
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
     >
-      <Box sx={style}>
+      <Grid sx={style}>
         <Typography>Добавить запись в дневник</Typography>
 
         <TextField
@@ -133,7 +133,7 @@ function DiaryModalNew({ open, setOpen }: Props): JSX.Element {
             Сохранить
           </Button>
         </div>
-      </Box>
+      </Grid>
     </Modal>
   );
 }
