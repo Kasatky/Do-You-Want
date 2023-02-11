@@ -88,7 +88,7 @@ function AddQuestion({ open, setOpen, handleOpenPrompt }: Props) {
           <Input
             value={wish}
             onChange={handleWishChange}
-            placeholder="здесь текст желания..."
+            placeholder=" здесь текст желания..."
             disableUnderline={true}
             sx={{
               backgroundColor: '#fff',
@@ -114,7 +114,7 @@ function AddQuestion({ open, setOpen, handleOpenPrompt }: Props) {
             sx={{ textAlign: 'left no-wrap', fontSize: '2vw' }}
             value="top"
             control={
-              <Checkbox checked={status} color='success' onChange={handleStatusChange} />
+              <Checkbox checked={status} color='default' onChange={handleStatusChange} />
             }
             label="Сделать вопрос публичным"
             labelPlacement="top"
