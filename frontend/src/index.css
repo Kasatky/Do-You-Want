@@ -1,18 +1,20 @@
+
 html {
-  font-family: "Roboto","Helvetica","Arial",sans-serif;
+  /* font-family: "Roboto","Helvetica","Arial",sans-serif; */
+  font-family: 'Caveat', cursive !important;
+  font-size: larger;
   margin: 0;
-  /* padding: 0; */
   width: 100%;
   box-sizing: border-box;
   overflow-x: hidden;
   /* background-image: url(../public/img/8afb060e21176c5db5f0a4ac410b98ab.gif); */
-  background-image: url(../public/img/fincos.png);
-  /* background-position: 0em 6em; */
-  background-repeat: no-repeat;
+  /* background-position: 0em 0em; */
   /* background-repeat: repeat; */
-  background-color: #9b7bc3b3;
-  background-size: 87%;
   /* background-size: cover; */
+  background-image: url(../public/img/create.png);
+  background-repeat: no-repeat;
+  background-color: #9b7bc3b3;
+  background-size: 89%;
   background-attachment: fixed;
 }
 
@@ -26,6 +28,10 @@ html {
 
 .cardContainer {
   position: relative;
+}
+
+.textFildBorder:after{
+  border-color: rgb(161, 99, 188) !important;
 }
 
 body {
@@ -113,7 +119,7 @@ header.css-hip9hq-MuiPaper-root-MuiAppBar-root,
 }
 
 .MuiAvatar-root.MuiAvatar-circular.MuiAvatar-colorDefault.css-we5ke1-MuiAvatar-root {
-  background-color: #464b68;
+  background-color: #464b68 !important;
 }
 
 .whyCard, .css-1v5z4dq-MuiPaper-root-MuiCard-root {

@@ -4,6 +4,7 @@ import { RootState, useAppDispatch } from '../store';
 import { login, register } from './userSlice';
 import { UserLogin, UserRegister } from './usersTypes';
 import { useSelector } from 'react-redux';
+import { deepPurple } from '@mui/material/colors';
 
 const style = {
   borderRadius: '15px',
@@ -91,10 +92,10 @@ function Auth({ open, setOpen }: Props) {
           )}
           {authType === 'register' && (
             <TextField
+              className='textFildBorder'
               id="outlined-basic"
               label="Ваше имя"
               type="text"
-              color='success'
               variant="outlined"
               required
               onChange={handleNameChange}
@@ -104,10 +105,11 @@ function Auth({ open, setOpen }: Props) {
           )}
 
           <TextField
+            className='textFildBorder'
             id="outlined-basic"
             label="Email"
             type="email"
-            color='success'
+            color='warning'
             variant="outlined"
             required
             onChange={handleEmailChange}
@@ -116,11 +118,12 @@ function Auth({ open, setOpen }: Props) {
           />
 
           <TextField
+            className='textFildBorder'
             id="outlined-basic"
             label="Пароль"
             type="password"
             variant="outlined"
-            color='success'
+            // color='secondary'
             required
             onChange={handlePasswordChange}
             value={userPassword}
@@ -148,7 +151,7 @@ function Auth({ open, setOpen }: Props) {
               <>
                 {'Впервые у нас? '}
                 <Button
-                  color='success'
+                  color='secondary'
                   disableRipple
                   onClick={handleAuthType}
                   sx={{ display: 'flex', alignItems: 'center' }}
@@ -160,7 +163,7 @@ function Auth({ open, setOpen }: Props) {
               <>
                 {'Уже есть аккаунт? '}
                 <Button
-                  color='success'
+                  color='secondary'
                   disableRipple
                   onClick={handleAuthType}
                   sx={{ display: 'flex', alignItems: 'center' }}

@@ -98,11 +98,11 @@ export default function EnhancedTable() {
   };
 
   return (
-    <Box sx={{ width: '100%' }}>
+    <Box sx={{ width: '100%', }}>
       <Paper sx={{ width: '100%', mb: 2 }}>
         <DiaryToolbar />
         <TableContainer>
-          <Table sx={{ minWidth: 750 }} aria-labelledby="tableTitle">
+          <Table sx={{ minWidth: 750, alignItems: 'center' }} aria-labelledby="tableTitle">
             <DiaryTableHead
               order={order}
               orderBy={orderBy}
@@ -117,10 +117,10 @@ export default function EnhancedTable() {
                       <TableCell sx={{ minWidth: '80px' }}>
                         {String(note.createdAt).slice(0, 10)}
                       </TableCell>
-                      <TableCell align="right">{note.situation}</TableCell>
-                      <TableCell align="right">{note.emotion}</TableCell>
-                      <TableCell align="right">{note.mind}</TableCell>
-                      <TableCell align="right">{note.action}</TableCell>
+                      <TableCell align="center">{note.situation}</TableCell>
+                      <TableCell align="center">{note.emotion}</TableCell>
+                      <TableCell align="center">{note.mind}</TableCell>
+                      <TableCell align="center">{note.action}</TableCell>
                     </TableRow>
                   );
                 })}
