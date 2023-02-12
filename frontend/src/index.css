@@ -13,8 +13,9 @@ html {
   /* background-size: cover; */
   background-image: url(../public/img/create.png);
   background-repeat: no-repeat;
-  background-color: #9b7bc3b3;
-  background-size: 89%;
+  background-color: #8b8d9494;
+  /* background-color: #9b7bc3b3; */
+  background-size: 80%;
   background-attachment: fixed;
 }
 
@@ -36,9 +37,7 @@ body {
 header.css-hip9hq-MuiPaper-root-MuiAppBar-root,
 .AppBarHeader {
   margin-top: 1.5em;
-  /* height: 8em; */
   border-radius: 10px;
-  /* padding: 20px 0; */
   box-shadow: none;
 }
 

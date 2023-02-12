@@ -7,7 +7,8 @@ import {
   Checkbox,
   Button,
   Modal,
-  Input
+  Input,
+  Grid
 } from '@mui/material';
 import { useAppDispatch } from '../store';
 import { addWish } from '../wishSlice';
@@ -17,7 +18,9 @@ const style = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  minWidth: 300,
+  maxWidth: '530px',
+  maxHeight: '300px',
+  width: '80%',
   bgcolor: 'background.paper',
   border: '2px solid black',
   borderRadius: '8px',
@@ -79,44 +82,55 @@ function AddQuestion({ open, setOpen, handleOpenPrompt }: Props) {
             padding: '0 1em',
             margin: '30px 0px',
             display: 'flex',
-            justifyContent: 'space-between',
+            justifyContent: 'flex-start',
             alignItems: 'center',
+            // flexWrap: 'wrap',
           }}
         >
-          <Typography sx={{ fontSize: '2vw' }}>Хочешь</Typography>
+          <Typography sx={{ fontSize: '3vw' }}>Хочешь</Typography>
 
-          <Input
-            value={wish}
-            onChange={handleWishChange}
-            placeholder=" здесь текст желания..."
-            disableUnderline={true}
-            sx={{
-              backgroundColor: '#fff',
-              width: '400px',
-              color: '#000',
-              borderRadius: '15px',
-              fontSize: '2vw',
-              margin: '0 0 0 10px',
-            }}
-          />
-          <i style={{ fontSize: '2vw' }} className="fa-solid fa-question"></i>
+          <div style={{ display: 'flex', alignItems: 'center', width: '100%' }}>
+            <Input
+              value={wish}
+              onChange={handleWishChange}
+              placeholder=" здесь текст желания..."
+              disableUnderline={true}
+              sx={{
+                backgroundColor: '#fff',
+                width: '100%',
+                color: '#000',
+                borderRadius: '15px',
+                fontSize: '2.5vw',
+                paddingInline: '0.45em',
+                margin: '0 0 0 10px',
+              }}
+            />
+            <i style={{ fontSize: '3vw' }} className="fa-solid fa-question"></i>
+          </div>
         </Card>
 
-        <Card
+        <Grid
           sx={{
-            margin: '30px 0px',
+            margin: '10% 0',
             display: 'flex',
-            justifyContent: 'space-between',
+            flexWrap: 'wrap',
+            justifyContent: 'space-around',
             alignItems: 'center',
+            height: '2em',
           }}
         >
           <FormControlLabel
-            sx={{ textAlign: 'left no-wrap', fontSize: '2vw' }}
+            sx={{
+              textAlign: 'left no-wrap',
+              alignContent: 'center',
+            }}
             value="top"
             control={
               <Checkbox checked={status} color='primary' onChange={handleStatusChange} />
             }
-            label="Сделать вопрос публичным"
+            label={<Typography sx={{ fontSize: '2vw', }}>
+              "Сделать вопрос публичным"
+            </Typography>}
             labelPlacement="top"
           />
           <Button
@@ -124,15 +138,15 @@ function AddQuestion({ open, setOpen, handleOpenPrompt }: Props) {
               bgcolor: '#ccc',
               color: 'white',
               borderRadius: '15px',
-              height: '40px',
-              fontSize: '1.3em',
+              height: '1.5em',
+              fontSize: '2vw',
             }}
             variant="contained"
             onClick={addNewWish}
           >
             Добавить
           </Button>
-        </Card>
+        </Grid>
       </Box>
     </Modal>
   );
