@@ -74,18 +74,18 @@ function DashboardPage() {
                     onClick={handleOpenNewQuestion}
                     className="btn"
                   >
-                    <AddIcon /> свой вопрос
+                    <AddIcon fontSize='small' /> свой вопрос
                   </Button>
+                  <IconButton onClick={handleOpenInfo}>
+                    <Tooltip title="О приложении" sx={{ fontSize: '30px', width: '30px', background: 'white' }}>
+
+                      <LiveHelpIcon fontSize='large' sx={{ color: 'white' }} />
+
+                    </Tooltip>
+                  </IconButton>
                   <QuestionView />
                 </CardContent>
               </Card>
-              <IconButton onClick={handleOpenInfo}>
-                <Tooltip title="О приложении" sx={{ fontSize: '30px', width: '30px', background: 'white' }}>
-
-                  <LiveHelpIcon fontSize='large' sx={{ color: 'white' }} />
-
-                </Tooltip>
-              </IconButton>
             </Grid>
 
             <Grid item xs={12} sm={4} sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
@@ -95,13 +95,12 @@ function DashboardPage() {
                 marginTop: '0em',
                 alignItems: 'center',
                 userSelect: 'none',
-                fontFamily: '"Roboto","Helvetica","Arial",sans-serif',
                 fontWeight: 500,
                 fontSize: '1.3rem',
                 lineHeight: 1.5,
                 letterSpacing: '0.02857em',
                 textTransform: 'uppercase',
-                width: '90%',
+                // width: '100%',
                 padding: '6px 16px',
                 borderRadius: '30px',
                 marginBottom: '1em'
@@ -127,7 +126,8 @@ function DashboardPage() {
                   maxHeight: '600px',
                   overflowY: 'auto',
                   userSelect: 'none',
-                  maxWidth: '28em'
+                  maxWidth: '25em',
+                  width: '30em'
                 }}
               >
                 <CardContent sx={{ fontSize: '1.5em', fontWeight: 'bold', userSelect: 'none', background: '#ffffff00', marginTop: '-1em', }}>

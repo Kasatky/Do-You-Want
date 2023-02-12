@@ -5,7 +5,6 @@ import Grid from '@mui/material/Grid';
 import PsychologyAltRoundedIcon from '@mui/icons-material/PsychologyAltRounded';
 import ClearAllRoundedIcon from '@mui/icons-material/ClearAllRounded';
 import HistoryEduRoundedIcon from '@mui/icons-material/HistoryEduRounded';
-import { deepPurple } from '@mui/material/colors';
 
 function About(): JSX.Element {
   return (
@@ -29,7 +28,7 @@ function About(): JSX.Element {
               boxSizing: 'border-box',
             }}
           >
-            <PsychologyAltRoundedIcon sx={{ color: deepPurple[100] }} fontSize="large" />
+            <PsychologyAltRoundedIcon color='primary' fontSize="large" />
             <Typography variant="h5" sx={{ marginTop: '15px' }}>
               Поможем выявить желания и потребности
             </Typography>
@@ -50,7 +49,7 @@ function About(): JSX.Element {
               boxSizing: 'border-box',
             }}
           >
-            <ClearAllRoundedIcon sx={{ color: deepPurple[100] }} fontSize="large" />
+            <ClearAllRoundedIcon color='primary' fontSize="large" />
             <Typography variant="h5">
               Случайные вопросы, которые могут повторяться через некоторое время
             </Typography>
@@ -71,7 +70,7 @@ function About(): JSX.Element {
               boxSizing: 'border-box',
             }}
           >
-            <HistoryEduRoundedIcon sx={{ color: deepPurple[100] }} fontSize="large" />
+            <HistoryEduRoundedIcon color='primary' fontSize="large" />
             <Typography
               variant="h5"
               sx={{

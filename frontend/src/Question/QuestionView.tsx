@@ -25,7 +25,7 @@ export default function QuestionView() {
   };
 
   return (
-    <Box sx={{ height: 'fit-content', userSelect: 'none', }}>
+    <Box sx={{ height: 'fit-content', userSelect: 'none', maxWidth: '35em', }}>
       <Paper sx={{ backgroundColor: '#ffffffba', borderRadius: '100px', }}>
         <Box
           component="p"
