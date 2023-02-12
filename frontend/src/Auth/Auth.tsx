@@ -92,7 +92,7 @@ function Auth({ open, setOpen }: Props) {
           )}
           {authType === 'register' && (
             <TextField
-              className='textFildBorder'
+              color='primary'
               id="outlined-basic"
               label="Ваше имя"
               type="text"
@@ -105,11 +105,10 @@ function Auth({ open, setOpen }: Props) {
           )}
 
           <TextField
-            className='textFildBorder'
+            color='primary'
             id="outlined-basic"
             label="Email"
             type="email"
-            color='warning'
             variant="outlined"
             required
             onChange={handleEmailChange}
@@ -118,16 +117,15 @@ function Auth({ open, setOpen }: Props) {
           />
 
           <TextField
-            className='textFildBorder'
+            color='primary'
             id="outlined-basic"
             label="Пароль"
             type="password"
             variant="outlined"
-            // color='secondary'
             required
             onChange={handlePasswordChange}
             value={userPassword}
-            sx={{ mt: 2, width: '100%' }}
+            sx={{ mt: 2, width: '100%', }}
           />
 
           {authType === 'login' ? (
@@ -151,7 +149,7 @@ function Auth({ open, setOpen }: Props) {
               <>
                 {'Впервые у нас? '}
                 <Button
-                  color='secondary'
+                  color='primary'
                   disableRipple
                   onClick={handleAuthType}
                   sx={{ display: 'flex', alignItems: 'center' }}
@@ -163,7 +161,7 @@ function Auth({ open, setOpen }: Props) {
               <>
                 {'Уже есть аккаунт? '}
                 <Button
-                  color='secondary'
+                  color='primary'
                   disableRipple
                   onClick={handleAuthType}
                   sx={{ display: 'flex', alignItems: 'center' }}

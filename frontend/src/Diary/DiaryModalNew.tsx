@@ -86,7 +86,7 @@ function DiaryModalNew({ open, setOpen }: Props): JSX.Element {
           label="Событие"
           type="text"
           variant="outlined"
-          color='secondary'
+          color='primary'
           required
           onChange={handleSituationChange}
           value={situation}
@@ -97,7 +97,7 @@ function DiaryModalNew({ open, setOpen }: Props): JSX.Element {
           label="Эмоции"
           type="text"
           variant="outlined"
-          color='secondary'
+          color='primary'
           required
           onChange={handleEmotionChange}
           value={emotion}
@@ -108,7 +108,7 @@ function DiaryModalNew({ open, setOpen }: Props): JSX.Element {
           label="Мысли"
           type="text"
           variant="outlined"
-          color='secondary'
+          color='primary'
           required
           onChange={handleMindChange}
           value={mind}
@@ -119,7 +119,7 @@ function DiaryModalNew({ open, setOpen }: Props): JSX.Element {
           label="Поведение"
           type="text"
           variant="outlined"
-          color='secondary'
+          color='primary'
           required
           onChange={handleActionChange}
           value={action}

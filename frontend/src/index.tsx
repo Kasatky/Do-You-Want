@@ -28,13 +28,17 @@ const theme = createTheme({
       }
     },
   },
+  palette: {
+    primary: {
+      main: '#464b68'
+    }
+  },
   typography: {
     fontFamily: [
       'Caveat',
       'cursive'
     ].join(','),
   },
-
 
 });
 
