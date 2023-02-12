@@ -1,15 +1,15 @@
-import { Modal, Box, Typography, IconButton } from '@mui/material';
-import { useSelector } from 'react-redux';
-import { RootState } from '../store';
+import { Modal, Box, Typography, IconButton, } from '@mui/material';
+
 
 const style = {
 	position: 'absolute' as 'absolute',
 	top: '50%',
 	left: '50%',
 	transform: 'translate(-50%, -50%)',
-	width: '40em',
+	width: '70%',
 	bgcolor: 'background.paper',
 	border: '2px solid #000',
+	borderRadius: '10px',
 	boxShadow: 24,
 	p: 4,
 };
@@ -22,15 +22,13 @@ type Props = {
 function InfoModal({ open, setOpenInfo }: Props): JSX.Element {
 	return (
 		<>
-
 			<Modal
 				open={open}
-			// aria-labelledby="modal-modal-title"
-			// aria-describedby="modal-modal-description"
 			>
 				<Box sx={style}>
 					<Typography
-						sx={{ textAlign: 'center', fontSize: '1.5em', color: 'gray' }}
+						className='infoModal'
+						sx={{ textAlign: 'center', fontSize: '2.1vw', color: 'gray' }}
 					>
 						Задача приложения - помочь выяснить текущие потребности.
 						<img width='150px' src="/img/idea.gif" alt="" />

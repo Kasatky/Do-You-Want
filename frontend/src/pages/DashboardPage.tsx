@@ -108,10 +108,10 @@ function DashboardPage() {
               }}>
                 {userWishes.length > 7 ? (
                   <Box sx={{ fontFamily: 'Caveat, cursive', lineHeight: 1.1, }} >
-                    <p style={{ margin: '0px', }}>
+                    <div style={{ margin: '0px', }}>
                       Желаний уже <span style={{ fontSize: '1.1em', fontFamily: 'cursive' }}>{' '}{userWishes.length}!</span>
-                    </p>
-                    <p style={{ margin: '0px' }}></p>
+                    </div>
+                    <div style={{ margin: '0px' }}></div>
                     Самое время начать!
                   </Box>
                 ) : (
@@ -133,7 +133,7 @@ function DashboardPage() {
                 <CardContent sx={{ fontSize: '1.5em', fontWeight: 'bold', userSelect: 'none', background: '#ffffff00', marginTop: '-1em', }}>
 
                   <Stack style={{ marginTop: '10px' }}>
-                    {userWishes.map((el) => (
+                    {userWishes && userWishes.map((el) => (
                       <Item
                         key={el.id}
                         style={{
