@@ -39,13 +39,13 @@ wishRouter.get('/random', async (req, res) => {
     wishCount = await Wish.count({
       where: {
         [Op.or]: [
-          { isPublic: true },
+          { isPublic: true }, { userId },
           // {
           //   [Op.and]: [{ isPublic: true }, { id: { [Op.in]: ids } }],
           // },
-          {
-            [Op.and]: [{ userId }, { id: { [Op.in]: ids } }],
-          },
+          // {
+          //   [Op.and]: [{ userId }, { id: { [Op.in]: ids } }],
+          // },
         ],
       },
     });
@@ -59,7 +59,9 @@ wishRouter.get('/random', async (req, res) => {
     const wish = await Wish.findOne({
       where: {
         [Op.or]: [
-          { isPublic: true },
+          {
+            [Op.and]: [{ isPublic: true }, { isModerated: true }],
+          },
           // { [Op.and]: [{ isPublic: true }, { id: { [Op.in]: ids } }] },
           {
             [Op.and]: [{ userId }, { id: { [Op.in]: ids } }],
@@ -81,59 +83,53 @@ wishRouter.post('/new', async (req, res) => {
   const { userId } = req.session;
   const { wish, isPublic } = req.body;
   const isModerated = !isPublic;
-
   let newWish;
   try {
     newWish = await Wish.create({
-      wish: wish.toLowerCase(),
+      wish: wish[0].toLowerCase() + wish.slice(1),
       userId,
       isPublic,
       isModerated,
       createdAt: new Date(),
       updatedAt: new Date(),
     });
-
     newWish.save();
+    let newUserWish;
+    try {
+      newUserWish = await UsersWish.create({
+        wishId: newWish.id,
+        userId,
+        doneCount: 0,
+        isDone: false,
+      });
+
+      newUserWish.save();
+      try {
+        const userWishWithName = await UsersWish.findByPk(newUserWish.id, {
+          include: [
+            {
+              association: UsersWish.Wish,
+              attributes: ['wish'],
+            },
+          ],
+        });
+        res.json({ loading: false, newUserWish: userWishWithName });
+      } catch (error) {
+        console.log(
+          `Ошибка при обращении к БД (таблица UsersWishes): ${error.message}`,
+        );
+        res.status(500).json({ error: 'Не удалось получить данные из БД' });
+      }
+    } catch (error) {
+      console.log(
+        `Ошибка при обращении к БД (таблица UsersWishes): ${error.message}`,
+      );
+      res.status(500).json({ error: 'Не удалось получить данные из БД' });
+      return;
+    }
   } catch (error) {
     console.log(`Ошибка при добавлении вопроса: ${error.message}`);
     res.status(500).json({ error: 'Не удалось добавить новый вопрос' });
-    return;
-  }
-
-  let newUserWish;
-  try {
-    newUserWish = await UsersWish.create({
-      wishId: newWish.id,
-      userId,
-      doneCount: 0,
-      isDone: false,
-    });
-
-    newUserWish.save();
-  } catch (error) {
-    console.log(
-      `Ошибка при обращении к БД (таблица UsersWishes): ${error.message}`,
-    );
-    res.status(500).json({ error: 'Не удалось получить данные из БД' });
-    return;
-  }
-
-  try {
-    const userWishWithName = await UsersWish.findByPk(newUserWish.id, {
-      include: [
-        {
-          association: UsersWish.Wish,
-          attributes: ['wish'],
-        },
-      ],
-    });
-
-    res.json({ loading: false, newUserWish: userWishWithName });
-  } catch (error) {
-    console.log(
-      `Ошибка при обращении к БД (таблица UsersWishes): ${error.message}`,
-    );
-    res.status(500).json({ error: 'Не удалось получить данные из БД' });
   }
 });
 
@@ -214,13 +210,16 @@ wishRouter.put('/complete', async (req, res) => {
 
 wishRouter.delete('/delete', async (req, res) => {
   const { wishId } = req.body;
-
+  const { user } = res.locals;
   try {
     const wishToDelete = await UsersWish.findByPk(wishId);
-    wishToDelete.isDone = true;
-    wishToDelete.save();
-
-    res.sendStatus(200);
+    if (wishToDelete.userId === user.id) {
+      wishToDelete.isDone = true;
+      wishToDelete.save();
+      res.sendStatus(200);
+    } else {
+      res.status(500).json({ error: 'Доступ запрещён' });
+    }
   } catch (error) {
     console.log(
       `Ошибка при обращении к БД (таблица UsersWish): ${error.message}`,
