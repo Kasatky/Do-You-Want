@@ -163,7 +163,7 @@ function QuestionCarousel(): JSX.Element {
               // color="error"
               onClick={() => swipe('left')}
               sx={{
-                borderRadius: '30px', backgroundColor: 'white', "&:hover": {
+                borderRadius: '30px', paddingRight: '0.5em', backgroundColor: 'white', "&:hover": {
                   color: '#464b68',
                   backgroundColor: '#fa9ea6'
                 },
@@ -175,7 +175,7 @@ function QuestionCarousel(): JSX.Element {
               // color="success"
               onClick={() => swipe('right')}
               sx={{
-                borderRadius: '30px', backgroundColor: 'white', "&:hover": {
+                borderRadius: '30px', paddingLeft: '0.5em', backgroundColor: 'white', "&:hover": {
                   color: '#464b68',
                   backgroundColor: '#96ff85b3'
                 },
