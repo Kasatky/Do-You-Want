@@ -3,9 +3,9 @@ const { Op } = require('sequelize');
 const { Wish } = require('../db/models');
 
 cabinetAdminRouter.get('/cabinetAdmin', async (req, res) => {
+  const { user } = res.locals;
   try {
-    const { user } = res.locals;
-    if (user.role === 1) {
+    if (user.roles[0].roleId === 1) {
       const wishNoModeration = await Wish.findAll({
         where: {
           isPublic: true,
@@ -22,7 +22,7 @@ cabinetAdminRouter.get('/cabinetAdmin', async (req, res) => {
 cabinetAdminRouter.put('/isModeration', async (req, res) => {
   const { user } = res.locals;
   try {
-    if (user.role === 1) {
+    if (user.roles[0].roleId === 1) {
       const { arrayId } = req.body;
       const promises = arrayId.map(async (id) => {
         const wishChangeStatus = await Wish.findByPk(id);
@@ -40,7 +40,7 @@ cabinetAdminRouter.put('/isModeration', async (req, res) => {
 cabinetAdminRouter.delete('/delete', async (req, res) => {
   const { user } = res.locals;
   try {
-    if (user.role === 1) {
+    if (user.roles[0].roleId === 1) {
       await Wish.destroy({ where: { id: req.body.id } });
       return res.sendStatus(200);
     }

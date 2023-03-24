@@ -37,6 +37,7 @@ export default function QuestionView() {
             justifyContent: 'center',
             alignItems: 'center',
             height: 'fit-content',
+            padding: '10px',
             backgroundColor: '#fff0',
             userSelect: 'none',
             textAlign: 'center',
@@ -44,7 +45,7 @@ export default function QuestionView() {
         >
           {random
             ? `Хочешь ${random.wish}`
-            : 'Вау! Вы перебрали все вопросы, совсем скоро появятся новые или можете добавить свои, нажав на кнопку "Добавить вопрос"'}
+            : 'Вау! Вы перебрали все вопросы, совсем скоро появятся новые или можете добавить свои, нажав на кнопку "свой вопрос"'}
         </Box>
       </Paper>
       <div style={{ display: 'flex', justifyContent: 'center', marginTop: "0.5em" }}>

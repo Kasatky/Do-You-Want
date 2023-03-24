@@ -191,14 +191,17 @@ wishRouter.get('/stat', async (req, res) => {
 
 wishRouter.put('/complete', async (req, res) => {
   const { wishId } = req.body;
-
+  const { user } = res.locals;
   try {
     const wishToComplete = await UsersWish.findByPk(wishId);
-    wishToComplete.doneCount += 1;
-    wishToComplete.isDone = true;
-    wishToComplete.updatedAt = new Date();
-    wishToComplete.save();
-
+    if (wishToComplete.userId === user.id) {
+      wishToComplete.doneCount += 1;
+      wishToComplete.isDone = true;
+      wishToComplete.updatedAt = new Date();
+      wishToComplete.save();
+    } else {
+      res.status(500).json({ error: 'Доступ запрещён' });
+    }
     res.sendStatus(200);
   } catch (error) {
     console.log(
