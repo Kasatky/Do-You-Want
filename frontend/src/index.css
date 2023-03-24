@@ -1,20 +1,17 @@
 
 html {
-  /* font-family: "Roboto","Helvetica","Arial",sans-serif; */
-  font-family: 'Caveat', cursive !important;
+  font-family: 'Alegreya Sans', sans-serif;
   font-size: larger;
   margin: 0;
   width: 100%;
   box-sizing: border-box;
   overflow-x: hidden;
-  /* background-image: url(../public/img/8afb060e21176c5db5f0a4ac410b98ab.gif); */
   /* background-position: 0em 0em; */
   /* background-repeat: repeat; */
   /* background-size: cover; */
-  background-image: url(../public/img/create.png);
+  background-image: url(../public/img/cb016767635301.5b53562c147be.png);
   background-repeat: no-repeat;
   background-color: #8b8d9494;
-  /* background-color: #9b7bc3b3; */
   background-size: 80%;
   background-attachment: fixed;
 }
@@ -91,12 +88,12 @@ header.css-hip9hq-MuiPaper-root-MuiAppBar-root,
 .css-1clzr65-MuiButtonBase-root-MuiButton-root,
 .MuiButton-contained {
   text-align: center;
-  background-color: #ff818c !important;
+  background-color: #2c0547db !important;
   color: rgb(255, 255, 255);
 }
 #loginBtn{
   text-align: center;
-  background-color: #464b68 !important;
+  background-color: #643c80 !important;
   color: rgb(255, 255, 255);
 }
 #loginBtn:hover{
@@ -115,9 +112,9 @@ header.css-hip9hq-MuiPaper-root-MuiAppBar-root,
   scrollbar-width: none;  /* Firefox */
 }
 
-.MuiAvatar-root.MuiAvatar-circular.MuiAvatar-colorDefault.css-we5ke1-MuiAvatar-root {
-  background-color: #464b68 !important;
-}
+/* .MuiAvatar-root.MuiAvatar-circular.MuiAvatar-colorDefault.css-we5ke1-MuiAvatar-root {
+  background-color: #643c80 !important;
+} */
 
 .whyCard, .css-1v5z4dq-MuiPaper-root-MuiCard-root {
   border-radius: 10px;
@@ -155,6 +152,7 @@ header.css-hip9hq-MuiPaper-root-MuiAppBar-root,
   padding: 0.5em 1em;
   background-color: #ffffff;
   border-radius: 7px;
-  font-size: larger;
+  font-size: x-large;
   margin-bottom: 3em;
 }
+

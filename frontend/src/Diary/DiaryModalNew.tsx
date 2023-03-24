@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, Button, Grid, Modal, TextField, Typography } from '@mui/material';
+import { Button, Grid, Modal, TextField, Typography } from '@mui/material';
 import { useAppDispatch } from '../store';
 import { addNewNote } from './diarySlice';
 import { DiaryNote } from './diaryTypes';

@@ -151,7 +151,7 @@ function QuestionCarousel(): JSX.Element {
           {currentIndex < 0 && (
             <>
               <Auth open={open} setOpen={setOpen} />
-              <Typography variant="h5">
+              <Typography variant="h5" sx={{ color: 'white', fontWeight: 'bold' }}>
                 Авторизуйтесь, чтобы продолжить
               </Typography>
             </>

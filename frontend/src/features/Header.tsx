@@ -92,7 +92,7 @@ function Header({ isAdmin, isAuth, userName }: Props): JSX.Element {
                     aria-haspopup="true"
                     aria-expanded={open ? 'true' : undefined}
                   >
-                    <Avatar sx={{ width: 80, height: 80, fontSize: '50px', fontFamily: 'cursive', backgroundColor: '#464b68' }}>
+                    <Avatar sx={{ width: 80, height: 80, fontSize: '50px', fontFamily: 'Alegreya Sans', backgroundColor: '#643c80' }}>
                       {userName && userName[0]}
                     </Avatar>
                   </IconButton>
