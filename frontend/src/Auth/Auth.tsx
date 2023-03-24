@@ -4,7 +4,6 @@ import { RootState, useAppDispatch } from '../store';
 import { login, register } from './userSlice';
 import { UserLogin, UserRegister } from './usersTypes';
 import { useSelector } from 'react-redux';
-import { deepPurple } from '@mui/material/colors';
 
 const style = {
   borderRadius: '15px',

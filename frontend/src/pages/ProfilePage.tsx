@@ -8,7 +8,6 @@ import { logout } from '../Auth/userSlice';
 import Diary from '../Diary/Diary';
 import { NavLink } from 'react-router-dom';
 import TelegramIcon from '@mui/icons-material/Telegram';
-import Paper from '@mui/material/Paper';
 import { Grid } from '@mui/joy';
 
 function ProfilePage(): JSX.Element {

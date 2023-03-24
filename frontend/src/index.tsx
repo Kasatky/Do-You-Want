@@ -27,16 +27,23 @@ const theme = createTheme({
         }
       }
     },
+    MuiTypography: {
+      styleOverrides: {
+        root: {
+          color: '#643c80',
+        }
+      }
+    }
   },
   palette: {
     primary: {
       main: '#464b68'
-    }
+    },
   },
   typography: {
     fontFamily: [
-      'Caveat',
-      'cursive'
+      'Alegreya Sans',
+      'sans-serif'
     ].join(','),
   },
 

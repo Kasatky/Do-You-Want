@@ -48,15 +48,17 @@ export default function QuestionView() {
         </Box>
       </Paper>
       <div style={{ display: 'flex', justifyContent: 'center', marginTop: "0.5em" }}>
-        <Button variant="contained" onClick={handleTrue}>
-          Да
-        </Button>
         <Button
           variant="contained"
           onClick={handleFalse}
-          sx={{ marginLeft: '10em' }}
         >
           Нет
+        </Button>
+        <Button
+          sx={{ marginLeft: '10em' }}
+          variant="contained"
+          onClick={handleTrue}>
+          Да
         </Button>
       </div>
     </Box>

@@ -26,6 +26,7 @@ const style = {
   borderRadius: '8px',
   boxShadow: 24,
   p: 4,
+  padding: '10px',
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'space-between',
@@ -101,7 +102,7 @@ function AddQuestion({ open, setOpen, handleOpenPrompt }: Props) {
                 color: '#000',
                 borderRadius: '15px',
                 fontSize: '2.5vw',
-                paddingInline: '0.45em',
+                // paddingInline: '0.45em',
                 margin: '0 0 0 10px',
               }}
             />
@@ -128,8 +129,8 @@ function AddQuestion({ open, setOpen, handleOpenPrompt }: Props) {
             control={
               <Checkbox checked={status} color='primary' onChange={handleStatusChange} />
             }
-            label={<Typography sx={{ fontSize: '2vw', }}>
-              "Сделать вопрос публичным"
+            label={<Typography sx={{ fontSize: '1.5vw', }}>
+              Сделать вопрос публичным
             </Typography>}
             labelPlacement="top"
           />

@@ -10,7 +10,7 @@ const style = {
   transform: 'translate(-50%, -50%)',
   width: 400,
   bgcolor: 'background.paper',
-  border: '2px solid #000',
+  borderRadius: '30px',
   boxShadow: 24,
   p: 4,
 };
@@ -40,7 +40,7 @@ function ModalPrompt({ open }: Props): JSX.Element {
               </Typography>
             ) : (
               <Typography
-                sx={{ textAlign: 'center', fontSize: '26px', color: 'green' }}
+                sx={{ textAlign: 'center', fontSize: '26px', color: '#643c80' }}
               >
                 Вопрос добавлен
               </Typography>
