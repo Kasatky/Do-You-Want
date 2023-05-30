@@ -4,7 +4,7 @@
   "description": "Приложение по выявлению желаний. Реализовано на React+TypeScript+Express Js с базой PostgreSQL.",
   "scripts": {
     "postinstall": "cd backend && npm i && cd ../frontend && npm i && DISABLE_ESLINT_PLUGIN=true npm run build",
-    "start": "cd backend && npm start"
+    "start": "cd backend && npm start && npx sequelize db:migrate && npx sequelize db:seed:all"
   },
   "repository": {
     "type": "git",
